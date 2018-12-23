@@ -1,3 +1,4 @@
 {
-  "presets": ["flow", "react", "env"]
+  "presets": ["flow", "react", "env"],
+  "plugins": ["transform-object-rest-spread","import-glob", ["inline-import", {"extensions": [".md"]}]]
 }

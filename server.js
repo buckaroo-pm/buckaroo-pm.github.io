@@ -2,31 +2,37 @@ import express from "express"
 import { renderToString } from "react-dom/server"
 import React from "react"
 import fs from "fs"
-import superDown from "./superdown"
+import superDown from "./superdown";
+import post from "./posts/test.md";
 
+import * as components from "./components/*/index.js";
+
+
+const {md, toc, meta} = superDown(post, components);
 const app = express();
 
 
-
-const md = fs.readFileSync("posts/test.md","utf8");
-
 const App = () => {
-  const {meta, TOC, doc} = superDown(md);
+
   return (<div>
     <div>
-      {doc()}
+      {md()}
     </div>
     
     <div>
+      <h2> auto generated Table of contents </h2>
       {
-        TOC.map( ({id, text}) => (
-          <p key={id}> <a href={"#"+id}>{id} : {text}</a></p>
+        toc.map( ({id, text, level}) => (
+          <p key={id}>
+            <a href={"#"+id} style={{marginLeft: level+"em"}}>{text}</a>
+          </p>
         ))
       }
     </div>
 
     <div>
-      <h2> meta </h2>
+      
+      <h2>extracted Meta information </h2>
       {
         Object.entries(meta).map( ([k, v], id) => (
           <p key={id}>{k} = {v}</p>

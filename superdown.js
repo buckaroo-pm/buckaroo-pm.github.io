@@ -1,8 +1,10 @@
 import Markdown from 'markdown-to-jsx';
+import frontMatter from 'front-matter';
 import { Light as Code } from "react-syntax-highlighter";
 import docco from 'react-syntax-highlighter/dist/styles/hljs/docco'; 
 import { renderToString } from "react-dom/server"
 import React from "react"
+
 
 const code = ({className, children}) => {
   const [_, langString = ''] = (className||"").split("lang-");
@@ -18,41 +20,50 @@ const code = ({className, children}) => {
   );
 }
 
-export default function SuperDown (content) {
-  const TOC = [];
-  const meta = {};
+export default function SuperDown (content, components = {}) {
+  const {attributes, body} = frontMatter(content);
 
   const overrides = {
     code,
+    ...components
   }
 
-  const options = visitOnly => ({
-    overrides,
-    createElement: (type, props, children) => {
-      switch(type) {
-        case 'meta': Object.assign(meta, props); return null;
-        case 'h1': 
-        case 'h2':
-        case 'h3':
-        case 'h4':
-        case 'h5': TOC.push({level: parseInt(type[1]), id: props.id, text:children.join(' ')});
-        default:
-         if (!visitOnly)
-            return React.createElement(type, props, children);
-         return React.createElement('div','');
+  const ids = {};
+  const slugifier = (ids={}) => str => {
+    const id = str
+      .replace(/[*]/g, '')
+      .replace(/ /g, '-');
+
+    // ensure the generation of unique ids even if the title is identical
+    ids[id] = (ids[id]||0) + 1;
+    return id + ((ids[id]>1) ? ('-' + ids[id]) : '');
+  }
+
+  const slugifyTOC = slugifier(); 
+
+  const toc = body
+    .replace(/```.*```\n/gs,'')
+    .split('\n')
+    .filter(x => x.startsWith('#'))
+    .map(x => {
+      const text = x.replace(/^#+/,'').trim();
+      const level = x.match(/^#+/)[0].length;
+      const id = slugifyTOC(text);
+      return {
+        level,
+        text,
+        id
       }
-    }
-  });
+    })
 
-  // traverse only
-  renderToString(
-    <Markdown options={options(true)}>{content}</Markdown>
-  )
-
+  const options = {
+    overrides,
+    slugify: slugifier(),
+  };
+    
   return {
-    doc: () => 
-      <Markdown options={options(false)}>{content}</Markdown>,
-    meta: meta, 
-    TOC: TOC
+    md: () => <Markdown options={options}>{body}</Markdown>,
+    meta: attributes, 
+    toc
   };
 }
