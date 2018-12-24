@@ -24,6 +24,7 @@ export default ({assets, path}) => {
         <App assets={assets}/>
       </StaticRouter>
     ),
+    styles,
     scripts,
     meta: page.meta
   })
