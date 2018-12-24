@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --history-api-fallback --env.devServer",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "webpack && ./deploy.sh"
   },
   "dependencies": {
     "express": "^4.16.4",
