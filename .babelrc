@@ -1,4 +1,4 @@
 {
-  "presets": ["flow", "react", "env"],
-  "plugins": ["transform-object-rest-spread","import-glob", ["inline-import", {"extensions": [".md"]}]]
+  "presets": ["@babel/preset-env", "@babel/preset-flow", "@babel/preset-react"],
+  "plugins": ["import-glob", "transform-object-rest-spread"]
 }

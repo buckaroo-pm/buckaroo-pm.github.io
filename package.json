@@ -4,21 +4,38 @@
   "main": "index.js",
   "author": "Gaetano Checinski",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --history-api-fallback --env.devServer",
+    "build": "webpack"
+  },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-import-glob": "^2.0.0",
-    "babel-plugin-inline-import": "^3.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
     "express": "^4.16.4",
     "front-matter": "^3.0.1",
+    "glob": "^7.1.3",
     "markdown-to-jsx": "^6.9.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-hot-loader": "^4.6.3",
     "react-markdown": "^4.0.4",
-    "react-syntax-highlighter": "^10.1.2",
-    "webpack-cli": "^3.1.2"
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-syntax-highlighter": "^10.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import-glob": "^2.0.0",
+    "babel-plugin-inline-import": "^3.0.0",
+    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^1.0.0",
+    "static-site-generator-webpack-plugin": "^3.4.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-static-site-generator": "^1.2.3"
   }
 }
