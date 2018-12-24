@@ -8,7 +8,7 @@ const pages = [].concat(
   Object.entries(jsPages)
     .map( ([path, component]) => {
       return {
-        path: '/'+path.replace(/[$]/g,'/').replace('-','').toLowerCase(),
+        path:'/' + path.replace(/[$]/g,'/').replace('-','').toLowerCase(),
         component: component,
         meta: component.meta,
         toc: component.toc
@@ -18,7 +18,7 @@ const pages = [].concat(
     .map( ([path, text]) => {
       const {md, meta, toc} = superDown(text, components); 
       return {
-        path: '/'+path.replace(/[$]/g,'/').replace('-','').toLowerCase(),
+        path:'/'+path.replace(/[$]/g,'/').replace('-','').toLowerCase(),
         component: md,
         meta,
         toc

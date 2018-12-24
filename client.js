@@ -7,8 +7,9 @@ console.log('hello world');
 
 const Router = module.hot ? HashRouter : BrowserRouter;
 
+
 hydrate(
-  <Router>
+  <Router basename={window.rootUrl||'/'}>
     <App />
   </Router>,
   document.getElementById('react-root')

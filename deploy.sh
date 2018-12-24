@@ -6,4 +6,5 @@ cd dist
 git init
 git add .
 git commit -m "$MESSAGE"
-git push $ORIGIN master:gh-pages
+git stash
+git push -f $ORIGIN master:gh-pages

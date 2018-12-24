@@ -5,6 +5,7 @@ export default ({href, children}) => {
   if (href.match(/((http|https):\/\/[\w\.\/\-=?#]+)/)) {
     return <a href={href}>{children}</a>
   } else {
-    return <Link to={href}>{children}</Link>
+    return 
+      <Link to={href}>{children}</Link>
   }
 }

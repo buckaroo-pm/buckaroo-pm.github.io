@@ -20,10 +20,11 @@ export default ({assets, path}) => {
   return template({
     content: 
     renderToString(
-      <StaticRouter location={path} context={{}}>
+      <StaticRouter location={path} basename={rootUrl} context={{}}>
         <App assets={assets}/>
       </StaticRouter>
     ),
+    root: rootUrl,
     styles,
     scripts,
     meta: page.meta

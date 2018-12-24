@@ -8,12 +8,17 @@ Runs webpack-dev-server with hot reload
 - uses HashRouter meaning all urls are prefixed with `#/my/url`.
   This is a workaround wor webpack-dev-server
 
-## yarn build
+## baseUrl=domain.com/myblogroot yarn build
 
 Generates static pages and stores in dist.
 
 - uses a crawler to find pages to generate
 - `generator.js` and `templates/default.js` is used for each page
+
+## baseUrl=domain.com/myblogroot yarn deploy
+
+Deploys dist folder to gh-pages using force push.
+Make sure you specify baseUrl
 
 ## Pages
 

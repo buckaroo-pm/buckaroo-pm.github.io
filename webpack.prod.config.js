@@ -1,6 +1,6 @@
 import path from 'path'
 import SiteGenerator from 'static-site-generator-webpack-plugin';
-
+import webpack from 'webpack'
 export default [{
   entry: {
     generator: './generator.js',
@@ -30,7 +30,8 @@ export default [{
       paths: ['/'],
       target: "node",
       globals: {
-        window: 'this'
+        window: 'this',
+        rootUrl: process.env.baseUrl || '/'
       }
     })
   ]
