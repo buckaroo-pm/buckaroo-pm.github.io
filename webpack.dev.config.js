@@ -8,6 +8,7 @@ export default [{
   mode: 'development',
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/',
     filename: '[name].js',
     libraryTarget: 'umd'
   },
@@ -20,10 +21,12 @@ export default [{
   },
 
   module: {
-    rules: [{
-      test: /\.(txt|md)/,
-      use: "raw-loader"
-    }, {
+    rules: [
+      {test: /\.css/, use: [
+        "style-loader","css-loader"
+      ]}, 
+      {test: /\.(txt|md)/, use: "raw-loader"}, 
+      {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       use: {
@@ -33,7 +36,7 @@ export default [{
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'templates/hot.html'
+      template: 'templates/hot.html',
     })
   ]
 }];

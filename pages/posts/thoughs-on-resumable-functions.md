@@ -4,6 +4,7 @@ author: Gaetano Checinski
 ---
 # Thoughts on Resumable Functions
 
+N4453 is more viral than N4775.
 In N4453 has been designed to have implicit virality making every function that uses resumable functions a coroutine.
 The goal of N4453 strives to establish a simpler model and increase code reuse at the same time.
 

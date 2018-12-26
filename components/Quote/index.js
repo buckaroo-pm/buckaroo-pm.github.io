@@ -2,11 +2,11 @@
 import React from "react"
 export default function Quote({children}) {
   return (
-    <div style={{
+    <div className="Quote" style={{
       display:"flex", 
       justifyContent:"flex-start",
       fontSize: "2rem",
-      paddingLeft:"2rem"
+      paddingLeft:"2rem",
     }}>
       <div style={{
         color:"#81bedb", 

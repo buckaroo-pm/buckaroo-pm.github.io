@@ -28,9 +28,9 @@ export default function SuperDown (content, components = {}) {
     ...components
   }
 
-  const ids = {};
   const slugifier = (ids={}) => str => {
     const id = str
+      .trim()
       .replace(/[*]/g, '')
       .replace(/ /g, '-');
 
@@ -42,7 +42,7 @@ export default function SuperDown (content, components = {}) {
   const slugifyTOC = slugifier(); 
 
   const toc = body
-    .replace(/```.*```\n/gs,'')
+    .replace(/```\S+\n[^`]+?```\n/gs,'')
     .split('\n')
     .filter(x => x.startsWith('#'))
     .map(x => {
@@ -55,14 +55,15 @@ export default function SuperDown (content, components = {}) {
         id
       }
     })
-
-  const options = {
-    overrides,
-    slugify: slugifier(),
-  };
     
   return {
-    md: () => <Markdown options={options}>{body}</Markdown>,
+    md: () => {
+      const options = {
+        overrides,
+        slugify: slugifier(),
+      };
+      return <Markdown options={options}>{body}</Markdown>
+    },
     meta: attributes, 
     toc
   };
