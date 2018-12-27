@@ -22,7 +22,7 @@ Suspend-up in the proposed model won’t be feasible without heap allocations.
 
 First of all lets consider the following example:
 
-```c++
+```cpp
 template<class F>
 void foo(F action) {
   //doSth
@@ -79,7 +79,7 @@ This is a stripped down version of the resumable function proposal.
 
 ### Example: 
 
-```c++
+```cpp
 auto fib() {
   int a=0;
   int b=1;
@@ -93,7 +93,7 @@ auto fib() {
 
 Which then in turn would generate the following type:
 
-```c++
+```cpp
 struct __fib_coro {
  int a=0;
  int b=1;
@@ -135,7 +135,7 @@ This is the simplest possible implementation as it could be implemented as a pur
 
 ## Idea:
 
-```
+```cpp
 auto oneAndTwo(int a, int b) {
     return Lazy<int>([=] {
         yield a;
@@ -146,7 +146,7 @@ auto oneAndTwo(int a, int b) {
 
 should transform to:
 
-```
+```cpp
 auto oneAndTwo() {
   return Lazy<int>{}.Yield(1, [=](auto m) {
     return m.Yield(2, [=](auto m) {
@@ -158,7 +158,7 @@ auto oneAndTwo() {
 
 Where `Lazy<T>` would implement:
 
-```c++
+```cpp
 
 template<class T>
 struct Lazy {
@@ -182,7 +182,7 @@ auto Done();
 
 This Code transformation can be used for implementing suspend up and suspend down. Async computation would look very simmilar:
 
-```c++
+```cpp
 return Async([]{
   auto x <- fetch(url); // <- <expr> means: = await <expr> 
   return x;
@@ -244,7 +244,8 @@ Furthermore, the implementation might not even require to await the awaitable at
 ## Re: resumable tcp_reader
 
 Equivalent using resumable expressions
-```
+
+```cpp
 resumable void tcp_reader(int total)
 {
   char  buf[64 * 1024];
@@ -264,7 +265,7 @@ How would a async generator work in this proposal?
 
 ### Re: interop with algorithms
 
-```c++
+```cpp
 std::future<void> tcp_sender(std::vector<std:string> msgs)
 {
   auto conn = await Tcp::Connect("127.0.0.1”, 1337);

@@ -5,6 +5,11 @@ import docco from 'react-syntax-highlighter/dist/styles/hljs/docco';
 import { renderToString } from "react-dom/server"
 import React from "react"
 
+import js from 'react-syntax-highlighter/dist/languages/hljs/javascript';
+import cpp from 'react-syntax-highlighter/dist/languages/hljs/cpp';
+
+Code.registerLanguage('js', js);
+Code.registerLanguage('cpp', cpp);
 
 const code = ({className, children}) => {
   const [_, langString = ''] = (className||"").split("lang-");
@@ -13,6 +18,7 @@ const code = ({className, children}) => {
   const lineNo = showLineNumbers? parseInt(maybeLineNo)||0 : undefined
   return ( 
     <Code 
+      useInlineStyles={true}
       style={docco} 
       lang={lang}
       showLineNumbers={showLineNumbers}
@@ -57,12 +63,12 @@ export default function SuperDown (content, components = {}) {
     })
     
   return {
-    md: () => {
+    md: (props={}) => {
       const options = {
         overrides,
         slugify: slugifier(),
       };
-      return <Markdown options={options}>{body}</Markdown>
+      return <Markdown options={options} {...props}>{body}</Markdown>
     },
     meta: attributes, 
     toc

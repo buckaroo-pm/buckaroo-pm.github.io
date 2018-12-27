@@ -4,6 +4,11 @@ import pages from './pages'
 import { hot } from 'react-hot-loader';
 import { VisibilityTracker } from './context';
 
+import Twitter from './components/twitter';
+import Github from './components/github';
+import Facebook from './components/facebook';
+import LinkedIn from './components/linkedin';
+
 const wrapper = {
   display: "flex",
   flexDirection: "column",
@@ -28,16 +33,15 @@ const postContainer = {
 };
 
 const articleContainer = {
-  width: "800px"
+  width: "800px",
 }
 
 const tocContainer = {
-  fontSize: "1em",
-  maxWidth: "400px"
 };
 
 const Toc = ({toc}) => (
-  <div style={tocContainer}>TOC
+  <div className="TocContainer">
+    <h1> TOC </h1>
     {toc.map( ({level, text, id}) => (
       <p key={id} 
         style={{marginLeft:level+'em'}}>
@@ -118,7 +122,9 @@ class Post extends React.Component {
       >  
         <div className="PostContainer">
           <div className="Header">
-            <h2 style={{paddingLeft:"15px"}}>Nikhedonia's blog</h2>
+            <h2 className="Logo">
+              <Link to={'/'}> {"\u2115"}<span>ikhedonia</span></Link>
+            </h2>
             <div style={{
               marginLeft:'10px',
               borderLeft: 'solid 1px #fff',
@@ -134,26 +140,11 @@ class Post extends React.Component {
               </b>
               )}
             </div> 
-
           </div>
-
-          <div className="Iconbar">
-            <b> Follow </b>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=google.com&title=YourarticleTitle&summary=YourarticleSummary&source=google.com">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"/>
-            </a>
-              
-              <img src="https://vignette.wikia.nocookie.net/logopedia/images/6/6b/2000px-Twitter_2012_logo.svg.png/revision/latest?cb=20120608112551"/>
-              <img src="https://s18955.pcdn.co/wp-content/uploads/2017/05/LinkedIn.png"/>
-
-
-              <b> Share </b>
-              <img src="https://vignette.wikia.nocookie.net/logopedia/images/6/6b/2000px-Twitter_2012_logo.svg.png/revision/latest?cb=20120608112551"/>
-              <img src="https://img.freepik.com/free-icon/facebook-logo_318-49940.jpg?size=338c&ext=jpg" />
-              <img src="https://s18955.pcdn.co/wp-content/uploads/2017/05/LinkedIn.png"/>
-            </div>
-
-          <div className="Content"> {children} </div> 
+          <div className="Content">
+            {children}
+            <Toc toc={toc}/>
+          </div> 
         </div>
       </VisibilityTracker>
     )
@@ -161,11 +152,12 @@ class Post extends React.Component {
 }
 
 
-const post = (props) => (
-  <Route path={props.path} key={props.path} component={
-    () => <Post {...props}>{props.component()}</Post>
+const post = (props) => {
+  const Article = props.component;
+  return <Route path={props.path} key={props.path} component={
+    () => <Post {...props}><Article className="Article"/></Post>
   }/>
-)
+}
 
 const SiteMap = () => (
   <div>{
@@ -177,9 +169,42 @@ const App = () => {
   return  (
     <>
       {pages.map(post)}
-      <Route path="/sitemap" component={SiteMap} /> 
+      <Route path="/sitemap" component={SiteMap} />
       <div className="Footer">
-        <Link to="/sitemap">Sitemap</Link> 
+        <div className="Links">
+          <b>Links</b>
+          <div>
+          <Link to="/sitemap">Sitemap</Link> 
+          </div>
+        </div> 
+
+        <div className="Follow">
+          <b> Follow </b>
+          <div>
+            <a href="//github.com/nikhedonia">
+              <Github className="follow-icon" />
+            </a>
+
+            <a href="//linkedin.com/in/gaetano-checinski">
+              <LinkedIn className="follow-icon" />
+            </a>
+              
+            <a href="//twitter.com/tanoChecinski">
+              <Twitter className="follow-icon" />
+            </a>
+          
+          </div>
+       </div>
+
+       <div className="Subscribe">
+          <b> Subscribe to Newsletter </b>
+<form action="https://jyt.us13.list-manage.com/subscribe/post?u=a3756f5e475cb6820f59c0201&amp;id=9719b50c7d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <input type="email" name="EMAIL" width="100" placeholder="email address"/>
+            <button type="submit"> subscribe </button>
+          </form>
+        </div>
+
+
       </div>
     </>
   )

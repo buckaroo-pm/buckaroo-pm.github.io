@@ -10,6 +10,7 @@
     "deploy": "webpack && ./deploy.sh"
   },
   "dependencies": {
+    "disqus-react": "^1.0.5",
     "express": "^4.16.4",
     "front-matter": "^3.0.1",
     "glob": "^7.1.3",
