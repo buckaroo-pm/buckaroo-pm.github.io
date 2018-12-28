@@ -25,7 +25,7 @@ html, body, #react-root {
   color: white;
   width: 100%;
   flex-direction: row;
-  position: fixed
+  position: fixed;
 }
 
 .Header a {
@@ -33,25 +33,9 @@ html, body, #react-root {
 }
 
 .Banner {
-  z-index: 9999;
-  width: 100vh;
-  height: calc(100vh - 1em);
-  display: flex;
-  flex-direction: column;
-  align-items: row;
-  justify-content: stretch;
-  align-items: stretch;
-}
-
-.Banner img {
-  display:block; 
-  flex: 1;
-}
-
-.Banner .Header {
-  position: relative;
-  flex: 1;
-  z-index: -9999;
+  width: 100vw; 
+  max-height: 70vh;
+  overflow: hidden;
 }
 
 .Iconbar {
@@ -76,30 +60,43 @@ html, body, #react-root {
 }
 
 .Content {
-  padding-top:4em;
   min-width: 400px;
-  max-width: 1600px;
   padding-bottom:3em;
   padding-left: 5em;
   padding-right: 2em;
   transition: all 0.3s ease-in;
   display: flex;
-  flex-direction: wrap;
-  flex-wrap:wrap-reverse; 
+  flex-direction: row;
+  flex-wrap:wrap; 
 }
 
 .Article {
   min-width: 400px;
   max-width: 900px;
   margin-right: 2em;
-  flex-grow: 1
+  flex-grow: 10;
+  flex-shrink: 1;
+  flex-basis: 600px;
 }
+
+@media (min-width: 1270px) {
+  .Article {
+    order: 1
+  }
+
+  .TocContainer {
+    order: 2
+  }
+}
+
 
 .TocContainer {
   font-size: 1em;
-  min-width: 300px;
+  min-width: 200px;
   max-width: 600px;
-  flex-grow: 20;
+  flex-grow:1;
+  flex-shrink: 10;
+  flex-basis: 400px;
 }
 
 
@@ -114,7 +111,7 @@ html, body, #react-root {
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   .Logo span {
     font-size: 1em;
   }

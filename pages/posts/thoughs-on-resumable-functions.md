@@ -1,6 +1,8 @@
 ---
 title: Thoughts on Resumable Functions
 author: Gaetano Checinski
+bannerImg: https://images.unsplash.com/photo-1532455935509-eb76842cee50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80 
+bannerOffset: -20%
 ---
 # Thoughts on Resumable Functions
 

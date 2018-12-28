@@ -22,8 +22,8 @@ const main = {
   width: "80vw",
   minWidth: "400px",
   maxWidth: "1200px",
-  padding:0,
-  margin:0,
+  padding: 0,
+  margin: 0,
 };
 
 const postContainer = {
@@ -126,9 +126,9 @@ class Post extends React.Component {
               <Link to={'/'}> {"\u2115"}<span>ikhedonia</span></Link>
             </h2>
             <div style={{
-              marginLeft:'10px',
+              marginLeft: '10px',
               borderLeft: 'solid 1px #fff',
-              display:'flex',
+              display: 'flex',
               flexDirection: 'column',
               padding: "0.5em",
               fontSize: "0.9em"
@@ -139,11 +139,29 @@ class Post extends React.Component {
                 <a href={'#'+id}>{text}</a>
               </b>
               )}
-            </div> 
+            </div>
+
           </div>
+
+
+          {
+          (meta.bannerImg) ? 
+            <div className="Banner">
+              <img 
+                style={{
+                  display:"block",
+                  width: "100%",
+                  marginTop: meta.bannerOffset 
+                }}
+                src={meta.bannerImg} /> 
+              </div>
+
+              : null
+          }
+
           <div className="Content">
-            {children}
             <Toc toc={toc}/>
+            {children}
           </div> 
         </div>
       </VisibilityTracker>
@@ -198,7 +216,8 @@ const App = () => {
 
        <div className="Subscribe">
           <b> Subscribe to Newsletter </b>
-<form action="https://jyt.us13.list-manage.com/subscribe/post?u=a3756f5e475cb6820f59c0201&amp;id=9719b50c7d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <form action="https://jyt.us13.list-manage.com/subscribe/post?u=a3756f5e475cb6820f59c0201&amp;id=9719b50c7d" 
+            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <input type="email" name="EMAIL" width="100" placeholder="email address"/>
             <button type="submit"> subscribe </button>
           </form>

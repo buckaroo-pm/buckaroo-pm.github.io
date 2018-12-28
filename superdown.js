@@ -8,6 +8,10 @@ import React from "react"
 import js from 'react-syntax-highlighter/dist/languages/hljs/javascript';
 import cpp from 'react-syntax-highlighter/dist/languages/hljs/cpp';
 
+import 'katex/dist/katex.css';
+import Latex from 'react-latex-next'
+
+
 Code.registerLanguage('js', js);
 Code.registerLanguage('cpp', cpp);
 
@@ -31,6 +35,7 @@ export default function SuperDown (content, components = {}) {
 
   const overrides = {
     code,
+    Tex: (props) => <Latex {...props}>{props.children.join('\n')}</Latex>,
     ...components
   }
 
