@@ -1,210 +1,150 @@
-html, body, #react-root {
-  padding:0;
-  margin:0;
-  width:100%;
-  height:100%;
+html, body {
+  color: rgb(36, 41, 46);
+  background-color: rgb(250, 250, 250);
+  margin: 0;
+  padding: 0;
 }
 
-:target {
-  display: block;
-  position: relative;
-  padding-top: 4em;
-  margin-top: -4em;
+html,body, h1, h2, h3, h4, ul, li, p {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.PostContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
+p, li {
+  font-size: 1.2em;
+  line-height: 2em;
 }
 
-.Header {
-  display: flex;
-  background: black;
-  color: white;
-  width: 100%;
-  flex-direction: row;
-  position: fixed;
-}
-
-.Header a {
-  color: white; 
-}
-
-.Banner {
-  width: 100vw; 
-  max-height: 70vh;
-  overflow: hidden;
-}
-
-.Iconbar {
-  position: fixed;
-  margin-top: 4em;
-  width: 13em;
-  display: flex;
-  padding-top: 3em;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-
-.Iconbar b {
-  padding: 0.5em;
+h1 {
   font-size: 2em;
+  font-weight: 600;
+  line-height: 1em;
+  margin-top: 2em;
 }
 
-.Iconbar img {
-  width: 3em;
+h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 2em;
+  margin-top: 2em;
+}
+
+a {
+  color: rgb(245, 60, 103);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+h1 a, h2 a, h3 a, h4 a {
+  color: rgb(36, 41, 46);
+  font-weight: 600;
+}
+
+hr {
+  background: none;
+  border: none;
+  border-top: 2px solid rgb(230, 230, 230);
+  height: 1px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+#header {
+  background-color: rgb(230, 230, 230);
+  min-height: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#icon {
+  max-height: 8em;
+}
+
+#header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+#header nav ul li {
+  margin-left: 1em;
+}
+
+.content {
+  max-width: 45em;
+  width: 100%;
+}
+
+#header .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header a {
+  text-decoration: none;
+  color: rgb(36, 41, 46);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.4em;
+  font-weight: 600;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.inline-code {
+  font-family: monospace;
+  background: rgb(230, 230, 230);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+#header nav ul li a {
+  font-size: 1em;
+  color: rgb(96, 101, 106);
+  min-width: 4em;
+  display: inline-block;
+  text-align: center;
+}
+
+#header nav ul li a:hover {
+  color: rgb(36, 41, 46);
+}
+
+#home-logo {
+  max-width: 100%;
   margin-bottom: 1em;
 }
 
-.Content {
-  min-width: 400px;
-  padding-bottom:3em;
-  padding-left: 5em;
-  padding-right: 2em;
-  transition: all 0.3s ease-in;
+.summary {
+  margin-top: 4em;
+}
+
+.summary h3 {
+  font-size: 1.4em;
+  line-height: 1em;
+  margin-top: 1em;
+}
+
+.page {
   display: flex;
-  flex-direction: row;
-  flex-wrap:wrap; 
-}
-
-.Article {
-  min-width: 400px;
-  max-width: 900px;
-  margin-right: 2em;
-  flex-grow: 10;
-  flex-shrink: 1;
-  flex-basis: 600px;
-}
-
-@media (min-width: 1270px) {
-  .Article {
-    order: 1
-  }
-
-  .TocContainer {
-    order: 2
-  }
-}
-
-
-.TocContainer {
-  font-size: 1em;
-  min-width: 200px;
-  max-width: 600px;
-  flex-grow:1;
-  flex-shrink: 10;
-  flex-basis: 400px;
-}
-
-
-.Logo {
-  padding-left:1em;
-  padding-right:1em;
-}
-
-.Logo span {
-  font-size: 0em;
-  transition: all 0.1s ease-in
-}
-
-
-@media (min-width: 1000px) {
-  .Logo span {
-    font-size: 1em;
-  }
-
-  .Content {
-    padding-left: 12em;
-  }
-}
-
-
-svg.follow-icon {
-  fill: black;
-  background-color:white;
-  width: 2em;
-  height: 2em;
-}
-
-svg.follow-icon:hover {
-  fill: white;
-  background-color:black;
-}
-
-.Footer {
-  display:flex;
-  flex: wrap row;
-  justify-content: stretch;
-}
-
-.Links {
-  display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4em;
 }
 
-.Links div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.mt-4 {
+  margin-top: 4em;
 }
 
-.Footer {
-  background: #333;
-  padding: 1em;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.code {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 4px;
+  padding: 2em;
 }
 
-
-
-.Footer b {
-  text-align:center;
-  color: white;
-  border-bottom: solid 1px white;
-  padding: 0.3em;
-  min-width:200px;
-  margin-bottom:1em;
-}
-
-.Footer a {
-  color: white;
-}
-
-.Links, .Follow, .Subscribe {
-  display:flex;
-  flex-grow:1;
-  flex-direction: column;
-  margin-left:2em;
-  margin-right:2em;
-  margin-bottom:2em;
-}
-
-.Follow div {
-  display:flex;
-  width:100%;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.Subscribe form {
-  font-size:1.5em;
-  flex-grow:1;
-  display:flex;
-  flex: 1 row wrap;
-}
-
-.Subscribe form input {
-  flex-grow:10;
-}
-
-
-.Subscribe form button {
-  flex-grow:1;
-}
-
-
-
-
+/* code, .code, .code span, code span, pre code span, pre pre code, span .hljs-attr {
+  font-size: 1.4em;
+  line-height: 1.2em;
+} */

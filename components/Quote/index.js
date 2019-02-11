@@ -1,15 +1,15 @@
+import React from "react";
 
-import React from "react"
-export default function Quote({children}) {
+export default function Quote({ children }) {
   return (
     <div className="Quote" style={{
-      display:"flex", 
+      display:"flex",
       justifyContent:"flex-start",
       fontSize: "2rem",
       paddingLeft:"2rem",
     }}>
       <div style={{
-        color:"#81bedb", 
+        color:"#81bedb",
         fontSize:"7.5rem",
         fontWeight:700
       }}>

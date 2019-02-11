@@ -1,45 +1,54 @@
 import Markdown from 'markdown-to-jsx';
 import frontMatter from 'front-matter';
 import { Light as Code } from "react-syntax-highlighter";
-import docco from 'react-syntax-highlighter/dist/styles/hljs/docco'; 
+import docco from 'react-syntax-highlighter/dist/styles/hljs/docco';
+import purebasic from 'react-syntax-highlighter/dist/styles/hljs/purebasic';
+import github from 'react-syntax-highlighter/dist/styles/hljs/github';
+import atomonelight from 'react-syntax-highlighter/dist/styles/hljs/atom-one-dark';
 import { renderToString } from "react-dom/server"
 import React from "react"
 
 import js from 'react-syntax-highlighter/dist/languages/hljs/javascript';
 import cpp from 'react-syntax-highlighter/dist/languages/hljs/cpp';
 
-import 'katex/dist/katex.css';
-import Latex from 'react-latex-next'
-
-
 Code.registerLanguage('js', js);
 Code.registerLanguage('cpp', cpp);
 
-const code = ({className, children}) => {
-  const [_, langString = ''] = (className||"").split("lang-");
-  const [lang , maybeLineNo] = langString.split("=");
-  const showLineNumbers = maybeLineNo !== undefined
-  const lineNo = showLineNumbers? parseInt(maybeLineNo)||0 : undefined
-  return ( 
-    <Code 
-      useInlineStyles={true}
-      style={docco} 
-      lang={lang}
-      showLineNumbers={showLineNumbers}
-      startingLineNumber={lineNo}>{children}</Code> 
-  );
-}
+const code = (xs) => {
+  console.log(xs);
+  const { className, children } = xs;
+  const [_, langString = ''] = (className || "").split("lang-");
+  const [ lang , maybeLineNo ] = langString.split("=");
+  const showLineNumbers = maybeLineNo !== undefined;
+  const lineNo =
+    showLineNumbers ?
+      parseInt(maybeLineNo) || 0 :
+      undefined;
+
+  if (lang) {
+    return (
+      <Code
+        useInlineStyles={true}
+        style={atomonelight}
+        lang={lang}
+        className="code"
+        showLineNumbers={showLineNumbers}
+        startingLineNumber={lineNo}>{children}</Code>
+    );
+  }
+
+  return (<span className="inline-code">{children}</span>);
+};
 
 export default function SuperDown (content, components = {}) {
   const {attributes, body} = frontMatter(content);
 
   const overrides = {
     code,
-    Tex: (props) => <Latex {...props}>{props.children.join('\n')}</Latex>,
-    ...components
-  }
+    // ...components
+  };
 
-  const slugifier = (ids={}) => str => {
+  const slugifier = (ids = {}) => str => {
     const id = str
       .trim()
       .replace(/[*]/g, '')
@@ -50,23 +59,8 @@ export default function SuperDown (content, components = {}) {
     return id + ((ids[id]>1) ? ('-' + ids[id]) : '');
   }
 
-  const slugifyTOC = slugifier(); 
+  const slugifyTOC = slugifier();
 
-  const toc = body
-    .replace(/```\S+\n[^`]+?```\n/gs,'')
-    .split('\n')
-    .filter(x => x.startsWith('#'))
-    .map(x => {
-      const text = x.replace(/^#+/,'').trim();
-      const level = x.match(/^#+/)[0].length;
-      const id = slugifyTOC(text);
-      return {
-        level,
-        text,
-        id
-      }
-    })
-    
   return {
     md: (props={}) => {
       const options = {
@@ -75,7 +69,6 @@ export default function SuperDown (content, components = {}) {
       };
       return <Markdown options={options} {...props}>{body}</Markdown>
     },
-    meta: attributes, 
-    toc
+    meta: attributes,
   };
 }

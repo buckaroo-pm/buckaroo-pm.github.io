@@ -47,6 +47,7 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14",
     "webpack-static-site-generator": "^1.2.3"
   }
 }
