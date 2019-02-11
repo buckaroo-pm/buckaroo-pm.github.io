@@ -13,7 +13,7 @@ const Post = props => {
   const { title, author, created } = meta;
 
   return (
-    <div className="page">
+    <div className="page mt-4">
       <div className="content">
         <h1>{title}</h1>
         <p>{author}, {new Date(created).toLocaleDateString()}</p>
