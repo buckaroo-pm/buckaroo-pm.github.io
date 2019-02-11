@@ -23,7 +23,8 @@ export default props => {
     <div className="page mt-4">
       <div className="content">
         {pages.length ? headlinePost(pages[0]) : null}
-        <h1 className="mt-4">Older Posts</h1>
+        <hr className="mt-4" />
+        <h1 className="mt-2">Older Posts</h1>
         {
           pages
             .slice(1)

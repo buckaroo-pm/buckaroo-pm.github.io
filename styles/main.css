@@ -68,6 +68,9 @@ hr {
 
 #header nav ul li {
   margin-left: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
@@ -131,6 +134,10 @@ hr {
   justify-content: center;
   align-items: center;
   padding-bottom: 4em;
+}
+
+.mt-2 {
+  margin-top: 2em;
 }
 
 .mt-4 {
