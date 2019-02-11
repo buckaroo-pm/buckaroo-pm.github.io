@@ -46,6 +46,7 @@ hr {
   height: 1px;
   margin-top: 1em;
   margin-bottom: 2em;
+  width: 100%;
 }
 
 #header {
@@ -76,10 +77,14 @@ hr {
 .content {
   max-width: 45em;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 #header .content {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -115,6 +120,7 @@ hr {
 
 #home-logo {
   max-width: 100%;
+  margin: auto;
   margin-bottom: 1em;
 }
 
