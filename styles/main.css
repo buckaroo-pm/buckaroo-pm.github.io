@@ -194,7 +194,9 @@ hr {
   padding: 2em;
 }
 
-@media (max-width:600px) {
+@media only screen and (max-width: 801px) {
+/* @media only screen and (max-device-width: 600px) { */
+/* @media (max-width:600px) { */
   #header .content {
     flex-direction: column;
     justify-content: start;
