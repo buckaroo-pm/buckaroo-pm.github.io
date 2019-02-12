@@ -10,8 +10,16 @@ import Analytics from './analytics';
 import Header from './components/Header';
 
 const Post = props => {
-  const { children, meta } = props;
+  const { children, meta, path } = props;
   const { title, author, created } = meta;
+
+  const root =
+    window && window.rootUrl || 'https://buckaroo.pm';
+
+  const hnSubmit =
+    "https://news.ycombinator.com/submitlink?" +
+    "u=" + encodeURIComponent(root + path) +
+    "&t=" + encodeURIComponent(title);
 
   return (
     <div className="page mt-4 ph-1">
@@ -20,6 +28,9 @@ const Post = props => {
         <p>{author}, {new Date(created).toLocaleDateString()}</p>
         <hr />
         {children}
+        <p>
+          💬&nbsp;<a href={hnSubmit}>Discuss on Hacker News</a>
+        </p>
       </div>
     </div>
   );
