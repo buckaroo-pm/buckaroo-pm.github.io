@@ -3,6 +3,7 @@
 ORIGIN=`git remote get-url origin`
 MESSAGE=`git --no-pager log --format="%h: %s" -n1`
 mkdir -p dist
+cp CNAME ./dist/CNAME
 cp -r img ./dist
 cd dist
 git init
