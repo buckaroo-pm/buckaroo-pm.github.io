@@ -62,11 +62,15 @@ hr {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  box-sizing: border-box;
 }
 
 #icon {
   max-height: 8em;
   min-height: 3em;
+  text-align: left;
 }
 
 #header nav ul {
@@ -101,9 +105,6 @@ hr {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-left: 1em;
-  padding-right: 1em;
-  box-sizing: border-box;
 }
 
 #header a {
@@ -199,8 +200,6 @@ hr {
     justify-content: start;
     align-items: start;
     flex-wrap: wrap;
-    /* background: red; */
-    /* padding-left: 1em; */
   }
 
   #header #logo {
@@ -210,13 +209,10 @@ hr {
   #header nav ul {
     flex-direction: column;
     justify-content: start;
-    /* align-items: stretch; */
-    /* padding-left: 1em; */
     margin-top: 0;
   }
 
   #header nav ul li {
-    /* background: green; */
     margin-left: 0;
     min-height: 3em;
     align-items: center;

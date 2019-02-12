@@ -15,7 +15,6 @@ Code.registerLanguage('js', js);
 Code.registerLanguage('cpp', cpp);
 
 const code = (xs) => {
-  console.log(xs);
   const { className, children } = xs;
   const [_, langString = ''] = (className || "").split("lang-");
   const [ lang , maybeLineNo ] = langString.split("=");
