@@ -4,14 +4,15 @@ import { hydrate } from 'react-dom';
 import App from './app';
 import './styles/main.css';
 
-const onChange = () => {
+const onUpdate = () => {
   if (typeof window !== undefined && window.ga) {
-    ga('send', 'pageview');
+    window.ga('set', 'page', window.location.pathname + window.location.search);
+    window.ga('send', 'pageview');
   }
 }
 
 hydrate(
-  <Router basename={window.rootUrl || '/'} onChange={onChange} >
+  <Router basename={window.rootUrl || '/'} onUpdate={onUpdate} >
     <App />
   </Router>,
   document.getElementById('react-root')
