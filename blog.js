@@ -20,7 +20,7 @@ export default props => {
       .sort((x, y) => x.meta.created < y.meta.created);
 
   return (
-    <div className="page mt-4">
+    <div className="page mt-4 ph-1">
       <div className="content">
         {pages.length ? headlinePost(pages[0]) : null}
         <hr className="mt-4" />

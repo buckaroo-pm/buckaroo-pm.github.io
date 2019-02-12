@@ -20,7 +20,7 @@ export default (props) => (
             <a href="https://github.com/LoopPerfect/buckaroo">Code</a>
           </li>
           <li>
-            <iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&repo=buckaroo&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+            <iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&repo=buckaroo&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
           </li>
         </ul>
       </nav>

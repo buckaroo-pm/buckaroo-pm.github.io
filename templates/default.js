@@ -5,7 +5,7 @@ export default ({ content, root = '', meta = { title: "blog" }, styles = [], scr
   `<!DOCTYPE html>
     <html>
       <head>
-        <title>${meta.title}</title>
+        <title>Buckaroo - The C++ Package Manager ${meta.title}</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="./styles/normalize.min.css"/>
         ${styles.map(url =>`<link rel="stylesheet" type="text/css" href="${root}/${url}"/>\n`)}

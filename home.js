@@ -8,7 +8,7 @@ export default props => (
   <div className="home-logo-container">
     <img src="/img/logo-medium.png" alt="Buckaroo" className="home-logo" />
   </div>
-  <div className="page mt-4">
+  <div className="page mt-4 ph-1">
     <div className="content">
       <h1>C/C++ Package Manager</h1>
       <p>Buckaroo is a package manager for C/C++. Buckaroo makes it easy to add modules to your project in a controlled and cross-platform way. </p>

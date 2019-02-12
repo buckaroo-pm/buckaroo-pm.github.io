@@ -53,4 +53,4 @@ It might seem like a small cosmetic change, but we found TOML is not only easier
 
 ## What to Try Buckaroo?
 
-Head over to our GitHub page to get started. ❤️
+Head over to our [GitHub page](https://github.com/LoopPerfect/buckaroo) to get started. ❤️
