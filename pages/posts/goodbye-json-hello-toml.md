@@ -7,7 +7,7 @@ summary: "For the next version of Buckaroo, we wanted to make improvements to th
 For the next version of Buckaroo, we wanted to make improvements to the manifest format. Old versions of Buckaroo used JSON for the manifest and lock-files. This choice was not made very conciously, but at the time it seemed reasonable:
 
  * Yarn and NPM (arguably the most successful language package managers) both use JSON.
- * There is a JSON parser for literally every language (and usually more than one).
+ * There is a JSON parser for literally every language (and usually [more](https://github.com/buckaroo-pm/dropbox-json11) [than](https://github.com/buckaroo-pm/open-source-parsers-jsoncpp) [one](https://github.com/buckaroo-pm/nlohmann-json)).
  * Everyone is familiar with JSON.
 
 Over time, we've come to regret this decision:
