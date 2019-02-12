@@ -7,4 +7,4 @@ git init
 git add .
 git commit -m "$MESSAGE"
 git stash
-git push -f $ORIGIN master:gh-pages
+git push -f $ORIGIN develop:master
