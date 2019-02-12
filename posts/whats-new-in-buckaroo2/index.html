@@ -3,6 +3,7 @@
       <head>
         <title>Buckaroo - The C++ Package Manager What's New in Buckaroo 2?</title>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/styles/normalize.min.css"/>
         <link rel="stylesheet" type="text/css" href="/styles.css"/>
 
@@ -17,8 +18,16 @@
 Thanks to our locking mechanism, we ensure that the installation is reproducible even if the branch or tag is updated. When you are ready to move to the next version, just do buckaroo upgrade.</p><h2 id="New-Robotic-Team-Members:-Upgrade-Bot-&amp;-Patch-Bot 🤖">New Robotic Team-Members: Upgrade Bot &amp; Patch Bot 🤖</h2><p>Upgrade Bot and Patch Bot are now operational and work hard to update and port packages to the Buckaroo ecosystem. Don&#x27;t worry though, their contributions are all tested on Travis CI.</p><h2 id="100%-Decentralised,-no-Cookbook-or-Publishing-Process">100% Decentralised, no Cookbook or Publishing Process</h2><p>Buckaroo now does not need a central repository of packages. ZERO! This means any URL - Git or HTTP - can be installed as long as it has a buckaroo.toml file.</p><h2 id="Works-Offline - Download-Once,-Install-Many Times.">Works Offline - Download Once, Install Many Times.</h2><p>We cache all packages centrally, so you can work offline. Reconnect to fetch more versions.
 Private and public dependencies to avoid &quot;dependency hell&quot;</p><p>Packages can declare private dependencies, whose version does not have to be shared with the rest of the project. Use this feature to escape dependency hell!</p><h2 id="Multiple-libraries-per-package,-so-tools-like-Lerna-are-unnecessary">Multiple libraries per package, so tools like Lerna are unnecessary</h2><p>You can now pull individual components out of a package. This works really nicely with libraries that ship optional add-ons. Now you can take only what you need.</p><h2 id="Smart-Version-Reconciliation">Smart Version Reconciliation</h2><p>Did you know that <span class="inline-code">boostorg/iterator</span> <span class="inline-code">v1.67.0</span> points to the same commit as <span class="inline-code">v1.68.0</span>?
 Buckaroo is now smart enough to detect that those two version on Git point to the same revision and are therefore equivalent. We discovered that when a package manager understands this, it reduces the need to resolve many dependency conflicts.</p><h2 id="No-Java-Dependency">No Java Dependency</h2><p>We got rid of the JVM and use a Warp bundle to ship a self contained executable for Linux, Mac and Windows. Oh, and we also did this for Buck!</p><p>Just wget and go. 😎</p><h2 id="TOML-over JSON">TOML over JSON</h2><p>It might seem like a small cosmetic change, but we found TOML is not only easier to read but it also reduces the number of merge conflicts in manifest and lock-files. Buckaroo <span class="inline-code">v2.0.0</span> only uses TOML.</p><h2 id="What-to-Try-Buckaroo?">What to Try Buckaroo?</h2><p>Head over to our <a href="https://github.com/LoopPerfect/buckaroo">GitHub page</a> to get started. ❤️</p></div></div></div>
-        </div>
-        <script type="text/javascript" src="/main.js"></script>
+      </div>
+      <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-98721445-1', 'buckaroo.pm');
+ga('send', 'pageview');
+</script>
+      <script type="text/javascript" src="/main.js"></script>
 
       </body>
     </html>
