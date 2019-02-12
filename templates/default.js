@@ -7,7 +7,7 @@ export default ({ content, root = '', meta = { title: '' }, styles = [], scripts
       <head>
         <title>Buckaroo - The C++ Package Manager ${meta.title}</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="./styles/normalize.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/styles/normalize.min.css"/>
         ${styles.map(url =>`<link rel="stylesheet" type="text/css" href="${root}/${url}"/>\n`)}
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <script type="text/javascript">
