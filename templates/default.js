@@ -1,4 +1,4 @@
-export default ({ content, root = '', meta = { title: "blog" }, styles = [], scripts = [] }) => {
+export default ({ content, root = '', meta = { title: '' }, styles = [], scripts = [] }) => {
   styles = styles.slice().reverse();
 
   return (

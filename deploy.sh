@@ -10,4 +10,4 @@ git remote add origin $ORIGIN
 git add .
 git commit -m "$MESSAGE"
 git stash
-git push -f $ORIGIN develop:master
+git push -f $ORIGIN master
