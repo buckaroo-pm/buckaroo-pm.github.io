@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader';
 import Home from './home';
 import Blog from './blog';
 import ScrollToTop from './scrollToTop';
+import Analytics from './scrollToTop';
 import Header from './components/Header';
 
 const Post = props => {
@@ -51,6 +52,7 @@ const App = () => {
       <Route exact path="/" component={() => <Home pages={pages} />} />
       <Route exact path="/blog" component={() => <Blog pages={pages} />} />
       {pages.map(post)}
+      <Analytics />
     </ScrollToTop>
   );
 };
