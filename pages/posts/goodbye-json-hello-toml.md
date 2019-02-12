@@ -2,9 +2,9 @@
 title: "Goodbye JSON, Hello TOML"
 created: "2019-02-11T22:00:00.000Z"
 author: Team Buckaroo
-summary: "For the next version of Buckaroo, we wanted to make improvements to the manifest format. Old versions of Buckaroo used JSON for the manifest and lock-files. This choice was not made very conciously, but at the time it seemed reasonable..."
+summary: "For the next version of Buckaroo, we wanted to make improvements to the manifest format. Old versions of Buckaroo used JSON for the manifest and lock-files. This choice was not made very consciously, but at the time it seemed reasonable..."
 ---
-For the next version of Buckaroo, we wanted to make improvements to the manifest format. Old versions of Buckaroo used JSON for the manifest and lock-files. This choice was not made very conciously, but at the time it seemed reasonable:
+For the next version of Buckaroo, we wanted to make improvements to the manifest format. Old versions of Buckaroo used JSON for the manifest and lock-files. This choice was not made very consciously, but at the time it seemed reasonable:
 
  * Yarn and NPM (arguably the most successful language package managers) both use JSON.
  * There is a JSON parser for literally every language (and usually [more](https://github.com/buckaroo-pm/dropbox-json11) [than](https://github.com/buckaroo-pm/open-source-parsers-jsoncpp) [one](https://github.com/buckaroo-pm/nlohmann-json)).
