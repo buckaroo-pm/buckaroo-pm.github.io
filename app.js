@@ -6,7 +6,7 @@ import { hot } from 'react-hot-loader';
 import Home from './home';
 import Blog from './blog';
 import ScrollToTop from './scrollToTop';
-import Analytics from './scrollToTop';
+import Analytics from './analytics';
 import Header from './components/Header';
 
 const Post = props => {
