@@ -1,7 +1,7 @@
 export default ({ content, root = '', meta = { title: "blog" }, styles = [], scripts = [] }) => {
   styles = styles.slice().reverse();
 
-  return
+  return (
   `<!DOCTYPE html>
     <html>
       <head>
@@ -20,5 +20,6 @@ export default ({ content, root = '', meta = { title: "blog" }, styles = [], scr
         </div>
         ${scripts.map(url =>`<script type="text/javascript" src="${root}/${url}"></script>\n`)}
       </body>
-    </html>`;
+    </html>`
+  );
 };
