@@ -16,7 +16,7 @@ export default props => (
       <h1 className="mt-4">Recent Posts</h1>
       {
         (props.pages || [])
-          .sort((x, y) => x.meta.created < y.meta.created)
+          .sort((x, y) => y.meta.created.localeCompare(x.meta.created))
           .slice(0, 3)
           .map((x, i) => (<div key={i}>{postSummary(x)}</div>))
       }
