@@ -37,11 +37,15 @@ a {
   color: rgb(245, 60, 103);
   font-weight: 400;
   text-decoration: none;
+  overflow: visible;
+  border-bottom: 1px solid rgb(245, 60, 103);
 }
 
 h1 a, h2 a, h3 a, h4 a {
   color: rgb(36, 41, 46);
   font-weight: 600;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 hr {
@@ -109,6 +113,7 @@ hr {
 
 #header a {
   text-decoration: none;
+  border-bottom: none;
   color: rgb(36, 41, 46);
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.4em;

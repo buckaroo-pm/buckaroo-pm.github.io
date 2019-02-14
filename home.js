@@ -12,7 +12,7 @@ export default props => (
     <div className="content">
       <h1>C/C++ Package Manager</h1>
       <p>Buckaroo is a package manager for C/C++. Buckaroo makes it easy to add modules to your project in a controlled and cross-platform way. </p>
-      <p><a href="https://github.com/LoopPerfect/buckaroo">💡 Learn More</a></p>
+      <p>💡 <a href="https://github.com/LoopPerfect/buckaroo">Learn More</a></p>
       <h1 className="mt-4">Recent Posts</h1>
       {
         (props.pages || [])

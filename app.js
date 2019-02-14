@@ -25,7 +25,10 @@ const Post = props => {
     <div className="page mt-4 ph-1">
       <div className="content">
         <h1>{title}</h1>
-        <p>{author}, {new Date(created).toLocaleDateString()}</p>
+        <p>
+          📝&nbsp;{author}, {new Date(created).toLocaleDateString()} <br />
+          💬&nbsp;<a href={hnSubmit}>Discuss on Hacker News</a>
+        </p>
         <hr />
         {children}
         <p>

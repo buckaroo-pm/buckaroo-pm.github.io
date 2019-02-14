@@ -9,7 +9,7 @@ const headlinePost = (props) => {
     <div>
       <h1><Link to={path}>{meta.title}</Link></h1>
       <p>{meta.summary}</p>
-      <p><Link to={path}>📚 Read More</Link></p>
+      <p>📚 <Link to={path}>Read More</Link></p>
     </div>
   );
 };
