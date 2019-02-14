@@ -22,7 +22,7 @@ p, li {
 h1 {
   font-size: 2em;
   font-weight: 600;
-  line-height: 1em;
+  line-height: 1.5em;
   margin-top: 2em;
 }
 
@@ -101,6 +101,12 @@ hr {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: left;
+}
+
+.post-container {
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 #header .content {
