@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <title>Buckaroo - The C++ Package Manager Error Handling in C++ or: Why You Should Use Eithers in Favor of Exceptions and Error-codes</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/styles/normalize.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <script type="text/javascript">
+          window.rootUrl = ""
+        </script>
+      </head>
+      <body>
+        <div id="react-root">
+        <header id="header"><div class="content"><a id="logo" href="/">Buckaroo</a><nav><ul><li><a href="/blog">Blog</a></li><li><a href="https://github.com/LoopPerfect/buckaroo/wiki">Docs</a></li><li><a href="https://github.com/LoopPerfect/buckaroo">Code</a></li><li><iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&amp;repo=buckaroo&amp;type=star&amp;count=true&amp;size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe></li></ul></nav></div></header><div class="page mt-4 ph-1"><div class="content"><h1>Error Handling in C++ or: Why You Should Use Eithers in Favor of Exceptions and Error-codes</h1><p>📝 <!-- -->Team Buckaroo<!-- -->, <!-- -->14/02/2019<!-- --> <br/>💬 <a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fbuckaroo.pm%2Fposts%2Ferror-handling-in-cpp&amp;t=Error%20Handling%20in%20C%2B%2B%20or%3A%20Why%20You%20Should%20Use%20Eithers%20in%20Favor%20of%20Exceptions%20and%20Error-codes">Discuss on Hacker News</a></p><hr/><div><h2 id="TL;DR">TL;DR</h2><p>Consider using an Either type to handle errors as they lift the error into the type-system and have the same performance characteristics as error-codes.</p><p>Some Either Implementations:</p><ul><li><a href="https://github.com/loopperfect/neither">loopperfect/neither</a></li><li><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4109.pdf">std::expected</a></li><li><a href="https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html">boost::expected</a></li><li><a href="https://github.com/beark/ftl">beark/ftl</a></li></ul><h2 id="Introduction">Introduction</h2><p>Programming language design is always a matter of trade-offs. In the case of C++, the designers optimized for two things: runtime efficiency and high-level abstraction. This gives the C++ programmer huge flexibility in many areas, one of which is error handling. In this article we&#x27;ll cover the common methods, evaluate their differences and recommend an approach.</p><h2 id="Exceptions-&amp;-Try-Catch">Exceptions &amp; Try-Catch</h2><p>Try-catch is perhaps the most idomatic error-handling method in C++.</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#61aeee">#<span class="hljs-meta-keyword">include</span> <span style="color:#98c379">&lt;iostream&gt;</span></span>
+<span style="color:#61aeee">#<span class="hljs-meta-keyword">include</span> <span style="color:#98c379">&lt;string&gt;</span></span>
+
+<span style="color:#c678dd">using</span> <span style="color:#c678dd">namespace</span> <span style="color:#e6c07b">std</span>;
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">divide</span><span class="hljs-params">(<span style="color:#c678dd">int</span> x, <span style="color:#c678dd">int</span> y)</span> </span>{
+  <span style="color:#c678dd">if</span> (y == <span style="color:#d19a66">0</span>) {
+    <span style="color:#c678dd">throw</span> <span style="color:#e6c07b">string</span>(<span style="color:#98c379">&quot;Divide by zero&quot;</span>);
+  }
+
+  <span style="color:#c678dd">return</span> x / y;
+}
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">main</span><span class="hljs-params">()</span> </span>{
+  <span style="color:#c678dd">try</span> {
+    <span style="color:#e6c07b">cout</span> &lt;&lt; <span style="color:#98c379">&quot;4/2 &quot;</span> &lt;&lt; divide(<span style="color:#d19a66">4</span>, <span style="color:#d19a66">2</span>) &lt;&lt; <span style="color:#e6c07b">endl</span>;
+    <span style="color:#e6c07b">cout</span> &lt;&lt; <span style="color:#98c379">&quot;3/0 &quot;</span> &lt;&lt; divide(<span style="color:#d19a66">3</span>, <span style="color:#d19a66">0</span>) &lt;&lt; <span style="color:#e6c07b">endl</span>;
+  } <span style="color:#c678dd">catch</span> (<span style="color:#e6c07b">string</span> e) {
+    <span style="color:#e6c07b">cout</span> &lt;&lt; e &lt;&lt; <span style="color:#e6c07b">endl</span>;
+  }
+
+  <span style="color:#c678dd">return</span> <span style="color:#d19a66">0</span>;
+}</code></pre></pre><p><em>Catching a divide-by-zero error</em></p><h3 id="Exception-Overhead">Exception Overhead</h3><p>The try-catch language feature is not zero-cost and the exact price is determined by the compiler implementation. Implementers can choose between increased code-size and increased run-time overhead, both in the success branch and the failure branch.</p><p>In most C++ implementations, an interesting choice has been made: code in the <span class="inline-code">try</span> block runs as fast as any other code. However, dispatching to the <span class="inline-code">catch</span> block is orders of magnitude slower. This penalty grows linearly with the depth of the call-stack.</p><p>If exceptions make sense for your project will depend on the frequency at which exceptions will be thrown. If the error rate is above 1%, then <a href="https://youtu.be/XVofgKH-uu4?t=1h2m24s">the overhead will likely be greater than that of alternative approaches</a>.</p><p>Exceptions are not supported by all platforms, and methods that throw cannot be easily understood by C. If you need to interface with lots of C code, you might want to avoid them.</p><h3 id="Ergonomics">Ergonomics</h3><p>Exceptions are easy to use and fairly easy to reason about. You can throw and catch exceptions at any point in your code, and the exception can even be an arbitrary type.</p><p>The biggest drawback is that handling exceptions is not enforced by the type-system. Unlike, Java, for example, where exceptions must be caught by the caller, catching a C++ exception is optional. This means spotting all the unhandled exceptions during a code review will be challenging, and requires deep knowledge of all of the functions called.</p><h4 id="But-what-about-noexcept-and throw?">But what about noexcept and throw?</h4><p>A common misconception is that annotating functions with <span class="inline-code">noexcept</span> or <span class="inline-code">throw</span> can help.</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">compute</span><span class="hljs-params">(<span style="color:#c678dd">int</span> x)</span> <span style="color:#c678dd">noexcept</span> </span>{
+  <span style="color:#c678dd">return</span> x;
+}
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">compute</span><span class="hljs-params">(<span style="color:#c678dd">int</span> x)</span> <span style="color:#61aeee">throw</span><span class="hljs-params">(<span style="color:#e6c07b">std</span>::exception)</span> </span>{
+  <span style="color:#c678dd">return</span> x;
+}</code></pre></pre><p>Unfortunately, <span class="inline-code">noexcept</span> and <span class="inline-code">throw</span> simply dictate that a call to <span class="inline-code">std::terminate</span> is made in the case where an unmentioned exception is thrown. <em>This does not enforce any exception-handling at compile-time.</em></p><p>For example, these will compile and throw a run-time error!</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">foo</span><span class="hljs-params">()</span> <span style="color:#61aeee">throw</span><span class="hljs-params">(<span style="color:#c678dd">int</span>)</span> </span>{
+  <span style="color:#c678dd">throw</span> <span style="color:#98c379">&quot;bar&quot;</span>;
+  <span style="color:#c678dd">return</span> <span style="color:#d19a66">1</span>;
+}
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">bar</span><span class="hljs-params">()</span> <span style="color:#c678dd">noexcept</span> </span>{
+  <span style="color:#c678dd">throw</span> <span style="color:#d19a66">42</span>;
+  <span style="color:#c678dd">return</span> <span style="color:#d19a66">1</span>;
+}
+
+<span style="color:#5c6370;font-style:italic">// These compile fine, but on execution</span>
+<span style="color:#5c6370;font-style:italic">//   std::terminate is called and the program exits</span>
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">main</span><span class="hljs-params">()</span> </span>{
+  <span style="color:#c678dd">try</span> {
+    <span style="color:#c678dd">int</span> x = foo();
+  } <span style="color:#c678dd">catch</span>(...) {
+
+  }
+}
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">main</span><span class="hljs-params">()</span> </span>{
+  <span style="color:#c678dd">try</span> {
+    <span style="color:#c678dd">int</span> x = bar();
+  } <span style="color:#c678dd">catch</span>(...) {
+
+  }
+}</code></pre></pre><p><em><span class="inline-code">noexcept</span> will not save you!</em></p><h2 id="Error-codes">Error-codes</h2><p>Error-codes are ancient and used <em>everywhere</em>. For simplicity, let&#x27;s assume error-codes are just integers, but they could be implemented as type-safe enums or even complex objects. For this discussion it won&#x27;t really matter.</p><p>There are 3 common forms of error-code implementations.</p><h3 id="1.-Error-codes-as-Return Values">1. Error-codes as Return Values</h3><p>This pattern is found in many C APIs as it is easy to implement and has no performance overhead, besides the error-handling itself.</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#c678dd">const</span> <span style="color:#c678dd">int</span> ERROR = <span style="color:#d19a66">1</span>;
+<span style="color:#c678dd">const</span> <span style="color:#c678dd">int</span> SUCCESS = <span style="color:#d19a66">0</span>;
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">compute</span><span class="hljs-params">(<span style="color:#c678dd">int</span> input, <span style="color:#c678dd">int</span>* output)</span> </span>{
+  <span style="color:#c678dd">if</span> (cond(input)) {
+    <span style="color:#c678dd">return</span> ERROR;
+  } <span style="color:#c678dd">else</span> {
+    *output = computeOutput(input);
+    <span style="color:#c678dd">return</span> SUCCESS;
+  }
+}
+
+<span style="color:#5c6370;font-style:italic">// Usage</span>
+<span style="color:#c678dd">int</span> output;
+<span style="color:#c678dd">int</span> input;
+
+<span style="color:#c678dd">if</span> (<span style="color:#c678dd">int</span> error = compute(input, &amp;output)) {
+  error_handler(error);
+}</code></pre></pre><p>This pattern can be followed very dogmatically and it is easy to verify that all cases have been taken care of in a code-review. It is easy to write a C-friendly API using error-codes.</p><p>Unfortunately it has some drawbacks:</p><ul><li>Functional composition is <em>hard</em>. The return value is occupied by the error-code, so the result must be an out-variable, which makes the function impure.</li><li>Out-parameters enforce a memory layout which is not optimizer friendly.</li><li>Separating error-handling from the computation is difficult.</li><li>Postponing error-handling requires the programmer to thread the error-code through the call-graph.</li></ul><h3 id="2.-Error-code-as-out-parameter">2. Error-code as out-parameter</h3><p>Swapping the semantics of the out-parameter and return value has no significant advantages, except perhaps a slightly cleaner API. In the case where the error-code can be omitted, the API usage is simplified and functional compositionality is made easier.
+This approach can be found in <span class="inline-code">boost::asio</span> (in fact <span class="inline-code">boost::asio</span> even makes it optional and falls back to throwing exceptions if no out-parameter is provided).</p><h3 id="3.-Error-Singletons">3. Error Singletons</h3><p>Error singletons have completely different ergonomics. They are mostly found in low-level libraries that are implementing a system-global state-machine, such as a driver. One prominent example is OpenGL.</p><p>Using an error singleton looks like this:</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#c678dd">int</span> result = compute1(input);
+<span style="color:#c678dd">int</span> result2 = compute2(result);
+
+<span style="color:#c678dd">if</span> (has_errors()) {
+  <span style="color:#e6c07b">cout</span> &lt;&lt; pop_error_message() &lt;&lt; <span style="color:#e6c07b">endl</span>;
+}</code></pre></pre><p>In this paradigm, the status of the driver must be queried at run-time through a separate function. This appears to give you more freedom since you can query for errors when it is most appropriate, enabling you to better separate concerns. This allows the user to write code that resembles exception-based code, but without the cost of automatic stack unwinding.</p><p>Benefits for the API consumer:</p><ul><li>Error-handling can be deferred to an appropriate time, without threading variables through the application</li><li>Having fewer error-handling branches yields better performance</li><li>No out-parameters are required, which increases functional compositionality</li><li>Finalization can be performed manually when errors are found</li></ul><p>But there are some big caveats:</p><ul><li>Singletons <em>by design</em> have shared state, thus writing thread-safe code is difficult</li><li>No shortcutting of computation pipelines as no stack-unwinding occurs</li><li>It is not clear which errors may be fired on which api-calls. The programmer must check the documentation.</li><li>The severity of errors, and how to recover from them, might be unclear. Again, you need to check the documentation.</li></ul><h2 id="So-what-about Eithers?">So what about Eithers?</h2><p>An Either type is a container which takes a single value of one of two different types. It can be an <em>A</em> or a <em>B</em>, but always exactly one.</p><p>A simple implementation might look like this:</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#c678dd">template</span>&lt;<span class="hljs-class"><span style="color:#c678dd">class</span> <span style="color:#61aeee">Left</span>, <span style="color:#61aeee">class</span> <span style="color:#61aeee">Right</span>&gt;
+<span style="color:#61aeee">struct</span> <span style="color:#61aeee">Either</span> {</span>
+  <span style="color:#c678dd">union</span> {
+    Left leftValue;
+    Right rightValue;
+  };
+
+  <span style="color:#c678dd">bool</span> isLeft;
+};</code></pre></pre><p><em>A simple Either type in C++</em></p><p>To run computations on the wrapped value, an Either can provide some useful methods: <span class="inline-code">leftMap</span>, <span class="inline-code">rightMap</span> and <span class="inline-code">join</span>.</p><ul><li><span class="inline-code">leftMap</span> transforms the <span class="inline-code">leftValue</span> to a new value if present, leaving a <span class="inline-code">rightValue</span> unchanged.</li><li><span class="inline-code">rightMap</span> transforms the <span class="inline-code">rightValue</span> to a new value if present, leaving a <span class="inline-code">leftValue</span> unchanged.</li><li><span class="inline-code">join</span> takes a transformation for both sides of the <span class="inline-code">Either</span> where both transformations result in the same type. This allows an Either to be unified and unwrapped.</li></ul><p>This is much easier to understand in code!</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code>Either&lt;<span style="color:#e6c07b">string</span>, <span style="color:#c678dd">int</span>&gt; myEither = left(<span style="color:#98c379">&quot;hello&quot;</span>); <span style="color:#5c6370;font-style:italic">// constructs a either containing a leftValue;</span>
+
+<span style="color:#c678dd">int</span> count = myEither
+  .rightMap([](<span style="color:#c678dd">auto</span> num) { <span style="color:#c678dd">return</span> num + <span style="color:#d19a66">1</span>; }) <span style="color:#5c6370;font-style:italic">// adds 1 if rightValue is present</span>
+  .leftMap([](<span style="color:#c678dd">auto</span> str) { <span style="color:#c678dd">return</span> str + <span style="color:#98c379">&quot;world&quot;</span>; }) <span style="color:#5c6370;font-style:italic">// appends &quot;world&quot; if leftValue is present</span>
+  .leftMap([](<span style="color:#c678dd">auto</span> str) { <span style="color:#c678dd">return</span> str.size(); })
+  .join(); <span style="color:#5c6370;font-style:italic">// both sides have now the same type, lets join...</span></code></pre></pre><p>Now we are able to lift the exceptions into the type-system:</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#5c6370;font-style:italic">// This...</span>
+<span class="hljs-function"><span style="color:#c678dd">float</span> <span style="color:#61aeee">sqrt</span><span class="hljs-params">(<span style="color:#c678dd">float</span> x)</span> </span>{
+  <span style="color:#c678dd">if</span> (x &lt; <span style="color:#d19a66">0</span>) {
+    <span style="color:#c678dd">throw</span> <span style="color:#e6c07b">string</span>(<span style="color:#98c379">&quot;x should be &gt;= 0&quot;</span>);
+  }
+
+  <span style="color:#c678dd">return</span> computeSqrt(x);
+}
+
+<span style="color:#5c6370;font-style:italic">// ... can be transformed into this...</span>
+Either&lt;<span style="color:#e6c07b">string</span>, <span style="color:#c678dd">float</span>&gt; <span style="color:#e6c07b">sqrt</span>(<span style="color:#c678dd">float</span> x) {
+  <span style="color:#c678dd">if</span> (x &lt; <span style="color:#d19a66">0</span>) {
+    <span style="color:#c678dd">return</span> left(<span style="color:#98c379">&quot;x should be &gt;=0&quot;</span>);
+  }
+
+  <span style="color:#c678dd">return</span> right(computeSqrt(x));
+}</code></pre></pre><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#5c6370;font-style:italic">// And for the caller, the usage changes from this...</span>
+<span style="color:#c678dd">try</span> {
+  <span style="color:#c678dd">float</span> x = <span style="color:#e6c07b">sqrt</span>(<span style="color:#d19a66">-1</span>);
+  <span style="color:#e6c07b">cout</span> &lt;&lt; <span style="color:#98c379">&quot;sqrt(x) = &quot;</span> &lt;&lt; x &lt;&lt; <span style="color:#e6c07b">endl</span>;
+} <span style="color:#c678dd">catch</span>(<span style="color:#e6c07b">string</span> x) {
+  <span style="color:#e6c07b">cout</span> &lt;&lt; <span style="color:#98c379">&quot;error occurred: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color:#e6c07b">endl</span>;
+}
+
+<span style="color:#5c6370;font-style:italic">// ... to this...</span>
+<span style="color:#e6c07b">string</span> msg = <span style="color:#e6c07b">sqrt</span>(<span style="color:#d19a66">-1</span>)
+  .leftMap([](<span style="color:#c678dd">auto</span> msg) {
+    <span style="color:#c678dd">return</span> <span style="color:#98c379">&quot;error occurred: &quot;</span> + msg;
+  })
+  .rightMap([](<span style="color:#c678dd">auto</span> result) {
+    <span style="color:#c678dd">return</span> <span style="color:#98c379">&quot;sqrt(x) = &quot;</span> + to_string(result);
+  })
+  .join();
+
+<span style="color:#e6c07b">cout</span> &lt;&lt; msg &lt;&lt; <span style="color:#e6c07b">endl</span>;</code></pre></pre><h3 id="So-what-have-we-gained-through-this-simple change?">So what have we gained through this simple change?</h3><p>We no longer need to pay for the overhead of exceptions (stack unwinding) and we have also encoded the exception-type into the function signature. This documents the error in the source-code and now the compiler will ensure that we handle the types properly.</p><p>This is a <em>big</em> deal, and it illustrates how powerful the C++ language is.</p><h3 id="But-what-are-the-drawbacks?">But what are the drawbacks?</h3><p>First, you will need to add an Either type to you project. It is best not to reinvent the wheel here, and fortunately there are <a href="https://github.com/loopperfect/neither">many</a> <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4109.pdf">open-source</a> <a href="https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html">implementations</a> <a href="https://github.com/beark/ftl">available</a>.</p><p>And performance? At first glance, it seems that every call to <span class="inline-code">leftMap</span> and <span class="inline-code">rightMap</span> will add a branch to the executable. In practice, the compiler is smart enough to optimize these away!</p><p>Take a look at <a href="https://godbolt.org/g/5f6mT9">this Compiler Explorer project</a>; the branches of the various map calls dissappear.</p><p>For example, you might have noticed the following identity:</p><pre><pre lang="cpp" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code>e.leftMap(f).leftMap(g) == e.leftmap([](<span style="color:#c678dd">auto</span> x){ <span style="color:#c678dd">return</span> g(f(x)); })</code></pre></pre><p>And it turns out that the compiler does too. It combines both lambdas to inline the whole expression. After the optimization step, all abstractions are collapsed. Once complied, there is no significant difference between the error-code implementations and the either-based implementations.</p><h1 id="Conclusion">Conclusion</h1><p>Consider using an Either type to handle errors. They lift the error into the type-system, making them safer than exceptions, whilst yielding the same performance characteristics as error-codes.</p><h1 id="Resources">Resources</h1><h2 id="Either-Implementations">Either Implementations</h2><ul><li><a href="https://github.com/loopperfect/neither">loopperfect/neither</a></li><li><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4109.pdf">std::expected</a></li><li><a href="https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html">boost::expected</a></li><li><a href="https://github.com/beark/ftl">beark/ftl</a></li></ul><h2 id="Benchmarking-Error-codes-vs-Exceptions-vs Eithers">Benchmarking Error-codes vs Exceptions vs Eithers</h2><iframe width="700" height="393" src="https://www.youtube.com/embed/XVofgKH-uu4" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><p><a href="https://youtu.be/XVofgKH-uu4?t=1h">Mongrel Monads, Dirty, Dirty, Dirty</a> - Niall Douglas [ACCU 2017]</p><h2 id="Return-Values-vs-Out-Parameters">Return Values vs Out-Parameters</h2><iframe width="700" height="393" src="https://www.youtube.com/embed/eR34r7HOU14" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><p>2013 Keynote: Chandler Carruth: <a href="https://youtu.be/eR34r7HOU14?t=38m">Optimizing the Emergent Structures of C++</a></p><h2 id="Some-Code Samples">Some Code Samples</h2><ul><li>Gist: <a href="https://gist.github.com/nikhedonia/db401285d9f3816e2a74d78c68dd4c6c">https://gist.github.com/nikhedonia/db401285d9f3816e2a74d78c68dd4c6c</a></li><li>Assembly: <a href="https://godbolt.org/g/5f6mT9">https://godbolt.org/g/5f6mT9</a></li></ul></div><p>💬 <a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fbuckaroo.pm%2Fposts%2Ferror-handling-in-cpp&amp;t=Error%20Handling%20in%20C%2B%2B%20or%3A%20Why%20You%20Should%20Use%20Eithers%20in%20Favor%20of%20Exceptions%20and%20Error-codes">Discuss on Hacker News</a></p></div></div>
+      </div>
+      <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-98721445-1', 'buckaroo.pm');
+ga('send', 'pageview');
+</script>
+      <script type="text/javascript" src="/main.js"></script>
+
+      </body>
+    </html>
