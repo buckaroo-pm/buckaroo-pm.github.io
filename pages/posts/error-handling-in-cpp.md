@@ -12,7 +12,7 @@ Some Either Implementations:
 
  * [loopperfect/neither](https://github.com/loopperfect/neither)
  * [std::expected](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4109.pdf)
- * [boost::expected](https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html)
+ * [Boost Outcome](https://github.com/ned14/outcome)
  * [beark/ftl](https://github.com/beark/ftl)
 
 ## Introduction
@@ -308,7 +308,7 @@ Consider using an Either type to handle errors. They lift the error into the typ
 
  * [loopperfect/neither](https://github.com/loopperfect/neither)
  * [std::expected](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4109.pdf)
- * [boost::expected](https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html)
+ * [Boost Outcome](https://github.com/ned14/outcome)
  * [beark/ftl](https://github.com/beark/ftl)
 
 ## Talks
