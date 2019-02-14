@@ -30,7 +30,10 @@ const Post = props => {
           💬&nbsp;<a href={hnSubmit}>Discuss on Hacker News</a>
         </p>
         <hr />
-        {children}
+        <div className="post-container">
+          {children}
+        </div>
+        <hr />
         <p>
           💬&nbsp;<a href={hnSubmit}>Discuss on Hacker News</a>
         </p>

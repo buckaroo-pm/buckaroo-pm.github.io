@@ -311,15 +311,21 @@ Consider using an Either type to handle errors. They lift the error into the typ
  * [boost::expected](https://ned14.github.io/boost.outcome/md_doc_md_02-tutorial_a.html)
  * [beark/ftl](https://github.com/beark/ftl)
 
-## Benchmarking Error-codes vs Exceptions vs Eithers
+## Talks
 
-<iframe width="700" height="393" src="https://www.youtube.com/embed/XVofgKH-uu4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### Mongrel Monads, Dirty, Dirty, Dirty
+
+<div style="display: block; min-height: 360px">
+  <iframe width="600" height="336" style="display: block" src="https://www.youtube.com/embed/XVofgKH-uu4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 [Mongrel Monads, Dirty, Dirty, Dirty](https://youtu.be/XVofgKH-uu4?t=1h) - Niall Douglas [ACCU 2017]
 
-## Return Values vs Out-Parameters
+### Return Values vs Out-Parameters
 
-<iframe width="700" height="393" src="https://www.youtube.com/embed/eR34r7HOU14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="display: block; min-height: 360px">
+  <iframe width="600" height="336" style="display: block" src="https://www.youtube.com/embed/eR34r7HOU14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 2013 Keynote: Chandler Carruth: [Optimizing the Emergent Structures of C++](https://youtu.be/eR34r7HOU14?t=38m)
 
