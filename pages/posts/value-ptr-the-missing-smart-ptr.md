@@ -18,7 +18,7 @@ Choose which smart-pointer to use with this cheat-sheet.
 | `weak_ptr`   | ❌        | ✅       | ✅      | ❌        | Non-extending     | Optional-reference |
 | `value_ptr`  | Unique    | ✅       | ✅      | Value     | Lexical           | Value              |
 
-A implementation of `value_ptr` can be [found on GitHub](https://github.com/LoopPerfect/valuable).
+An implementation of `value_ptr` can be [found on GitHub](https://github.com/LoopPerfect/valuable).
 
 
 ## Introduction
