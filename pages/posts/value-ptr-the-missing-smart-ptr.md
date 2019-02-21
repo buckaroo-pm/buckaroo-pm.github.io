@@ -11,12 +11,14 @@ Use the `value_ptr` smart-pointer to get value semantics on a heap resource. At 
 
 Choose which smart-pointer to use with this cheat-sheet.
 
-| Name         | Ownership | Copyable | Movable | Sharing   | Lifetime          | Semantics          |
-| ------------ | --------- | -------- | ------- | --------- | ----------------- | ------------------ |
-| `unique_ptr` | Unique    | ❌       | ✅      | ❌        | Lexical           | Reference          |
-| `shared_ptr` | Shared    | ✅       | ✅      | Reference | Reference-counted | Reference          |
-| `weak_ptr`   | ❌        | ✅       | ✅      | ❌        | Non-extending     | Optional-reference |
-| `value_ptr`  | Unique    | ✅       | ✅      | Value     | Lexical           | Value              |
+Name      | `unique_ptr` | `shared_ptr`      | `weak_ptr`         | `value_ptr`
+---       | ---          | ---               | ---                | ---
+Ownership | Unique       | Shared            | ❌                 | Unique
+Copyable  | ❌           | ✅                | ✅                 | ✅
+Movable   | ✅           | ✅                | ✅                 | ✅
+Sharing   | ❌           | Reference         | ❌                 | Value
+Lifetime  | Lexical      | Reference-counted | Non-extending      | Lexical
+Semantics | Reference    | Reference         | Optional-reference | Value
 
 An implementation of `value_ptr` can be [found on GitHub](https://github.com/LoopPerfect/valuable).
 
@@ -66,6 +68,7 @@ Use `unique_ptr` when:
 ```cpp
 struct Widget {
   Widget() { cout << "Widget created" << endl; }
+
   ~Widget() { cout << "Widget destroyed" << endl; }
 };
 
@@ -75,11 +78,20 @@ unique_ptr<Widget> createWindow() {
 
 int main() {
   auto w = createWindow();
+
   ASSERT(w);
-  // auto w2 = widget; // error: unique_ptr has no copy-constructor
-  auto w3 = move(widget); // w3 owns now the widget, w is empty
+
+  // auto w2 = widget;
+  // The above would error,
+  //   unique_ptr has no copy-constructor
+
+  auto w3 = move(widget);
+  // w3 now owns the widget, w is empty
+
   ASSERT(w3 && !w);
-  // w3 calls destructor of widget; only one object at a time owns the Widget
+  // w3 calls destructor of widget;
+  //   only one object at a time owns the Widget
+
   return 0;
 }
 ```
@@ -112,14 +124,16 @@ struct Texture {
   }
 };
 
-// These functions will take a copy and increment the counter
-// Using const& would not increment the ref-counter
-int doSomethingWithTexture(shared_ptr<Texture> const tex);
+// These functions will take a copy
+//   and increment the counter.
+// Using const& would not increment the ref-counter.
+int doSomething(shared_ptr<Texture> const tex);
 
-int doSomethingElseWithTexture(shared_ptr<Texture> const tex);
+int doSomethingElse(shared_ptr<Texture> const tex);
 
 void foo() {
-  shared_ptr<Texture> tex = Texture::load("textures/my_texture.png");
+  shared_ptr<Texture> tex =
+    Texture::load("textures/my_texture.png");
 
   thread(doSthWithTexture, tex).detach();
   thread(doSthMoreWithTexture, tex).detach();
@@ -146,7 +160,9 @@ struct Node {
 
   shared_ptr<Node> getParent() {
     return parent.lock();
-    // If hasParent() then return shared_ptr from parent else nullptr
+    // If hasParent()
+    //  then return shared_ptr from parent
+    //  else nullptr
   }
 
   Node& addChild(shared_ptr<Node> node) {
@@ -187,10 +203,14 @@ shared_ptr<Node> createTree() {
 int main() {
   auto tree = createTree();
   auto baz = tree->children[1]->children[0];
+
   tree->removeChild(1); // Remove bar
+
   ASSERT(baz.hasParent() == false);
   // If parent would be a shared_ptr,
-  // then bar and baz would keep eachother alive forever.
+  //   then bar and baz would keep
+  //   each-other alive forever.
+
   return 0;
 }
 ```
@@ -307,9 +327,11 @@ Value semantics are easy to reason about, and are often useful even for heap obj
 
 Can’t decide which smart-pointer to use? Here’s a quick chart:
 
-| Name         | Ownership | Copyable | Movable | Sharing   | Lifetime          | Semantics          |
-| ------------ | --------- | -------- | ------- | --------- | ----------------- | ------------------ |
-| `unique_ptr` | Unique    | ❌       | ✅      | ❌        | Lexical           | Reference          |
-| `shared_ptr` | Shared    | ✅       | ✅      | Reference | Reference-counted | Reference          |
-| `weak_ptr`   | ❌        | ✅       | ✅      | ❌        | Non-extending     | Optional-reference |
-| `value_ptr`  | Unique    | ✅       | ✅      | Value     | Lexical           | Value              |
+Name      | `unique_ptr` | `shared_ptr`      | `weak_ptr`         | `value_ptr`
+---       | ---          | ---               | ---                | ---
+Ownership | Unique       | Shared            | ❌                 | Unique
+Copyable  | ❌           | ✅                | ✅                 | ✅
+Movable   | ✅           | ✅                | ✅                 | ✅
+Sharing   | ❌           | Reference         | ❌                 | Value
+Lifetime  | Lexical      | Reference-counted | Non-extending      | Lexical
+Semantics | Reference    | Reference         | Optional-reference | Value
