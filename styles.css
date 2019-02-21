@@ -109,6 +109,25 @@ hr {
   padding: 0;
 }
 
+.post-container table {
+  border-collapse: collapse;
+}
+
+.post-container table td, .post-container table th {
+  border: 1px solid rgb(36, 41, 46);
+  font-size: 1em;
+}
+
+.post-container table th {
+  text-align: left;
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);
+}
+
+.post-container table td, .post-container table th {
+  padding: 0.5em;
+}
+
 #header .content {
   display: flex;
   flex-direction: row;
