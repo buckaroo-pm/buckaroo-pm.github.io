@@ -29,7 +29,7 @@ export default ({ content, root = '', meta = { title: "" }, styles = [], scripts
         <script type="text/javascript">
           window.rootUrl = "${root}"
         </script>
-        <script type="text/javascript">${mixpanel('8441e3f6b1aae54160bf747f4f1967d5')}</script>
+        ${mixpanel('8441e3f6b1aae54160bf747f4f1967d5')}
       </head>
       <body>
         <div id="react-root">
