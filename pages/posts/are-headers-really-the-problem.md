@@ -81,12 +81,12 @@ So we can figure out the set of headers that a given translation-unit depends on
 
 In this case, we depend on `foo/foo.h`, which is implemented by `foo/foo.cpp` and `qux/qux.h`, which is implemented by `qux/qux.cpp`.
 
-| Header          | Translation-unit |
-| --------------- | ---------------- |
-| `foo/bar.h`     | -                |
-| `foo/baz/baz.h` | -                |
-| `foo/foo.h`     | `foo/foo.cpp`    |
-| `qux/qux.h`     | `qux/qux.cpp`    |
+| Header          | Translation-unit(s) |
+| --------------- | ------------------- |
+| `foo/bar.h`     | `[]`                |
+| `foo/baz/baz.h` | `[]`                |
+| `foo/foo.h`     | `[ foo/foo.cpp ]`   |
+| `qux/qux.h`     | `[ qux/qux.cpp ]`   |
 
 So we need to introduce a rule:
 
