@@ -109,6 +109,11 @@ hr {
   padding: 0;
 }
 
+.post-container img {
+  max-width: 95%;
+  border: 1px solid rgb(230, 230, 230);
+}
+
 .post-container table {
   border-collapse: collapse;
 }
@@ -122,6 +127,11 @@ hr {
   text-align: left;
   font-weight: bold;
   background-color: rgb(230, 230, 230);
+}
+
+.post-container ol li, .post-container ol li p {
+  font-size: 1.2em;
+  line-height: 2em;
 }
 
 .post-container table td, .post-container table th {

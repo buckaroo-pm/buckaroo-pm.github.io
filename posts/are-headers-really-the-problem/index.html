@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <title>Buckaroo - The C++ Package Manager Are Headers Really the Problem?</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/styles/normalize.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <script type="text/javascript">
+          window.rootUrl = ""
+        </script>
+        <!-- start Mixpanel --><script type="text/javascript">(function(c,a){if(!a.__SV){var b=window;try{var d,m,j,k=b.location,f=k.hash;d=function(a,b){return(m=a.match(RegExp(b+"=([^&]*)")))?m[1]:null};f&&d(f,"state")&&(j=JSON.parse(decodeURIComponent(d(f,"state"))),"mpeditor"===j.action&&(b.sessionStorage.setItem("_mpcehash",f),history.replaceState(j.desiredHash||"",c.title,k.pathname+k.search)))}catch(n){}var l,h;window.mixpanel=a;a._i=[];a.init=function(b,d,g){function c(b,i){var a=i.split(".");2==a.length&&(b=b[a[0]],i=a[1]);b[i]=function(){b.push([i].concat(Array.prototype.slice.call(arguments,
+0)))}}var e=a;"undefined"!==typeof g?e=a[g]=[]:g="mixpanel";e.people=e.people||[];e.toString=function(b){var a="mixpanel";"mixpanel"!==g&&(a+="."+g);b||(a+=" (stub)");return a};e.people.toString=function(){return e.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<l.length;h++)c(e,l[h]);var f="set set_once union unset remove delete".split(" ");e.get_group=function(){function a(c){b[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));e.push([d,call2])}}for(var b={},d=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<f.length;c++)a(f[c]);return b};a._i.push([b,d,g])};a.__SV=1.2;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js";d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)}})(document,window.mixpanel||[]);
+mixpanel.init("8441e3f6b1aae54160bf747f4f1967d5");</script><!-- end Mixpanel -->
+      </head>
+      <body>
+        <div id="react-root">
+        <header id="header"><div class="content"><a id="logo" href="/">Buckaroo</a><nav><ul><li><a href="/blog">Blog</a></li><li><a href="https://github.com/LoopPerfect/buckaroo/wiki">Docs</a></li><li><a href="https://github.com/LoopPerfect/buckaroo">Code</a></li><li><iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&amp;repo=buckaroo&amp;type=star&amp;count=true&amp;size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe></li></ul></nav></div></header><div class="page mt-4 ph-1"><div class="content"><h1>Are Headers Really the Problem?</h1><p>📝 <!-- -->Team Buckaroo<!-- -->, <!-- -->26/02/2019<!-- --> <br/>💬 <a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fbuckaroo.pm%2Fposts%2Fare-headers-really-the-problem&amp;t=Are%20Headers%20Really%20the%20Problem%3F">Discuss on Hacker News</a></p><hr/><div class="post-container"><div><p>A huge barrier that newcomers to C++ face is that of undefined references. We create a project, include a few headers and <strong>BOOM</strong>, linker error.</p><p>In fact, searches for &quot;undefined reference&quot; do not trail that far behind searches for &quot;clang&quot;.</p><p><img alt="Google Trends" src="/img/undefined-ref-trends.png"/></p><p><em>Google Trends, &quot;clang&quot; (red) vs &quot;undefined reference&quot; (blue)</em></p><p>Why is this?</p><p>Well, unlike most languages, C++ splits code into <em>headers</em> and <em>translation-units</em>. Public headers define the interface for your code - the types, memory layout, available functions, etc. The translation-units define the implementation.</p><pre><pre lang="c++" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#5c6370;font-style:italic">/* foo.h */</span>
+
+<span style="color:#61aeee">#<span class="hljs-meta-keyword">ifndef</span> FOO_H</span>
+<span style="color:#61aeee">#<span class="hljs-meta-keyword">define</span> FOO_H</span>
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">foo</span><span class="hljs-params">()</span></span>;
+
+<span style="color:#61aeee">#<span class="hljs-meta-keyword">endif</span></span></code></pre></pre><p><em>There is a function call foo, that returns an int</em></p><pre><pre lang="c++" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code><span style="color:#5c6370;font-style:italic">/* foo.cpp */</span>
+
+<span class="hljs-function"><span style="color:#c678dd">int</span> <span style="color:#61aeee">foo</span><span class="hljs-params">()</span> </span>{
+  <span style="color:#c678dd">return</span> <span style="color:#d19a66">1</span> + <span style="color:#d19a66">2</span>;
+}</code></pre></pre><p><em>foo returns 1 + 2</em></p><p><em>Undefined references</em> occur when you depend on a header, but not on the corresponding translation-unit.</p><p>Some have argued that this is a reason not to have headers at all. Indeed, Java avoids the use of headers because it makes things simpler:</p><blockquote><p>Source code written in Java is simple. There is no preprocessor, no #define and related capabilities, no typedef, and absent those features, no longer any need for header files. Instead of header files, Java language source files provide the definitions of other classes and their methods.</p></blockquote><p><a href="http://java.sun.com/docs/white/langenv/">Section 2.2.1 of the Java Language Environment white paper</a></p><p>But maybe this isn&#x27;t a failure of the <em>language</em>, but a failure of our <em>build-systems</em>.</p><p>Using the compiler, a build-system can figure out the list of headers that your project uses. It&#x27;s not difficult, either.</p><p>Suppose we have a project like this:</p><pre><pre lang="bash" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code>$ tree .
+.
+├── foo
+│   ├── bar.h
+│   ├── baz
+│   │   └── baz.h
+│   ├── foo.cpp
+│   └── foo.h
+├── main.cpp
+└── qux
+    ├── qux.cpp
+    └── qux.h
+
+3 directories, 7 files</code></pre></pre><p>Then we can find the include-graph for <span class="inline-code">main.cpp</span> like this:</p><pre><pre lang="bash" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code>$ gcc -I . -MM ./main.cpp
+main.o: main.cpp foo/foo.h foo/bar.h foo/baz/baz.h qux/qux.h</code></pre></pre><p>So we can figure out the set of headers that a given translation-unit depends on. Now, we need to ensure that if we depend on any header, we also link to its corresponding translation-unit(s).</p><p>In this case, we depend on <span class="inline-code">foo/foo.h</span>, which is implemented by <span class="inline-code">foo/foo.cpp</span> and <span class="inline-code">qux/qux.h</span>, which is implemented by <span class="inline-code">qux/qux.cpp</span>.</p><table><thead><tr><th>Header</th><th>Translation-unit</th></tr></thead><tbody><tr><td><span class="inline-code">foo/bar.h</span></td><td>-</td></tr><tr><td><span class="inline-code">foo/baz/baz.h</span></td><td>-</td></tr><tr><td><span class="inline-code">foo/foo.h</span></td><td><span class="inline-code">foo/foo.cpp</span></td></tr><tr><td><span class="inline-code">qux/qux.h</span></td><td><span class="inline-code">qux/qux.cpp</span></td></tr></tbody></table><p>So we need to introduce a rule:</p><blockquote><p>If you include header X then you must also link to the target that X belongs to</p></blockquote><p>With this rule in place, we cannot just forget to link <span class="inline-code">qux.cpp</span> or <span class="inline-code">foo.cpp</span>. If we do, then the build-system will detect this, and tell us where we went wrong.</p><p>To support this, targets in the build-system must declare every header-file that belongs to it. Otherwise, we have no way of knowing where a header should come from.</p><p>This is quite practical, if you use globs:</p><pre><pre lang="python" class="code" style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><code>headers = subdir_glob([
+  (<span style="color:#98c379">&#x27;include&#x27;</span>, <span style="color:#98c379">&#x27;**/*.h&#x27;</span>),
+])</code></pre></pre><p>In summary:</p><ul><li>Headers are not necessarily evil.</li><li>We can query the compiler for actual header-usage.</li><li>Build targets should declare the header-files (not directories) they export.</li><li>The build-system should enforce that if you include a header-file, you must link the corresponding translation-unit.</li></ul><hr/><h2 id="Notes">Notes</h2><ol start="1"><li>Interestingly, CMake, the most popular C++ build-system, does not get this right. Where it could offer guarantees, it only offers conventions.</li><li>Another benefit is that if two targets export headers to the same include-path, we can detect and resolve this conflict. Otherwise the behavior is determined by the order of compiler flags, which is usually coincidental.</li></ol></div></div><hr/><p>💬 <a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fbuckaroo.pm%2Fposts%2Fare-headers-really-the-problem&amp;t=Are%20Headers%20Really%20the%20Problem%3F">Discuss on Hacker News</a></p></div></div>
+      </div>
+      <script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-98721445-1', 'buckaroo.pm');
+ga('send', 'pageview');
+</script>
+      <script type="text/javascript" src="/main.js"></script>
+
+      </body>
+    </html>
