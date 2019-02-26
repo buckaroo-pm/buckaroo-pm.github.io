@@ -117,3 +117,4 @@ In summary:
 
  1. Interestingly, CMake, the most popular C++ build-system, does not get this right. Where it could offer guarantees, it only offers conventions.
  2. Another benefit is that if two targets export headers to the same include-path, we can detect and resolve this conflict. Otherwise the behavior is determined by the order of compiler flags, which is usually coincidental.
+ 3. Sometimes there is more than one translation-unit for a given header. In this case, we need to ensure that all translation-units for the header are linked.
