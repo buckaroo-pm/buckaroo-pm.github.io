@@ -39,7 +39,7 @@ int foo() {
 
 *foo returns 1 + 2*
 
-*Undefined references* occur when you depend on a header, but not on the corresponding translation-unit.
+*Undefined references* occur when you depend on a header, but not on the corresponding translation-unit(s).
 
 Some have argued that this is a reason not to have headers at all. Indeed, Java avoids the use of headers because it makes things simpler:
 
@@ -57,6 +57,7 @@ Suppose we have a project like this:
 $ tree .
 .
 ├── foo
+│   ├── bar.cpp
 │   ├── bar.h
 │   ├── baz
 │   │   └── baz.h
@@ -77,31 +78,47 @@ $ gcc -I . -MM ./main.cpp
 main.o: main.cpp foo/foo.h foo/bar.h foo/baz/baz.h qux/qux.h
 ```
 
-So we can figure out the set of headers that a given translation-unit depends on. Now, we need to ensure that if we depend on any header, we also link to its corresponding translation-unit(s).
+So we can figure out the set of headers that a given translation-unit depends on. Now, we need to ensure that if we depend on any header, we also link to the library target that it belongs to.
 
-In this case, we depend on `foo/foo.h`, which is implemented by `foo/foo.cpp` and `qux/qux.h`, which is implemented by `qux/qux.cpp`.
+In this case, we depend on `foo/foo.h`, which is implemented by `foo/foo.cpp` in the target `foo`, and `qux/qux.h`, which is implemented by `qux/qux.cpp` in target `qux`.
 
-| Header          | Translation-unit(s) |
-| --------------- | ------------------- |
-| `foo/bar.h`     | `[]`                |
-| `foo/baz/baz.h` | `[]`                |
-| `foo/foo.h`     | `[ foo/foo.cpp ]`   |
-| `qux/qux.h`     | `[ qux/qux.cpp ]`   |
+| Library Target  | Header(s)           | Translation-unit(s) |
+| --------------- | ------------------- | ------------------- |
+| `foo`           | `foo/bar.h`         | `foo/bar.cpp`       |
+|                 | `foo/baz/baz.h`     | `foo/foo.cpp`       |
+|                 | `foo/foo.h`         |                     |
+| `qux`           | `qux/qux.h`         | `qux/qux.cpp`       |
 
 So we need to introduce a rule:
 
- > If you include header X then you must also link to the target that X belongs to
+ > If you include header X then you must also link to the library target that X belongs to
 
-With this rule in place, we cannot just forget to link `qux.cpp` or `foo.cpp`. If we do, then the build-system will detect this, and tell us where we went wrong.
+With this rule in place, we cannot just forget to link `bar.o`, `qux.o` or `foo.o`. If we try, then the build-system will detect this, and tell us where we went wrong.
 
 To support this, targets in the build-system must declare every header-file that belongs to it. Otherwise, we have no way of knowing where a header should come from.
 
 This is quite practical, if you use globs:
 
 ```python
-headers = subdir_glob([
-  ('include', '**/*.h'),
-])
+cxx_library(
+  name = 'foo',
+  exportd_headers = subdir_glob([
+    ('foo', '**/*.h'),
+  ]),
+  srcs = glob([
+    'foo/**/*.cpp',
+  ]),
+)
+
+cxx_library(
+  name = 'qux',
+  exportd_headers = subdir_glob([
+    ('qux', '**/*.h'),
+  ]),
+  srcs = glob([
+    'qux/**/*.cpp',
+  ]),
+)
 ```
 
 In summary:
@@ -109,7 +126,7 @@ In summary:
  - Headers are not necessarily evil.
  - We can query the compiler for actual header-usage.
  - Build targets should declare the header-files (not directories) they export.
- - The build-system should enforce that if you include a header-file, you must link the corresponding translation-unit.
+ - The build-system should enforce that if you include a header-file, you must link to its corresponding library target.
 
 ---
 
@@ -118,3 +135,4 @@ In summary:
  1. Interestingly, CMake, the most popular C++ build-system, does not get this right. Where it could offer guarantees, it only offers conventions.
  2. Another benefit is that if two targets export headers to the same include-path, we can detect and resolve this conflict. Otherwise the behavior is determined by the order of compiler flags, which is usually coincidental.
  3. Sometimes there is more than one translation-unit for a given header. In this case, we need to ensure that all translation-units for the header are linked.
+ 4. I made some updates to clear up the distinction between library targets and translation-units.
