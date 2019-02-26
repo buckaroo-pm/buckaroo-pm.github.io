@@ -14,7 +14,7 @@ In fact, searches for "undefined reference" do not trail that far behind searche
 
 Why is this?
 
-Well, unlike most languages, C++ splits code into *headers* and *translation-units*. Public headers define the interface for your code - the types, memory layout, available functions, etc. The translation-units define the implementation.
+Well, unlike most languages, C++ splits code into *headers* and *implementations*. Public headers define the interface for your code - the types, memory layout, available functions, etc. The implementations define how it works.
 
 ```c++
 /* foo.h */
