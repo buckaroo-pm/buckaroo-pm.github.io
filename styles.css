@@ -72,8 +72,8 @@ hr {
 }
 
 #icon {
-  max-height: 8em;
-  min-height: 3em;
+  max-height: 3em;
+  min-height: 2em;
   text-align: left;
 }
 
