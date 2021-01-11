@@ -1,0 +1,241 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.site {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navigation {
+  display: flex;
+  padding: 1em;
+  font-size: 2em;
+  justify-content: center;
+}
+
+.navigation div {
+  display: flex;
+  align-items: center;
+}
+
+.navigation  iframe {
+  margin-left: 1em;
+  display: block;
+}
+
+.navigation .links a {
+  margin: 0 0.5em;
+}
+
+.navigation .links a.buckaroo {
+  margin-left: 0;
+  color: #5ADA7A;
+}
+
+.navigation input {
+  flex: 1;
+}
+
+.banner {
+  display:flex;
+  font-family: "Varela Round", "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  min-height: 360px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #5ADA7A;
+  padding: 4em;
+}
+
+.search {
+  display:flex;
+  flex: 1;
+  justify-content: flex-end;
+  background: #F3F6F7;
+  max-width: 70ex;
+  padding:0.5em;
+  border-radius:10px;
+}
+
+
+.search *:focus {
+  outline: none;
+  font-weight: bold;
+}
+
+.search button:hover {
+  color: #5ADA7A;
+}
+
+
+.search * {
+  padding: 0;
+  margin: 0;
+  line-height: 1em;
+  font-size: 1rem;
+  background:transparent;
+  border: none;
+}
+
+.search button {
+  padding-right:1em;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+
+.row {
+  flex-direction: row;
+}
+
+.view {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.white {
+  color: black;
+  background: white
+}
+
+.install {
+  background:white;
+  color: black;
+  font-size: 2em;
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.reasons {
+  display: flex;
+  justify-content: space-evenly;
+  line-height: 2em;
+}
+
+.reasons h1 {
+  white-space: nowrap;
+}
+
+.reasons > div {
+  padding: 2em;
+}
+
+.reasons span {
+  display: inline-flex;
+  font-size: 1em;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+  color: #fff;
+  background: #FF735C;
+  margin-top: 1em;
+  margin-right: 0.5em;
+}
+
+.footer {
+  background: black;
+  display:flex;
+}
+
+.actions {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding-top: 6em;
+}
+
+.package-grid {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.package {
+  background: white;
+  padding:1em;
+  margin:1em;
+  width: 8em;
+  height: 8em;
+  box-sizing: border-box;
+  border-radius: 10px;
+  transition: all 150ms ease-in-out;
+  overflow: hidden;
+}
+
+.package:hover {
+  padding:0.5em;
+}
+
+.package img {
+  width: 100%;
+}
+
+.actions .info {
+  font-size: 1.2em;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.actions button {
+  font-size: 2em;
+  margin: 0.2em 0;
+  padding: 0.3em 2em;
+  border-radius: 5px;
+}
+
+.footer .links {
+  display:flex;
+  flex-direction: column;
+  font-size:2em;
+}
+
+.footer .signup {
+  display:block;
+}
+
+.powered img {
+  height: 4em;
+  margin-right: 1em;
+}
+
+.powered {
+  display:flex;
+  width: 100%;
+  margin-top: 8em;
+  margin-bottom: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
