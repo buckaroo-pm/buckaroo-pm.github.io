@@ -1,0 +1,136 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/prism.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a0584ae5515792e72ab5.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a0584ae5515792e72ab5.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.ae3781fe50e43492a499.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.9b549cceddc4472f1953.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" as="script"/><link rel="preload" href="/_next/static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/how-to-create-a-buck-based-project-bf932a92ca9f2d6cb3af.js" as="script"/></head><body><div id="__next"><div class="site"><div class="site"><div class="navigation"><div class="view row space-between"><div class="links"><a class="buckaroo" href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="/blog">Blog</a></div><div class="search"><input placeholder="search for a module..." value=""/><button class="fa fa-search fa-large"></button></div><iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&amp;repo=buckaroo&amp;type=star&amp;count=true&amp;size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe></div></div><div></div><div style="width:100%;max-height:80vh;overflow:hidden"><img src="/posts/deer.jpeg" style="width:100%"/></div><div class="banner white"><div class="view"><div><h1>How to Create a Buck-based C/C++ Project</h1><div class="post"><p><a href="https://buckbuild.com/">Buck</a> is a fast build tool developed by Facebook. There are <a href="https://hackernoon.com/7-reasons-to-use-buck-build-5b44d7413585">many reasons to choose Buck</a>, but how should you get started?</p><p>This walk-through will cover:</p><ul><li><p>How to organize your project</p></li><li><p>Integration of Google Test</p></li><li><p>Explanation of the basic Buck commands</p></li></ul><h3>TL;DR</h3><p>Browse <a href="https://github.com/njlr/buck-cpp-example">the project files on GitHub</a>, or clone them onto your system:</p><pre><code>git clone [git@github.com](mailto:git@github.com):njlr/buck-cpp-example.git
+</code></pre><p>Install existing Buck ports from <a href="https://www.buckaroo.pm">Buckaroo.pm</a>.</p><h2>How Buck Works</h2><p>Before we start, it might be helpful to understand how Buck works. Rather than retread old ground, take a look at this talk from the Buck devs.</p><center><iframe width="560" height="315" src="https://www.youtube.com/embed/uvNI_E0ZgZU" frameborder="0"></iframe></center><h2>Installing Buck</h2><p>The official guide for installing Buck is <a href="https://buckbuild.com/setup/getting_started.html">available on their website</a>. However, the quickest way is probably to use Homebrew or Linuxbrew.</p><ul><li><p>If you are using Linux, you can install Linuxbrew using a <a href="http://linuxbrew.sh/">one-liner on their website</a>.</p></li><li><p>Ditto for <a href="https://brew.sh/">Homebrew</a> on macOS.</p></li></ul><p>Once you have a “brew” installed, add the Facebook tap and install Buck:</p><pre><code>brew tap facebook/fb
+brew install --HEAD facebook/fb/buck
+</code></pre><p>Verify your installation with:</p><pre><code>buck --version
+</code></pre><h2>Organizing Your Files</h2><p>Once Buck is installed, it’s time to create the project folders. Buck makes it easy to support any folder structure you like, but for this demo we will be following the C/C++ convention of src and include folders.</p><p>This project will consist of two parts:</p><ul><li><p>demo — an executable that computes 3 + 4and prints the result</p></li><li><p>mathutils — a library that provides simple adding functionality</p></li></ul><p><em>Note: This is a simple example for demonstration purposes; Buck is capabable of building <!-- -->[complex C/C++ projects]<!-- -->(<a href="http://buckaroo.pm/search?q=">http://buckaroo.pm/search?q=</a></em>)!*</p><p>First, create the following structure somewhere on your drive:</p><pre><code>    .
+    ├── .buckconfig
+    ├── BUCK
+    └── demo
+        ├── include
+        └── src
+            └── main.cpp
+</code></pre><p>Using the command-line:</p><pre><code>    touch .buckconfig
+    touch BUCK
+
+    mkdir demo
+    mkdir demo/include
+    mkdir demo/src
+    touch demo/src/main.cpp
+</code></pre><p>That’s quite a few files — let’s run through them:</p><ul><li><p>A <code>.buckconfig</code> is required before you can run any Buck commands. It tells Buck where the root of your project is and can also be used to configure any settings that are global to your project. For now we can leave it empty.</p></li><li><p>The <code>BUCK</code> file is where we will define the target for our binary. There can be multiple <code>BUCK</code> files in a <code>Buck</code> project, which is useful when you want to seperate the build logic for different aspects of your project, such as libraries and tests.</p></li><li><p><code>demo/include</code> is where we will be putting any headers used by the binary.</p></li><li><p><code>demo/src</code> is where we will be putting our translation-units (in this case .cpp files) for the binary.</p></li><li><p><code>demo/src/main.cpp</code> will be the entry-point for our application.</p></li></ul><h3>main.cpp</h3><p>To get started, we will write a simple hello-world program. Paste the following into main.cpp:</p><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Hello, world. &quot;</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3>BUCK</h3><p>To build the main.cpp file, we need to write a Buck target for it. Into the BUCK file, paste the following:</p><pre class="language-cpp"><code class="language-cpp"><span class="token function">cxx_binary</span><span class="token punctuation">(</span>
+  name <span class="token operator">=</span> <span class="token string">&#x27;demo&#x27;</span><span class="token punctuation">,</span>
+  header_namespace <span class="token operator">=</span> <span class="token string">&#x27;demo&#x27;</span><span class="token punctuation">,</span>
+  headers <span class="token operator">=</span> <span class="token function">subdir_glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&#x27;demo/include&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;**/*.hpp&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  srcs <span class="token operator">=</span> <span class="token function">glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string">&#x27;demo/src/**/*.cpp&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p>BUCK files are written in a dialect of Python 2, with a few extensions. When you call buck build, Buck will execute the Python and record any targets the are defined. Once the list of targets has been resolved, each target is built in accordance with its type.</p><p>You can see the full list of target-types in <a href="https://buckbuild.com/rule/cxx_binary.html">the Buck docs</a>, but the important ones for C/C++ are cxx_binary, cxx_library and prebuilt_cxx_library.</p><ul><li><p><code>cxx_binary</code> — a bundle of C/C++ translation-units and headers that contain an entry-point (e.g. int main()). A cxx_binary can be executed once compiled. It should not be a dependency.</p></li><li><p><code>cxx_library</code> — a bundle of C/C++ translation-units that can be used by other targets. Unlike a cxx_binary, a library also defines a list of exported_headers, which are the header-files made available to its dependents.</p></li><li><p><code>prebuilt_cxx_library</code> — like a <code>cxx_library</code>, but with an optional object-file in the place of translation units. Header-only libraries are implemented as a <code>prebuilt_cxx_library</code> with no object-file.</p></li></ul><h2>Buck Commands</h2><p>Now that the BUCK file is in place, Buck can build the target. Run the following:</p><pre><code>buck build //:demo
+</code></pre><p>The command tells Buck to build the target :demo found in the BUCK file adjacent to .buckconfig.</p><p>Buck uses a simple addressing system for targets based on the actual folder-structure of the project. For example, //examples/basic/:demo refers to the target demo defined in examples/basic/BUCK.</p><p>After the build completes, you should find an executable at buck-out/gen/demo. You can build and run this using:</p><pre><code>buck build //:demo &amp;&amp; ./buck-out/gen/demo
+</code></pre><p>Or, Buck can do it for you:</p><pre><code>buck run //:buck-cpp-example
+</code></pre><p>You will notice that running the build for a second time is extremely fast. This is because Buck caches everything, including the output of the Python scripts!</p><h2>Adding a Dependency</h2><p>Let’s implement mathutils so that we can use it in the demo application.</p><p>Create the following folder structure in your project:</p><pre><code>   .
+    └── mathutils
+        ├── BUCK
+        ├── include
+        │   └── add.hpp
+        └── src
+            └── add.cpp
+</code></pre><p>Using the command-line:</p><pre><code>mkdir mathutils
+mkdir mathutils/include
+mkdir mathutils/src
+
+touch mathutils/BUCK
+touch mathutils/include/add.hpp
+touch mathutils/src/add.cpp
+</code></pre><p>And the files themselves:</p><pre class="language-cpp"><code class="language-cpp">
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">MATH_HPP</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MATH_HPP</span></span>
+
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+</code></pre><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mathutils/add.hpp&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><pre class="language-cpp"><code class="language-cpp"><span class="token function">cxx_library</span><span class="token punctuation">(</span>
+  name <span class="token operator">=</span> <span class="token string">&#x27;mathutils&#x27;</span><span class="token punctuation">,</span>
+  header_namespace <span class="token operator">=</span> <span class="token string">&#x27;mathutils&#x27;</span><span class="token punctuation">,</span>
+  exported_headers <span class="token operator">=</span> <span class="token function">subdir_glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&#x27;include&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;**/*.hpp&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  srcs <span class="token operator">=</span> <span class="token function">glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string">&#x27;src/**/*.cpp&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  visibility <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&#x27;//...&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p>There are a few important points about this BUCK file:</p><ul><li><p>The header_namespace is set to &#x27;mathutils&#x27;. This puts every header-file that the library exports into a folder with that name, making file-name collisions with other libraries less likely.</p></li><li><p>The glob rules are rooted at the BUCK file, so src/<strong>/*.cpp actually corresponds to mathutils/src/</strong>/*.cpp from the project root.</p></li><li><p>The visibility is set to //... so that the target can be taken as a dependency by all other targets in the project. In English it means “this library is visibile to every other target below root”.</p></li></ul><h3>Using the Add Function</h3><p>Now we can use the mathutils library in the demo executable.</p><p>First, declare the dependency of demo on mathutils. Change the BUCK file at the root of the project to:</p><pre class="language-cpp"><code class="language-cpp">
+<span class="token function">cxx_binary</span><span class="token punctuation">(</span>
+  name <span class="token operator">=</span> <span class="token string">&#x27;demo&#x27;</span><span class="token punctuation">,</span>
+  header_namespace <span class="token operator">=</span> <span class="token string">&#x27;demo&#x27;</span><span class="token punctuation">,</span>
+  headers <span class="token operator">=</span> <span class="token function">subdir_glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&#x27;demo/include&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;**/*.hpp&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  srcs <span class="token operator">=</span> <span class="token function">glob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string">&#x27;demo/src/**/*.cpp&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  deps <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&#x27;//mathutils:mathutils&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p>Now update main.cpp to:</p><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mathutils/add.hpp&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Hello, world. &quot;</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;3 + 4 = &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Use Buck to run demo to see the result. You will notice that Buck knows how to link mathutils for you.</p><h2>Google Test</h2><p>Our application is working, but to be diligent we should add some unit-tests!</p><p>Buck supports all C/C++ testing frameworks via buck run, but it provides additional integration with Google Test.</p><h3>Fetching the Google Test Source-code</h3><p>Git provides a simple way to grab the Google Test source-code using submodules. We will be using <a href="https://github.com/njlr/googletest">a fork</a> that contains a BUCK file, but you can use the master and write your own if desired.</p><pre><code>git submodule add git@github.com:njlr/googletest.git
+cd googletest/
+git checkout 48072820e47a607d000b101c05d796ebf9c4aad2
+cd ../
+</code></pre><p>Now we need to tell Buck where to find the Google Test sources. Open the .buckconfig and add the following:</p><pre class="language-ini"><code class="language-ini"><span class="token selector">[cxx]</span>
+<span class="token constant">  gtest_dep</span> <span class="token attr-value"><span class="token punctuation">=</span> //googletest:gtest</span>
+</code></pre><p>This tells Buck where to find the Google Test target that it can use for your tests. There are other config properties that can be set; have a browse in the <a href="https://buckbuild.com/concept/buckconfig.html">Buck docs</a>.</p><h3>Writing a Test</h3><p>We will put the tests into a mathutils/test, alongsidemathutils/src and mathutils/include:</p><pre><code>    .
+    └── mathutils
+        ├── BUCK
+        ├── include
+        │   └── add.hpp
+        ├── src
+        │   └── add.cpp
+        └── test
+            ├── BUCK
+            └── add.cpp
+</code></pre><p>Using the command-line:</p><pre><code>mkdir mathutils/test
+touch mathutils/test/add.cpp
+</code></pre><p>And the test itself:</p><pre class="language-cpp"><code class="language-cpp">
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;gtest/gtest.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mathutils/add.hpp&gt;</span></span>
+
+<span class="token function">TEST</span><span class="token punctuation">(</span>mathutils<span class="token punctuation">,</span> add<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">ASSERT_EQ</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ASSERT_EQ</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Finally, we need to declare the test in the BUCK file:</p><pre class="language-cpp"><code class="language-cpp"><span class="token function">cxx_test</span><span class="token punctuation">(</span>
+  name <span class="token operator">=</span> <span class="token string">&#x27;add&#x27;</span><span class="token punctuation">,</span>
+  srcs <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&#x27;add.cpp&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  deps <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&#x27;//mathutils:mathutils&#x27;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p>Now the tests can be run by Buck:</p><pre><code>buck test //mathutils/test:add
+</code></pre><p>Or, to run all tests:</p><pre><code>buck test
+</code></pre><h2>Conclusion</h2><p>And that’s it! Buck is a powerful tool that will <a href="http://zserge.com/blog/buck-build-system.html">save you hours of waiting over the development cycle of a project</a>. To learn more, read <a href="https://buckbuild.com/setup/getting_started.html">the docs</a> or watch some of the <a href="https://buckbuild.com/presentations/index.html">Buck presentations</a>.</p><p>If there is a library you need to port to Buck, take a look at <a href="https://www.buckaroo.pm/">Buckaroo.pm</a>. We’ve already ported 300 projects, and are <a href="https://github.com/LoopPerfect/buckaroo-wishlist">working on even more</a>!</p></div></div></div></div><div class="banner footer"><div class="view column"><div class="actions"><div class="links"><a href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="https://github.com/LoopPerfect/buckaroo" target="_blank">GitHub</a></div><div class="signup"><h1 class="action">Sign up for our Newsletter</h1><div class="info">Get the latest updates about new packages and Buckaroo releases.</div><button>Sign Up</button></div></div><div class="powered"><img src="/LoopPerfectInvertSmall.png"/><span>Powered by LoopPerfect</span></div></div></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/blog/how-to-create-a-buck-based-project","query":{},"buildId":"zumqXaU5fk-68lIEJ-riC","nextExport":true,"autoExport":true,"isFallback":false}</script><script nomodule="" src="/_next/static/chunks/polyfills-617a3a2c770be2525c7f.js"></script><script src="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" async=""></script><script src="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" async=""></script><script src="/_next/static/chunks/framework.ae3781fe50e43492a499.js" async=""></script><script src="/_next/static/chunks/commons.9b549cceddc4472f1953.js" async=""></script><script src="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" async=""></script><script src="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" async=""></script><script src="/_next/static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js" async=""></script><script src="/_next/static/chunks/pages/blog/how-to-create-a-buck-based-project-bf932a92ca9f2d6cb3af.js" async=""></script><script src="/_next/static/zumqXaU5fk-68lIEJ-riC/_buildManifest.js" async=""></script><script src="/_next/static/zumqXaU5fk-68lIEJ-riC/_ssgManifest.js" async=""></script></body></html>

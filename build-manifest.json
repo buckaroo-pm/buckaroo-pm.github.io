@@ -1,0 +1,287 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-617a3a2c770be2525c7f.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/zumqXaU5fk-68lIEJ-riC/_buildManifest.js",
+    "static/zumqXaU5fk-68lIEJ-riC/_ssgManifest.js"
+  ],
+  "pages": {
+    "/": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/pages/index-d85d6bdfd6364a2c7f45.js"
+    ],
+    "/_app": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/css/a0584ae5515792e72ab5.css",
+      "static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js"
+    ],
+    "/_error": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/pages/_error-d2fae256d63f3a883f1c.js"
+    ],
+    "/blog": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/pages/blog-15517c1e3ee055551a4d.js"
+    ],
+    "/blog/a-response-to-accio-dependency-manager": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/a-response-to-accio-dependency-manager-987ae468216c80dbbd99.js"
+    ],
+    "/blog/a-tour-of-cpp17-constexpr-if": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/a-tour-of-cpp17-constexpr-if-3b3d130d4bca1300b79f.js"
+    ],
+    "/blog/announcing-buildinfer-for-c": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/announcing-buildinfer-for-c-579be6c45ebaa9ec6f35.js"
+    ],
+    "/blog/approaches-to-c-dependency-managment": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/approaches-to-c-dependency-managment-dc6d4d714ae30d9a6cbe.js"
+    ],
+    "/blog/are-headers-really-the-problem": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/are-headers-really-the-problem-7d8b9a10f02e61b69704.js"
+    ],
+    "/blog/build-systems-should-use-hashes": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/build-systems-should-use-hashes-72d65d8177c622e67c8d.js"
+    ],
+    "/blog/building-reactive-terminals": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/building-reactive-terminals-1d2973c7469903c4f8d0.js"
+    ],
+    "/blog/c-coroutine-ts-its-about-inversion-of-control": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/c-coroutine-ts-its-about-inversion-of-control-d655f91b9b92c6edd8ac.js"
+    ],
+    "/blog/common-misconceptions-of-c": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/common-misconceptions-of-c-a3a09e8c1c97cae832c6.js"
+    ],
+    "/blog/either-vs-error-codes": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/either-vs-error-codes-58330708a9243f09a0dd.js"
+    ],
+    "/blog/even-more-reasons-to-use-buck": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/even-more-reasons-to-use-buck-47bb99e772e6baf4dc74.js"
+    ],
+    "/blog/experimenting-with-smallbuffer-optimization": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/experimenting-with-smallbuffer-optimization-70753f13df3d6ed08dd6.js"
+    ],
+    "/blog/generated-include-guards": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/generated-include-guards-b0cea3f66f6ab20a596b.js"
+    ],
+    "/blog/getting-started-with-buck-on-travis": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/getting-started-with-buck-on-travis-48a0a68a220fbf8bc085.js"
+    ],
+    "/blog/goodbye-json-hello-toml": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/goodbye-json-hello-toml-9e6b0b22733dd70a4dee.js"
+    ],
+    "/blog/highlights-of-buckaroo-1-3": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/highlights-of-buckaroo-1-3-689fb4c89dcb39b61385.js"
+    ],
+    "/blog/how-to-create-a-buck-based-project": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/how-to-create-a-buck-based-project-bf932a92ca9f2d6cb3af.js"
+    ],
+    "/blog/introducing-conduit-lazy-sequences-for-c": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/introducing-conduit-lazy-sequences-for-c-6587de0d27ac00abebf5.js"
+    ],
+    "/blog/lessons-learned-from-porting-300-c-libraries": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/lessons-learned-from-porting-300-c-libraries-0e44aba709d9dc8ccab3.js"
+    ],
+    "/blog/quick-tips-for-java-programmers": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/quick-tips-for-java-programmers-0dc92ce99649ccdbb659.js"
+    ],
+    "/blog/reasons-to-use-buck-build": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/reasons-to-use-buck-build-8543d29cfb4b36e1a66e.js"
+    ],
+    "/blog/reasons-why-we-distribute-libraries-as-source-code": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/reasons-why-we-distribute-libraries-as-source-code-d8ea5959ddad867a2b01.js"
+    ],
+    "/blog/templates-vs-macros": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/templates-vs-macros-b9f3d1cfde405b110798.js"
+    ],
+    "/blog/value-ptr-the-missing-smart-ptr": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/value-ptr-the-missing-smart-ptr-1d04146963804e1a321b.js"
+    ],
+    "/blog/whats-new-in-buckaroo-1-2": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/whats-new-in-buckaroo-1-2-ee0655c02ffe2f6a28e3.js"
+    ],
+    "/blog/whats-new-in-buckaroo-2": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/fe8ef1070ee43d1bcce443c3875737aef33fa79f.55d4b28eaf40fcb59af0.js",
+      "static/chunks/pages/blog/whats-new-in-buckaroo-2-cf4c5a0a1e44e265ce3b.js"
+    ],
+    "/packages/[owner]/[name]": [
+      "static/chunks/main-7d1613afc8c8f43cb50f.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.ae3781fe50e43492a499.js",
+      "static/chunks/commons.9b549cceddc4472f1953.js",
+      "static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js",
+      "static/chunks/pages/packages/[owner]/[name]-a4cbb0573163d5d83a19.js"
+    ]
+  },
+  "ampFirstPages": []
+}
