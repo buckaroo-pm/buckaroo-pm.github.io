@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/host-c-standard-library",
+  "name": "njlr/host-c-standard-library",
+  "stars": 0,
+  "topics": [],
+  "description": "C standard library pulled from the host system",
+  "versions": [],
+  "updated": "2018-09-24T14:19:33Z",
+  "updatedUpstream": "2018-09-24T18:04:46Z"
+}

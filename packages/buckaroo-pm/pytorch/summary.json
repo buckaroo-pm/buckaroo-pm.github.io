@@ -1,0 +1,19 @@
+{
+  "packageName": "buckaroo-pm/pytorch",
+  "name": "pytorch/pytorch",
+  "stars": 45442,
+  "topics": [
+    "neural-network",
+    "autograd",
+    "gpu",
+    "numpy",
+    "deep-learning",
+    "tensor",
+    "python",
+    "machine-learning"
+  ],
+  "description": "Tensors and Dynamic neural networks in Python  with strong GPU acceleration",
+  "versions": [],
+  "updated": "2018-11-09T11:20:39Z",
+  "updatedUpstream": "2021-01-13T23:01:58Z"
+}

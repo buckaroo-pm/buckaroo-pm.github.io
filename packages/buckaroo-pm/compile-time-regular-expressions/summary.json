@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/compile-time-regular-expressions",
+  "name": "hanickadot/compile-time-regular-expressions",
+  "stars": 1722,
+  "topics": [
+    "regular-expression",
+    "cpp17",
+    "cpp20",
+    "header-only",
+    "constexpr",
+    "compile-time",
+    "awesome",
+    "template-udl",
+    "pcre"
+  ],
+  "description": "A Compile time PCRE (almost) compatible regular expression matcher.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-18T17:39:08Z",
+  "updatedUpstream": "2021-01-13T15:15:10Z"
+}

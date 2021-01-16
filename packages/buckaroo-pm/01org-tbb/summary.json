@@ -1,0 +1,20 @@
+{
+  "packageName": "buckaroo-pm/01org-tbb",
+  "name": "oneapi-src/oneTBB",
+  "stars": 2574,
+  "topics": [
+    "tbbmalloc",
+    "threading",
+    "parallelism",
+    "composability",
+    "heterogeneousprogramming",
+    "taskparallelism",
+    "flowgraph",
+    "oneapi",
+    "tbb"
+  ],
+  "description": "Official Intel(R) Threading Building Blocks (Intel TBB) GitHub repository.",
+  "versions": [],
+  "updated": "2020-03-17T18:59:21Z",
+  "updatedUpstream": "2021-01-13T21:18:59Z"
+}

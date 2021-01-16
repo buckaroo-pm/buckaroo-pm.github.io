@@ -1,0 +1,47 @@
+{
+  "packageName": "buckaroo-pm/preshing-turf",
+  "name": "preshing/turf",
+  "licence": "NOASSERTION",
+  "description": "Configurable C++ platform adapter",
+  "readme": "Turf is a configurable C++ platform adapter. It defines a common API for:\n\n* Thread creation\n* Thread affinities\n* Thread IDs\n* Atomic operations\n* Mutexes\n* Condition variables\n* Read-write locks\n* Semaphores\n* Events\n* Timers\n* Virtual memory\n* Heap allocators\n* Asserts\n\nIt then implements those things using POSIX, Win32, Mach, Linux, Boost, C++11 and possibly other platform APIs. You configure Turf to use the API you want.\n\nTurf is used by [Junction](https://github.com/preshing/junction), a library of concurrent data structures in C++.\n\n## License\n\nTurf uses the Simplified BSD License. You can use the source code freely in any project, including commercial applications, as long as you give credit by publishing the contents of the `LICENSE` file in your documentation somewhere.\n\n## Why Not Use C++11?\n\nJunction was originally developed in C++11, but quickly ran into various limitations. Turf was written to address those limitations.\n\n* Turf exposes affinities, integer thread IDs, semaphores and a few other things that C++11 does not.\n* Turf is configurable, so you can compare implementations and even provide your own. The standard C++11 library is not configurable.\n* Turf atomics have more flexible initialization, copy and cast rules than C++11 atomics.\n* Turf can be used by developers who don't have access to a C++11 compiler.\n\n## Adding Turf to Your Project\n\nFor now, refer to Junction's [README](https://github.com/preshing/junction) file for instructions.\n\n## Feedback\n\nIf you have any comments or feedback, feel free to [open an issue](https://github.com/preshing/junction/issues) on GitHub, or send a direct message using the [contact form](http://preshing.com/contact/) on my blog.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:turf\" ]",
+      "lockFile": "manifest = \"79ff225ecd726799c84e8c85168a829bd37af3f5b0cf15fb638241f297637fda\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nfilegroup(\n  name = 'macros',\n  srcs = glob([\n    'cmake/**/*.cmake',\n    'cmake/**/*.in',\n    '*.txt',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ngenrule(\n  name = 'cmake',\n  out = 'out',\n  srcs = glob([\n    '*.txt',\n    'cmake/**/*.cmake',\n    'cmake/**/*.in',\n  ]),\n  cmd = 'mkdir -p $OUT && cd $OUT && cmake $SRCDIR || true',\n)\n\ngenrule(\n  name = 'config-h',\n  out = 'turf_config.h',\n  cmd = 'cp $(location :cmake)/include/turf_config.h $OUT',\n)\n\ngenrule(\n  name = 'userconfig-h',\n  out = 'turf_userconfig.h',\n  cmd = 'cp $(location :cmake)/include/turf_userconfig.h $OUT',\n)\n\ncxx_library(\n  name = 'turf',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('', 'turf/**/*.h'),\n      ('turf/impl', '**/*.inc'),\n    ]).items() + [\n      ('turf_config.h', ':config-h'),\n      ('turf_userconfig.h', ':userconfig-h'),\n    ]\n  ),\n  srcs = glob([\n    'turf/**/*.cpp',\n    'turf/**/*.c',\n  ]),\n  licenses = [\n    'LICENSE',\n  ],\n  visibility = [\n    'PUBLIC'\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-09T13:02:18Z",
+  "updatedUpstream": "2021-01-08T16:18:32Z",
+  "contributors": [
+    {
+      "login": "tycho",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/29616?u=7663ad2ed44e2c672fa4b415665e41313d8165ae&v=4"
+    },
+    {
+      "login": "preshing",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/939009?u=46076a3441c1776f24ed9e484ff6f0940bcf26af&v=4"
+    },
+    {
+      "login": "zacharygrafton",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5788489?v=4"
+    },
+    {
+      "login": "bretalfieri",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/8763677?u=08f92f26ea111e74e69cc745fac1e13b50c945d4&v=4"
+    },
+    {
+      "login": "racardoso",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/13421176?u=383e24e22ed0fec76415fabbdb87e65311f0c5bb&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 466,
+  "forks": 68,
+  "topics": []
+}

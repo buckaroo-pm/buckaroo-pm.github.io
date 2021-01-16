@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/mobius3-tweeny",
+  "name": "mobius3/tweeny",
+  "stars": 457,
+  "topics": [
+    "tween",
+    "interpolation",
+    "animation",
+    "cmake"
+  ],
+  "description": "A modern C++ tweening library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-09T10:02:14Z",
+  "updatedUpstream": "2021-01-08T02:20:31Z"
+}

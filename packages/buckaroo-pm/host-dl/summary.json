@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-dl",
+  "name": "buckaroo-pm/host-dl",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for the host's dl implementation ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-14T11:24:27Z",
+  "updatedUpstream": "2019-01-14T11:24:27Z"
+}

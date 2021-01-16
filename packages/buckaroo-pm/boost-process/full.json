@@ -1,0 +1,117 @@
+{
+  "packageName": "buckaroo-pm/boost-process",
+  "name": "boostorg/process",
+  "licence": "",
+  "description": "Boost Process",
+  "readme": "# [Boost Process (Boost.Process)](https://github.com/klemens-morgenstern/boost-process)\n\nBoost.process is a library for comfortable management of processes, released with boost 1.64.0.\n\n### Test results\n\nBranches        | Linux | OSX | Windows | Tests coverage | Matrix | \n----------------|-------|-----|---------| -------------- |--------|\nDevelop:        | [![Build Status](https://travis-ci.org/klemens-morgenstern/boost-process.svg?branch=develop&env=BADGE=linux)](https://travis-ci.org/klemens-morgenstern/boost-process) | [![Build Status](https://travis-ci.org/klemens-morgenstern/boost-process.svg?branch=develop&env=BADGE=osx)](https://travis-ci.org/klemens-morgenstern/boost-process) | [![Build status](https://ci.appveyor.com/api/projects/status/peup7e6m0e1bb5ba?svg=true)](https://ci.appveyor.com/project/klemens-morgenstern/boost-process) | [![Coverage Status](https://coveralls.io/repos/github/klemens-morgenstern/boost-process/badge.svg?branch=develop)](https://coveralls.io/github/klemens-morgenstern/boost-process?branch=develop) | [![Matrix](https://img.shields.io/badge/matrix-develop-lightgray.svg)](http://www.boost.org/development/tests/develop/developer/process.html)\nMaster:         | [![Build Status](https://travis-ci.org/klemens-morgenstern/boost-process.svg?branch=master&env=BADGE=linux)](https://travis-ci.org/klemens-morgenstern/boost-process)  | [![Build Status](https://travis-ci.org/klemens-morgenstern/boost-process.svg?branch=master&env=BADGE=osx)](https://travis-ci.org/klemens-morgenstern/boost-process) | [![Build status](https://ci.appveyor.com/api/projects/status/peup7e6m0e1bb5ba/branch/master?svg=true)](https://ci.appveyor.com/project/klemens-morgenstern/boost-process/branch/master) | [![Coverage Status](https://coveralls.io/repos/github/klemens-morgenstern/boost-process/badge.svg?branch=master)](https://coveralls.io/github/klemens-morgenstern/boost-process?branch=master)   | [![Matrix](https://img.shields.io/badge/matrix-master-lightgray.svg)](http://www.boost.org/development/tests/master/developer/process.html)\n\n\n[Open Issues](https://github.com/klemens-morgenstern/boost-process/issues)\n\n[Latest developer documentation](http://klemens-morgenstern.github.io/process/)\n\n### About\nThis C++11 library is the current result of a long attempt to get a boost.process library, which is going on since 2006.\n\n### License\nDistributed under the [Boost Software License, Version 1.0](http://www.boost.org/LICENSE_1_0.txt).\n\n### Dependency\n\nThis library requires boost 1.64 with which it is released.\n",
+  "versions": [],
+  "updated": "2019-01-30T18:55:38Z",
+  "updatedUpstream": "2020-12-29T22:10:33Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "tabe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/15237?v=4"
+    },
+    {
+      "login": "tzlaine",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/82177?u=77ed0c2e28a50671a931f467242b7d0ddb22f821&v=4"
+    },
+    {
+      "login": "ForNeVeR",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/92793?u=974279e4efafa8f217ef8ba1ff3131633b86365e&v=4"
+    },
+    {
+      "login": "toonetown",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/97324?v=4"
+    },
+    {
+      "login": "giomasce",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/101675?v=4"
+    },
+    {
+      "login": "dvd0101",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/129572?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "jasonmccampbell",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/267494?u=88b6eca08378ebacf783424829061b0830546deb&v=4"
+    },
+    {
+      "login": "frederich",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/274349?u=a7509b795562848be018530978018a783f698457&v=4"
+    },
+    {
+      "login": "Shauren",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/297439?u=16a4d5d84749afa0ad97a315f379f758e01b67cc&v=4"
+    },
+    {
+      "login": "brunom",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/299372?v=4"
+    },
+    {
+      "login": "pepsiman",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/301788?v=4"
+    },
+    {
+      "login": "Flast",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/322915?v=4"
+    },
+    {
+      "login": "chriskohlhoff",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/462538?v=4"
+    },
+    {
+      "login": "cls",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/519374?v=4"
+    },
+    {
+      "login": "uecasm",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/539951?v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "jonesmz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/755783?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 64,
+  "forks": 62,
+  "topics": []
+}

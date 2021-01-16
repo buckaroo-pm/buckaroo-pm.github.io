@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/facebookincubator-fizz",
+  "name": "facebookincubator/fizz",
+  "stars": 903,
+  "topics": [],
+  "description": "C++14 implementation of the TLS-1.3 standard",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 69
+    }
+  ],
+  "updated": "2019-09-06T18:59:57Z",
+  "updatedUpstream": "2021-01-13T21:53:14Z"
+}

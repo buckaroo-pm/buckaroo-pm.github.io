@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mdadams-jasper",
+  "name": "jasper-software/jasper",
+  "stars": 115,
+  "topics": [],
+  "description": "Official Repository for the JasPer Image Coding Toolkit",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2020-07-18T20:05:53Z",
+  "updatedUpstream": "2021-01-10T15:42:27Z"
+}

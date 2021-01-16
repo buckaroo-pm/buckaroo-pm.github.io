@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/martinmoene-expected-lite",
+  "name": "martinmoene/expected-lite",
+  "stars": 155,
+  "topics": [
+    "cpp11",
+    "header-only",
+    "single-file",
+    "no-dependencies",
+    "expected-implementations"
+  ],
+  "description": "Expected objects for C++11 and later (and later perhaps C++98)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-21T14:35:45Z",
+  "updatedUpstream": "2020-12-30T02:47:26Z"
+}

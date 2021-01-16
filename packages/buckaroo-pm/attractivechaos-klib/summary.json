@@ -1,0 +1,27 @@
+{
+  "packageName": "buckaroo-pm/attractivechaos-klib",
+  "name": "attractivechaos/klib",
+  "stars": 3170,
+  "topics": [
+    "c",
+    "generic",
+    "library",
+    "hashtable",
+    "b-tree",
+    "avl-tree",
+    "sort",
+    "algorithm"
+  ],
+  "description": "A standalone and lightweight C library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-01-23T14:36:59Z",
+  "updatedUpstream": "2021-01-13T22:22:34Z"
+}

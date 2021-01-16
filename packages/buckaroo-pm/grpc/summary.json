@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/grpc",
+  "name": "grpc/grpc",
+  "stars": 28940,
+  "topics": [],
+  "description": "The C based gRPC (C++, Python, Ruby, Objective-C, PHP, C#)",
+  "versions": [],
+  "updated": "2019-01-22T18:45:40Z",
+  "updatedUpstream": "2021-01-13T22:05:57Z"
+}

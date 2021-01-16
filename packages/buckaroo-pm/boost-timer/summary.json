@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-timer",
+  "name": "boostorg/timer",
+  "stars": 13,
+  "topics": [],
+  "description": "Boost.org timer module",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": false,
+      "buck": true,
+      "deps": 7,
+      "transitive": 21
+    },
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 7,
+      "transitive": 21
+    }
+  ],
+  "updated": "2018-11-18T17:38:17Z",
+  "updatedUpstream": "2020-12-23T05:08:16Z"
+}

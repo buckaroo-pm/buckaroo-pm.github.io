@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/mapbox-mapnik-vector-tile",
+  "name": "mapbox/mapnik-vector-tile",
+  "stars": 516,
+  "topics": [],
+  "description": "Mapnik implemention of Mapbox Vector Tile specification",
+  "versions": [],
+  "updated": "2018-11-13T10:11:00Z",
+  "updatedUpstream": "2021-01-05T09:36:45Z"
+}

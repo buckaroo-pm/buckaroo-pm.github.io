@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-rt",
+  "name": "buckaroo-pm/host-rt",
+  "stars": 0,
+  "topics": [],
+  "description": " Buck wrapper for the host's rt implementation ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-14T11:27:33Z",
+  "updatedUpstream": "2019-01-14T11:27:33Z"
+}

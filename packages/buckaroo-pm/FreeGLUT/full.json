@@ -1,0 +1,81 @@
+{
+  "packageName": "buckaroo-pm/FreeGLUT",
+  "name": "dcnieho/FreeGLUT",
+  "licence": "",
+  "description": "Copy of FreeGLUT's svn repo on sourceforge, for easy contribution",
+  "readme": "FreeGLUT\n========\n\nThis readme file applies to the git clone of FreeGLUT's svn repo on [sourceforge.net](http://freeglut.sourceforge.net/) that is hosted on [github](https://github.com/dcnieho/FreeGLUT). This is provided here to enable user to contribute easier.\n\nEvery effort is made to ensure that the ``git_master`` branch only progresses in a fastforward manner, but complete guarantees cannot be given as the [sourceforge.net trunk](https://sourceforge.net/p/freeglut/code/HEAD/tree/) is at all times leading.\n\nI will be unable to merge a pull request if the github clone is behind ``svn/trunk`` on sourceforge.net. Should you detect this, please contact me, maybe through making an issue here on github.\n\nThis copy of the svn repository was not created with ``git svn`` but with the excellent svn support of [SmartGit](http://www.syntevo.com/).\n\n\nNotes to self on how to work with this:\n Basic workflow upon receiving a pull request is as follows:\n- Merge pull request on github\n- pull in changes to my local clone of the ``git_master`` branch.\n- cherry pick the merged commits onto my local clone of the ``svn/trunk`` branch\n- push these commits to svn remote (this alters the commits in the local \n  ``svn/trunk`` clone as extra meta data is added)\n- merge ``svn/trunk`` into local ``git_master``\n- push merge commit to github (its fast forward!)\n",
+  "versions": [],
+  "updated": "2019-01-24T17:08:30Z",
+  "updatedUpstream": "2021-01-11T01:56:03Z",
+  "contributors": [
+    {
+      "login": "rcmaniac25",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/418272?v=4"
+    },
+    {
+      "login": "tehnick",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/441190?v=4"
+    },
+    {
+      "login": "nigels-com",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/545677?u=aacb08b00d14a8168fbe831dd80639355a3db138&v=4"
+    },
+    {
+      "login": "SRombauts",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/868490?u=1daf271b727fb65a8f38f6db41eaa1a18c6b32df&v=4"
+    },
+    {
+      "login": "mingwandroid",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1042804?v=4"
+    },
+    {
+      "login": "jzarl",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1199511?v=4"
+    },
+    {
+      "login": "nazgee",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1335286?v=4"
+    },
+    {
+      "login": "dcnieho",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1787673?v=4"
+    },
+    {
+      "login": "0-wiz-0",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2221844?u=3f4be9c702bb1ed47386db1b43d4d87b75f20c5a&v=4"
+    },
+    {
+      "login": "stonexjr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2969316?u=562ead23d0f14d687b9793b75f0561b464e98911&v=4"
+    },
+    {
+      "login": "Tarnyko",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3727259?v=4"
+    },
+    {
+      "login": "jarchca",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3924400?v=4"
+    },
+    {
+      "login": "vlajos",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3994645?u=61dfb8218834d9c4c7a8947937e4a90216061d0a&v=4"
+    },
+    {
+      "login": "coypoop",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14857674?u=cfc2f8a27adb0ae2b877bb15b318856ce53ea869&v=4"
+    },
+    {
+      "login": "sean219design",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/26121229?v=4"
+    },
+    {
+      "login": "Mizzrym1",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/42609709?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 329,
+  "forks": 145,
+  "topics": []
+}

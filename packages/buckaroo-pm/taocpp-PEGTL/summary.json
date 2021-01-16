@@ -1,0 +1,37 @@
+{
+  "packageName": "buckaroo-pm/taocpp-PEGTL",
+  "name": "taocpp/PEGTL",
+  "stars": 1245,
+  "topics": [
+    "peg",
+    "header-only",
+    "cpp",
+    "parsing",
+    "cpp17",
+    "cpp11",
+    "grammar",
+    "parsing-expression-grammars",
+    "pegtl",
+    "parsing-expression-grammar",
+    "parser-combinators"
+  ],
+  "description": "Parsing Expression Grammar Template Library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "2.7.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-02-21T17:32:37Z",
+  "updatedUpstream": "2021-01-13T21:50:40Z"
+}

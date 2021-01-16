@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/troydhanson-uthash",
+  "name": "troydhanson/uthash",
+  "licence": "NOASSERTION",
+  "description": "C macros for hash tables and more",
+  "readme": "\nDocumentation for uthash is available at:\n\nhttp://troydhanson.github.com/uthash/\n\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:uthash\" ]\n",
+      "lockFile": "",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')\nload('//:tests.bzl', 'createTests')\n\ncxx_library(\n  name = 'uthash',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('src', '*.h'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\n\ntest_suite(\n  name = 'test',\n  tests = createTests([':uthash'], glob(['tests/test*.c']))\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-25T11:38:12Z",
+  "updatedUpstream": "2021-01-13T22:46:14Z",
+  "contributors": [
+    {
+      "login": "zhuomingliang",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/42745?v=4"
+    },
+    {
+      "login": "fperrad",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/46793?u=b3241569948ba2bd65a3690d3d8814c9e4e14244&v=4"
+    },
+    {
+      "login": "MasterLambaster",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/134304?v=4"
+    },
+    {
+      "login": "bringhurst",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/143694?u=d1616e0c7d2cd6918d5bd7cd21d58b9ead8b4d11&v=4"
+    },
+    {
+      "login": "nickva",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/211822?u=c222d04fa8ead88d96c1a2a8898f155a69c66bc4&v=4"
+    },
+    {
+      "login": "1ace",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/297576?u=acb0d75d26c8764500a0ec6746b974ceeeb94efa&v=4"
+    },
+    {
+      "login": "xuhdev",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/325476?u=61992e57827771c7849d2e2e68eb2f5b05ab196b&v=4"
+    },
+    {
+      "login": "ilyak",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/439174?u=b558661a971adadc6904c781b9ebdea46a3b5076&v=4"
+    },
+    {
+      "login": "moreandres",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/439320?v=4"
+    },
+    {
+      "login": "gsauthof",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/464832?v=4"
+    },
+    {
+      "login": "Quuxplusone",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/702021?v=4"
+    },
+    {
+      "login": "troydhanson",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/856808?v=4"
+    },
+    {
+      "login": "jonathanmarvens",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/890200?u=d3feb242599d22944da6255aad223b8f06176326&v=4"
+    },
+    {
+      "login": "iliastsi",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1261016?u=18641fc51209ee86728da70b85ed60082d2f04fc&v=4"
+    },
+    {
+      "login": "petk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1614009?u=5f68ac510e9158f03148d3315895cef512d61553&v=4"
+    },
+    {
+      "login": "jubalh",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1658215?v=4"
+    },
+    {
+      "login": "veselov",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2555513?v=4"
+    },
+    {
+      "login": "thiloschulz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3193024?v=4"
+    },
+    {
+      "login": "tonycurtis",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4448616?u=75dcb375c988d3a4e89c8d599e6fc2e4166ff2e1&v=4"
+    },
+    {
+      "login": "cheyiliu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4448772?u=d1d556d9ba4b906bb8ed924ef2121b12dcc1b3cb&v=4"
+    },
+    {
+      "login": "mdionisio",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5391286?v=4"
+    },
+    {
+      "login": "tbeu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5444067?v=4"
+    },
+    {
+      "login": "kaloyan13",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5628521?u=157afbf273b913e4dc0c1d84674e9cd62734aab5&v=4"
+    },
+    {
+      "login": "justanotheranonymoususer",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5781692?v=4"
+    },
+    {
+      "login": "obgm",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7488145?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2252,
+  "forks": 595,
+  "topics": []
+}

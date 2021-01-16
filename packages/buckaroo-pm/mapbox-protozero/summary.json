@@ -1,0 +1,21 @@
+{
+  "packageName": "buckaroo-pm/mapbox-protozero",
+  "name": "mapbox/protozero",
+  "stars": 174,
+  "topics": [
+    "protocol-buffers",
+    "c-plus-plus"
+  ],
+  "description": "Minimalist protocol buffer decoder and encoder in C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-13T10:24:36Z",
+  "updatedUpstream": "2021-01-11T06:09:27Z"
+}

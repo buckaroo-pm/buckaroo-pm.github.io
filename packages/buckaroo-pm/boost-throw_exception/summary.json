@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-throw_exception",
+  "name": "boostorg/throw_exception",
+  "stars": 7,
+  "topics": [],
+  "description": "Common infrastructure for throwing exceptions",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 8
+    }
+  ],
+  "updated": "2018-11-14T12:56:37Z",
+  "updatedUpstream": "2020-12-23T05:10:02Z"
+}

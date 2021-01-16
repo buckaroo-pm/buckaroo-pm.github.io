@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/khizmax-libcds",
+  "name": "khizmax/libcds",
+  "stars": 1758,
+  "topics": [
+    "lock-free",
+    "containers",
+    "hazard-pointer",
+    "rcu"
+  ],
+  "description": "A C++ library of Concurrent Data Structures",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-24T12:13:13Z",
+  "updatedUpstream": "2021-01-13T18:31:07Z"
+}

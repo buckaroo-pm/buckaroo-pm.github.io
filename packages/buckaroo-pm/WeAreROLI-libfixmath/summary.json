@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/WeAreROLI-libfixmath",
+  "name": "WeAreROLI/libfixmath",
+  "stars": 5,
+  "topics": [],
+  "description": "mirror of libfixmath - Cross Platform Fixed Point Maths Library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-21T11:19:39Z",
+  "updatedUpstream": "2020-01-20T03:59:18Z"
+}

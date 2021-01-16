@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/jedisct1-libsodium",
+  "name": "jedisct1/libsodium",
+  "stars": 8934,
+  "topics": [
+    "crypto",
+    "cryptography",
+    "c"
+  ],
+  "description": "A modern, portable, easy to use crypto library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-06T11:47:09Z",
+  "updatedUpstream": "2021-01-13T22:22:41Z"
+}

@@ -1,0 +1,16 @@
+{
+  "packageName": "buckaroo-pm/opencv-ippicv",
+  "name": "buckaroo-pm/opencv-ippicv",
+  "licence": "",
+  "description": null,
+  "readme": "# opencv-ippicv\n\nippicv library definition extracted from the OpenCV source-code. \n",
+  "versions": [],
+  "updated": "2018-10-24T16:30:48Z",
+  "updatedUpstream": "2018-10-24T16:30:48Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/irrlicht-irrxml",
+  "name": "buckaroo-pm/irrlicht-irrxml",
+  "licence": "",
+  "description": "port from sourceforge",
+  "readme": "==========================================================================\r\nirrXML 1.2\r\n==========================================================================\r\n\r\n  Welcome to irrXML\r\n\r\n  Content of this file:\r\n\r\n  1. Directory structure overview\r\n  2. How to use\r\n  3. Requirements\r\n  5. License\r\n  6. Contact\r\n\r\n\r\n\r\n==========================================================================\r\n1. Directory structure overview\r\n==========================================================================\r\n\r\n  You will find some directories after decompressing the archive in which\r\n  came the SDK. These are:\r\n  \r\n  \\doc         Documentation of irrXML.\r\n  \\example     A short example showing how to use the parser with solution\r\n               and make files.\r\n  \\src         The source code of irrXML.   \r\n\r\n==========================================================================\r\n2. How to use\r\n==========================================================================\r\n\r\n  For Linux/Unix users: Simply go into the directory /example and run\r\n  'make'. This will create a sample project using irrXML.\r\n  \r\n  Windows users: Just add the source files to your project. That's all. \r\n  For more information see the documentation in the \\doc directory.\r\n    \r\n  Alternatively, you could compile irrXML as .lib, after this you would\r\n  only need to use the irrXML.h header file, nothing more.\r\n\r\n\r\n==========================================================================\r\n3. Requirements\r\n==========================================================================\r\n\r\n  You can use one of the following compilers/IDEs to develop applications\r\n  with irrXML. However, other compilers/IDEs make work  as well, \r\n  we simply didn't test them. \r\n  \r\n  * gcc 3.2\r\n  * gcc 3.3\r\n  * Visual Studio 6.0\r\n  * Visual Studio.NET (7.0)\r\n  * Visual Studio.NET 2003 (7.1)\r\n  * Visual Studio.NET 2005 (8.0)\r\n  * DevC++ 4.9 & gcc (project files included)\r\n \r\n==========================================================================\r\n5. License\r\n==========================================================================\r\n\r\n  The license of irrXML is based on the zlib/libpng license.\r\n  Even though this license does not require you to mention that you are\r\n  using the Irrlicht Engine in your product, an acknowledgement\r\n  would be highly appreciated.\r\n\r\n  The irrXML License\r\n  ===========================\r\n\r\n  Copyright (C) 2002-2005 Nikolaus Gebhardt\r\n\r\n  This software is provided 'as-is', without any express or implied\r\n  warranty.  In no event will the authors be held liable for any damages\r\n  arising from the use of this software.\r\n\r\n  Permission is granted to anyone to use this software for any purpose,\r\n  including commercial applications, and to alter it and redistribute it\r\n  freely, subject to the following restrictions:\r\n\r\n  1. The origin of this software must not be misrepresented; you must not\r\n     claim that you wrote the original software. If you use this software\r\n     in a product, an acknowledgment in the product documentation would be\r\n     appreciated but is not required.\r\n  2. Altered source versions must be plainly marked as such, and must not be\r\n     misrepresented as being the original software.\r\n  3. This notice may not be removed or altered from any source distribution.\r\n  \r\n\r\n  \r\n==========================================================================\r\n6. Contact\r\n==========================================================================\r\n\r\n  If you have problems, questions or suggestions, please visit the \r\n  official homepage of irrXML:\r\n  \r\n  http://xml.irrlicht3d.org\r\n  \r\n  You will find forums, patches, documentation, and other stuff\r\n  which will help you out.\r\n  \r\n  If want to contact the author of the engine, please send an email to\r\n  Nikolaus Gebhardt:\r\n  \r\n  irrlicht@users.sourceforge.net\r\n\r\n\r\n  \r\n    ",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:irrxml\" ]\n",
+      "lockFile": "manifest = \"d08162d6e73f67a0fca33517b397bf2dba50a5809275cd8cda57349421e126e0\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'irrxml',\n  srcs = glob(['src/*.cpp']),\n  exported_headers = subdir_glob([('src', '*.h')]),\n  visibility = ['PUBLIC']\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-30T11:51:25Z",
+  "updatedUpstream": "2019-01-30T11:51:25Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

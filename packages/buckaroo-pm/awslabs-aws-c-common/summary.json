@@ -1,0 +1,21 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-c-common",
+  "name": "awslabs/aws-c-common",
+  "stars": 153,
+  "topics": [
+    "hacktoberfest",
+    "aws-sdk"
+  ],
+  "description": "Core c99 package for AWS SDK for C. Includes cross-platform primitives, configuration, data structures, and error handling.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-04T13:33:42Z",
+  "updatedUpstream": "2021-01-08T20:06:59Z"
+}

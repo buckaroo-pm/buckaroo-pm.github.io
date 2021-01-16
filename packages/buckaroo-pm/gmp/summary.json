@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/gmp",
+  "name": "ryepdx/gmp",
+  "stars": 2,
+  "topics": [],
+  "description": "Mirror of the GNU Multiple Precision Arithmetic Library, which uses Mercurial",
+  "versions": [],
+  "updated": "2018-10-17T15:36:36Z",
+  "updatedUpstream": "2019-03-21T15:17:08Z"
+}

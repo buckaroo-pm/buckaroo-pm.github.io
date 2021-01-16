@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/yixuan-spectra",
+  "name": "yixuan/spectra",
+  "stars": 455,
+  "topics": [
+    "eigenvalues",
+    "arpack",
+    "linear-algebra",
+    "spectra",
+    "header-only"
+  ],
+  "description": "A header-only C++ library for large scale eigenvalue problems",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-18T17:28:12Z",
+  "updatedUpstream": "2021-01-13T15:13:23Z"
+}

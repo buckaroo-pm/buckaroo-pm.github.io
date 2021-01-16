@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/cpp-taskflow",
+  "name": "taskflow/taskflow",
+  "stars": 4778,
+  "topics": [
+    "parallel-programming",
+    "threadpool",
+    "concurrent-programming",
+    "high-performance-computing",
+    "multicore-programming",
+    "multi-threading",
+    "taskparallelism",
+    "multithreading",
+    "parallel-computing",
+    "work-stealing",
+    "gpu-programming",
+    "heterogeneous-parallel-programming",
+    "cuda-programming",
+    "cuda",
+    "gpgpu"
+  ],
+  "description": "Modern C++ Parallel Task Programming Library",
+  "versions": [],
+  "updated": "2020-05-04T16:56:48Z",
+  "updatedUpstream": "2021-01-13T19:55:52Z"
+}

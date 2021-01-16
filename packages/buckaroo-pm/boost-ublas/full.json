@@ -1,0 +1,281 @@
+{
+  "packageName": "buckaroo-pm/boost-ublas",
+  "name": "boostorg/ublas",
+  "licence": "",
+  "description": null,
+  "readme": "ublas\n=====\n\n# Building [![Build Status](https://travis-ci.org/boostorg/ublas.svg?branch=develop)](https://travis-ci.org/boostorg/ublas) [![Build status](https://ci.appveyor.com/api/projects/status/ctu3wnfowa627ful/branch/develop?svg=true)](https://ci.appveyor.com/project/stefanseefeld/ublas/branch/develop)\n\n\nThe Boost.uBLAS Linear Algebra Library v1.0\n\n- To follow development and test experimental features, you can clone the Github project uBLAS/ublas\nat https://github.com/uBLAS/ublas\n- A development wiki is available at https://github.com/uBLAS/ublas/wiki\n- A mailing-list is available at http://lists.boost.org/ublas/\n- For any other questions, you can contact David at david.bellot@gmail.com\n\n- version numbers have never been used for this library until 02 March 2014.\n  So we start at v1.0 on that day.\n\nlast update: 1 April 2014\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:ublas\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-serialization\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-static_assert\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-typeof\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"71ea9761478f3eb76ee107fb9eefb833c635837752e8de39ca696c0b3eb298ee\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\ntarget = \"//:core\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\ntarget = \"//:mpl\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-serialization\"\ntarget = \"//:serialization\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-static_assert\"\ntarget = \"//:static-assert\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\ntarget = \"//:type-traits\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-typeof\"\ntarget = \"//:typeof\"\n\n[lock.\"github.com/buckaroo-pm/boost-assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"f9d6a7b63ef2902777b6078fdebc54e7a57aac03\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n\n[lock.\"github.com/buckaroo-pm/boost-core\"]\nversions = [ \"branch=master\" ]\nrevision = \"84411b155dae6f08ea749bdeb1e71aecd0718d52\"\n\n[lock.\"github.com/buckaroo-pm/boost-detail\"]\nversions = [ \"branch=master\" ]\nrevision = \"e8b834a93f7ba935aa63a3d6690804f3bd2b0963\"\n\n[lock.\"github.com/buckaroo-pm/boost-mpl\"]\nversions = [ \"branch=master\" ]\nrevision = \"a1873af9c1d31fb8ec2a87482b6bb9729439b4ac\"\n\n[lock.\"github.com/buckaroo-pm/boost-preprocessor\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064\"\n\n[lock.\"github.com/buckaroo-pm/boost-serialization\"]\nversions = [ \"branch=master\" ]\nrevision = \"38c41c38fa602585abfe131b1c889310dbaadf24\"\n\n[lock.\"github.com/buckaroo-pm/boost-static_assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"fdc2df7f811436674a1c55c766b8830a8cd02e96\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_traits\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d0a507c0d1a1011c5a98d57acc9f6b755141e4f\"\n\n[lock.\"github.com/buckaroo-pm/boost-typeof\"]\nversions = [ \"branch=master\" ]\nrevision = \"eb8685995412f4d637925d26525c9211379ff875\"\n\n[lock.\"github.com/buckaroo-pm/boost-utility\"]\nversions = [ \"branch=master\" ]\nrevision = \"f04cf922658a7e03776631a96c3ad346ad179d5f\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'ublas',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-serialization",
+          "name": "buckaroo-pm/boost-serialization",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-static_assert",
+          "name": "buckaroo-pm/boost-static_assert",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-typeof",
+          "name": "buckaroo-pm/boost-typeof",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f9d6a7b63ef2902777b6078fdebc54e7a57aac03"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "84411b155dae6f08ea749bdeb1e71aecd0718d52"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "e8b834a93f7ba935aa63a3d6690804f3bd2b0963"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a1873af9c1d31fb8ec2a87482b6bb9729439b4ac"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-preprocessor",
+          "name": "buckaroo-pm/boost-preprocessor",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-serialization",
+          "name": "buckaroo-pm/boost-serialization",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "38c41c38fa602585abfe131b1c889310dbaadf24"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-static_assert",
+          "name": "buckaroo-pm/boost-static_assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "fdc2df7f811436674a1c55c766b8830a8cd02e96"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d0a507c0d1a1011c5a98d57acc9f6b755141e4f"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-typeof",
+          "name": "buckaroo-pm/boost-typeof",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "eb8685995412f4d637925d26525c9211379ff875"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-utility",
+          "name": "buckaroo-pm/boost-utility",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f04cf922658a7e03776631a96c3ad346ad179d5f"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-21T15:50:32Z",
+  "updatedUpstream": "2021-01-12T17:22:24Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "sithhell",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/53655?v=4"
+    },
+    {
+      "login": "straszheim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/75593?v=4"
+    },
+    {
+      "login": "swatanabe",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/82176?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "chriskohlhoff",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/462538?v=4"
+    },
+    {
+      "login": "hkaiser",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/568063?v=4"
+    },
+    {
+      "login": "v4hn",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/680358?u=a791eace2598e8a679b710ee9eed5614e77fe475&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "Belcourt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/964973?v=4"
+    },
+    {
+      "login": "brandon-kohn",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/974625?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "rasky",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1014109?v=4"
+    },
+    {
+      "login": "awulkiew",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1226951?v=4"
+    },
+    {
+      "login": "stefanseefeld",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1243351?v=4"
+    },
+    {
+      "login": "stevensmi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1306460?v=4"
+    },
+    {
+      "login": "rdwampler",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1371296?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 70,
+  "forks": 96,
+  "topics": [
+    "boost",
+    "ublas",
+    "tensor",
+    "matrix",
+    "linear-algebra",
+    "vector"
+  ]
+}

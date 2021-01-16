@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/nanopb",
+  "name": "nanopb/nanopb",
+  "stars": 2169,
+  "topics": [
+    "nanopb",
+    "protocol-buffers",
+    "c",
+    "embedded",
+    "embedded-c"
+  ],
+  "description": "Protocol Buffers with small code size",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-22T19:25:57Z",
+  "updatedUpstream": "2021-01-13T17:42:10Z"
+}

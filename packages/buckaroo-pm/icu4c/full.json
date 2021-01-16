@@ -1,0 +1,35 @@
+{
+  "packageName": "buckaroo-pm/icu4c",
+  "name": "njlr/icu4c",
+  "licence": "NOASSERTION",
+  "description": "icu4c",
+  "readme": "# icu4c\n\nSnapshot of [icu4c](http://site.icu-project.org/).\n\nTo build:\n\n```\nbuck build :icu4c\n```\n\nTo run a sample:\n\n```\nbuck run source/samples/break\nbuck run source/samples/cal\nbuck run source/samples/coll\nbuck run source/samples/date\netc...\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:icu4c\" ]",
+      "lockFile": "manifest = \"ab70bccbb9b902b8a7ae34929e36705caf5117481b7d9fe5efa357b781035b3f\"\n\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'dl',\n  header_only = True,\n  exported_linker_flags = [\n    '-ldl',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\nremote_file(\n  name = 'icu4c-data-linux',\n  out = 'icu4c-data.zip',\n  type = 'exploded_zip',\n  url = 'https://github.com/nikhedonia/icu4c.S/archive/ca722d76845bf951fad0a82e4dd3a06805aa009c.zip',\n  sha1 = 'eb0f27b44dabc9035444fef8b0ee343027abb7d3',\n)\n\ngenrule(\n  name = 'icudt59l_dat-linux',\n  srcs = [\n    ':icu4c-data-linux'\n  ],\n  out = 'icudt59l_dat.S',\n  cmd = 'cp $(location :icu4c-data-linux)/icu4c.S-ca722d76845bf951fad0a82e4dd3a06805aa009c/icudt59l_dat.S $OUT'\n)\n\nremote_file(\n  name = 'icu4c-data-macos',\n  out = 'icu4c-data.zip',\n  type = 'exploded_zip',\n  url = 'https://github.com/njlr/icu4c.S/archive/a73ea552920b0a72891012e124ca5ea7a74409e0.zip',\n  sha1 = 'c3f0248d319b8322d2e725510ca6b4a327ee1471',\n)\n\ngenrule(\n  name = 'icudt59l_dat-macos',\n  srcs = [\n    ':icu4c-data-macos'\n  ],\n  out = 'icudt59l_dat.S',\n  cmd = 'cp $(location :icu4c-data-macos)/icu4c.S-a73ea552920b0a72891012e124ca5ea7a74409e0/icudt59l_dat.S $OUT'\n)\n\ncxx_library(\n  name = 'icu4c',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n     ('source/io', 'unicode/**/*.h'),\n     ('source/data', 'unicode/**/*.h'),\n     ('source/extra', 'unicode/**/*.h'),\n     ('source/i18n', 'unicode/**/*.h'),\n     ('source/common', 'unicode/**/*.h'),\n  ]),\n  headers = subdir_glob([\n    ('source/io', '**/*.h'),\n    ('source/data', '**/*.h'),\n    ('source/extra', '**/*.h'),\n    ('source/i18n', '**/*.h'),\n    ('source/common', '**/*.h'),\n    ('source/common/unicode', '**/*.h'),\n    ('source', '**/*.h'),\n  ], excludes = glob([\n    'source/samples/**/*.h',\n  ])),\n  srcs = glob([\n    'source/data/**/*.cpp',\n    'source/io/**/*.cpp',\n    'source/i18n/**/*.cpp',\n    'source/common/**/*.cpp',\n  ], excludes = glob([\n    'source/**/*test.cpp',\n    'source/samples/**/*.cpp',\n  ])),\n  platform_srcs = [\n    ('macos.*', [ ':icudt59l_dat-macos' ]),\n    ('linux.*', [ ':icudt59l_dat-linux' ]),\n  ],\n  preprocessor_flags = [\n    '-DUNISTR_FROM_CHAR_EXPLICIT=explicit',\n    '-DUNISTR_FROM_STRING_EXPLICIT=explicit',\n    '-DU_ENABLE_DYLOAD=1',\n    '-DHAVE_DLFCN_H=1',\n    '-DHAVE_DLOPEN=1',\n    '-DU_IO_IMPLEMENTATION',\n    '-DU_I18N_IMPLEMENTATION',\n    '-DU_COMMON_IMPLEMENTATION',\n  ],\n  platform_deps = [\n    ('linux*', [ ':dl' ]),\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-03-19T22:49:44Z",
+  "updatedUpstream": "2017-05-03T12:40:10Z",
+  "contributors": [
+    {
+      "login": "njlr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1577531?u=b805a63f8054b62169749f2c9d2e89eb53af57d7&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 3,
+  "topics": [
+    "icu",
+    "icu4c",
+    "buck"
+  ]
+}

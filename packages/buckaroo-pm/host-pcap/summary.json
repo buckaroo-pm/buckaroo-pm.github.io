@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-pcap",
+  "name": "buckaroo-pm/host-pcap",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for the host's libpcap",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-22T17:36:19Z",
+  "updatedUpstream": "2019-01-22T17:36:19Z"
+}

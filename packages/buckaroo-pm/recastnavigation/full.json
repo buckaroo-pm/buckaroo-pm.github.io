@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/recastnavigation",
+  "name": "recastnavigation/recastnavigation",
+  "licence": "Zlib",
+  "description": "Navigation-mesh Toolset for Games",
+  "readme": "\nRecast & Detour\n===============\n\n[![Travis (Linux) Build Status](https://travis-ci.org/recastnavigation/recastnavigation.svg?branch=master)](https://travis-ci.org/recastnavigation/recastnavigation)\n[![Appveyor (Windows) Build  Status](https://ci.appveyor.com/api/projects/status/20w84u25b3f8h179/branch/master?svg=true)](https://ci.appveyor.com/project/recastnavigation/recastnavigation/branch/master)\n\n[![Issue Stats](http://www.issuestats.com/github/recastnavigation/recastnavigation/badge/pr?style=flat)](http://www.issuestats.com/github/recastnavigation/recastnavigation)\n[![Issue Stats](http://www.issuestats.com/github/recastnavigation/recastnavigation/badge/issue?style=flat)](http://www.issuestats.com/github/recastnavigation/recastnavigation)\n\n![screenshot of a navmesh baked with the sample program](/RecastDemo/screenshot.png?raw=true)\n\n## Recast\n\nRecast is state of the art navigation mesh construction toolset for games.\n\n* It is automatic, which means that you can throw any level geometry at it and you will get robust mesh out\n* It is fast which means swift turnaround times for level designers\n* It is open source so it comes with full source and you can customize it to your heart's content. \n\nThe Recast process starts with constructing a voxel mold from a level geometry \nand then casting a navigation mesh over it. The process consists of three steps, \nbuilding the voxel mold, partitioning the mold into simple regions, peeling off \nthe regions as simple polygons.\n\n1. The voxel mold is built from the input triangle mesh by rasterizing the triangles into a multi-layer heightfield. Some simple filters are  then applied to the mold to prune out locations where the character would not be able to move.\n2. The walkable areas described by the mold are divided into simple overlayed 2D regions. The resulting regions have only one non-overlapping contour, which simplifies the final step of the process tremendously.\n3. The navigation polygons are peeled off from the regions by first tracing the boundaries and then simplifying them. The resulting polygons are finally converted to convex polygons which makes them perfect for pathfinding and spatial reasoning about the level. \n\n\n## Detour\n\nRecast is accompanied with Detour, path-finding and spatial reasoning toolkit. You can use any navigation mesh with Detour, but of course the data generated with Recast fits perfectly.\n\nDetour offers simple static navigation mesh which is suitable for many simple cases, as well as tiled navigation mesh which allows you to plug in and out pieces of the mesh. The tiled mesh allows you to create systems where you stream new navigation data in and out as the player progresses the level, or you may regenerate tiles as the world changes. \n\n\n## Recast Demo\n\nYou can find a comprehensive demo project in RecastDemo folder. It is a kitchen sink demo containing all the functionality of the library. If you are new to Recast & Detour, check out [Sample_SoloMesh.cpp](/RecastDemo/Source/Sample_SoloMesh.cpp) to get started with building navmeshes and [NavMeshTesterTool.cpp](/RecastDemo/Source/NavMeshTesterTool.cpp) to see how Detour can be used to find paths.\n\n### Building RecastDemo\n\nRecastDemo uses [premake5](http://premake.github.io/) to build platform specific projects. Download it and make sure it's available on your path, or specify the path to it.\n\n#### Linux\n\n- Install SDL2 and its dependencies according to your distro's guidelines.\n- run `premake5 gmake` from the `RecastDemo` folder.\n- `cd Build/gmake` then `make`\n- Run `RecastDemo\\Bin\\RecastDemo`\n\n#### OSX\n\n- Grab the latest SDL2 development library dmg from [here](https://www.libsdl.org/download-2.0.php) and place `SDL2.framework` in `/Library/Frameworks/`\n- Navigate to the `RecastDemo` folder and run `premake5 xcode4`\n- Open `Build/xcode4/recastnavigation.xcworkspace`\n- Select the \"RecastDemo\" project in the left pane, go to the \"BuildPhases\" tab and expand \"Link Binary With Libraries\"\n- Remove the existing entry for SDL2 (it should have a white box icon) and re-add it by hitting the plus, selecting \"Add Other\", and selecting `/Library/Frameworks/SDL2.framework`.  It should now have a suitcase icon.\n- Set the RecastDemo project as the target and build.\n\n#### Windows\n\n- Grab the latest SDL2 development library release from [here](https://www.libsdl.org/download-2.0.php) and unzip it `RecastDemo\\Contrib`.  Rename the SDL folder such that the path `RecastDemo\\Contrib\\SDL\\lib\\x86` is valid.\n- Run `\"premake5\" vs2015` from the `RecastDemo` folder\n- Open the solution, build, and run.\n\n### Running Unit tests\n\n- Follow the instructions to build RecastDemo above.  Premake should generate another build target called \"Tests\".\n- Build the \"Tests\" project.  This will generate an executable named \"Tests\" in `RecastDemo/Bin/`\n- Run the \"Tests\" executable.  It will execute all the unit tests, indicate those that failed, and display a count of those that succeeded.\n\n## Integrating with your own project\n\nIt is recommended to add the source directories `DebugUtils`, `Detour`, `DetourCrowd`, `DetourTileCache`, and `Recast` into your own project depending on which parts of the project you need. For example your level building tool could include `DebugUtils`, `Recast`, and `Detour`, and your game runtime could just include `Detour`.\n\n## Contributing\n\nSee the [Contributing document](CONTRIBUTING.md) for guidelines for making contributions.\n\n## Discuss\n\n- Discuss Recast & Detour: http://groups.google.com/group/recastnavigation\n- Development blog: http://digestingduck.blogspot.com/\n\n## License\n\nRecast & Detour is licensed under ZLib license, see License.txt for more information.\n",
+  "versions": [
+    {
+      "ref": "1.5.1",
+      "manifest": "targets = [ \"//:recast\" ]\n",
+      "lockFile": "manifest = \"603b16e06a6c7b92a527ed3c78f943e1aa8b53a3d3b53cc7d6fe10877199d463\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'recast',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('Recast/Include', '**/*.h'),\n  ]),\n  srcs = glob([\n    'Recast/Source/**/*.cpp',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-03-20T16:37:28Z",
+  "updatedUpstream": "2021-01-13T07:16:34Z",
+  "contributors": [
+    {
+      "login": "Nightblade",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/23911?v=4"
+    },
+    {
+      "login": "mynz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/86124?v=4"
+    },
+    {
+      "login": "bitshifter",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/135700?u=6ae5ea4e27ec23a966e919a9ad4b19c3f0e1f648&v=4"
+    },
+    {
+      "login": "hymerman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/154886?v=4"
+    },
+    {
+      "login": "qiqian",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/227139?v=4"
+    },
+    {
+      "login": "mendsley",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/260055?u=decf3c57e68293dbfc51f0de775e07e396005da6&v=4"
+    },
+    {
+      "login": "DarthGandalf",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/325092?v=4"
+    },
+    {
+      "login": "gasbank",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/467275?u=779bff477704f540e1aab92749580ff129e47963&v=4"
+    },
+    {
+      "login": "arl",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/476650?u=acd5a225a9b8bd2a24271a9ce59b9479bdd99464&v=4"
+    },
+    {
+      "login": "leif81",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/494426?u=072f0c245167f479617f938c01a2df5b781d2f73&v=4"
+    },
+    {
+      "login": "richard-fine",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/588194?v=4"
+    },
+    {
+      "login": "Bromeon",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/708488?v=4"
+    },
+    {
+      "login": "hgaiser",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/716138?u=f81542ed463269752a0f8908c26f2f6e9f71e63f&v=4"
+    },
+    {
+      "login": "cloudwu",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/729648?v=4"
+    },
+    {
+      "login": "elsid",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/764107?u=5fd926903103bc35e483e9299ff6b81674e4565b&v=4"
+    },
+    {
+      "login": "pboyer",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/916345?u=cc055dee9d2691f8717d37ea3acf67caa1cb8221&v=4"
+    },
+    {
+      "login": "cmf028",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1007349?v=4"
+    },
+    {
+      "login": "psi29a",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1122069?v=4"
+    },
+    {
+      "login": "grahamboree",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1139220?u=a90e66d92edea7795b82068dac8fc0437f8a0031&v=4"
+    },
+    {
+      "login": "jackpoz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1153754?v=4"
+    },
+    {
+      "login": "Sandern",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1249842?u=58d527dfcb522bbe7174a786307b5ebfce97762a&v=4"
+    },
+    {
+      "login": "speakfool",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1833084?v=4"
+    },
+    {
+      "login": "jarrettchisholm",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1896778?v=4"
+    },
+    {
+      "login": "flippy84",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1911709?v=4"
+    },
+    {
+      "login": "zapolnov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1921392?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 3717,
+  "forks": 1028,
+  "topics": []
+}

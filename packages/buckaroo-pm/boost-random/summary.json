@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-random",
+  "name": "boostorg/random",
+  "stars": 28,
+  "topics": [],
+  "description": "Boost.org random module",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": false,
+      "buck": true,
+      "deps": 13,
+      "transitive": 20
+    },
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 13,
+      "transitive": 28
+    }
+  ],
+  "updated": "2018-11-20T18:57:00Z",
+  "updatedUpstream": "2021-01-13T19:36:39Z"
+}

@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-safe_numerics",
+  "name": "boostorg/safe_numerics",
+  "stars": 165,
+  "topics": [
+    "integer-arithmetic",
+    "boost-libraries",
+    "c-plus-plus",
+    "safe-numerics",
+    "safe-integers",
+    "safety-critical"
+  ],
+  "description": "Replacements to standard numeric types which throw exceptions on errors",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 12
+    }
+  ],
+  "updated": "2019-01-29T10:30:36Z",
+  "updatedUpstream": "2021-01-01T03:52:35Z"
+}

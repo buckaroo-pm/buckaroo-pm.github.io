@@ -1,0 +1,171 @@
+{
+  "packageName": "buckaroo-pm/mapbox-vector-tile",
+  "name": "mapbox/vector-tile",
+  "licence": "ISC",
+  "description": "C++14 library for decoding Mapbox Vector Tiles",
+  "readme": "## Vector Tile Library\n\nC++14 library for decoding [Mapbox Vector Tiles](https://www.mapbox.com/vector-tiles/).\n\n[![Build Status](https://travis-ci.org/mapbox/vector-tile.svg?branch=master)](https://travis-ci.org/mapbox/vector-tile)\n\n## Depends\n\n - C++14 compiler\n - [protozero](https://github.com/mapbox/protozero)\n - [variant](https://github.com/mapbox/variant)\n - [geometry](https://github.com/mapbox/geometry.hpp)\n\n\n## Building\n\nCall\n```sh\ngit submodule init\ngit submodule update\n```\n\nto install test fixtures from an external git repository.\n\nTo install all dependencies and build the tests in this repo do:\n\n```sh\nmake test\n```\n\n## To bundle the `demo` program do:\n\n```sh\nmake demo\n```\n\nThis copies all the includes into the `demo/include` folder such that the demo can be build like:\n\n```sh\nmake -C demo/\n```\n\nOr also like:\n\n```sh\ncd demo\nmake\n```\n\n# Who is using vector-tile?\n\nThese are the applications targeted to upgrade to this library:\n\n* [Mapbox GL Native](https://github.com/mapbox/mapbox-gl-native)\n* [Mapnik Vector Tile](https://github.com/mapbox/mapnik-vector-tile)\n* [Tippecanoe](https://github.com/mapbox/tippecanoe)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:vector-tile\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-protozero\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"ea4012a110ae37220d71b5001bc6c4966fdc9d74421bdd97ddd92fdd173e1ec8\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\ntarget = \"//:geometry\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-protozero\"\ntarget = \"//:protozero\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/Catch2\"\nrevision = \"65ab25beb9080c77a7aa0edbfab1812a06e174d1\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\nrevision = \"dc886c9705ebec3b4c8ddf3b305537a450267944\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-protozero\"\nrevision = \"c99e1b2dcab525871c7b9a2a34b0574a2ead23db\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-variant\"\nrevision = \"e735b7c1be9fe58e364685e6093628644776baf3\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'vector-tile', \n  header_namespace = 'mapbox', \n  header_only = True, \n  exported_headers = subdir_glob([\n    ('include/mapbox', '**/*.hpp'), \n  ]), \n  licenses = [\n    'LICENSE', \n  ], \n  deps = buckaroo_deps(), \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-geometry.hpp",
+          "name": "buckaroo-pm/mapbox-geometry.hpp",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-protozero",
+          "name": "buckaroo-pm/mapbox-protozero",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "0",
+          "name": "0",
+          "spec": {
+            "name": "github.com/buckaroo-pm/Catch2",
+            "revision": "65ab25beb9080c77a7aa0edbfab1812a06e174d1"
+          }
+        },
+        {
+          "uri": "1",
+          "name": "1",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-geometry.hpp",
+            "revision": "dc886c9705ebec3b4c8ddf3b305537a450267944"
+          }
+        },
+        {
+          "uri": "2",
+          "name": "2",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-protozero",
+            "revision": "c99e1b2dcab525871c7b9a2a34b0574a2ead23db"
+          }
+        },
+        {
+          "uri": "3",
+          "name": "3",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-variant",
+            "revision": "e735b7c1be9fe58e364685e6093628644776baf3"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-21T11:24:19Z",
+  "updatedUpstream": "2021-01-11T11:09:38Z",
+  "contributors": [
+    {
+      "login": "zugaldia",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6964?u=e17bd7e9c8e0d4ca1df6956596cffc4ef10176de&v=4"
+    },
+    {
+      "login": "bookest",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14640?u=75e815f366d32a63b0d223fe47182a1570a96bb3&v=4"
+    },
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "mikelmaron",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22896?u=f22126445e688b260ca316709407189f669c2083&v=4"
+    },
+    {
+      "login": "mourner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25395?u=6f04fa0e30ee06ee7ef8d13dd6c166d0ca70aeea&v=4"
+    },
+    {
+      "login": "sbma44",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31717?v=4"
+    },
+    {
+      "login": "sgillies",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33697?u=518c359114c548926c56fef4b51a123e9a4a5d47&v=4"
+    },
+    {
+      "login": "kkaefer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/52399?u=7b3a53dfef51246b5c1342108a664842b4ea3571&v=4"
+    },
+    {
+      "login": "alfwatt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/53469?u=ff9e35352887e919bfd74b6ad0bee578af80e165&v=4"
+    },
+    {
+      "login": "anderco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55106?v=4"
+    },
+    {
+      "login": "yuletide",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58695?u=6322adc3fcbff377e32f0e6299d7aaddd841dc6e&v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "tristen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61150?u=40b52d083ac2c6f414ef35c79271c776787e7bd0&v=4"
+    },
+    {
+      "login": "ivovandongen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/64527?u=e284cc763f7ca8765196fc0f6279e7538742cdfd&v=4"
+    },
+    {
+      "login": "brunoabinader",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76133?v=4"
+    },
+    {
+      "login": "apendleton",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/78930?u=911348d600e91c721685538a958ee4252a854589&v=4"
+    },
+    {
+      "login": "yhahn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/83384?u=b2c1ca34e763ba420f510b5a1d62201c1d9624eb&v=4"
+    },
+    {
+      "login": "PureW",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/85910?v=4"
+    },
+    {
+      "login": "AlekseiCherkes",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/87640?u=f75d2bf7fd442db59db853feab57a208761fddef&v=4"
+    },
+    {
+      "login": "ianshward",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/91258?u=5e631aa4328b540f955d9c2e9e2588fcc1bd0d0d&v=4"
+    },
+    {
+      "login": "gundersen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/93353?v=4"
+    },
+    {
+      "login": "willwhite",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/93564?u=3e17a4a45e3ce686ca811d9ed79257db04ff345f&v=4"
+    },
+    {
+      "login": "lxbarth",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/98233?u=3ca609d2f417501e961958c5bef2f99327b3f84e&v=4"
+    },
+    {
+      "login": "kshehadeh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/107061?u=d5e994f10868eb85c21bc5b8793da960f3044ed6&v=4"
+    },
+    {
+      "login": "samanpwbb",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/108094?u=f38ea53150b7855f77de960bde5d8f2cb09aa6ed&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 33,
+  "forks": 14,
+  "topics": []
+}

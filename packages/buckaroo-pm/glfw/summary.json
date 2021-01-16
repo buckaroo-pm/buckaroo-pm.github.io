@@ -1,0 +1,27 @@
+{
+  "packageName": "buckaroo-pm/glfw",
+  "name": "glfw/glfw",
+  "stars": 7115,
+  "topics": [
+    "vulkan",
+    "opengl",
+    "c",
+    "linux",
+    "macos",
+    "windows",
+    "unix",
+    "opengl-es"
+  ],
+  "description": "A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 8,
+      "transitive": 8
+    }
+  ],
+  "updated": "2019-06-16T11:11:19Z",
+  "updatedUpstream": "2021-01-13T22:30:24Z"
+}

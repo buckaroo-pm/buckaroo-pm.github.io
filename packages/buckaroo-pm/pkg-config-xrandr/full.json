@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-xrandr",
+  "name": "buckaroo-pm/pkg-config-xrandr",
+  "licence": "",
+  "description": "Buck wrapper for Xrandr managed by pkg-config",
+  "readme": "# pkg-config-xrandr\n\nBuck wrapper for Xrandr managed by `pkg-config`.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:xrandr\" ]\n",
+      "lockFile": "manifest = \"53d9367a21c3b53d748dbdc1bb6e75fe81372264b2b197d5f418669ec2e3c0c9\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' xrandr --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' xrandr --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'xrandr',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-08T11:20:15Z",
+  "updatedUpstream": "2019-01-08T11:20:15Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

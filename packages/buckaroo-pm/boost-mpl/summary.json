@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-mpl",
+  "name": "boostorg/mpl",
+  "stars": 26,
+  "topics": [],
+  "description": "Boost.org mpl module",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 1
+    },
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 3
+    }
+  ],
+  "updated": "2018-11-20T12:25:45Z",
+  "updatedUpstream": "2020-10-28T04:11:34Z"
+}

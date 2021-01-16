@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-config",
+  "name": "boostorg/config",
+  "stars": 39,
+  "topics": [],
+  "description": "Boost.org config module ",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-17T21:58:19Z",
+  "updatedUpstream": "2021-01-07T19:36:53Z"
+}

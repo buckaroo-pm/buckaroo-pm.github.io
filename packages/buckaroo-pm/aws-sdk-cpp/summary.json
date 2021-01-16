@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/aws-sdk-cpp",
+  "name": "aws/aws-sdk-cpp",
+  "stars": 1167,
+  "topics": [
+    "cpp",
+    "aws",
+    "cross-platform"
+  ],
+  "description": "AWS SDK for C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 4,
+      "transitive": 5
+    }
+  ],
+  "updated": "2018-12-04T16:20:18Z",
+  "updatedUpstream": "2021-01-13T20:56:24Z"
+}

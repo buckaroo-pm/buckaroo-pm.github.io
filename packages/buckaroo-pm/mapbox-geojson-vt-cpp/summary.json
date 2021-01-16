@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-geojson-vt-cpp",
+  "name": "mapbox/geojson-vt-cpp",
+  "stars": 65,
+  "topics": [],
+  "description": "Port to C++ of JS GeoJSON-VT for slicing GeoJSON into vector tiles on the fly",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 3
+    }
+  ],
+  "updated": "2018-11-20T20:50:38Z",
+  "updatedUpstream": "2020-12-18T05:43:48Z"
+}

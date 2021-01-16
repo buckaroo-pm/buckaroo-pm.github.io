@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-msm",
+  "name": "boostorg/msm",
+  "stars": 24,
+  "topics": [],
+  "description": "Boost.org msm module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2018-11-16T09:51:46Z",
+  "updatedUpstream": "2020-11-07T17:05:17Z"
+}

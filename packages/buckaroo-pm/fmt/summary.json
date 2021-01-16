@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/fmt",
+  "name": "fmtlib/fmt",
+  "stars": 10145,
+  "topics": [
+    "c-plus-plus",
+    "formatting",
+    "printf",
+    "output",
+    "chrono",
+    "performance"
+  ],
+  "description": "A modern formatting library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-18T14:35:16Z",
+  "updatedUpstream": "2021-01-13T19:36:17Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-any",
+  "name": "boostorg/any",
+  "stars": 20,
+  "topics": [],
+  "description": "Boost.org any module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 7,
+      "transitive": 13
+    }
+  ],
+  "updated": "2018-11-16T00:11:39Z",
+  "updatedUpstream": "2021-01-03T23:50:54Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/libwebp",
+  "name": "webmproject/libwebp",
+  "stars": 1204,
+  "topics": [],
+  "description": "Mirror only. Please do not send pull requests.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 4
+    }
+  ],
+  "updated": "2019-01-18T13:40:10Z",
+  "updatedUpstream": "2021-01-12T23:29:30Z"
+}

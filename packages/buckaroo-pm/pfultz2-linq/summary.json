@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/pfultz2-linq",
+  "name": "pfultz2/Linq",
+  "stars": 595,
+  "topics": [
+    "linq",
+    "c-plus-plus",
+    "cpp",
+    "cpp11",
+    "cplusplus",
+    "functional"
+  ],
+  "description": "Linq for list comprehension in C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 11,
+      "transitive": 48
+    }
+  ],
+  "updated": "2019-01-23T20:54:41Z",
+  "updatedUpstream": "2021-01-04T15:23:32Z"
+}

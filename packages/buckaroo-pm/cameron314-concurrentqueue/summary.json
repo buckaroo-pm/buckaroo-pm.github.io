@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/cameron314-concurrentqueue",
+  "name": "cameron314/concurrentqueue",
+  "stars": 5183,
+  "topics": [],
+  "description": "A fast multi-producer, multi-consumer lock-free concurrent queue for C++11",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-23T18:50:54Z",
+  "updatedUpstream": "2021-01-13T19:43:54Z"
+}

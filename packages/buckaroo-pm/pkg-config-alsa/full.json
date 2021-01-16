@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-alsa",
+  "name": "buckaroo-pm/pkg-config-alsa",
+  "licence": "",
+  "description": "Buck wrapper for libalsa managed by pkg-config ",
+  "readme": "# pkg-config-alsa\n\nBuck wrapper for libalsa managed by `pkg-config`.\n\nTo run the demo:\n\n```bash=\nbuck run ./demo\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:alsa\" ]",
+      "lockFile": "manifest = \"fdb92065fed13db4dd2cba0036aba9cb725a2276308e71003388f5da9471d178\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' alsa --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' alsa --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'alsa',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-21T12:56:21Z",
+  "updatedUpstream": "2019-01-21T12:56:21Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

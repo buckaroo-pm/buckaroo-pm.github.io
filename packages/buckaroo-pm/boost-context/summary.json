@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-context",
+  "name": "boostorg/context",
+  "stars": 161,
+  "topics": [],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 14
+    }
+  ],
+  "updated": "2019-01-14T16:27:18Z",
+  "updatedUpstream": "2021-01-06T14:07:02Z"
+}

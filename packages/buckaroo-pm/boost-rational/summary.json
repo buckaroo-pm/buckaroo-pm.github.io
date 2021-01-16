@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-rational",
+  "name": "boostorg/rational",
+  "stars": 16,
+  "topics": [],
+  "description": "Boost.org rational module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-16T11:36:57Z",
+  "updatedUpstream": "2020-11-16T14:31:28Z"
+}

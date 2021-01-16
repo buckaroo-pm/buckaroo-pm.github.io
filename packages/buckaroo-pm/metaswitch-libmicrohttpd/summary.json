@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/metaswitch-libmicrohttpd",
+  "name": "Metaswitch/libmicrohttpd",
+  "stars": 5,
+  "topics": [],
+  "description": "GNU libmicrohttpd",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-23T14:36:58Z",
+  "updatedUpstream": "2017-07-31T09:39:47Z"
+}

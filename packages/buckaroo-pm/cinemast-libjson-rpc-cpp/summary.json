@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/cinemast-libjson-rpc-cpp",
+  "name": "cinemast/libjson-rpc-cpp",
+  "stars": 640,
+  "topics": [
+    "rpc",
+    "json-rpc-client",
+    "json-rpc-server",
+    "json",
+    "cpp",
+    "json-rpc",
+    "json-rpc2",
+    "c-plus-plus",
+    "libjson-rpc-cpp",
+    "stub-generator"
+  ],
+  "description": "C++ framework for json-rpc (json remote procedure call)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 3,
+      "transitive": 6
+    }
+  ],
+  "updated": "2019-01-23T15:40:56Z",
+  "updatedUpstream": "2021-01-13T05:12:01Z"
+}

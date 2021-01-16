@@ -1,0 +1,32 @@
+{
+  "packageName": "buckaroo-pm/agauniyal-rang",
+  "name": "agauniyal/rang",
+  "stars": 1061,
+  "topics": [
+    "cli",
+    "ansi",
+    "rang",
+    "cpp",
+    "cpp11",
+    "console",
+    "command-line",
+    "color",
+    "terminal",
+    "cpp14",
+    "cpp17",
+    "cplusplus",
+    "cpp-library"
+  ],
+  "description": "A Minimal, Header only Modern c++ library for terminal goodies 💄✨",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2018-12-11T23:47:21Z",
+  "updatedUpstream": "2021-01-13T19:48:59Z"
+}

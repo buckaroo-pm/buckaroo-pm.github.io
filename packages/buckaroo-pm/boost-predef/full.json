@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/boost-predef",
+  "name": "boostorg/predef",
+  "licence": "",
+  "description": "Boost.Predef (a Boost C++ Library)",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:predef\" ]",
+      "lockFile": "manifest = \"bdee7cc15448b119eb3c96152a374efc2223194f831db58a028d80b0c8db4f07\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'predef',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n    ('include/boost', '**/*.h'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-14T20:08:35Z",
+  "updatedUpstream": "2021-01-06T04:20:17Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "xnox",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/19779?v=4"
+    },
+    {
+      "login": "straszheim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/75593?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "jessicah",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/274082?v=4"
+    },
+    {
+      "login": "ccharly",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/569258?u=a9822ddd4a5063593ef056e5da64bb53c498545c&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "tpetazzoni",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1089203?v=4"
+    },
+    {
+      "login": "brad0",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1129902?v=4"
+    },
+    {
+      "login": "gongminmin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1177147?u=548871f3431ef5e04fe6c4bde88819fcf32c9fa8&v=4"
+    },
+    {
+      "login": "awulkiew",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1226951?v=4"
+    },
+    {
+      "login": "falgon",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1241783?u=dee28487989ded5b417672468b4b942d00abde1b&v=4"
+    },
+    {
+      "login": "stgates",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1794518?v=4"
+    },
+    {
+      "login": "andreas-schwab",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2175493?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "jhunold",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3115501?u=143d1f05ab1c7e5cf13ef4c8093aa3910d86c19e&v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 35,
+  "forks": 57,
+  "topics": []
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-lambda",
+  "name": "boostorg/lambda",
+  "stars": 15,
+  "topics": [],
+  "description": "Boost.org lambda module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 13,
+      "transitive": 23
+    }
+  ],
+  "updated": "2019-01-11T17:02:00Z",
+  "updatedUpstream": "2020-02-22T20:15:04Z"
+}

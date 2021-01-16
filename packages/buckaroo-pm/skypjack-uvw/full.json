@@ -1,0 +1,167 @@
+{
+  "packageName": "buckaroo-pm/skypjack-uvw",
+  "name": "skypjack/uvw",
+  "licence": "MIT",
+  "description": "Header-only, event based, tiny and easy to use libuv wrapper in modern C++",
+  "readme": "![uvw - libuv wrapper in modern C++](https://user-images.githubusercontent.com/1812216/46069406-c977a600-c17b-11e8-9a47-9bba6f412c57.png)\n\n<!--\n@cond TURN_OFF_DOXYGEN\n-->\n[![Build Status](https://travis-ci.org/skypjack/uvw.svg?branch=master)](https://travis-ci.org/skypjack/uvw)\n[![Build status](https://ci.appveyor.com/api/projects/status/m5ndm8gnu8isg2to?svg=true)](https://ci.appveyor.com/project/skypjack/uvw)\n[![Coverage Status](https://coveralls.io/repos/github/skypjack/uvw/badge.svg?branch=master)](https://coveralls.io/github/skypjack/uvw?branch=master)\n[![Download](https://api.bintray.com/packages/skypjack/conan/uvw%3Askypjack/images/download.svg)](https://bintray.com/skypjack/conan/uvw%3Askypjack/_latestVersion)\n[![Gitter chat](https://badges.gitter.im/skypjack/uvw.png)](https://gitter.im/skypjack/uvw)\n[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=W2HF9FESD5LJY&lc=IT&item_name=Michele%20Caini&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)\n\n[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=11330786)\n\n<!--\n@endcond TURN_OFF_DOXYGEN\n-->\n\n# Introduction\n\n`uvw` is a header-only, event based, tiny and easy to use *libuv* wrapper in modern C++.<br/>\nThe basic idea is to hide completely the *C-ish* interface of *libuv* behind a graceful C++ API. Currently, no `uv_*_t` data structure is actually exposed by the library.<br/>\nNote that `uvw` stays true to the API of *libuv* and it doesn't add anything to its interface. For the same reasons, users of the library must follow the same rules who are used to follow with *libuv*.<br/>\nAs an example, a *handle* should be initialized before any other operation and closed once it is no longer in use.\n\n## Code Example\n\n```cpp\n#include <uvw.hpp>\n#include <memory>\n\nvoid listen(uvw::Loop &loop) {\n    std::shared_ptr<uvw::TCPHandle> tcp = loop.resource<uvw::TCPHandle>();\n\n    tcp->once<uvw::ListenEvent>([](const uvw::ListenEvent &, uvw::TCPHandle &srv) {\n        std::shared_ptr<uvw::TCPHandle> client = srv.loop().resource<uvw::TCPHandle>();\n\n        client->on<uvw::CloseEvent>([ptr = srv.shared_from_this()](const uvw::CloseEvent &, uvw::TCPHandle &) { ptr->close(); });\n        client->on<uvw::EndEvent>([](const uvw::EndEvent &, uvw::TCPHandle &client) { client.close(); });\n\n        srv.accept(*client);\n        client->read();\n    });\n\n    tcp->bind(\"127.0.0.1\", 4242);\n    tcp->listen();\n}\n\nvoid conn(uvw::Loop &loop) {\n    auto tcp = loop.resource<uvw::TCPHandle>();\n\n    tcp->on<uvw::ErrorEvent>([](const uvw::ErrorEvent &, uvw::TCPHandle &) { /* handle errors */ });\n\n    tcp->once<uvw::ConnectEvent>([](const uvw::ConnectEvent &, uvw::TCPHandle &tcp) {\n        auto dataWrite = std::unique_ptr<char[]>(new char[2]{ 'b', 'c' });\n        tcp.write(std::move(dataWrite), 2);\n        tcp.close();\n    });\n\n    tcp->connect(std::string{\"127.0.0.1\"}, 4242);\n}\n\nint main() {\n    auto loop = uvw::Loop::getDefault();\n    listen(*loop);\n    conn(*loop);\n    loop->run();\n}\n```\n\n## Motivation\n\nThe main reason for which `uvw` has been written is the fact that it does not exist a valid *libuv* wrapper in C++. That's all.\n\n# Build Instructions\n\n## Requirements\n\nTo be able to use `uvw`, users must provide the following system-wide tools:\n\n* A full-featured compiler that supports at least C++14.\n* `libuv` (which version depends on the tag of `uvw` in use).\n\nThe requirements below are mandatory to compile the tests and to extract the documentation:\n\n* CMake version 3.2 or later.\n* Doxygen version 1.8 or later.\n\nNote that `libuv` is part of the dependencies of the project and it will be cloned by `cmake` (see below for further details).<br/>\nBecause of that, users have not to install it to compile and execute the tests.\n\n## Library\n\n`uvw` is a header-only library.<br/>\nThis means that including the `uvw.hpp` header or one of the other `uvw/*.hpp` headers is enough to use it.<br/>\nIt's a matter of adding the following line at the top of a file:\n\n```cpp\n#include <uvw.hpp>\n```\n\nThen pass the proper `-I` argument to the compiler to add the `src` directory to the include paths.<br/>\nNote that users are demanded to correctly setup include directories and libraries search paths for *libuv*.\n\n## Versioning\n\nStarting with tag _v1.12.0_ of `libuv`, `uvw` follows the [semantic versioning](http://semver.org/) scheme.<br/>\nThe problem is that any version of `uvw` also requires to track explicitly the version of `libuv` to which it is bound.<br/>\nBecause of that, the latter wil be appended to the version of `uvw`. As an example:\n\n    vU.V.W_libuv-vX.Y\n\nIn particular, the following applies:\n\n* _U.V.W_ are major, minor and patch versions of `uvw`.\n* _X.Y_ is the version of `libuv` to which to refer (where any patch version is valid).\n\nIn other terms, tags will look like this from now on:\n\n    v1.0.0_libuv-v1.12\n\nBranch `master` of `uvw` will be a work in progress branch that follows branch _v1.x_ of `libuv` (at least as long as it remains their _master_ branch).<br/>\n\n## Documentation\n\nThe documentation is based on [`doxygen`](http://www.stack.nl/~dimitri/doxygen/). To build it:\n\n* `$ cd build`\n* `$ cmake ..`\n* `$ make docs`\n\nThe API reference will be created in HTML format within the directory `build/docs/html`.<br/>\nTo navigate it with your favorite browser:\n\n* `$ cd build`\n* `$ your_favorite_browser docs/html/index.html`\n\nThe API reference is also available [online](https://skypjack.github.io/uvw/) for the latest version.\n\n### Note\n\nThe documentation is mostly inspired by the official [libuv API documentation](http://docs.libuv.org/en/v1.x/) for obvious reasons.<br/>\nIf you are mainly interested in the way `uvw` imports `libuv` in a `cmake` based project, I suggest you to take a look at [this](https://github.com/skypjack/libuv_cmake) repository instead.\n\n## Tests\n\nTo compile and run the tests, `uvw` requires *libuv* and *googletest*.<br/>\n`cmake` will download and compile both the libraries before to compile anything else.\n\nTo build the tests:\n\n* `$ cd build`\n* `$ cmake .. -DBUILD_TESTING=ON`\n* `$ make`\n* `$ ctest -j4 -R uvw`\n\nOmit `-R uvw` if you also want to test `libuv` and other dependencies.\n\n# Crash Course\n\n## Vademecum\n\nThere is only one rule when using `uvw`: always initialize the resources and terminate them.\n\nResources belong mainly to two families: _handles_ and _requests_.<br/>\nHandles represent long-lived objects capable of performing certain operations while active.<br/>\nRequests represent (typically) short-lived operations performed either over a handle or standalone.\n\nThe following sections will explain in short what it means to initialize and terminate these kinds of resources.<br/>\nFor more details, please refer to the [online documentation](https://skypjack.github.io/uvw/).\n\n## Handles\n\nInitialization is usually performed under the hood and can be even passed over, as far as handles are created using the `Loop::resource` member function.<br/>\nOn the other side, handles keep themselves alive until one explicitly closes them. Because of that, memory usage will grow up if users simply forget about a handle.<br/>\nTherefore the rule quickly becomes *always close your handles*. It's as simple as calling the `close` member function on them.\n\n## Requests\n\nUsually initializing a request object is not required. Anyway, the recommended way to create a request is still through the `Loop::resource` member function.<br/>\nRequests will keep themselves alive as long as they are bound to unfinished underlying activities. This means that users have not to discard explicitly a request.<br/>\nTherefore the rule quickly becomes *feel free to make a request and forget about it*. It's as simple as calling a member function on them.\n\n## The Loop and the Resource\n\nThe first thing to do to use `uvw` is to create a loop. In case the default one is enough, it's easy as doing this:\n\n```cpp\nauto loop = uvw::Loop::getDefault();\n```\n\nNote that loop objects don't require to be closed explicitly, even if they offer the `close` member function in case an user wants to do that.<br/>\nLoops can be started using the `run` member function. The two calls below are equivalent:\n\n```cpp\nloop->run();\nloop->run<uvw::Loop::Mode::DEFAULT>();\n```\n\nAvailable modes are: `DEFAULT`, `ONCE`, `NOWAIT`. Please refer to the documentation of *libuv* for further details.\n\nIn order to create a resource and to bind it to the given loop, just do the following:\n\n```cpp\nauto tcp = loop.resource<uvw::TCPHandle>();\n```\n\nThe line above will create and initialize a tcp handle, then a shared pointer to that resource will be returned.<br/>\nUsers should check if pointers have been correctly initialized: in case of errors, they won't be.<br/>\nAnother way to create a resource is:\n\n```cpp\nauto tcp = TCPHandle::create(loop);\ntcp->init();\n```\n\nPretty annoying indeed. Using a loop is the recommended approach.\n\nThe resources also accept arbitrary user-data that won't be touched in any case.<br/>\nUsers can set and get them through the `data` member function as it follows:\n\n```cpp\nresource->data(std::make_shared<int>(42));\nstd::shared_ptr<void> data = resource->data();\n```\n\nResources expect a `std::shared_pointer<void>` and return it, therefore any kind of data is welcome.<br/>\nUsers can explicitly specify a type other than `void` when calling the `data` member function:\n\n```cpp\nstd::shared_ptr<int> data = resource->data<int>();\n```\n\nRemember from the previous section that a handle will keep itself alive until one invokes the `close` member function on it.<br/>\nTo know what are the handles that are still alive and bound to a given loop, just do the following:\n\n```cpp\nloop.walk([](uvw::BaseHandle &){ /* application code here */ });\n```\n\n`BaseHandle` exposes a few methods and cannot be promoted to the original type of the handle (even though `type` and `category` member functions fill the gap somehow).<br/>\nAnyway, it can be used to close the handle that originated from it. As an example, all the pending handles can be closed easily as it follows:\n\n```cpp\nloop.walk([](uvw::BaseHandle &h){ h.close(); });\n```\n\nNo need to keep track of them.\n\nTo know what are the available resources' types, please refer the API reference.\n\n## The event-based approach\n\nFor `uvw` offers an event-based approach, resources are small event emitters to which listeners can be attached.<br/>\nAttaching a listener to a resource is the recommended way to be notified about changes.<br/>\nListeners must be callable objects of type `void(EventType &, ResourceType &)`, where:\n\n* `EventType` is the type of the event for which they have been designed.\n* `ResourceType` is the type of the resource that has originated the event.\n\nIt means that the following function types are all valid:\n\n* `void(EventType &, ResourceType &)`\n* `void(const EventType &, ResourceType &)`\n* `void(EventType &, const ResourceType &)`\n* `void(const EventType &, const ResourceType &)`\n\nOnce more, please note that there is no need to keep around references to the resources: they will pass themselves as an argument whenever an event is published.\n\nThere exist two methods to attach an event to a resource:\n\n* `resource.once<EventType>(listener)`: the listener will be automatically removed after the first event of the given type.\n* `resource.on<EventType>(listener)`: to be used for long-running listeners.\n\nBoth of them return an object of type `ResourceType::Connection` (as an example, `TCPHandle::Connection`).<br/>\nA connection object can be used later as an argument to the `erase` member function of the resource to remove the listener.<br/>\nThere exists also the `clear` member function to drop all the listeners at once.\n\nAlmost all the resources use to emit `ErrorEvent` events in case of errors.<br/>\nAll the other events are specific for the given resource and documented in the API reference.\n\nThe code below shows how to create a simple tcp server using `uvw`:\n\n```cpp\nauto loop = uvw::Loop::getDefault();\nauto tcp = loop.resource<uvw::TCPHandle>();\n\ntcp->on<uvw::ErrorEvent>([](const uvw::ErrorEvent &, uvw::TCPHandle &) { /* something went wrong */ });\n\ntcp->on<uvw::ListenEvent>([](const uvw::ListenEvent &, uvw::TCPHandle &srv) {\n    std::shared_ptr<uvw::TCPHandle> client = srv.loop().resource<uvw::TCPHandle>();\n    client->once<uvw::EndEvent>([](const uvw::EndEvent &, uvw::TCPHandle &client) { client.close(); });\n    client->on<uvw::DataEvent>([](const uvw::DataEvent &, uvw::TCPHandle &) { /* data received */ });\n    srv.accept(*client);\n    client->read();\n});\n\ntcp->bind(\"127.0.0.1\", 4242);\ntcp->listen();\n```\n\nNote also that `uvw::TCPHandle` already supports _IPv6_ out-of-the-box. The statement above is equivalent to `tcp->bind<uvw::IPv4>(\"127.0.0.1\", 4242)`.<br/>\nIt's suffice to explicitly specify `uvw::IPv6` as the underlying protocol to use it.\n\nThe API reference is the recommended documentation for further details about resources and their methods.\n\n## Going raw\n\nIn case users need to use functionalities not wrapped yet by `uvw` or if they\nwant to get the underlying data structures as defined by `libuv` for some other\nreasons, almost all the classes in `uvw` give direct access to them.<br/>\nPlease, note that this functions should not be used directly unless users know\nexactly what they are doing and what are the risks. Going raw is dangerous,\nmainly because the lifetime management of a loop, a handle or a request is\ncompletely in charge to the library and working around it could quickly break\nthings.\n\nThat being said, _going raw_ is a matter of using the `raw` member functions:\n\n```cpp\nauto loop = uvw::Loop::getDefault();\nauto tcp = loop.resource<uvw::TCPHandle>();\n\nuv_loop_t *raw = loop->raw();\nuv_tcp_t *handle = tcp->raw();\n```\n\nGo the raw way at your own risk, but do not expect any support in case of bugs.\n\n# Contributors\n\nIf you want to contribute, please send patches as pull requests against the branch master.<br/>\nCheck the [contributors list](https://github.com/skypjack/uvw/blob/master/AUTHORS) to see who has partecipated so far.\n\n# License\n\nCode and documentation Copyright (c) 2016-2019 Michele Caini.<br/>\nLogo Copyright (c) 2018-2019 Richard Caseres.\n\nCode released under\n[the MIT license](https://github.com/skypjack/uvw/blob/master/LICENSE).\nDocumentation released under\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).<br/>\nLogo released under\n[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).\n\n<!--\n@cond TURN_OFF_DOXYGEN\n-->\n# Support\n\n## Patreon\n\nBecome a [patron](https://www.patreon.com/bePatron?c=1772573) and get access to\nextra content, help me spend more time on the projects you love and create new\nones for you. Your support will help me to continue the work done so far and\nmake it more professional and feature-rich every day.<br/>\nIt takes very little to\n[become a patron](https://www.patreon.com/bePatron?c=1772573) and thus help the\nsoftware you use every day. Don't miss the chance.\n\n## Donation\n\nDeveloping and maintaining `uvw` takes some time and lots of coffee. It still lacks a proper test suite, documentation is partially incomplete and not all functionalities have been fully implemented yet.<br/>\nIf you want to support this project, you can offer me an espresso. I'm from Italy, we're used to turning the best coffee ever in code. If you find that it's not enough, feel free to support me the way you prefer.<br/>\nTake a look at the donation button at the top of the page for more details or just click [here](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=W2HF9FESD5LJY&lc=IT&item_name=Michele%20Caini&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted).\n\n## Hire me\n\nIf you start using `uvw` and need help, if you want a new feature and want me\nto give it the highest priority, if you have any other reason to contact me:\ndo not hesitate. I'm available for hiring.<br/>\nFeel free to take a look at my [profile](https://github.com/skypjack) and\ncontact me by mail.\n<!--\n@endcond TURN_OFF_DOXYGEN\n-->\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:uvw\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\nversion = \"branch=master\"\nprivate = true\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/libuv\"\nversion = \"branch=v1.x\"\n",
+      "lockFile": "manifest = \"aeb5017d354259c99a06a78037752cc4fadd763198bd64477f5798be8a5d6562\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\ntarget = \"//:googletest\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/libuv\"\ntarget = \"//:uv\"\n\n[lock.\"github.com/buckaroo-pm/google-googletest\"]\nversions = [ \"branch=master\" ]\nrevision = \"cb8d2c1a2fcd344953e6c129a1a699a2c230551d\"\n\n[lock.\"github.com/buckaroo-pm/libuv\"]\nversions = [ \"branch=v1.x\" ]\nrevision = \"fc3570b7a90c0daa9a091f982a75d6b54f83cf19\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'uvw',\n  header_only = True,\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('src', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps_from_package('github.com/buckaroo-pm/libuv'),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/libuv",
+          "name": "buckaroo-pm/libuv",
+          "version": "branch=v1.x"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "cb8d2c1a2fcd344953e6c129a1a699a2c230551d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/libuv",
+          "name": "buckaroo-pm/libuv",
+          "spec": {
+            "versions": [
+              "branch=v1.x"
+            ],
+            "revision": "fc3570b7a90c0daa9a091f982a75d6b54f83cf19"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-22T16:59:49Z",
+  "updatedUpstream": "2021-01-13T20:15:52Z",
+  "contributors": [
+    {
+      "login": "elindsey",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/47579?u=d6c0753f905c10e8f44dbe7d713f44d3c5b39522&v=4"
+    },
+    {
+      "login": "Qix-",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/885648?u=8edec2e97fb5391c283f7d5cc4ec747ebe85ac17&v=4"
+    },
+    {
+      "login": "sgiurgiu",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1079312?v=4"
+    },
+    {
+      "login": "raoulh",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1115950?v=4"
+    },
+    {
+      "login": "gallexme",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1122989?v=4"
+    },
+    {
+      "login": "fcelda",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1205482?u=e0b60eaf8bd9643f7ddb5311415e6ec9062b48fc&v=4"
+    },
+    {
+      "login": "ffontaine",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1485263?v=4"
+    },
+    {
+      "login": "slyshykO",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1575537?v=4"
+    },
+    {
+      "login": "skypjack",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1812216?v=4"
+    },
+    {
+      "login": "tversteeg",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2574730?u=5b2f0b48b1ad196a74a797f58f38d2efdffa81b0&v=4"
+    },
+    {
+      "login": "tusharpm",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3054805?u=6093c6d92b263e4facddc1499155db5fa5b74d80&v=4"
+    },
+    {
+      "login": "janekolszak",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3087849?v=4"
+    },
+    {
+      "login": "uilianries",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4870173?u=4da785f36e3fca58a19ba19779bdfcfd348dd77d&v=4"
+    },
+    {
+      "login": "lucamartini",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5013008?u=dbe637f2ab17fd18dfa004fcd0c28d8c6f061b0f&v=4"
+    },
+    {
+      "login": "lpmi-13",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5070516?u=0da2f10c09e6d46b5bc77eb46924918072c22f41&v=4"
+    },
+    {
+      "login": "morbo84",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5501721?v=4"
+    },
+    {
+      "login": "stefanofiorentino",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6248626?u=c9dacc74f18e129c1d47186734afda479a7b6ce0&v=4"
+    },
+    {
+      "login": "palkarz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6742404?v=4"
+    },
+    {
+      "login": "filonik",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6913504?v=4"
+    },
+    {
+      "login": "yisonPylkita",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8435296?u=e02f2d190740e26698be7479d7fb325d14f62a1c&v=4"
+    },
+    {
+      "login": "jasper-wan",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/15362491?v=4"
+    },
+    {
+      "login": "Miigon",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/16161991?v=4"
+    },
+    {
+      "login": "bmagistro",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/19505408?u=54c58fbcd00c4a3282d65159f2214951debcea1d&v=4"
+    },
+    {
+      "login": "zxtwonder",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/20675066?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/skypjack",
+    "https://www.paypal.me/skypjack"
+  ],
+  "contactLinks": [],
+  "stars": 1182,
+  "forks": 140,
+  "topics": [
+    "libuv",
+    "header-only",
+    "wrapper",
+    "uvw",
+    "event-loop",
+    "modern-cpp",
+    "cpp",
+    "cpp17"
+  ]
+}

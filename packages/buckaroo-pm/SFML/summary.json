@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/SFML",
+  "name": "SFML/SFML",
+  "stars": 6480,
+  "topics": [
+    "sfml",
+    "c-plus-plus",
+    "multimedia",
+    "games",
+    "opengl",
+    "sdk",
+    "graphics",
+    "audio",
+    "cross-platform",
+    "hacktoberfest"
+  ],
+  "description": "Simple and Fast Multimedia Library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 19,
+      "transitive": 20
+    }
+  ],
+  "updated": "2019-08-30T02:42:19Z",
+  "updatedUpstream": "2021-01-13T21:03:22Z"
+}

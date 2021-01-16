@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/fastann",
+  "name": "philbinj/fastann",
+  "licence": "BSD-3-Clause",
+  "description": "A library for fast approximate nearest neighbours",
+  "readme": "---------------------------------------------------------------------\n| FASTANN: A library for fast approximate nearest neighbours        |\n|                                                                   |\n| James Philbin <philbinj@gmail.com>                                |\n---------------------------------------------------------------------\nThe plan is to support a number of different approximate nearest\nneighbour routines and possibly different distance norms. At the\nmoment only the Euclidean distance is supported with the following\nmethods:\n- Exact NN\n- Approximate k-d trees\n\nBoth methods use some fairly optimized distance functions (though\nthese can be improved).\n\n---------------------------------------------------------------------\n| INSTALLATION                                                      |\n---------------------------------------------------------------------\nBefore installation the following requirements should be met:\n- Linux\n- CMake >= 2.6.0\n- Yasm (http://www.tortall.net/projects/yasm/) (OPTIONAL)\n\nBuild the library for installing to /usr/local/ (default /usr/)\n> PREFIX=/usr/local/ cmake . && make\n\nTest the library (everything should say PASSED)\n> make test\n\nTime the routines\n> make perf\n\nInstall the library to $PREFIX/include and $PREFIX/lib\n> make install\n\n---------------------------------------------------------------------\n| INTERFACES                                                        |\n---------------------------------------------------------------------\nThe Python interface has the following requirements:\n- Python >= 2.5.0\n- Numpy >= 1.2.0\n\nInstall (as root)\n> cd interfaces/python && python setup.py install\n\n---------------------------------------------------------------------\n| USAGE                                                             |\n---------------------------------------------------------------------\nSee examples/\n\n---------------------------------------------------------------------\n| TODO                                                              |\n---------------------------------------------------------------------\nIn no particular order:\n- Better use of cache in kdtree. This might involve using prefetches,\n  re-ordering the points in some way or even placing the point data in\n  the nodes.\n- Other types of approximate search such as LSH and Spectral Hashing.\n\n---------------------------------------------------------------------\n| CHANGELOG                                                         |\n---------------------------------------------------------------------\nv0.22\n    - Adding stuff for installing to a specified path\nv0.21\n    - Added reference\nv0.2\n    - Moved over to using CMake -- much improved build.\n    - Implemented C compatible routines in fastann.h\n    - Added Python wrapper routines using ctypes.\n    - Faster distance functions for 32-bit and 64-bit platforms.\nv0.11\n    - Moved to pure static library.\n    - Added experimental hand coded double precision distance \n      routine.\nv0.1\n    - Initial checkin.\n    - Support for exact NN and approximate k-d trees.\n\n---------------------------------------------------------------------\n| REFERENCES                                                        |\n---------------------------------------------------------------------\n[1] Muja, M. and Lowe, D.\n    Fast approximate nearest neighbors with automatic algorithm \n    configuration, VISAPP 2009\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:fastann\" ]\n",
+      "lockFile": "manifest = \"0fffa410f4c08fb75af8944c8725a6160c1b11ba6aef5d9ba2ab0cb831aa9868\"\n\n",
+      "buck": "cxx_library(\n  name = 'fastann',\n  srcs = glob(\n    ['*.cpp', '*.c'], \n    exclude=glob(['test*.cpp', 'perf*.cpp'])),\n  exported_headers = glob(['*.h', '*.hpp']),\n  visibility = ['PUBLIC']\n)\n\ncxx_binary(\n  name = 'test',\n  srcs = ['test_dist_l2.cpp'],\n  deps = [':fastann']\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-23T16:55:54Z",
+  "updatedUpstream": "2020-05-22T11:04:48Z",
+  "contributors": [
+    {
+      "login": "philbinj",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/87481?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 21,
+  "forks": 6,
+  "topics": []
+}

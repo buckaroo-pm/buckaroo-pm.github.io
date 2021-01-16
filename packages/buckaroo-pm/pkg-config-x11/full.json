@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-x11",
+  "name": "buckaroo-pm/pkg-config-x11",
+  "licence": "",
+  "description": "Buck wrapper for X11 managed by pkg-config ",
+  "readme": "# pkg-config-x11\n\nBuck wrapper for X11 managed by `pkg-config`.\n\nTo run the demo:\n\n```bash=\nbuck run ./demo\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:x11\" ]\n",
+      "lockFile": "manifest = \"c83d9156868055b53d448e8ba7da96325462081e18a113d4940c616f61ba303b\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' x11 --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' x11 --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'x11',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-08T11:05:59Z",
+  "updatedUpstream": "2019-01-08T11:05:59Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

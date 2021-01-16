@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/apache-pulsar",
+  "name": "apache/pulsar",
+  "stars": 7071,
+  "topics": [
+    "pulsar",
+    "pubsub",
+    "messaging",
+    "streaming",
+    "queuing",
+    "event-streaming"
+  ],
+  "description": "Apache Pulsar - distributed pub-sub messaging system",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 17,
+      "transitive": 77
+    }
+  ],
+  "updated": "2019-03-20T15:09:37Z",
+  "updatedUpstream": "2021-01-13T22:22:11Z"
+}

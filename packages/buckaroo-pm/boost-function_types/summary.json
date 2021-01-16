@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-function_types",
+  "name": "boostorg/function_types",
+  "stars": 3,
+  "topics": [],
+  "description": "Boost.org function_types module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 5
+    }
+  ],
+  "updated": "2018-11-14T18:05:24Z",
+  "updatedUpstream": "2021-01-11T16:27:05Z"
+}

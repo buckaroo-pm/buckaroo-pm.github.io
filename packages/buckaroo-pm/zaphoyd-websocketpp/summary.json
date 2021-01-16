@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/zaphoyd-websocketpp",
+  "name": "zaphoyd/websocketpp",
+  "stars": 4474,
+  "topics": [],
+  "description": "C++ websocket client/server library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 52
+    }
+  ],
+  "updated": "2019-01-23T10:07:17Z",
+  "updatedUpstream": "2021-01-13T21:44:33Z"
+}

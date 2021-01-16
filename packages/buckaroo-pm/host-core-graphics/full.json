@@ -1,0 +1,43 @@
+{
+  "packageName": "buckaroo-pm/host-core-graphics",
+  "name": "buckaroo-pm/host-core-graphics",
+  "licence": "",
+  "description": "Buck wrapper for CoreGraphics framework ",
+  "readme": "# host-core-graphics\n\nBuck wrapper for CoreGraphics framework \n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:core-graphics\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/host-core-foundation\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"67850a8b34845f57e65186dbe516e99fa14378b55d20b1bd2950acd6a92d7749\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/host-core-foundation\"\ntarget = \"//:core-foundation\"\n\n[lock.\"github.com/buckaroo-pm/host-core-foundation\"]\nversions = [ \"branch=master\" ]\nrevision = \"fd7081ffe1244afb86c41c2d41d3603f851feae8\"\n",
+      "buck": "xcode_developer_dir = read_config('apple', 'xcode_developer_dir', '/Applications/Xcode.app/Contents/Developer')\n\ngenrule(\n  name = 'core-graphics-framework', \n  out = 'CoreGraphics.framework', \n  cmd = 'cp -r ' + xcode_developer_dir + '/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework $OUT', \n)\n\nprebuilt_apple_framework(\n  name = 'core-graphics', \n  framework = ':core-graphics-framework', \n  preferred_linkage = 'static', \n  deps = [\n    'buckaroo.github.buckaroo-pm.host-core-foundation//:core-foundation', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/host-core-foundation",
+          "name": "buckaroo-pm/host-core-foundation",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/host-core-foundation",
+          "name": "buckaroo-pm/host-core-foundation",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "fd7081ffe1244afb86c41c2d41d3603f851feae8"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-21T11:20:27Z",
+  "updatedUpstream": "2019-01-21T11:20:27Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

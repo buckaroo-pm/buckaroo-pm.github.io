@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-carbon",
+  "name": "buckaroo-pm/host-carbon",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for Carbon framework ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-12T21:11:38Z",
+  "updatedUpstream": "2018-11-12T21:11:38Z"
+}

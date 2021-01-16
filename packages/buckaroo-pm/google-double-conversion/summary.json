@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-double-conversion",
+  "name": "google/double-conversion",
+  "stars": 791,
+  "topics": [],
+  "description": "Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-14T13:05:27Z",
+  "updatedUpstream": "2020-12-30T21:33:55Z"
+}

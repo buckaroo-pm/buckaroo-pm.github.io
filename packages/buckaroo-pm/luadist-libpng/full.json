@@ -1,0 +1,76 @@
+{
+  "packageName": "buckaroo-pm/luadist-libpng",
+  "name": "LuaDist/libpng",
+  "licence": "NOASSERTION",
+  "description": "Official PNG reference library",
+  "readme": "README for libpng version 1.5.10 - March 29, 2012 (shared library 15.0)\nSee the note about version numbers near the top of png.h\n\nSee INSTALL for instructions on how to install libpng.\n\nLibpng comes in several distribution formats.  Get libpng-*.tar.gz,\nlibpng-*.tar.xz or libpng-*.tar.bz2 if you want UNIX-style line endings\nin the text files, or lpng*.zip if you want DOS-style line endings.\n\nVersion 0.89 was the first official release of libpng.  Don't let the\nfact that it's the first release fool you.  The libpng library has been in\nextensive use and testing since mid-1995.  By late 1997 it had\nfinally gotten to the stage where there hadn't been significant\nchanges to the API in some time, and people have a bad feeling about\nlibraries with versions < 1.0.  Version 1.0.0 was released in\nMarch 1998.\n\n****\nNote that some of the changes to the png_info structure render this\nversion of the library binary incompatible with libpng-0.89 or\nearlier versions if you are using a shared library.  The type of the\n\"filler\" parameter for png_set_filler() has changed from png_byte to\npng_uint_32, which will affect shared-library applications that use\nthis function.\n\nTo avoid problems with changes to the internals of png_info_struct,\nnew APIs have been made available in 0.95 to avoid direct application\naccess to info_ptr.  These functions are the png_set_<chunk> and\npng_get_<chunk> functions.  These functions should be used when\naccessing/storing the info_struct data, rather than manipulating it\ndirectly, to avoid such problems in the future.\n\nIt is important to note that the APIs do not make current programs\nthat access the info struct directly incompatible with the new\nlibrary.  However, it is strongly suggested that new programs use\nthe new APIs (as shown in example.c and pngtest.c), and older programs\nbe converted to the new format, to facilitate upgrades in the future.\n****\n\nAdditions since 0.90 include the ability to compile libpng as a\nWindows DLL, and new APIs for accessing data in the info struct.\nExperimental functions include the ability to set weighting and cost\nfactors for row filter selection, direct reads of integers from buffers\non big-endian processors that support misaligned data access, faster\nmethods of doing alpha composition, and more accurate 16->8 bit color\nconversion.\n\nThe additions since 0.89 include the ability to read from a PNG stream\nwhich has had some (or all) of the signature bytes read by the calling\napplication.  This also allows the reading of embedded PNG streams that\ndo not have the PNG file signature.  As well, it is now possible to set\nthe library action on the detection of chunk CRC errors.  It is possible\nto set different actions based on whether the CRC error occurred in a\ncritical or an ancillary chunk.\n\nThe changes made to the library, and bugs fixed are based on discussions\non the PNG-implement mailing list and not on material submitted\nprivately to Guy, Andreas, or Glenn.  They will forward any good\nsuggestions to the list.\n\nFor a detailed description on using libpng, read libpng-manual.txt.  For\nexamples of libpng in a program, see example.c and pngtest.c.  For usage\ninformation and restrictions (what little they are) on libpng, see\npng.h.  For a description on using zlib (the compression library used by\nlibpng) and zlib's restrictions, see zlib.h\n\nI have included a general makefile, as well as several machine and\ncompiler specific ones, but you may have to modify one for your own needs.\n\nYou should use zlib 1.0.4 or later to run this, but it MAY work with\nversions as old as zlib 0.95.  Even so, there are bugs in older zlib\nversions which can cause the output of invalid compression streams for\nsome images.  You will definitely need zlib 1.0.4 or later if you are\ntaking advantage of the MS-DOS \"far\" structure allocation for the small\nand medium memory models.  You should also note that zlib is a\ncompression library that is useful for more things than just PNG files.\nYou can use zlib as a drop-in replacement for fread() and fwrite() if\nyou are so inclined.\n\nzlib should be available at the same place that libpng is, or at.\nftp://ftp.info-zip.org/pub/infozip/zlib\n\nYou may also want a copy of the PNG specification.  It is available\nas an RFC, a W3C Recommendation, and an ISO/IEC Standard.  You can find\nthese at http://www.libpng.org/pub/png/documents/\n\nThis code is currently being archived at libpng.sf.net in the\n[DOWNLOAD] area, and on CompuServe, Lib 20 (PNG SUPPORT)\nat GO GRAPHSUP.  If you can't find it in any of those places,\ne-mail me, and I'll help you find it.\n\nIf you have any code changes, requests, problems, etc., please e-mail\nthem to me.  Also, I'd appreciate any make files or project files,\nand any modifications you needed to make to get libpng to compile,\nalong with a #define variable to tell what compiler/system you are on.\nIf you needed to add transformations to libpng, or wish libpng would\nprovide the image in a different way, drop me a note (and code, if\npossible), so I can consider supporting the transformation.\nFinally, if you get any warning messages when compiling libpng\n(note: not zlib), and they are easy to fix, I'd appreciate the\nfix.  Please mention \"libpng\" somewhere in the subject line.  Thanks.\n\nThis release was created and will be supported by myself (of course\nbased in a large way on Guy's and Andreas' earlier work), and the PNG\ndevelopment group.\n\nSend comments/corrections/commendations to png-mng-implement at\nlists.sourceforge.net (subscription required; visit \nhttps://lists.sourceforge.net/lists/listinfo/png-mng-implement\nto subscribe) or to glennrp at users.sourceforge.net\n\nYou can't reach Guy, the original libpng author, at the addresses\ngiven in previous versions of this document.  He and Andreas will\nread mail addressed to the png-implement list, however.\n\nPlease do not send general questions about PNG.  Send them to\npng-mng-misc at lists.sf.net (subscription required; visit\nhttps://lists.sourceforge.net/lists/listinfo/png-mng-misc to\nsubscribe).  If you have a question about something\nin the PNG specification that is related to using libpng, send it\nto me.  Send me any questions that start with \"I was using libpng,\nand ...\".  If in doubt, send questions to me.  I'll bounce them\nto others, if necessary.\n\nPlease do not send suggestions on how to change PNG.  We have\nbeen discussing PNG for sixteen years now, and it is official and\nfinished.  If you have suggestions for libpng, however, I'll\ngladly listen.  Even if your suggestion is not used immediately,\nit may be used later.\n\nFiles in this distribution:\n\n      ANNOUNCE      =>  Announcement of this version, with recent changes\n      CHANGES       =>  Description of changes between libpng versions\n      KNOWNBUG      =>  List of known bugs and deficiencies\n      LICENSE       =>  License to use and redistribute libpng\n      README        =>  This file\n      TODO          =>  Things not implemented in the current library\n      Y2KINFO       =>  Statement of Y2K compliance\n      example.c     =>  Example code for using libpng functions\n      libpng.3      =>  manual page for libpng (includes libpng-manual.txt)\n      libpng-manual.txt  =>  Description of libpng and its functions\n      libpngpf.3    =>  manual page for libpng's private functions\n      png.5         =>  manual page for the PNG format\n      png.c         =>  Basic interface functions common to library\n      png.h         =>  Library function and interface declarations (public)\n      pngpriv.h     =>  Library function and interface declarations (private)\n      pngconf.h     =>  System specific library configuration (public)\n      pngstruct.h   =>  png_struct declaration (private)\n      pnginfo.h     =>  png_info struct declaration (private)\n      pngdebug.h    =>  debugging macros (private)\n      pngerror.c    =>  Error/warning message I/O functions\n      pngget.c      =>  Functions for retrieving info from struct\n      pngmem.c      =>  Memory handling functions\n      pngbar.png    =>  PNG logo, 88x31\n      pngnow.png    =>  PNG logo, 98x31\n      pngpread.c    =>  Progressive reading functions\n      pngread.c     =>  Read data/helper high-level functions\n      pngrio.c      =>  Lowest-level data read I/O functions\n      pngrtran.c    =>  Read data transformation functions\n      pngrutil.c    =>  Read data utility functions\n      pngset.c      =>  Functions for storing data into the info_struct\n      pngtest.c     =>  Library test program\n      pngtest.png   =>  Library test sample image\n      pngtrans.c    =>  Common data transformation functions\n      pngwio.c      =>  Lowest-level write I/O functions\n      pngwrite.c    =>  High-level write functions\n      pngwtran.c    =>  Write data transformations\n      pngwutil.c    =>  Write utility functions\n      contrib       =>  Contributions\n       gregbook         =>  source code for PNG reading and writing, from\n                            Greg Roelofs' \"PNG: The Definitive Guide\",\n                            O'Reilly, 1999\n       msvctest     =>  Builds and runs pngtest using a MSVC workspace\n       pngminus     =>  Simple pnm2png and png2pnm programs\n       pngsuite     =>  Test images\n       visupng      =>  Contains a MSVC workspace for VisualPng\n      projects      =>  Contains project files and workspaces for\n                        building a DLL\n       cbuilder5        =>  Contains a Borland workspace for building\n                            libpng and zlib\n       visualc6         =>  Contains a Microsoft Visual C++ (MSVC)\n                            workspace for building libpng and zlib\n       visualc71        =>  Contains a Microsoft Visual C++ (MSVC)\n                            workspace for building libpng and zlib\n       xcode            =>  Contains an Apple xcode\n                            workspace for building libpng and zlib\n      scripts       =>  Directory containing scripts for building libpng:\n                            (see scripts/README.txt for the list of scripts)\n\nGood luck, and happy coding.\n\n-Glenn Randers-Pehrson (current maintainer, since 1998)\n Internet: glennrp at users.sourceforge.net\n\n-Andreas Eric Dilger (former maintainer, 1996-1997)\n Internet: adilger at enel.ucalgary.ca\n Web: http://www-mddsp.enel.ucalgary.ca/People/adilger/\n\n-Guy Eric Schalnat (original author and former maintainer, 1995-1996)\n (formerly of Group 42, Inc)\n Internet: gschal at infinet.com\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:png\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\nversion = \"branch=master\"",
+      "lockFile": "manifest = \"d07a8f202339d0ff10dee121c080a11b96473ab269ef3b64d401d67e7bfa25a6\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\ntarget = \"//:zlib\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'png',\n  header_namespace = '',\n  exported_headers = {\n    'png.h': 'png.h',\n    'pngconf.h': 'pngconf.h',\n    'pnglibconf.h': 'scripts/pnglibconf.h.prebuilt',\n  },\n  srcs = [\n    'png.c',\n    'pngerror.c',\n    'pngget.c',\n    'pngmem.c',\n    'pngpread.c',\n    'pngread.c',\n    'pngrio.c',\n    'pngrtran.c',\n    'pngrutil.c',\n    'pngset.c',\n    'pngtrans.c',\n    'pngwio.c',\n    'pngwrite.c',\n    'pngwtran.c',\n    'pngwutil.c',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n  reexport_all_header_dependencies = False,\n  deps = buckaroo_deps(),\n)\n\ncxx_binary(\n  name = 'test',\n  srcs = [\n    'pngtest.c',\n  ],\n  deps = [\n    ':png',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-16T18:23:59Z",
+  "updatedUpstream": "2021-01-02T20:57:09Z",
+  "contributors": [
+    {
+      "login": "davidm",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22920?v=4"
+    },
+    {
+      "login": "mkottman",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/144990?v=4"
+    },
+    {
+      "login": "stevedonovan",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/218893?v=4"
+    },
+    {
+      "login": "mnicky",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/232572?v=4"
+    },
+    {
+      "login": "hishamhm",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/245621?v=4"
+    },
+    {
+      "login": "drahosp",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/246514?v=4"
+    },
+    {
+      "login": "kapecp",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/254374?v=4"
+    },
+    {
+      "login": "jbowler",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/512616?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 24,
+  "forks": 30,
+  "topics": []
+}

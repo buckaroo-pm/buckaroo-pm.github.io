@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mobius3-asap",
+  "name": "mobius3/asap",
+  "stars": 40,
+  "topics": [],
+  "description": "A C++ header-only library for creating, displaying, iterating and manipulating dates",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-09T12:26:14Z",
+  "updatedUpstream": "2021-01-09T17:26:07Z"
+}

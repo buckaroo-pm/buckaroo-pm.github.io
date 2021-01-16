@@ -1,0 +1,63 @@
+{
+  "packageName": "buckaroo-pm/jech-dht",
+  "name": "jech/dht",
+  "licence": "MIT",
+  "description": "BitTorrent DHT library",
+  "readme": "The files dht.c and dht.h implement the variant of the Kademlia Distributed\nHash Table (DHT) used in the Bittorrent network (``mainline'' variant).\n\nThe file dht-example.c is a stand-alone program that participates in the\nDHT.  Another example is a patch against Transmission, which you might or\nmight not be able to find somewhere.\n\nThe code is designed to work well in both event-driven and threaded code.\nThe caller, which is either an event-loop or a dedicated thread, must\nperiodically call the function dht_periodic.  In addition, it must call\ndht_periodic whenever any data has arrived from the network.\n\nAll functions return -1 in case of failure, in which case errno is set, or\na positive value in case of success.\n\nInitialisation\n**************\n\n* dht_init\n\nThis must be called before using the library.  You pass it an integer\nidentifying a bound IPv4 datagram socket in non-blocking mode, an integer\nidentifying a bound IPv6 datagram socket in non-blocking mode, and your\nnode id, a 20-octet array that should be globally unique.\n\nThe integers that identify the two sockets should usually be file\ndescriptors; however, as the library does not directly perform any socket-\nor file-related operations on them, they can be arbitrary integers, for\nexample indices in a table of structures that represent sockets in your\ncode.\n\nIf you're on a multi-homed host, you should bind your sockets to one of\nyour addresses.  This is especially relevant for IPv6.\n\nNode ids must be well distributed, so you cannot just use your Bittorrent\nid; you should either generate a truly random value (using plenty of\nentropy), or at least take the SHA-1 of something.  However, it is a good\nidea to keep the id stable, so you may want to store it in stable storage\nat client shutdown.\n\n \n* dht_uninit\n\nThis may be called at the end of the session.\n\nBootstrapping\n*************\n\nThe DHT needs to be taught a small number of contacts to begin functioning.\nYou can hard-wire a small number of stable nodes in your application, but\nthis obviously fails to scale.  You may save the list of known good nodes\nat shutdown, and restore it at restart.  You may also grab nodes from\ntorrent files (the nodes field), and you may exchange contacts with other\nBittorrent peers using the PORT extension.\n\n* dht_ping_node\n\nThis is the main bootstrapping primitive.  You pass it an address at which\nyou believe that a DHT node may be living, and a query will be sent.  If\na node replies, and if there is space in the routing table, it will be\ninserted.\n\n* dht_insert_node\n\nThis is a softer bootstrapping method, which doesn't actually send\na query -- it only stores the node in the routing table for later use.\n\nNote that dht_insert_node requires that you supply a node id.  If the id\nturns out to be wrong, the DHT will eventually recover; still, inserting\nmassive amounts of incorrect information into your routing table is not\na good idea.\n\nAn additionaly difficulty with dht_insert_node is that a Kademlia routing\ntable cannot absorb nodes faster than a certain rate.  A freshly initialised\nrouting table is able to absorb 128 nodes of each address family without\ndropping any.  The tolerable rate after that is difficult to estimate: it is\nprobably on the order of one node every few seconds per node already in\nthe table divided by 8, for some suitable value of 8.\n\nDoing some work\n***************\n\n* dht_periodic\n\nThis function should be called by your main loop periodically, and also\nwhenever data is available on the socket.  The time after which\ndht_periodic should be called if no data is available is returned in the\nparameter tosleep.  (You do not need to be particularly accurate; actually,\nit is a good idea to be late by a random value.)\n\nThe parameters buf, buflen, from and fromlen optionally carry a received\nmessage.  If buflen is 0, then no message was received.\n\nDht_periodic also takes a callback, which will be called whenever something\ninteresting happens (see below).\n\n* dht_search\n\nThis schedules a search for information about the info-hash specified in\nid; it returns 1 if this is a new search, and 0 if it merely reset the\ntimeouts for a search in progress.  If port is not 0, it specifies the TCP\nport on which the current peer is listening; in that case, when the search\nis complete it will be announced to the network.  The port is in host\norder, beware if you got it from a struct sockaddr_in.\n\nIn either case, data is passed to the callback function as soon as it is\navailable, possibly in multiple pieces.  The callback function will also\nbe called when the search is complete.\n\nUp to DHT_MAX_SEARCHES (1024) searches can be in progress at a given time;\nany more, and dht_search will return -1.  If you specify a new search for\nthe same info hash as a search still in progress, the previous search is\ncombined with the new one -- you will only receive a completion indication\nonce.\n\nInformation queries\n*******************\n\n* dht_nodes\n\nThis returns the number of known good, dubious and cached nodes in our\nrouting table.  This can be used to decide whether it's reasonable to start\na search; a search is likely to be successful as long as we have a few good\nnodes; however, in order to avoid overloading your bootstrap nodes, you may\nwant to wait until good is at least 4 and good + doubtful is at least 30 or\nso.\n\nIt also includes the number of nodes that recently sent us an unsolicited\nrequest; this can be used to determine if the UDP port used for the DHT is\nfirewalled.\n\nIf you want to display a single figure to the user, you should display\ngood + doubtful, which is the total number of nodes in your routing table.\nSome clients try to estimate the total number of nodes, but this doesn't\nmake much sense -- since the result is exponential in the number of nodes\nin the routing table, small variations in the latter cause huge jumps in\nthe former.\n\n* dht_get_nodes\n\nThis retrieves the list of known good nodes, starting with the nodes in our\nown bucket.  It is a good idea to save the list of known good nodes at\nshutdown, and ping them at startup.\n\n* dht_dump_tables\n* dht_debug\n\nThese are debugging aids.\n\nFunctions provided by you\n*************************\n\n* The callback function\n\nThe callback function is called with 5 arguments.  Closure is simply the\nvalue that you passed to dht_periodic.  Event is one of DHT_EVENT_VALUES or\nDHT_EVENT_VALUES6, which indicates that we have new values, or\nDHT_EVENT_SEARCH_DONE or DHT_EVENT_SEARCH_DONE6, which indicates that\na search has completed.  In either case, info_hash is set to the info-hash\nof the search.\n\nIn the case of DHT_EVENT_VALUES, data is a list of nodes in ``compact''\nformat -- 6 or 18 bytes per node.  Its length in bytes is in data_len.\n\n* dht_sendto\n\nThis will be called whenever the library needs to send a datagram.  If the\nintegers passed to dht_init are file descriptors, this can simply be an\nalias for the sendto system call.\n\n* dht_blacklisted\n\nThis is a function that takes an IP address and returns true if this\naddress should be silently ignored.  Do not use this feature unless you\nreally must -- Kademlia supposes transitive reachability.\n\n* dht_hash\n\nThis should compute a reasonably strong cryptographic hash of the passed\nvalues.  SHA-1 should be good enough.\n\n* dht_random_bytes\n\nThis should fill the supplied buffer with cryptographically strong random\nbytes.  It's called every 30 minutes on average, so it doesn't need to be\nfast.\n\nFinal notes\n***********\n\n* NAT\n\nNothing works well across NATs, but Kademlia is somewhat less impacted than\nmany other protocols.  The implementation takes care to distinguish between\nunidirectional and bidirectional reachability, and NATed nodes will\neventually fall out from other nodes' routing tables.\n\nWhile there is no periodic pinging in this implementation, maintaining\na full routing table requires slightly more than one packet exchange per\nminute, even in a completely idle network; this should be sufficient to\nmake most full cone NATs happy.\n\n\n                                        Juliusz Chroboczek\n                                        <jch@pps.jussieu.fr>\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:dht\" ]",
+      "lockFile": "manifest = \"516eccb33e8b89fa3f830418c6dc9c94ac1ec10b995cf8a2c21b57c062eb679e\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'crypt',\n  header_only = True,\n  exported_linker_flags = [\n    '-lcrypt',\n  ],\n)\n\ncxx_library(\n  name = 'dht',\n  header_namespace = '',\n  exported_headers = [\n    'dht.h',\n  ],\n  srcs = [\n    'dht.c',\n  ],\n  licenses = [\n    'LICENCE',\n  ],\n  deps = [\n    ':crypt',\n  ] + buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'example',\n  srcs = [\n    'dht-example.c',\n  ],\n  deps = [\n    '//:dht',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-31T16:20:36Z",
+  "updatedUpstream": "2021-01-05T08:04:35Z",
+  "contributors": [
+    {
+      "login": "ghazel",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31402?u=1ebef8a622b2b5da1356a509e6864f27ed6f0915&v=4"
+    },
+    {
+      "login": "raspopov",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/228064?u=dec79ae7d10c5248fbcc882ea25ac82bd0e90d29&v=4"
+    },
+    {
+      "login": "jech",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/290341?v=4"
+    },
+    {
+      "login": "mikedld",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/298203?v=4"
+    },
+    {
+      "login": "Erkan-Yilmaz",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/642286?v=4"
+    },
+    {
+      "login": "FalseCAM",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/818276?v=4"
+    },
+    {
+      "login": "GamePad64",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/837953?v=4"
+    },
+    {
+      "login": "fonic",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/14027079?u=09634a743d6bc4698e252f4c692982df45481846&v=4"
+    },
+    {
+      "login": "joel-su",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/45835356?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 584,
+  "forks": 159,
+  "topics": []
+}

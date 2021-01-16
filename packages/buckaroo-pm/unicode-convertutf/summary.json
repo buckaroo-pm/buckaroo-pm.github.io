@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/unicode-convertutf",
+  "name": "buckaroo-pm/unicode-convertutf",
+  "stars": 0,
+  "topics": [],
+  "description": "unicode-convertutf library that can be found in various project. ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T15:55:06Z",
+  "updatedUpstream": "2019-01-25T15:55:06Z"
+}

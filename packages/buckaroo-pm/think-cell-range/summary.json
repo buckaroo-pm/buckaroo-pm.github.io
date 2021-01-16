@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/think-cell-range",
+  "name": "think-cell/range",
+  "stars": 160,
+  "topics": [],
+  "description": "think-cell range library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 10,
+      "transitive": 64
+    }
+  ],
+  "updated": "2019-01-25T10:01:54Z",
+  "updatedUpstream": "2021-01-03T09:03:45Z"
+}

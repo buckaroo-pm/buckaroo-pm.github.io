@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-container",
+  "name": "boostorg/container",
+  "stars": 68,
+  "topics": [],
+  "description": "STL-like containers from Boost",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 7
+    }
+  ],
+  "updated": "2018-11-16T11:13:39Z",
+  "updatedUpstream": "2021-01-12T10:46:03Z"
+}

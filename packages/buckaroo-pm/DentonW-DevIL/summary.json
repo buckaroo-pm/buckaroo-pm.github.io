@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/DentonW-DevIL",
+  "name": "DentonW/DevIL",
+  "stars": 356,
+  "topics": [],
+  "description": "Developer's Image Library (DevIL) is a cross-platform image library utilizing a simple syntax to load, save, convert, manipulate, filter, and display a variety of images with ease. It is highly portable and has been ported to several platforms.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 4
+    }
+  ],
+  "updated": "2019-01-25T11:12:58Z",
+  "updatedUpstream": "2021-01-10T11:01:45Z"
+}

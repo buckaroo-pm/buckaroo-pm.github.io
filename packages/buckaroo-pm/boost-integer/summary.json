@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-integer",
+  "name": "boostorg/integer",
+  "stars": 11,
+  "topics": [],
+  "description": "Boost.org integer module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 8
+    }
+  ],
+  "updated": "2018-11-14T09:52:53Z",
+  "updatedUpstream": "2021-01-11T12:29:23Z"
+}

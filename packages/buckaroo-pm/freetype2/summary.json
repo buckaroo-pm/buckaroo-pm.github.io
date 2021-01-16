@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/freetype2",
+  "name": "buckaroo-pm/freetype2",
+  "stars": 0,
+  "topics": [],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    },
+    {
+      "ref": "v2.9.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-29T10:13:24Z",
+  "updatedUpstream": "2019-01-29T10:13:24Z"
+}

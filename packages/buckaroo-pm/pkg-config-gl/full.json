@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-gl",
+  "name": "buckaroo-pm/pkg-config-gl",
+  "licence": "",
+  "description": "Buck wrapper for gl managed by pkg-config ",
+  "readme": "# pkg-config-gl\n\nBuck wrapper for gl managed by `pkg-config`.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:gl\" ]\n",
+      "lockFile": "manifest = \"a878a4f2c81f3495aa4b1e314ead4d853a51c0ce5be443f471de8b1010d9d12c\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' gl --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' gl --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'gl',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-24T11:05:12Z",
+  "updatedUpstream": "2019-01-24T11:05:12Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

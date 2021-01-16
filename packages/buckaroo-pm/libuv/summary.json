@@ -1,0 +1,19 @@
+{
+  "packageName": "buckaroo-pm/libuv",
+  "name": "libuv/libuv",
+  "stars": 16587,
+  "topics": [
+    "asynchronous",
+    "io",
+    "networking",
+    "unix",
+    "windows",
+    "velociraptors",
+    "unicorns",
+    "deep-io"
+  ],
+  "description": "Cross-platform asynchronous I/O",
+  "versions": [],
+  "updated": "2019-04-05T09:01:06Z",
+  "updatedUpstream": "2021-01-13T20:19:29Z"
+}

@@ -1,0 +1,109 @@
+{
+  "packageName": "buckaroo-pm/fltk",
+  "name": "fltk/fltk",
+  "licence": "NOASSERTION",
+  "description": "Official FLTK source code repository [ DO NOT COMMIT -- this is still a mirror -- managed in Subversion ]",
+  "readme": "# README - Fast Light Tool Kit (FLTK) Version 1.4.0\n\n## VERY IMPORTANT TECHNICAL NOTICE\n\n** This FLTK repository is still a mirror of our Subversion repository. **\n\n  Technically this means:\n\n  * we may replace it with another one if this appears to be necessary\n  * we don't accept pull requests (yet) for this repository\n\n\n### Technical background\n\n  Our main source code repository is currently (as of Sep 18, 2018) our\n  subversion repository at http://www.fltk.org/software.php#SVN .\n\n  We are in the transition to convert the subversion repository to Git.\n  Until this is done we have established Git mirrors of our Subversion\n  repository at these two sites:\n\n  * https://github.com/fltk/fltk\n  * https://gitlab.com/fltk/fltk\n\n  You may use these Git repositories for testing purposes, but please\n  don't rely on their structure (branches) and particularly not on the\n  commit (and file/blob) hashes (SHA1's).\n\n  Committing to these Git repositories is not possible since they are\n  mirrors of the original Subversion repository.\n\n  This will hopefully be changed soon...\n\n\n## WHAT IS FLTK?\n\n    The Fast Light Tool Kit (\"FLTK\", pronounced \"fulltick\") is a\n    a cross-platform C++ GUI toolkit for UNIX(r)/Linux(r) (X11),\n    Microsoft(r) Windows(r), and MacOS(r) X. FLTK provides\n    modern GUI functionality without the bloat and supports 3D\n    graphics via OpenGL(r) and its built-in GLUT emulation. It\n    was originally developed by Mr. Bill Spitzak and is\n    currently maintained by a small group of developers across\n    the world with a central repository in the US.\n\n    For more information see file README.\n",
+  "versions": [],
+  "updated": "2018-11-08T15:28:27Z",
+  "updatedUpstream": "2021-01-13T21:52:44Z",
+  "contributors": [
+    {
+      "login": "Taeril",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5956?v=4"
+    },
+    {
+      "login": "airbrett",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/78085?v=4"
+    },
+    {
+      "login": "michaelld",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/157892?v=4"
+    },
+    {
+      "login": "michaelrsweet",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/488103?u=f6d4cdfdc64276140e51476ae3c6daf7f9f45275&v=4"
+    },
+    {
+      "login": "ras0219",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/533828?v=4"
+    },
+    {
+      "login": "MatthiasWM",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/653993?u=dbf0a4443afe7c62d85319753e60be910aaa75f2&v=4"
+    },
+    {
+      "login": "clbr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/790333?v=4"
+    },
+    {
+      "login": "dejlek",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/851381?v=4"
+    },
+    {
+      "login": "spitzak",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1229073?u=ad1123c581bc4b5d5f03afb71bd85c41d9921fca&v=4"
+    },
+    {
+      "login": "informationsea",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1336578?v=4"
+    },
+    {
+      "login": "newtonallen3",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2360361?u=a1667e3c3130b4d3aaf04382b5426307ef9a361a&v=4"
+    },
+    {
+      "login": "Lasander",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2403878?v=4"
+    },
+    {
+      "login": "ComputerNerd",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3759375?v=4"
+    },
+    {
+      "login": "darealshinji",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5700937?u=4cc3193010cdebcd70469c9ede476374b3a1c316&v=4"
+    },
+    {
+      "login": "fab672000",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6124901?u=0b3d3febeea745e12cfc38e10fb004be19f93771&v=4"
+    },
+    {
+      "login": "erco77",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6484779?u=5e77bfc2a5a0e4ae05df620ed54e64e93ea51bae&v=4"
+    },
+    {
+      "login": "CendioOssman",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6640916?u=d23e38c3c750e5ebe61e78170aa6d21cf453baad&v=4"
+    },
+    {
+      "login": "engelsman",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/8302798?v=4"
+    },
+    {
+      "login": "fire-eggs",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/9809727?u=90613d1ac1a226dd29b96d6d0cb7c8d847880122&v=4"
+    },
+    {
+      "login": "Albrecht-S",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/26235500?u=5cb44d61eed32f1aef28c195269c1a65d959b28b&v=4"
+    },
+    {
+      "login": "imaclmaca",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/26262392?v=4"
+    },
+    {
+      "login": "MoAlyousef",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/37966791?u=10197b48ff764e4a2db111d28319bb63e98d4c0e&v=4"
+    },
+    {
+      "login": "ManoloFLTK",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/41016272?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 503,
+  "forks": 117,
+  "topics": []
+}

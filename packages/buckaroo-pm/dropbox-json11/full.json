@@ -1,0 +1,136 @@
+{
+  "packageName": "buckaroo-pm/dropbox-json11",
+  "name": "dropbox/json11",
+  "licence": "MIT",
+  "description": "A tiny JSON library for C++11.",
+  "readme": "json11\n------\n\njson11 is a tiny JSON library for C++11, providing JSON parsing and serialization.\n\nThe core object provided by the library is json11::Json. A Json object represents any JSON\nvalue: null, bool, number (int or double), string (std::string), array (std::vector), or\nobject (std::map).\n\nJson objects act like values. They can be assigned, copied, moved, compared for equality or\norder, and so on. There are also helper methods Json::dump, to serialize a Json to a string, and\nJson::parse (static) to parse a std::string as a Json object.\n\nIt's easy to make a JSON object with C++11's new initializer syntax:\n\n    Json my_json = Json::object {\n        { \"key1\", \"value1\" },\n        { \"key2\", false },\n        { \"key3\", Json::array { 1, 2, 3 } },\n    };\n    std::string json_str = my_json.dump();\n\nThere are also implicit constructors that allow standard and user-defined types to be\nautomatically converted to JSON. For example:\n\n    class Point {\n    public:\n        int x;\n        int y;\n        Point (int x, int y) : x(x), y(y) {}\n        Json to_json() const { return Json::array { x, y }; }\n    };\n\n    std::vector<Point> points = { { 1, 2 }, { 10, 20 }, { 100, 200 } };\n    std::string points_json = Json(points).dump();\n\nJSON values can have their values queried and inspected:\n\n    Json json = Json::array { Json::object { { \"k\", \"v\" } } };\n    std::string str = json[0][\"k\"].string_value();\n\nMore documentation is still to come. For now, see json11.hpp.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:json11\" ]",
+      "lockFile": "manifest = \"67c66435ac923c61c152e2fd8ac994c9a3ae44296e5474b3be37bc5417de6a3d\"\n\n",
+      "buck": "cxx_library(\n  name = 'json11',\n  header_namespace = '',\n  exported_headers = [\n    'json11.hpp',\n  ],\n  srcs = [\n    'json11.cpp',\n  ],\n  licenses = [\n    'LICENSE.txt',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'test',\n  srcs = [\n    'test.cpp',\n  ],\n  deps = [\n    ':json11',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.0",
+      "manifest": "targets = [ \"//:json11\" ]",
+      "lockFile": "manifest = \"67c66435ac923c61c152e2fd8ac994c9a3ae44296e5474b3be37bc5417de6a3d\"\n\n",
+      "buck": "cxx_library(\n  name = 'json11',\n  header_namespace = '',\n  exported_headers = [\n    'json11.hpp',\n  ],\n  srcs = [\n    'json11.cpp',\n  ],\n  licenses = [\n    'LICENSE.txt',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'test',\n  srcs = [\n    'test.cpp',\n  ],\n  deps = [\n    ':json11',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-15T16:37:50Z",
+  "updatedUpstream": "2021-01-12T12:54:03Z",
+  "contributors": [
+    {
+      "login": "cbguder",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/13085?u=5ce620026286ec37d8c422ebb9e9e47bada6659f&v=4"
+    },
+    {
+      "login": "outoftime",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/14214?v=4"
+    },
+    {
+      "login": "danielrh",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/47249?u=7698b4b6a3b451ce2da7fb7cbd154e0cc411083a&v=4"
+    },
+    {
+      "login": "steipete",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58493?u=95a4fccef3d341039661c427695691a664e333ba&v=4"
+    },
+    {
+      "login": "zacwest",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/74188?u=5e8778a26f395a5c300a41dad7dfc5595be18215&v=4"
+    },
+    {
+      "login": "wfraser",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/75580?u=60c0f3fd2a248c5c6959b79b78e3480f52f67ec3&v=4"
+    },
+    {
+      "login": "euroelessar",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/83361?v=4"
+    },
+    {
+      "login": "kristofferkoch",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/130745?v=4"
+    },
+    {
+      "login": "Dushistov",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/156697?v=4"
+    },
+    {
+      "login": "anupcshan",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/201952?v=4"
+    },
+    {
+      "login": "capitalaslash",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/204102?v=4"
+    },
+    {
+      "login": "renatomoya",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/266047?u=34b7fcf99f3a1d87271b3c58988919000f2ca995&v=4"
+    },
+    {
+      "login": "hamiltont",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/305380?v=4"
+    },
+    {
+      "login": "rossdylan",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/343897?u=e4de6259986131c9d35714f30c869023d316d415&v=4"
+    },
+    {
+      "login": "AustinBrunkhorst",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/499591?u=d1a9b2b75505be04eb41b60275afaab70ce42f1b&v=4"
+    },
+    {
+      "login": "j4cbo",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/537158?v=4"
+    },
+    {
+      "login": "skabbes",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/592178?v=4"
+    },
+    {
+      "login": "admsyn",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/609318?u=be1bb2c10aa5a7f3faad2ae3907c9e303c4ed163&v=4"
+    },
+    {
+      "login": "akrieger",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/667719?u=f86ac74578c6b8f9306ff3fd1f527bb09a563a16&v=4"
+    },
+    {
+      "login": "k0zmo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/754621?v=4"
+    },
+    {
+      "login": "4brunu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/784666?u=aa1d35cf449c4d260df7819b3dce825c831538ae&v=4"
+    },
+    {
+      "login": "jspaetzel",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/828108?v=4"
+    },
+    {
+      "login": "masamitsu-murase",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/940058?u=84f0dd2bd3be9dde1c67bec9877a05d726bfd60b&v=4"
+    },
+    {
+      "login": "ashishgandhi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/970540?u=73af6192670a7b5b896aaeb6e5bccb5129c571b6&v=4"
+    },
+    {
+      "login": "jaw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1024487?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2112,
+  "forks": 516,
+  "topics": []
+}

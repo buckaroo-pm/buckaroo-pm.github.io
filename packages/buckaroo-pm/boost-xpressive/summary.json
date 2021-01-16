@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-xpressive",
+  "name": "boostorg/xpressive",
+  "stars": 13,
+  "topics": [],
+  "description": "Boost.org xpressive module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 15,
+      "transitive": 56
+    }
+  ],
+  "updated": "2019-01-29T11:42:39Z",
+  "updatedUpstream": "2020-07-14T14:14:11Z"
+}

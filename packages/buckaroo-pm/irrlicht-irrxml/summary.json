@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/irrlicht-irrxml",
+  "name": "buckaroo-pm/irrlicht-irrxml",
+  "stars": 0,
+  "topics": [],
+  "description": "port from sourceforge",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-30T11:51:25Z",
+  "updatedUpstream": "2019-01-30T11:51:25Z"
+}

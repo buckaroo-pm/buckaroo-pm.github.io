@@ -1,0 +1,83 @@
+{
+  "packageName": "buckaroo-pm/argtable3",
+  "name": "argtable/argtable3",
+  "licence": "NOASSERTION",
+  "description": "A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options.",
+  "readme": "\nIntroduction of Argtable3\n=========================\n\n**Argtable3** is an open source ANSI C library that parses GNU-style command-line\noptions. It simplifies command-line parsing by defining a declarative-style API\nthat you can use to specify what your command-line syntax looks like. Argtable3\nwill automatically generate consistent error handling logic and textual\ndescriptions of the command line syntax, which are essential but tedious to\nimplement for a robust CLI program.\n\n\nQuick Start\n-----------\n\nArgtable3 is a single-file ANSI-C library. All you have to do is adding\n`argtable3.c` to your projects, and including `argtable3.h` in your source code.\n\nIf you have modified Argtable3 and want to quickly verify whether the\nmodifications break any existing code or not, you can run the following commands\nin the project root directory to build both examples and unit tests and run unit\ntests:\n\n* If you use GCC (Linux, MinGW, Cygwin), type:\n\n  ```\n  $ make\n  ```\n\n  To cleanup, type:\n  \n  ```\n  make cleanall\n  ```\n\n* If you use Microsoft Visual C++ compiler, type:\n\n  ```\n  $ nmake /f Makefile.nmake\n  ```\n\n  To cleanup, type:\n  \n  ```\n  nmake /f Makefile.nmake cleanall\n  ```\n\nIf you want to use CMake to generate Visual Studio 2017 x64 solution file, type:\n\n```\n$ mkdir build\n$ cd build\n$ cmake -G \"Visual Studio 15 2017 Win64\" ..\n```\n  \nTo cleanup, just remove the `build` directory.\n\n\nDocumentation and Examples\n--------------------------\n\nTo learn how to use the Argtable3 API, you can see the documentation on the web\nsite, or examples in the `examples` folder.\n\nTo build the examples, open the console window of your favorite development\nenvironments, go to the `examples` folder, and use the included Makefiles to build\nthe examples.\n\n* If you use GCC (Linux, MinGW, Cygwin), type:\n\n  ```\n  $ make\n  ```\n\n  To cleanup, type:\n  \n  ```\n  make cleanall\n  ```\n\n\n* If you use Microsoft Visual C++ compiler, type:\n\n  ```\n  $ nmake /f Makefile.nmake\n  ```\n\n  To cleanup, type:\n  \n  ```\n  nmake /f Makefile.nmake cleanall\n  ```\n  \n\nUnit Tests\n----------\n\nArgtable3 is a BSD-licensed open source library, so you can modify the library\nanyway you want. However, before committing your code to your own repository or\nthe Argtable3 official repository, please make sure your changes can pass the\nunit tests included in the distribution.\n\nTo build and run the unit tests, open the console window of your favorite\ndevelopment environments, go to the `tests` folder, and use the included Makefiles\nto build and run the unit tests.\n\n* If you use GCC (Linux, MinGW, Cygwin), type:\n\n  ```\n  $ make\n  ```\n\n  To cleanup, type:\n  \n  ```\n  make cleanall\n  ```\n\n\n* If you use Microsoft Visual C++ compiler, type:\n\n  ```\n  $ nmake /f Makefile.nmake\n  ```\n\n  To cleanup, type:\n  \n  ```\n  nmake /f Makefile.nmake cleanall\n  ```\n  \n\nAuthors\n-------\n\nArgtable is Copyright (C) 1998-2001,2003-2011 Stewart Heitmann.\nParts are Copyright (C) 1989-1994, 1996-1999, 2001, 2003\n  Free Software Foundation, Inc.\n\nArgtable was written by Stewart Heitmann <sheitmann@users.sourceforge.net>\n\nArgtable is now maintained by Tom G. Huang <tomghuang@gmail.com>\nThe project homepage of argtable 3.x is http://www.argtable.org\nThe project homepage of argtable 2.x is http://argtable.sourceforge.net/\n\nHere is a list of contributors who have helped to improve argtable:\n\n- **Nina Clemson**: Editing the original argtable-1.0 documentation.\n- **Livio Bertacco**: For bug fixes and the argtable-2.x Visual C++ Makefiles.                              \n- **Justin Dearing**: For bug fixes and Windows DLL support, plus code support for the Open Watcom compiler and help with the Mac OS X configuration.\n- **Asa Packer**: Contributing bug fixes and upgrades to the Visual C++ Makefiles.\n- **Danilo Cicerone**: For the Italian translation of \"Introduction to Argtable-2x\" on http://www.digitazero.org.\n- **Uli Fouquet**: For configuration patches and documentation related to cross-compiling argtable from Unix to Windows, as well as providing the arg_print_glossary_gnu function.\n- **Shachar Shemesh**: For Debian package integration and kick-starting the migration to automake/autoconf.\n- **Jasper Lievisse Adriaanse**:  Maintaining the argtable package in OpenBSD ports.\n- **Ulrich Mohr**: For bug fixes relating to Texas Instrument DSP platforms.\n- **John Vickers**: For bug fixes relating to Solaris/Motorola platforms.\n- **Steve O'Neil**: For bug fixes relating to Solaris/Motorola platforms.\n- **Lori A. Pritchett-Sheats**: Fixing a makefile bug relating to \"make dist\".\n- **Paolo Bormida**: For instructions on building argtable with date and regex support on Windows.\n- **Michel Valin**: For bug fixes relating to the configure scripts on IBM AIX platforms and instructions on compiling the example code under AIX.\n- **Steve Christensen**: Providing prebuilt packages for SPARC/Solaris and x86/Solaris platforms on www.sunfreeware.com.\n- **Jess Portnoy**: Reworking the rpm package and integrating argtable into Fedora Linux.\n- **Michael Brown**: Incorporating support for pkg-config into the autoconf scripts.\n- **Alexander Lindert**: For extensions to the parser to support hex, octal and binary integer formats as well as KB/MB/GB suffixes.\n- **Rob Zaborowski**: Providing build configuration files for CMake.\n- **Moczik Gabor**: For bug fixes relating to the parsing of filepaths and filename extensions.\n\nArgtable 2.x uses `getopt` from GNU, which is LGPL licensed. In order to switch to BSD, we replaced GNU `getopt` with NetBSD `getopt`. We really appreciate this high quality library that lays the foundation of Argtable 3.x and here is its copyright notice:\n\n```\nCopyright (c) 2000 The NetBSD Foundation, Inc.\nAll rights reserved.\n\nThis code is derived from software contributed to The NetBSD Foundation\nby Dieter Baron and Thomas Klausner.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions\nare met:\n1. Redistributions of source code must retain the above copyright\n   notice, this list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n3. All advertising materials mentioning features or use of this software\n   must display the following acknowledgement:\n       This product includes software developed by the NetBSD\n       Foundation, Inc. and its contributors.\n4. Neither the name of The NetBSD Foundation nor the names of its\n   contributors may be used to endorse or promote products derived\n   from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS\n``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED\nTO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\nPURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS\nBE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:argtable3\" ]",
+      "lockFile": "manifest = \"2979fd303f49310eb7622649e75ee7a6f9fefef1d5178847d91f24b8b1daa7f0\"\n\n",
+      "buck": "cxx_library(\n  name = 'argtable3',\n  header_namespace = '',\n  exported_headers = [\n    'argtable3.h',\n  ],\n  srcs = [\n    'argtable3.c',\n  ],\n  licenses = [\n    'LICENSE',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-23T13:57:25Z",
+  "updatedUpstream": "2021-01-07T20:59:52Z",
+  "contributors": [
+    {
+      "login": "brainstorm",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/175587?v=4"
+    },
+    {
+      "login": "KindDragon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/224272?v=4"
+    },
+    {
+      "login": "oopsmonk",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/462383?u=87c65758c990ee3427bbf74bae751d6ceb1027eb&v=4"
+    },
+    {
+      "login": "vincentbernat",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/631446?v=4"
+    },
+    {
+      "login": "tomghuang",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1431344?u=832de3ff851cea97107ab2e0c6ceda93113d3454&v=4"
+    },
+    {
+      "login": "aegoroff",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2218102?v=4"
+    },
+    {
+      "login": "DavidZemon",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3068292?u=79e8674d23a6940efc69ad70a289d1896e9b3772&v=4"
+    },
+    {
+      "login": "hzeba",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4117398?v=4"
+    },
+    {
+      "login": "unasuke",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4487291?v=4"
+    },
+    {
+      "login": "myd7349",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5435649?v=4"
+    },
+    {
+      "login": "fenglc",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5838929?u=d958e0a73904fbf5ed8e9d5d931a397fdf70493e&v=4"
+    },
+    {
+      "login": "zangue",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6109563?v=4"
+    },
+    {
+      "login": "surreylabs",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8637231?u=4a76c08ef33c08633f62866d9c3edb7a46b3dd3a&v=4"
+    },
+    {
+      "login": "ricksteiling",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/47007510?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 190,
+  "forks": 39,
+  "topics": []
+}

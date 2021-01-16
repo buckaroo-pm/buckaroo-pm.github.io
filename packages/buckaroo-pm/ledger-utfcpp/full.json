@@ -1,0 +1,63 @@
+{
+  "packageName": "buckaroo-pm/ledger-utfcpp",
+  "name": "ledger/utfcpp",
+  "licence": "",
+  "description": "UTF-8 with C++ in a Portable Way",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:utfcpp\" ]\n",
+      "lockFile": "manifest = \"5e05e10b184241ed862267ba4aa63007f24e04445bb30ba6a1608f60b2189dfe\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'utfcpp',\n  exported_headers = subdir_glob([\n    ('source', '**/*.h')\n  ]),\n  visibility = ['PUBLIC']\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-25T16:37:14Z",
+  "updatedUpstream": "2020-01-07T05:14:11Z",
+  "contributors": [
+    {
+      "login": "drewr",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6202?v=4"
+    },
+    {
+      "login": "jwiegley",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/8460?u=83d9c6bfa0b8453d616e7c7701cba6ef2d53df52&v=4"
+    },
+    {
+      "login": "simonmichael",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10144?v=4"
+    },
+    {
+      "login": "peterkeen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/13977?v=4"
+    },
+    {
+      "login": "afh",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/16507?v=4"
+    },
+    {
+      "login": "kljohann",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/67211?u=7567adfdd7ca36e5ec726f3ce9e27935eff0fecb&v=4"
+    },
+    {
+      "login": "alerque",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/173595?v=4"
+    },
+    {
+      "login": "tlvince",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/323761?v=4"
+    },
+    {
+      "login": "enderw88",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/879404?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 34,
+  "forks": 17,
+  "topics": []
+}

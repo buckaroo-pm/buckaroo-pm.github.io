@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/nothings-stb",
+  "name": "nothings/stb",
+  "stars": 14588,
+  "topics": [],
+  "description": "stb single-file public domain libraries for C/C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-12T18:24:29Z",
+  "updatedUpstream": "2021-01-13T22:20:58Z"
+}

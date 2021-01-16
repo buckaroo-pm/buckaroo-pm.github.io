@@ -1,0 +1,159 @@
+{
+  "packageName": "buckaroo-pm/mongo-c-driver",
+  "name": "mongodb/mongo-c-driver",
+  "licence": "Apache-2.0",
+  "description": "A high-performance MongoDB driver for C",
+  "readme": "==============\nmongo-c-driver\n==============\n\nAbout\n=====\n\nmongo-c-driver is a project that includes two libraries:\n\n- libmongoc, a client library written in C for MongoDB.\n- libbson, a library providing useful routines related to building, parsing, and iterating BSON documents.\n\nIf libmongoc is not needed, it is possible to build and install only libbson.\n\nDocumentation / Support / Feedback\n==================================\n\nThe documentation is available at http://mongoc.org/.\nFor issues with, questions about, or feedback for libmongoc, please look into\nour `support channels <http://www.mongodb.org/about/support>`_. Please\ndo not email any of the libmongoc developers directly with issues or\nquestions - you're more likely to get an answer on the `mongodb-user list`_\non Google Groups.\n\nBugs / Feature Requests\n=======================\n\nThink you’ve found a bug? Want to see a new feature in libmongoc? Please open a\ncase in our issue management tool, JIRA:\n\n- `Create an account and login <https://jira.mongodb.org>`_.\n- Navigate to `the CDRIVER project <https://jira.mongodb.org/browse/CDRIVER>`_.\n- Click **Create Issue** - Please provide as much information as possible about the issue type and how to reproduce it.\n\nBug reports in JIRA for all driver projects (i.e. CDRIVER, CSHARP, JAVA) and the\nCore Server (i.e. SERVER) project are **public**.\n\nHow To Ask For Help\n-------------------\n\nIf you are having difficulty building the driver after reading the below instructions, please email\nthe `mongodb-user list`_ to ask for help. Please include in your email all of the following\ninformation:\n\n- The version of the driver you are trying to build (branch or tag).\n    - Examples: master branch, 1.9.5 tag\n- Host OS, version, and architecture.\n    - Examples: Windows 10 64-bit x86, Ubuntu 16.04 64-bit x86, macOS 10.13\n- C Compiler and version.\n    - Examples: GCC 7.3.0, Visual Studio Community 2017, clang 3.9, XCode 9.3\n- The output of ``cmake``.\n- The text of the error you encountered.\n\nFailure to include the relevant information will delay a useful response.\nHere is a made-up example of a help request that provides the relevant\ninformation:\n\n  Hello, I'm trying to build the C driver with Kerberos support, from\n  mongo-c-driver-1.9.5.tar.gz. I'm on Ubuntu 16.04, 64-bit Intel, with gcc\n  5.4.0. I run CMake like::\n\n    $ cmake .\n    -- The C compiler identification is ;GNU 5.4.0\n    -- Check for working C compiler: /usr/bin/cc\n    -- Check for working C compiler: /usr/bin/cc -- works\n\n    ... SNIPPED OUTPUT, but when you ask for help, include full output without any omissions ...\n\n    -- Searching for libsasl2\n    --   Not found (specify -DCMAKE_LIBRARY_PATH=/path/to/sasl/lib for SASL support)\n    CMake Error at CMakeLists.txt:10 (_message):\n        SASL not found\n\n  Can you tell me what I need to install? Thanks!\n\n.. _mongodb-user list: http://groups.google.com/group/mongodb-user\n\nSecurity Vulnerabilities\n------------------------\n\nIf you’ve identified a security vulnerability in a driver or any other\nMongoDB project, please report it according to the `instructions here\n<http://docs.mongodb.org/manual/tutorial/create-a-vulnerability-report>`_.\n\n\nInstallation\n============\n\nDetailed installation instructions are in the manual:\nhttp://mongoc.org/libmongoc/current/installing.html\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:monogoc\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\nversion = \"*\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/openssl\"\nversion = \"*\"\n",
+      "lockFile": "manifest = \"c2b7e3a806cd0cce3f0769ee5662e5f4ba6e810ae297f8712ecb0c3dc96a4a4f\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\ntarget = \"//:zlib\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/openssl\"\ntarget = \"//:openssl\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"1.2.11\" ]\nrevision = \"94a70f3274f15bf98b472178e91fd57a6e6c53d8\"\n\n[lock.\"github.com/buckaroo-pm/openssl\"]\nversions = [ \"tag=1.0.2j\" ]\nrevision = \"e61671249ee5dfa59b663d135b64dd6fe9efe9d0\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ngenrule(\n  name = 'bson-version',\n  out = 'bson-version.h',\n  srcs = [\n    'src/libbson/src/bson/bson-version.h.in',\n  ],\n  cmd = ' && '.join([\n    'cp $SRCS $OUT',\n    'sed -i \"s/@BSON_MAJOR_VERSION@/0/g\" $OUT',\n    'sed -i \"s/@BSON_MINOR_VERSION@/0/g\" $OUT',\n    'sed -i \"s/@BSON_MICRO_VERSION@/0/g\" $OUT',\n    'sed -i \"s/@BSON_VERSION@/0.0.0/g\" $OUT',\n    'sed -i \"s/@BSON_PRERELEASE_VERSION@//g\" $OUT',\n  ]),\n)\n\ngenrule(\n  name = 'bson-config',\n  out = 'bson-config.h',\n  srcs = [\n    'src/libbson/src/bson/bson-config.h.in',\n  ],\n  cmd = ' && '.join([\n    'cp $SRCS $OUT',\n    'sed -i \"s/@BSON_OS@/1/g\" $OUT',\n    'sed -i \"s/@BSON_BYTE_ORDER@/1234/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_ATOMIC_32_ADD_AND_FETCH@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_ATOMIC_64_ADD_AND_FETCH@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_CLOCK_GETTIME@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_STRINGS_H@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_STRNLEN@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_SNPRINTF@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_GMTIME_R@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_REALLOCF@/0/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_TIMESPEC@/1/g\" $OUT',\n    'sed -i \"s/@BSON_EXTRA_ALIGN@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_SYSCALL_TID@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_RAND_R@/1/g\" $OUT',\n    'sed -i \"s/@BSON_HAVE_STDBOOL_H@/1/g\" $OUT',\n  ]),\n)\n\ngcc_pp_flags = [\n  '-DBSON_COMPILATION=1',\n  '-DMONGOC_COMPILATION=1',\n]\n\ncxx_library(\n  name = 'bson',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('src/common', '**/*.h'),\n      ('src/libbson/src', '**/*.h'),\n    ]).items() + [\n      ('bson/bson-version.h', ':bson-version'),\n      ('bson/bson-config.h', ':bson-config'),\n      ('bson.h', 'src/libbson/src/bson/bson.h'),\n    ]\n  ),\n  srcs = glob([\n    'src/common/**/*.c',\n    'src/libbson/src/**/*.c',\n  ]),\n  platform_preprocessor_flags = [\n    ('^macos.*', gcc_pp_flags),\n    ('^linux.*', gcc_pp_flags),\n  ],\n  exported_post_platform_linker_flags = [\n    ('linux.*', [ '-lpthread' ]),\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ngenrule(\n  name = 'mongoc-version',\n  out = 'mongoc-version.h',\n  srcs = [\n    'src/libmongoc/src/mongoc/mongoc-version.h.in',\n  ],\n  cmd = ' && '.join([\n    'cp $SRCS $OUT',\n    'sed -i \"s/@MONGOC_MAJOR_VERSION@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_MINOR_VERSION@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_MICRO_VERSION@/0/g\" $OUT',\n  ]),\n)\n\ngenrule(\n  name = 'mongoc-config',\n  out = 'mongoc-config.h',\n  srcs = [\n    'src/libmongoc/src/mongoc/mongoc-config.h.in',\n  ],\n  cmd = ' && '.join([\n    'cp $SRCS $OUT',\n    'sed -i \"s/@MONGOC_USER_SET_CFLAGS@//g\" $OUT',\n    'sed -i \"s/@MONGOC_USER_SET_LDFLAGS@//g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_CRYPTO_CNG@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_SOCKET_ARG2@/struct sockaddr/g\" $OUT',\n    'sed -i \"s/@MONGOC_SOCKET_ARG3@/socklen_t/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_ICU@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_TRACE@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SHM_COUNTERS@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_COMPRESSION@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_COMPRESSION_ZLIB@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_COMPRESSION_SNAPPY@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_RDTSCP@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_SCHED_GETCPU@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SSL_SECURE_CHANNEL@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_RES_NSEARCH@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_RES_NDESTROY@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_RES_NCLOSE@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_DNSAPI@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SSL_LIBRESSL@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_RES_SEARCH@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_CRYPTO_LIBCRYPTO@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_NO_AUTOMATIC_GLOBALS@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_SOCKLEN@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SASL_SSPI@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_ASN1_STRING_GET0_DATA@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_HAVE_SASL_CLIENT_DONE@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SASL@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SASL_CYRUS@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SSL_OPENSSL@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_CRYPTO@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SSL@/1/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_CRYPTO_SYSTEM_PROFILE@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_CRYPTO_COMMON_CRYPTO@/0/g\" $OUT',\n    'sed -i \"s/@MONGOC_ENABLE_SSL_SECURE_TRANSPORT@/0/g\" $OUT',\n  ]),\n)\n\nlinux_srcs = glob([\n  'src/libmongoc/src/mongoc/mongoc-rand-common-crypto.c',\n])\n\nmacos_srcs = glob([\n  'src/libmongoc/src/mongoc/mongoc-rand-common-crypto.c',\n])\n\nwindows_srcs = glob([\n  'src/libmongoc/src/mongoc/mongoc-rand-cng.c',\n])\n\nplatform_srcs = linux_srcs + macos_srcs + windows_srcs\n\ncxx_library(\n  name = 'mongoc',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('src/common', '**/*.h'),\n      ('src/libmongoc/src', '**/*.h'),\n    ]).items() + [\n      ('mongoc.h', 'src/libmongoc/src/mongoc/mongoc.h'),\n      ('mongoc/mongoc-config.h', ':mongoc-config'),\n      ('mongoc/mongoc-version.h', ':mongoc-version'),\n    ]\n  ),\n  headers = subdir_glob([\n    ('src/libmongoc/src/mongoc', '**/*.defs'),\n    ('src/libmongoc/src/mongoc', '**/*.def'),\n    ('src/libmongoc/src', '**/*.def'),\n  ]),\n  srcs = glob([\n    'src/libmongoc/src/**/*.c',\n  ], exclude = platform_srcs),\n  platform_preprocessor_flags = [\n    ('^macos.*', gcc_pp_flags),\n    ('^linux.*', gcc_pp_flags),\n  ],\n  platform_srcs = [\n    ('linux.*', linux_srcs),\n    ('macos.*', macos_srcs),\n    ('windows.*', windows_srcs),\n  ],\n  deps = buckaroo_deps() + [\n    ':bson',\n  ],\n  exported_post_platform_linker_flags = [\n    ('linux.*', [ '-lrt', '-lresolv' ]),\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "version": "*"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/openssl",
+          "name": "buckaroo-pm/openssl",
+          "version": "*"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "1.2.11"
+            ],
+            "revision": "94a70f3274f15bf98b472178e91fd57a6e6c53d8"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/openssl",
+          "name": "buckaroo-pm/openssl",
+          "spec": {
+            "versions": [
+              "tag=1.0.2j"
+            ],
+            "revision": "e61671249ee5dfa59b663d135b64dd6fe9efe9d0"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-12-23T13:13:42Z",
+  "updatedUpstream": "2021-01-13T19:37:46Z",
+  "contributors": [
+    {
+      "login": "rozza",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/420?v=4"
+    },
+    {
+      "login": "durran",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/9030?u=1b8fe710730c1dfed971c881683b1180a5658db2&v=4"
+    },
+    {
+      "login": "ghartnett",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10810?v=4"
+    },
+    {
+      "login": "dwight",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/17261?u=f9d39343fef9ac9d940cfcece28dc9d4727fadfb&v=4"
+    },
+    {
+      "login": "jimoleary",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/22506?v=4"
+    },
+    {
+      "login": "chergert",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25676?v=4"
+    },
+    {
+      "login": "abique",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/31200?u=dc4cfcef2c80fcada61d7ca811263bdebf199c92&v=4"
+    },
+    {
+      "login": "gustafn",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/35802?v=4"
+    },
+    {
+      "login": "eldruin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/43125?u=793323189714f72073de4da82b3b4d097753ee35&v=4"
+    },
+    {
+      "login": "rubicks",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/44631?v=4"
+    },
+    {
+      "login": "JamesKovacs",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/59540?v=4"
+    },
+    {
+      "login": "ac000",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/61690?v=4"
+    },
+    {
+      "login": "spencerjackson",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/70592?v=4"
+    },
+    {
+      "login": "dgottlieb",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/71458?v=4"
+    },
+    {
+      "login": "bjori",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/72407?v=4"
+    },
+    {
+      "login": "ajdavis",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/84101?u=c139fc2bad031cebf115eaae2b7892a9ac670e28&v=4"
+    },
+    {
+      "login": "mpobrien",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/96535?u=a8ed1c6f7d40ca378b74e9aad861133fe4efaea1&v=4"
+    },
+    {
+      "login": "rueckstiess",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/99221?u=eadbbbebce3568fd899adf1010c71b9fb3e4cc32&v=4"
+    },
+    {
+      "login": "ooglek",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/100755?u=ab48b7ca8b39ff881313e48c750284053643d023&v=4"
+    },
+    {
+      "login": "RedBeard0531",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/118456?v=4"
+    },
+    {
+      "login": "rtimmons",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/119094?u=b17a81a0472241da0613c93062a60a54a65133d2&v=4"
+    },
+    {
+      "login": "crystalhorn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/125034?v=4"
+    },
+    {
+      "login": "deafgoat",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/127706?u=5d82b664c79be07eddfcc65920916c6292c811f6&v=4"
+    },
+    {
+      "login": "gabrielrussell",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/145985?u=29607118b86c55dbb5f4198427407fc096aca122&v=4"
+    },
+    {
+      "login": "hanumantmk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/150922?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 630,
+  "forks": 372,
+  "topics": []
+}

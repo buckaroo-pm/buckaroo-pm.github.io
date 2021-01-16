@@ -1,0 +1,43 @@
+{
+  "packageName": "buckaroo-pm/catch2",
+  "name": "catchorg/Catch2",
+  "stars": 12623,
+  "topics": [
+    "c-plus-plus",
+    "cpp11",
+    "testing",
+    "test-framework",
+    "tdd",
+    "bdd",
+    "header-only",
+    "single-file",
+    "no-dependencies",
+    "framework"
+  ],
+  "description": "A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later (or C++03 on the Catch1.x branch)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v2.10.2",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v1.12.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-05T16:49:01Z",
+  "updatedUpstream": "2021-01-13T15:43:30Z"
+}

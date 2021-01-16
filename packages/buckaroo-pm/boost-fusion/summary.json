@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-fusion",
+  "name": "boostorg/fusion",
+  "stars": 33,
+  "topics": [],
+  "description": "Boost.org fusion module",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": false,
+      "buck": true,
+      "deps": 9,
+      "transitive": 11
+    },
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 9,
+      "transitive": 11
+    }
+  ],
+  "updated": "2019-01-11T15:27:40Z",
+  "updatedUpstream": "2020-10-06T01:20:21Z"
+}

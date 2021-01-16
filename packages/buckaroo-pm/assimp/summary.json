@@ -1,0 +1,36 @@
+{
+  "packageName": "buckaroo-pm/assimp",
+  "name": "assimp/assimp",
+  "stars": 6174,
+  "topics": [
+    "asset-pipeline",
+    "assets",
+    "game-development",
+    "c-plus-plus",
+    "assimp",
+    "patreon",
+    "stl",
+    "dae",
+    "collada",
+    "cmake",
+    "objective-c",
+    "ifc",
+    "fbx",
+    "android",
+    "3mf",
+    "python",
+    "jvm"
+  ],
+  "description": "Official Open Asset Import Library Repository. Loads 40+ 3D file formats into one unified and clean data structure. ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 10,
+      "transitive": 11
+    }
+  ],
+  "updated": "2019-01-30T11:40:43Z",
+  "updatedUpstream": "2021-01-13T07:56:40Z"
+}

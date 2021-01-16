@@ -1,0 +1,20 @@
+{
+  "packageName": "buckaroo-pm/google-benchmark",
+  "name": "google/benchmark",
+  "stars": 5064,
+  "topics": [
+    "benchmark"
+  ],
+  "description": "A microbenchmark support library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-06T07:54:41Z",
+  "updatedUpstream": "2021-01-13T19:40:22Z"
+}

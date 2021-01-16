@@ -1,0 +1,71 @@
+{
+  "packageName": "buckaroo-pm/01org-tbb",
+  "name": "oneapi-src/oneTBB",
+  "licence": "Apache-2.0",
+  "description": "Official Intel(R) Threading Building Blocks (Intel TBB) GitHub repository.",
+  "readme": "# Threading Building Blocks 2019 Update 3\n[![Stable release](https://img.shields.io/badge/version-2019_U3-green.svg)](https://github.com/01org/tbb/releases/tag/2019_U3)\n[![Apache License Version 2.0](https://img.shields.io/badge/license-Apache_2.0-green.svg)](LICENSE)\n\nThreading Building Blocks (TBB) lets you easily write parallel C++ programs that take\nfull advantage of multicore performance, that are portable, composable and have future-proof scalability.\n\n## Release Information\nHere are the latest [Changes](CHANGES) and [Release Notes](doc/Release_Notes.txt) (contains system requirements and known issues).\n\nSince [2018 U5](https://github.com/01org/tbb/releases/tag/2018_U5) TBB binary packages include [Parallel STL](https://github.com/intel/parallelstl) as a high-level component.\n\n## Documentation\n* TBB [tutorial](https://software.intel.com/en-us/tbb-tutorial)\n* TBB general documentation: [stable](https://software.intel.com/en-us/tbb-documentation)\nand [latest](https://www.threadingbuildingblocks.org/docs/help/index.htm)\n\n## Support\nPlease report issues and suggestions via\n[GitHub issues](https://github.com/01org/tbb/issues) or start a topic on the\n[TBB forum](http://software.intel.com/en-us/forums/intel-threading-building-blocks/).\n\n## How to Contribute\nTo contribute to TBB, please open a GitHub pull request (preferred) or send us a patch by e-mail.\nThreading Building Blocks is licensed under [Apache License, Version 2.0](LICENSE).\nBy its terms, contributions submitted to the project are also done under that license.\n\n## Engineering team contacts\n* [E-mail us.](mailto:inteltbbdevelopers@intel.com)\n\n------------------------------------------------------------------------\nIntel and the Intel logo are trademarks of Intel Corporation or its subsidiaries in the U.S. and/or other countries.\n\n\\* Other names and brands may be claimed as the property of others.\n",
+  "versions": [],
+  "updated": "2020-03-17T18:59:21Z",
+  "updatedUpstream": "2021-01-13T21:18:59Z",
+  "contributors": [
+    {
+      "login": "argretzi",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/713897?u=50f613d839482aa2f3c37791809c5d21dd6d01f7&v=4"
+    },
+    {
+      "login": "rscohn2",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1936730?v=4"
+    },
+    {
+      "login": "AlexVeprev",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2850661?u=edf2a461c1d3a30908d88b976045f6947aca9a75&v=4"
+    },
+    {
+      "login": "no-ponomarev",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4191349?u=fd3c90b9985eb8ae68173ab88ccba7dc2dd7b150&v=4"
+    },
+    {
+      "login": "rdower",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/15023397?u=2f8dda817377f6ab08da44a274c51b2f0a11d631&v=4"
+    },
+    {
+      "login": "aleksei-fedotov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/15153785?v=4"
+    },
+    {
+      "login": "tbbdev",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/20040515?u=ebf0883914e069a84ec1b7b29af9e3f51e5e61b3&v=4"
+    },
+    {
+      "login": "ivankochin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22097249?u=86c00d555ebffbc6981c63b84ec172785b936b4d&v=4"
+    },
+    {
+      "login": "alexey-katranov",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/24670614?u=6aec89c7556160d3087e50b1df509226ed98e319&v=4"
+    },
+    {
+      "login": "akukanov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/29803928?v=4"
+    },
+    {
+      "login": "sanjivmshah",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/31136285?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2574,
+  "forks": 505,
+  "topics": [
+    "tbbmalloc",
+    "threading",
+    "parallelism",
+    "composability",
+    "heterogeneousprogramming",
+    "taskparallelism",
+    "flowgraph",
+    "oneapi",
+    "tbb"
+  ]
+}

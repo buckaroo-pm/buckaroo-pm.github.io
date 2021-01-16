@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/jech-dht",
+  "name": "jech/dht",
+  "stars": 584,
+  "topics": [],
+  "description": "BitTorrent DHT library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-31T16:20:36Z",
+  "updatedUpstream": "2021-01-05T08:04:35Z"
+}

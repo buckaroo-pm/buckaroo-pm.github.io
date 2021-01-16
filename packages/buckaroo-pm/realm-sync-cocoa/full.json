@@ -1,0 +1,44 @@
+{
+  "packageName": "buckaroo-pm/realm-sync-cocoa",
+  "name": "buckaroo-pm/realm-sync-cocoa",
+  "licence": "",
+  "description": null,
+  "readme": "# realm-sync-cocoa\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:realm\", \"//:realm-parser\" ]\n",
+      "lockFile": "manifest = \"522d5f0b018396fd7ad992b6d5c94104496e92b41e7301f608c7508001163680\"\n\n",
+      "buck": "load('//:utils.bzl', 'extract', 'extractFolder')\n\nversion = '3.13.3'\n\nhttp_archive(\n  name = 'realm-sync-cocoa-archive',\n  out = 'out',\n  urls = [\n    'https://static.realm.io/downloads/sync/realm-sync-cocoa-' + version + '.tar.xz',\n  ],\n  sha256 = '14acd38d0f3875392aa53db5adcaa33fb65bb79feb2af1af26e8c2704db96838',\n)\n\nprebuilt_cxx_library(\n  name = 'realm', \n  header_dirs = [\n    extractFolder(':realm-sync-cocoa-archive', 'core/include'),\n  ],\n  preferred_linkage = 'static', \n  platform_shared_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-ios.a')),\n  ], \n  visibility = [\n    'PUBLIC',\n  ],\n)\n\nprebuilt_cxx_library(\n  name = 'realm-parser', \n  preferred_linkage = 'static', \n  platform_shared_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-ios.a')),\n  ], \n  deps = [\n    ':realm',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "3.14.12",
+      "manifest": "targets = [ \"//:realm\", \"//:realm-parser\" ]\n",
+      "lockFile": "manifest = \"522d5f0b018396fd7ad992b6d5c94104496e92b41e7301f608c7508001163680\"\n\n",
+      "buck": "load('//:utils.bzl', 'extract', 'extractFolder')\n\nversion = '3.14.12'\n\nhttp_archive(\n  name = 'realm-sync-cocoa-archive',\n  out = 'out',\n  urls = [\n    'https://static.realm.io/downloads/sync/realm-sync-cocoa-' + version + '.tar.xz',\n  ],\n  sha256 = '7dd66ea5f02e28b7b1bc64cbbcedd2a1ab29ab5e689c272cb73392616acdd978',\n)\n\nprebuilt_cxx_library(\n  name = 'realm', \n  header_dirs = [\n    extractFolder(':realm-sync-cocoa-archive', 'core/include'),\n  ],\n  preferred_linkage = 'static', \n  platform_static_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-ios.a')),\n  ], \n  visibility = [\n    'PUBLIC',\n  ],\n)\n\nprebuilt_cxx_library(\n  name = 'realm-parser', \n  preferred_linkage = 'static', \n  platform_static_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-ios.a')),\n  ], \n  deps = [\n    ':realm',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "3.13.3",
+      "manifest": "targets = [ \"//:realm\", \"//:realm-parser\" ]\n",
+      "lockFile": "manifest = \"522d5f0b018396fd7ad992b6d5c94104496e92b41e7301f608c7508001163680\"\n\n",
+      "buck": "load('//:utils.bzl', 'extract', 'extractFolder')\n\nversion = '3.13.3'\n\nhttp_archive(\n  name = 'realm-sync-cocoa-archive',\n  out = 'out',\n  urls = [\n    'https://static.realm.io/downloads/sync/realm-sync-cocoa-' + version + '.tar.xz',\n  ],\n  sha256 = '14acd38d0f3875392aa53db5adcaa33fb65bb79feb2af1af26e8c2704db96838',\n)\n\nprebuilt_cxx_library(\n  name = 'realm', \n  header_dirs = [\n    extractFolder(':realm-sync-cocoa-archive', 'core/include'),\n  ],\n  preferred_linkage = 'static', \n  platform_static_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-ios.a')),\n  ], \n  visibility = [\n    'PUBLIC',\n  ],\n)\n\nprebuilt_cxx_library(\n  name = 'realm-parser', \n  preferred_linkage = 'static', \n  platform_static_lib = [\n    ('macos.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-macosx.a')),\n    ('iphone.*', extract(':realm-sync-cocoa-archive', 'core/librealm-parser-ios.a')),\n  ], \n  deps = [\n    ':realm',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-02-21T22:38:16Z",
+  "updatedUpstream": "2019-02-21T22:38:16Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

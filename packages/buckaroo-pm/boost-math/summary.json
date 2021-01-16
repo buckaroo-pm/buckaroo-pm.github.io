@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-math",
+  "name": "boostorg/math",
+  "stars": 157,
+  "topics": [],
+  "description": "Boost.org math module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 9,
+      "transitive": 49
+    }
+  ],
+  "updated": "2018-11-14T23:53:45Z",
+  "updatedUpstream": "2021-01-13T14:31:25Z"
+}

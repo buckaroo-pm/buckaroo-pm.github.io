@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-accumulators",
+  "name": "boostorg/accumulators",
+  "stars": 18,
+  "topics": [],
+  "description": "An awesome library from Boost",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 10,
+      "transitive": 25
+    }
+  ],
+  "updated": "2019-01-21T15:29:15Z",
+  "updatedUpstream": "2020-06-20T17:48:09Z"
+}

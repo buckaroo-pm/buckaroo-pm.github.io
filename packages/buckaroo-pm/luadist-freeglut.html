@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/a0584ae5515792e72ab5.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a0584ae5515792e72ab5.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.ae3781fe50e43492a499.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.9b549cceddc4472f1953.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/packages/%5Bowner%5D/%5Bname%5D-bc25a6cf0982fd349b0a.js" as="script"/></head><body><div id="__next"><div class="site"><div class="navigation"><div class="view row space-between"><div class="links"><a class="buckaroo" href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="/blog">Blog</a></div><div class="search"><input placeholder="search for a module..." value=""/><button class="fa fa-search fa-large"></button></div><iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&amp;repo=buckaroo&amp;type=star&amp;count=true&amp;size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe></div></div><div></div><div class="banner"><div style="display:flex"><div class="package"><img src="/packages/buckaroo-pm/luadist-freeglut/logo.png"/></div><div><h1>buckaroo-pm/luadist-freeglut</h1><div style="max-width:600px">FreeGLUT is a free alternative GLUT library.</div><br/><div><b>6</b></div></div></div><div style="display:inline-flex;flex-flow:row wrap"></div></div><div style="display:flex;width:100%;justify-content:center;margin-top:-2.7em"><div class="tab-control" style="padding:0.5em;border-radius:0.2em;font-size:1.5em;background:white;color:black;border:solid 1px #fff">ReadMe</div></div><div class="banner white"><div class="view column"><h2>ReadMe</h2><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>BRIEF OVERVIEW
+</span>==============
+<!-- -->
+<!-- -->This is the freeglut package.
+<!-- -->
+<!-- -->Freeglut, the Free openGL Utility Toolkit, is meant to be a free alter-
+<!-- -->native to Mark Kilgard&#x27;s GLUT library. It is distributed under an X-Consor-
+<!-- -->tium style license (see COPYING for details), to offer you a chance to use 
+<!-- -->and/or modify the source.
+<!-- -->
+<!-- -->It makes use of OpenGL, GLU, and pthreads-win32 libraries. The library does
+<!-- -->not make use of any GLUT code and is not 100% compatible. Code recompilation
+<!-- -->and/or slight modifications might be required for your applications to work
+<!-- -->with freeglut.
+<!-- -->
+<!-- -->
+<!-- -->PORTS
+<!-- -->=====
+<!-- -->
+<!-- -->Both X11 and Win32 ports are in an advanced alpha stage, which means that
+<!-- -->they provide limited functionality of GLUT API 3. There is an investigation
+<!-- -->en course to check if the BeOS port could be easily done using the current
+<!-- -->freeglut structure.
+<!-- -->
+<!-- -->
+<!-- -->INSTALLATION
+<!-- -->============
+<!-- -->
+<!-- -->Use the following commands to build from scratch on a *nix X11 platform:
+<!-- -->
+<!-- -->    ./autogen.sh
+<!-- -->    ./configure
+<!-- -->    make
+<!-- -->
+<!-- -->The first command is only needed after a fresh checkout, a source distribution
+<!-- -->already contains all necessary files for the last two steps.
+<!-- -->
+<!-- -->
+<!-- -->CONTRIBUTING
+<!-- -->============
+<!-- -->
+<!-- -->Bug and missing features patches are certainly welcome. Just as comments 
+<!-- -->and FREEGLUT API 1 propositions are.
+<!-- -->
+<!-- -->Just please to make the fixes look visually just as the rest of the code 
+<!-- -->does (tabs converted 4 white spaces). Comments are really welcome, as I 
+<!-- -->believe it would be nice for people fresh new to OpenGL see how the things
+<!-- -->are done... 
+<!-- -->
+<!-- -->
+<!-- -->WEB SITE AND CONTACTING THE AUTHOR
+<!-- -->==================================
+<!-- -->
+<!-- -->Freeglut project has moved to the SourceForge:
+<!-- -->http://freeglut.sourceforge.net
+<!-- -->
+<!-- -->
+<!-- -->THE HOPE
+<!-- -->========
+<!-- -->
+<!-- -->Hope you find my work somehow useful.
+<!-- -->Pawel W. Olszta, &lt;olszta@sourceforge.net&gt;
+<!-- -->
+<!-- -->
+<!-- -->PASSING THE BATON
+<!-- -->=================
+<!-- -->
+<!-- -->In late December 2000, Pawel decided that he no longer
+<!-- -->wished to maintain freeglut because he has moved out of
+<!-- -->the graphics field.  I volunteered to take over from him
+<!-- -->and have been running the project since Jan 13th 2001.
+<!-- -->
+<!-- -->I&#x27;m also the author and maintainer of the PLIB library suite
+<!-- -->and &#x27;freeglut&#x27; really fits in well with that work.
+<!-- -->
+<!-- -->I just hope I can live up to Pawel&#x27;s high standards. Pawel
+<!-- -->remains on the active developers list.
+<!-- -->
+<!-- -->Steve Baker &lt;sjbaker1@airmail.net&gt;
+<!-- -->            http://plib.sourceforge.net
+</code></pre></div></div><div class="banner footer"><div class="view column"><div class="actions"><div class="links"><a href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="https://github.com/LoopPerfect/buckaroo" target="_blank">GitHub</a></div><div class="signup"><h1 class="action">Sign up for our Newsletter</h1><div class="info">Get the latest updates about new packages and Buckaroo releases.</div><button>Sign Up</button></div></div><div class="powered"><img src="/LoopPerfectInvertSmall.png"/><span>Powered by LoopPerfect</span></div></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"data":{"packageName":"buckaroo-pm/luadist-freeglut","name":"LuaDist/freeglut","licence":"NOASSERTION","description":"FreeGLUT is a free alternative GLUT library.","readme":"\n    BRIEF OVERVIEW\n    ==============\n\n    This is the freeglut package.\n\n    Freeglut, the Free openGL Utility Toolkit, is meant to be a free alter-\n    native to Mark Kilgard's GLUT library. It is distributed under an X-Consor-\n    tium style license (see COPYING for details), to offer you a chance to use \n    and/or modify the source.\n\n    It makes use of OpenGL, GLU, and pthreads-win32 libraries. The library does\n    not make use of any GLUT code and is not 100% compatible. Code recompilation\n    and/or slight modifications might be required for your applications to work\n    with freeglut.\n\n\n    PORTS\n    =====\n\n    Both X11 and Win32 ports are in an advanced alpha stage, which means that\n    they provide limited functionality of GLUT API 3. There is an investigation\n    en course to check if the BeOS port could be easily done using the current\n    freeglut structure.\n\n\n    INSTALLATION\n    ============\n\n    Use the following commands to build from scratch on a *nix X11 platform:\n\n        ./autogen.sh\n        ./configure\n        make\n\n    The first command is only needed after a fresh checkout, a source distribution\n    already contains all necessary files for the last two steps.\n\n\n    CONTRIBUTING\n    ============\n\n    Bug and missing features patches are certainly welcome. Just as comments \n    and FREEGLUT API 1 propositions are.\n\n    Just please to make the fixes look visually just as the rest of the code \n    does (tabs converted 4 white spaces). Comments are really welcome, as I \n    believe it would be nice for people fresh new to OpenGL see how the things\n    are done... \n\n\n    WEB SITE AND CONTACTING THE AUTHOR\n    ==================================\n\n    Freeglut project has moved to the SourceForge:\n    http://freeglut.sourceforge.net\n\n\n    THE HOPE\n    ========\n\n    Hope you find my work somehow useful.\n    Pawel W. Olszta, \u003colszta@sourceforge.net\u003e\n\n\n    PASSING THE BATON\n    =================\n\n    In late December 2000, Pawel decided that he no longer\n    wished to maintain freeglut because he has moved out of\n    the graphics field.  I volunteered to take over from him\n    and have been running the project since Jan 13th 2001.\n\n    I'm also the author and maintainer of the PLIB library suite\n    and 'freeglut' really fits in well with that work.\n\n    I just hope I can live up to Pawel's high standards. Pawel\n    remains on the active developers list.\n\n    Steve Baker \u003csjbaker1@airmail.net\u003e\n                http://plib.sourceforge.net\n\n\n","versions":[],"updated":"2019-01-24T16:16:30Z","updatedUpstream":"2020-11-19T18:10:22Z","contributors":[{"login":"davidm","avatarUrl":"https://avatars1.githubusercontent.com/u/22920?v=4"},{"login":"mkottman","avatarUrl":"https://avatars0.githubusercontent.com/u/144990?v=4"},{"login":"stevedonovan","avatarUrl":"https://avatars3.githubusercontent.com/u/218893?v=4"},{"login":"mnicky","avatarUrl":"https://avatars1.githubusercontent.com/u/232572?v=4"},{"login":"hishamhm","avatarUrl":"https://avatars3.githubusercontent.com/u/245621?v=4"},{"login":"drahosp","avatarUrl":"https://avatars3.githubusercontent.com/u/246514?v=4"},{"login":"kapecp","avatarUrl":"https://avatars2.githubusercontent.com/u/254374?v=4"}],"fundingLinks":[],"contactLinks":[],"stars":6,"forks":9,"topics":[]}},"__N_SSG":true},"page":"/packages/[owner]/[name]","query":{"owner":"buckaroo-pm","name":"luadist-freeglut"},"buildId":"XEnVUsOG7VkTdg59Wro6f","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-617a3a2c770be2525c7f.js"></script><script src="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" async=""></script><script src="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" async=""></script><script src="/_next/static/chunks/framework.ae3781fe50e43492a499.js" async=""></script><script src="/_next/static/chunks/commons.9b549cceddc4472f1953.js" async=""></script><script src="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" async=""></script><script src="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" async=""></script><script src="/_next/static/chunks/pages/packages/%5Bowner%5D/%5Bname%5D-bc25a6cf0982fd349b0a.js" async=""></script><script src="/_next/static/XEnVUsOG7VkTdg59Wro6f/_buildManifest.js" async=""></script><script src="/_next/static/XEnVUsOG7VkTdg59Wro6f/_ssgManifest.js" async=""></script></body></html>

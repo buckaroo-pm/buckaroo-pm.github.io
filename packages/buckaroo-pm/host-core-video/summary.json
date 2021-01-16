@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-core-video",
+  "name": "buckaroo-pm/host-core-video",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for CoreVideo framework",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T11:42:38Z",
+  "updatedUpstream": "2019-01-24T11:42:38Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/abseil-cpp",
+  "name": "abseil/abseil-cpp",
+  "stars": 7929,
+  "topics": [],
+  "description": "Abseil Common Libraries (C++)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-06T08:12:03Z",
+  "updatedUpstream": "2021-01-13T22:16:32Z"
+}

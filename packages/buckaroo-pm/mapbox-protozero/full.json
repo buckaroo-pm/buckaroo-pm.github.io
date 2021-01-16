@@ -1,0 +1,130 @@
+{
+  "packageName": "buckaroo-pm/mapbox-protozero",
+  "name": "mapbox/protozero",
+  "licence": "NOASSERTION",
+  "description": "Minimalist protocol buffer decoder and encoder in C++",
+  "readme": "# protozero\n\nMinimalistic protocol buffer decoder and encoder in C++.\n\nDesigned for high performance. Suitable for writing zero copy parsers and\nencoders with minimal need for run-time allocation of memory.\n\nLow-level: this is designed to be a building block for writing a very\ncustomized decoder for a stable protobuf schema. If your protobuf schema is\nchanging frequently or lazy decoding is not critical for your application then\nthis approach offers no value: just use the C++ API that can be generated with\nthe Google Protobufs `protoc` program.\n\n[![Travis Build Status](https://travis-ci.org/mapbox/protozero.svg?branch=master)](https://travis-ci.org/mapbox/protozero)\n[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/mapbox/protozero?svg=true)](https://ci.appveyor.com/project/Mapbox/protozero)\n[![Coverage Status](https://codecov.io/gh/mapbox/protozero/branch/master/graph/badge.svg)](https://codecov.io/gh/mapbox/protozero)\n[![Packaging status](https://repology.org/badge/tiny-repos/protozero.svg)](https://repology.org/metapackage/protozero)\n\n## Depends\n\n* C++11 compiler\n* CMake\n* Some tests depend on the Google Protobuf library, but use of Protozero\n  doesn't need it\n\n\n## How it works\n\nThe protozero code does **not** read `.proto` files used by the usual Protobuf\nimplementations. The developer using protozero has to manually \"translate\" the\n`.proto` description into code. This means there is no way to access any of the\ninformation from the `.proto` description. This results in a few restrictions:\n\n* The names of the fields are not available.\n* Enum names are not available, you'll have to use the values they are defined\n  with.\n* Default values are not available.\n* Field types have to be hardcoded. The library does not know which types to\n  expect, so the user of the library has to supply the right types. Some checks\n  are made using `assert()`, but mostly the user has to take care of that.\n\nThe library will make sure not to overrun the buffer it was given, but\nbasically all other checks have to be made in user code!\n\n\n## Documentation\n\nYou have to have a working knowledge of how\n[protocol buffer encoding works](https://developers.google.com/protocol-buffers/docs/encoding).\n\n* Read the [tutorial](doc/tutorial.md) for an introduction on how to use\n  Protozero.\n* Some advanced topics are described in an [extra document](doc/advanced.md).\n* There is a table of all types and functions in the\n  [cheat sheet](doc/cheatsheet.md).\n* Read the [upgrading instructions](UPGRADING.md) if you are upgrading from\n  an older version of Protozero.\n\nThe build process will also build the Doxygen-based reference documentation\nif you have [Doxygen](http://www.stack.nl/~dimitri/doxygen/) installed. Then\nopen `doc/html/index.html` in your browser to read it.\n\n\n## Endianness\n\nProtozero uses a very simplistic test to check the byte order of the system it\ncompiles on. If this check is wrong, you'll get test failures. If this is the\ncase, please [open an issue](https://github.com/mapbox/protozero/issues) and\ntell us about your system.\n\n\n## Building tests\n\nExtensive tests are included. Build them using CMake:\n\n    mkdir build\n    cd build\n    cmake ..\n    make\n\nCall `ctest` to run the tests.\n\nThe unit and reader tests are always build, the writer tests are only build if\nthe Google Protobuf library is found when running CMake.\n\nSee `test/README.md` for more details about the test.\n\n\n## Coverage report\n\nTo get a coverage report set `CXXFLAGS` and `LDFLAGS` before calling CMake:\n\n    CXXFLAGS=\"--coverage\" LDFLAGS=\"--coverage\" cmake ..\n\nThen call `make` as usual and run the tests using `ctest`.\n\nIf you are using `g++` use `gcov` to generate a report (results are in `*.gcov`\nfiles):\n\n    gcov -lp $(find test/ -name '*.o')\n\nIf you are using `clang++` use `llvm-cov` instead:\n\n    llvm-cov gcov -lp $(find test/ -name '*.o')\n\nIf you are using `g++` you can use `gcovr` to generate nice HTML output:\n\n    mkdir -p coverage\n    gcovr . -r SRCDIR --html --html-details -o coverage/index.html\n\nOpen `coverage/index.html` in your browser to see the report.\n\n\n## Clang-tidy\n\nAfter the CMake step, run\n\n    make clang-tidy\n\nto check the code with [clang-tidy](https://clang.llvm.org/extra/clang-tidy/).\nYou might have to set `CLANG_TIDY` in CMake config.\n\n\n## Cppcheck\n\nFor extra checks with [Cppcheck](http://cppcheck.sourceforge.net/) you can,\nafter the CMake step, call\n\n    make cppcheck\n\n\n## Installation\n\nAfter the CMake step, call `make install` to install the include files in\n`/usr/local/include/protozero`.\n\nIf you are using CMake to build your own software, you can copy the file\n`cmake/FindProtozero.cmake` and use it in your build. See the file for\ndetails.\n\n\n## Who is using Protozero?\n\n* [Carmen](https://github.com/mapbox/carmen-cache)\n* [Libosmium](https://github.com/osmcode/libosmium)\n* [Mapbox GL Native](https://github.com/mapbox/mapbox-gl-native)\n* [Mapbox Vector Tile library](https://github.com/mapbox/vector-tile)\n* [Mapnik](https://github.com/mapbox/mapnik-vector-tile)\n* [OSRM](https://github.com/Project-OSRM/osrm-backend)\n* [Tippecanoe](https://github.com/mapbox/tippecanoe)\n* [Vtzero](https://github.com/mapbox/vtzero)\n\nAre you using Protozero? Tell us! Send a pull request with changes to this\nREADME.\n\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:protozero\" ]",
+      "lockFile": "",
+      "buck": "prebuilt_cxx_library(\n  name = 'protozero', \n  header_namespace = 'protozero', \n  header_only = True, \n  exported_headers = subdir_glob([\n    ('include/protozero', '**/*.hpp'), \n  ]), \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-13T10:24:36Z",
+  "updatedUpstream": "2021-01-11T06:09:27Z",
+  "contributors": [
+    {
+      "login": "zugaldia",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6964?u=e17bd7e9c8e0d4ca1df6956596cffc4ef10176de&v=4"
+    },
+    {
+      "login": "bookest",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14640?u=75e815f366d32a63b0d223fe47182a1570a96bb3&v=4"
+    },
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "mikelmaron",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22896?u=f22126445e688b260ca316709407189f669c2083&v=4"
+    },
+    {
+      "login": "mourner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25395?u=6f04fa0e30ee06ee7ef8d13dd6c166d0ca70aeea&v=4"
+    },
+    {
+      "login": "sbma44",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31717?v=4"
+    },
+    {
+      "login": "sgillies",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33697?u=518c359114c548926c56fef4b51a123e9a4a5d47&v=4"
+    },
+    {
+      "login": "kkaefer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/52399?u=7b3a53dfef51246b5c1342108a664842b4ea3571&v=4"
+    },
+    {
+      "login": "alfwatt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/53469?u=ff9e35352887e919bfd74b6ad0bee578af80e165&v=4"
+    },
+    {
+      "login": "anderco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55106?v=4"
+    },
+    {
+      "login": "yuletide",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58695?u=6322adc3fcbff377e32f0e6299d7aaddd841dc6e&v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "tristen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61150?u=40b52d083ac2c6f414ef35c79271c776787e7bd0&v=4"
+    },
+    {
+      "login": "ivovandongen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/64527?u=e284cc763f7ca8765196fc0f6279e7538742cdfd&v=4"
+    },
+    {
+      "login": "brunoabinader",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76133?v=4"
+    },
+    {
+      "login": "apendleton",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/78930?u=911348d600e91c721685538a958ee4252a854589&v=4"
+    },
+    {
+      "login": "yhahn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/83384?u=b2c1ca34e763ba420f510b5a1d62201c1d9624eb&v=4"
+    },
+    {
+      "login": "PureW",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/85910?v=4"
+    },
+    {
+      "login": "AlekseiCherkes",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/87640?u=f75d2bf7fd442db59db853feab57a208761fddef&v=4"
+    },
+    {
+      "login": "ianshward",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/91258?u=5e631aa4328b540f955d9c2e9e2588fcc1bd0d0d&v=4"
+    },
+    {
+      "login": "gundersen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/93353?v=4"
+    },
+    {
+      "login": "willwhite",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/93564?u=3e17a4a45e3ce686ca811d9ed79257db04ff345f&v=4"
+    },
+    {
+      "login": "lxbarth",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/98233?u=3ca609d2f417501e961958c5bef2f99327b3f84e&v=4"
+    },
+    {
+      "login": "kshehadeh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/107061?u=d5e994f10868eb85c21bc5b8793da960f3044ed6&v=4"
+    },
+    {
+      "login": "samanpwbb",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/108094?u=f38ea53150b7855f77de960bde5d8f2cb09aa6ed&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 174,
+  "forks": 42,
+  "topics": [
+    "protocol-buffers",
+    "c-plus-plus"
+  ]
+}

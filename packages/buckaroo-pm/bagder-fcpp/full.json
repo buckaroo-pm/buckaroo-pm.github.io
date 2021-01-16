@@ -1,0 +1,39 @@
+{
+  "packageName": "buckaroo-pm/bagder-fcpp",
+  "name": "bagder/fcpp",
+  "licence": "NOASSERTION",
+  "description": "Frexx C preprocessor",
+  "readme": "Frexx CPP (C Preprocessor)\n\nCopyright (c) by Daniel Stenberg 1993 - 2011\n\nThis is a C preprocessor. It is a project based on public domain code, then\nforked by Daniel in 1993 and future work has been done under a BSD license.\n\nThe C preprocessor is now (mostly?) ANSI C compliant, and some tweaks have\nbeen applied to also make it fairly usable to process other data files, such\nas HTML for simple web sites.\n\nWWW:   http://daniel.haxx.se/projects/fcpp/\nCode:  https://github.com/bagder/fcpp\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:fcpp\" ]",
+      "lockFile": "manifest = \"d02b3ae4b6ea03b76a6144f5a89299381d1fb503bc6a4c82f67728ee7f5af252\"\n\n",
+      "buck": "cxx_library(\n  name = 'fcpp',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  preprocessor_flags = [\n    '-Dunix',\n    '-Dpdc',\n    '-DUNIX',\n    # '-DDEBUG',\n  ],\n  srcs = glob([\n    '*.c',\n  ]),\n  licenses = [\n    'COPYING',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-03-20T15:32:02Z",
+  "updatedUpstream": "2021-01-11T20:29:36Z",
+  "contributors": [
+    {
+      "login": "bagder",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/177011?v=4"
+    },
+    {
+      "login": "jay",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/965580?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 93,
+  "forks": 31,
+  "topics": [
+    "preprocessor",
+    "c",
+    "c-preprocessor"
+  ]
+}

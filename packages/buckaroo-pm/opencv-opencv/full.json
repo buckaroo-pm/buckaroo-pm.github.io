@@ -1,0 +1,123 @@
+{
+  "packageName": "buckaroo-pm/opencv-opencv",
+  "name": "opencv/opencv",
+  "licence": "NOASSERTION",
+  "description": "Open Source Computer Vision Library",
+  "readme": "## OpenCV: Open Source Computer Vision Library\n\n### Resources\n\n* Homepage: <https://opencv.org>\n* Docs: <https://docs.opencv.org/master/>\n* Q&A forum: <http://answers.opencv.org>\n* Issue tracking: <https://github.com/opencv/opencv/issues>\n\n### Contributing\n\nPlease read the [contribution guidelines](https://github.com/opencv/opencv/wiki/How_to_contribute) before starting work on a pull request.\n\n#### Summary of the guidelines:\n\n* One pull request per issue;\n* Choose the right base branch;\n* Include tests and documentation;\n* Clean up \"oops\" commits before submitting;\n* Follow the [coding style guide](https://github.com/opencv/opencv/wiki/Coding_Style_Guide).\n",
+  "versions": [],
+  "updated": "2018-10-22T15:59:15Z",
+  "updatedUpstream": "2021-01-13T19:49:36Z",
+  "contributors": [
+    {
+      "login": "peters",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/869?u=0a697945472348c8114c04aaebd6095daac477a9&v=4"
+    },
+    {
+      "login": "jviney",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7051?u=14f8f0d7b02fd238e54db07c5e71e9b7adb4553d&v=4"
+    },
+    {
+      "login": "blebo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12697?v=4"
+    },
+    {
+      "login": "lvv",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12983?v=4"
+    },
+    {
+      "login": "eruffaldi",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/18180?u=b98a2b7e1d7c44ad670d2b83ea7e4c6ddc64b5b1&v=4"
+    },
+    {
+      "login": "Reen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/18651?v=4"
+    },
+    {
+      "login": "arnaudbrejeon",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/21390?u=7a0f838f427aca85bc16dbdb7ae1667dbde41f2c&v=4"
+    },
+    {
+      "login": "bygreencn",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/22853?u=86c5950ddcaa1ccce8ce847553169afa7c68c8a0&v=4"
+    },
+    {
+      "login": "ibtaylor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/27136?v=4"
+    },
+    {
+      "login": "splattael",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/28908?v=4"
+    },
+    {
+      "login": "hmax",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/30526?v=4"
+    },
+    {
+      "login": "malcolmreynolds",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/36041?v=4"
+    },
+    {
+      "login": "ostarling",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/36222?v=4"
+    },
+    {
+      "login": "Human",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/40866?v=4"
+    },
+    {
+      "login": "nevir",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/41373?v=4"
+    },
+    {
+      "login": "nzjrs",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/41891?u=c1dfbff176f8735831074d442fd5869395181cb3&v=4"
+    },
+    {
+      "login": "eldruin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/43125?u=793323189714f72073de4da82b3b4d097753ee35&v=4"
+    },
+    {
+      "login": "adamgreig",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/47219?u=d17865a393741dc7d9394f3e8c83461cfce56be5&v=4"
+    },
+    {
+      "login": "amrox",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/47537?u=51cd25c1f92fbe3b36ef257f60a65668c8e8ed9d&v=4"
+    },
+    {
+      "login": "kilobyte",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/48801?v=4"
+    },
+    {
+      "login": "rnk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/50126?u=b5da419f3e0759a66c36051eaddb1f6dd2921a04&v=4"
+    },
+    {
+      "login": "ryanobjc",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/52216?u=a4620ecc5d23c13492a5aa56cd7a3ab327a10ebe&v=4"
+    },
+    {
+      "login": "wolever",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/59575?u=f1d15acfc7804f1fa8677f7a992ad2ca848e9629&v=4"
+    },
+    {
+      "login": "yinghau76",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/60776?v=4"
+    },
+    {
+      "login": "rpavlik",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61129?u=7d08cfe95729dfb58415f39b2d33d756572ab142&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 51595,
+  "forks": 42361,
+  "topics": [
+    "opencv",
+    "c-plus-plus",
+    "computer-vision",
+    "deep-learning",
+    "image-processing"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/ocornut-imgui",
+  "name": "ocornut/imgui",
+  "stars": 26451,
+  "topics": [
+    "imgui",
+    "gui",
+    "gamedev",
+    "tools",
+    "ui",
+    "toolkit",
+    "native"
+  ],
+  "description": "Dear ImGui: Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 10
+    }
+  ],
+  "updated": "2019-01-24T12:15:58Z",
+  "updatedUpstream": "2021-01-13T22:30:06Z"
+}

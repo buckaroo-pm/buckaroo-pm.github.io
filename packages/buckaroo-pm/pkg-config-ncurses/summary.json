@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-ncurses",
+  "name": "buckaroo-pm/pkg-config-ncurses",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for ncurses managed by pkg-config",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-30T15:27:38Z",
+  "updatedUpstream": "2019-01-30T15:27:38Z"
+}

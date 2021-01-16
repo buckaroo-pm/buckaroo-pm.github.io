@@ -1,0 +1,175 @@
+{
+  "packageName": "buckaroo-pm/boost-tti",
+  "name": "boostorg/tti",
+  "licence": "",
+  "description": null,
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:tti\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-preprocessor\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-function_types\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"74bd39f38187725d0c83335ecab168431d29e0f96c29db89e25217a462f996c4\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\ntarget = \"//:detail\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-function_types\"\ntarget = \"//:function-types\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\ntarget = \"//:mpl\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-preprocessor\"\ntarget = \"//:preprocessor\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\ntarget = \"//:type-traits\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n\n[lock.\"github.com/buckaroo-pm/boost-detail\"]\nversions = [ \"branch=master\" ]\nrevision = \"e8b834a93f7ba935aa63a3d6690804f3bd2b0963\"\n\n[lock.\"github.com/buckaroo-pm/boost-function_types\"]\nversions = [ \"branch=master\" ]\nrevision = \"fd648b89c18430fa4cb3622018cc99ba99412ffe\"\n\n[lock.\"github.com/buckaroo-pm/boost-mpl\"]\nversions = [ \"branch=master\" ]\nrevision = \"a1873af9c1d31fb8ec2a87482b6bb9729439b4ac\"\n\n[lock.\"github.com/buckaroo-pm/boost-preprocessor\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_traits\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d0a507c0d1a1011c5a98d57acc9f6b755141e4f\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'tti',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-preprocessor",
+          "name": "buckaroo-pm/boost-preprocessor",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-function_types",
+          "name": "buckaroo-pm/boost-function_types",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "e8b834a93f7ba935aa63a3d6690804f3bd2b0963"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-function_types",
+          "name": "buckaroo-pm/boost-function_types",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "fd648b89c18430fa4cb3622018cc99ba99412ffe"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a1873af9c1d31fb8ec2a87482b6bb9729439b4ac"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-preprocessor",
+          "name": "buckaroo-pm/boost-preprocessor",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d0a507c0d1a1011c5a98d57acc9f6b755141e4f"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-14T17:25:53Z",
+  "updatedUpstream": "2020-12-28T15:16:34Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    },
+    {
+      "login": "jzmaddock",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5011768?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2,
+  "forks": 22,
+  "topics": []
+}

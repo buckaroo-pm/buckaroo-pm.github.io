@@ -1,0 +1,138 @@
+{
+  "packageName": "buckaroo-pm/mapbox-gl-native",
+  "name": "mapbox/mapbox-gl-native",
+  "licence": "NOASSERTION",
+  "description": "Interactive, thoroughly customizable maps in native Android, iOS, macOS, Node.js, and Qt applications, powered by vector tiles and OpenGL",
+  "readme": "# Mapbox GL Native\n\nA library for embedding interactive, customizable vector maps into native applications on multiple platforms. It takes stylesheets that conform to the [Mapbox Style Specification](https://github.com/mapbox/mapbox-gl-style-spec/), applies them to vector tiles that conform to the [Mapbox Vector Tile Specification](https://github.com/mapbox/vector-tile-spec), and renders them using OpenGL. [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js) is the WebGL-based counterpart, designed for use on the Web.\n\n## The Mapbox GL ecosystem\n\nThis repository hosts the cross-platform Mapbox GL Native library, plus convenient SDKs for several platforms. The cross-platform library comes with a [GLFW](https://github.com/glfw/glfw)-based demo application for Ubuntu Linux and macOS. The SDKs target the usual languages on their respective platforms:\n\n| SDK                                     | Languages                          | Build status                             |\n| --------------------------------------- | ---------------------------------- | ---------------------------------------- |\n| [Mapbox GL Native](INSTALL.md)          | C++14                              | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) [![Coverage Status](https://codecov.io/gh/mapbox/mapbox-gl-native/branch/master/graph/badge.svg)](https://codecov.io/gh/mapbox/mapbox-gl-native) |\n| [Mapbox Maps SDK for Android](platform/android/) | Java                               | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) |\n| [Mapbox Maps SDK for iOS](platform/ios/)         | Objective-C or Swift               | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) |\n| [Mapbox Maps SDK for macOS](platform/macos/)     | Objective-C, Swift, or AppleScript | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) |\n| [node-mapbox-gl-native](platform/node/) | Node.js                            | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) |\n| [Mapbox Maps SDK for Qt](platform/qt)            | C++03                              | [![Circle CI build status](https://circleci.com/gh/mapbox/mapbox-gl-native.svg?style=shield)](https://circleci.com/gh/mapbox/workflows/mapbox-gl-native/tree/master) [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/3q12kbcooc6df8uc?svg=true)](https://ci.appveyor.com/project/Mapbox/mapbox-gl-native) |\n\nAdditional Mapbox GL Native–based libraries for **hybrid applications** are developed outside of this repository:\n\n| Toolkit                                  | Android | iOS | Developer   |\n| ---------------------------------------- | --------|-----|------------ |\n| [React Native](https://github.com/mapbox/react-native-mapbox-gl/) ([npm](https://www.npmjs.com/package/@mapbox/react-native-mapbox-gl)) | :white_check_mark: | :white_check_mark: | Mapbox |\n| [NativeScript](https://market.nativescript.org/plugins/nativescript-mapbox/) ([npm](https://www.npmjs.com/package/nativescript-mapbox/)) | :white_check_mark: | :white_check_mark: | Telerik |\n\nIf your platform or hybrid application framework isn’t listed here, consider embedding [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js) using the standard Web capabilities on your platform.\n\n## License\n\nMapbox GL Native is licensed under the [3-Clause BSD license](LICENSE.md). The licenses of its dependencies are tracked via [FOSSA](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fmapbox-gl-native):\n\n[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fmapbox-gl-native.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fmapbox-gl-native)\n",
+  "versions": [],
+  "updated": "2018-11-20T17:22:20Z",
+  "updatedUpstream": "2021-01-11T15:23:23Z",
+  "contributors": [
+    {
+      "login": "twpayne",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6942?u=227a4496aba8d3f526c53bdb6aa7713b22c56906&v=4"
+    },
+    {
+      "login": "zugaldia",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6964?u=e17bd7e9c8e0d4ca1df6956596cffc4ef10176de&v=4"
+    },
+    {
+      "login": "bookest",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14640?u=75e815f366d32a63b0d223fe47182a1570a96bb3&v=4"
+    },
+    {
+      "login": "chrisvoll",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/15995?u=dc4fd49d29d1c28cd5601aa89195f62b8919c279&v=4"
+    },
+    {
+      "login": "incanus",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/17722?u=535974e6aa91a2131bc6be230cb0af253356d3dc&v=4"
+    },
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "mikelmaron",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22896?u=f22126445e688b260ca316709407189f669c2083&v=4"
+    },
+    {
+      "login": "mourner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25395?u=6f04fa0e30ee06ee7ef8d13dd6c166d0ca70aeea&v=4"
+    },
+    {
+      "login": "sbma44",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31717?v=4"
+    },
+    {
+      "login": "tmcw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/32314?u=f6cb43dcfd33ae3df8cd1c6679922b08a24ef509&v=4"
+    },
+    {
+      "login": "sgillies",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33697?u=518c359114c548926c56fef4b51a123e9a4a5d47&v=4"
+    },
+    {
+      "login": "bhousel",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/38784?u=79ec19b1b876a4ba09982a03406c2838b77ba772&v=4"
+    },
+    {
+      "login": "kkaefer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/52399?u=7b3a53dfef51246b5c1342108a664842b4ea3571&v=4"
+    },
+    {
+      "login": "alfwatt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/53469?u=ff9e35352887e919bfd74b6ad0bee578af80e165&v=4"
+    },
+    {
+      "login": "anderco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55106?v=4"
+    },
+    {
+      "login": "ahk",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/58012?v=4"
+    },
+    {
+      "login": "yuletide",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58695?u=6322adc3fcbff377e32f0e6299d7aaddd841dc6e&v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "tristen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61150?u=40b52d083ac2c6f414ef35c79271c776787e7bd0&v=4"
+    },
+    {
+      "login": "boundsj",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/63186?v=4"
+    },
+    {
+      "login": "ivovandongen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/64527?u=e284cc763f7ca8765196fc0f6279e7538742cdfd&v=4"
+    },
+    {
+      "login": "martinnormark",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/67565?u=340492aa13ab9b9295af608eb6aca424b12ab79b&v=4"
+    },
+    {
+      "login": "DonTomika",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/67597?v=4"
+    },
+    {
+      "login": "brunoabinader",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76133?v=4"
+    },
+    {
+      "login": "miccolis",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/77205?u=897c1777fd6d59eed2f44ef49b877ab2ef3e24a7&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 3935,
+  "forks": 1264,
+  "topics": [
+    "map",
+    "mapbox-gl",
+    "opengl",
+    "android",
+    "ios",
+    "macos",
+    "nodejs",
+    "qt",
+    "c-plus-plus",
+    "java",
+    "objective-c",
+    "swift",
+    "vector-tiles",
+    "objective-c-plus-plus",
+    "openstreetmap",
+    "monorepo",
+    "mapbox",
+    "geojson",
+    "opengl-es",
+    "maps"
+  ]
+}

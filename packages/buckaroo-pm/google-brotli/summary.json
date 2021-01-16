@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-brotli",
+  "name": "njlr/brotli",
+  "stars": 0,
+  "topics": [],
+  "description": "Brotli compression format",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-06T12:07:45Z",
+  "updatedUpstream": "2017-03-13T12:54:16Z"
+}

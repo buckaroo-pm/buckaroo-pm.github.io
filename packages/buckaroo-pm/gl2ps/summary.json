@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/gl2ps",
+  "name": "buckaroo-pm/gl2ps",
+  "stars": 0,
+  "topics": [],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 4
+    }
+  ],
+  "updated": "2019-01-24T17:32:34Z",
+  "updatedUpstream": "2019-01-24T17:32:34Z"
+}

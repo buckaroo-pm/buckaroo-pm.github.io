@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-dynamic_bitset",
+  "name": "boostorg/dynamic_bitset",
+  "stars": 25,
+  "topics": [],
+  "description": "Boost.org dynamic_bitset module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 12
+    }
+  ],
+  "updated": "2019-02-06T21:55:00Z",
+  "updatedUpstream": "2020-05-26T03:00:07Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/edouarda-brigand",
+  "name": "edouarda/brigand",
+  "stars": 510,
+  "topics": [],
+  "description": "Instant compile time C++ 11 metaprogramming library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 19
+    }
+  ],
+  "updated": "2019-01-18T19:11:38Z",
+  "updatedUpstream": "2021-01-13T13:51:38Z"
+}

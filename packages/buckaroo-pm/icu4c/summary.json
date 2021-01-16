@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/icu4c",
+  "name": "njlr/icu4c",
+  "stars": 0,
+  "topics": [
+    "icu",
+    "icu4c",
+    "buck"
+  ],
+  "description": "icu4c",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-19T22:49:44Z",
+  "updatedUpstream": "2017-05-03T12:40:10Z"
+}

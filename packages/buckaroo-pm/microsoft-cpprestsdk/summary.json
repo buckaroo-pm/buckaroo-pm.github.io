@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/microsoft-cpprestsdk",
+  "name": "microsoft/cpprestsdk",
+  "stars": 5921,
+  "topics": [
+    "cloud",
+    "sdk",
+    "cpp11",
+    "cpp-library",
+    "cpp",
+    "http",
+    "websockets",
+    "oauth2",
+    "oauth",
+    "async",
+    "asynchronous-tasks",
+    "tasks"
+  ],
+  "description": "The C++ REST SDK is a Microsoft project for cloud-based client-server communication in native code using a modern asynchronous C++ API design. This project aims to help C++ developers connect to and interact with services.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 6,
+      "transitive": 58
+    }
+  ],
+  "updated": "2019-01-28T21:37:21Z",
+  "updatedUpstream": "2021-01-13T19:43:04Z"
+}

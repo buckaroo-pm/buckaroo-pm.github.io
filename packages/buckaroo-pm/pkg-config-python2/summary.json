@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-python2",
+  "name": "buckaroo-pm/pkg-config-python2",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for Python 2 managed by pkg-config",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-15T10:56:48Z",
+  "updatedUpstream": "2019-01-15T10:56:48Z"
+}

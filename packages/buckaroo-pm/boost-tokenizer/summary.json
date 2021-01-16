@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-tokenizer",
+  "name": "boostorg/tokenizer",
+  "stars": 17,
+  "topics": [],
+  "description": "Boost.org tokenizer module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-16T12:01:29Z",
+  "updatedUpstream": "2020-12-21T08:30:38Z"
+}

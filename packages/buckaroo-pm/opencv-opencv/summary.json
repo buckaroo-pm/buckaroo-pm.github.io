@@ -1,0 +1,16 @@
+{
+  "packageName": "buckaroo-pm/opencv-opencv",
+  "name": "opencv/opencv",
+  "stars": 51595,
+  "topics": [
+    "opencv",
+    "c-plus-plus",
+    "computer-vision",
+    "deep-learning",
+    "image-processing"
+  ],
+  "description": "Open Source Computer Vision Library",
+  "versions": [],
+  "updated": "2018-10-22T15:59:15Z",
+  "updatedUpstream": "2021-01-13T19:49:36Z"
+}

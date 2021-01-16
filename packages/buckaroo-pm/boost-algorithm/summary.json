@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-algorithm",
+  "name": "boostorg/algorithm",
+  "stars": 82,
+  "topics": [],
+  "description": "Boost.org algorithm module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 19,
+      "transitive": 32
+    }
+  ],
+  "updated": "2018-11-14T20:17:02Z",
+  "updatedUpstream": "2020-12-08T12:07:32Z"
+}

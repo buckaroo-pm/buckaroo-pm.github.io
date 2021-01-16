@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/freedesktop-libICE",
+  "name": "freedesktop/libICE",
+  "stars": 0,
+  "topics": [],
+  "description": "Inter-Client Exchange library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T12:53:42Z",
+  "updatedUpstream": "2016-12-03T16:51:15Z"
+}

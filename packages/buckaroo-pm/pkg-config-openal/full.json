@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-openal",
+  "name": "buckaroo-pm/pkg-config-openal",
+  "licence": "",
+  "description": "Buck wrapper for OpenAL managed by pkg-config",
+  "readme": "# pkg-config-openal\n\nBuck wrapper for OpenAL managed by `pkg-config`.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:openal\" ]\n",
+      "lockFile": "manifest = \"1339e1420e16f2e24ec526f68c237ab1e4cedceb1e04eefb81d2b28c840fedc2\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' openal --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' openal --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'openal',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-28T22:33:45Z",
+  "updatedUpstream": "2019-01-28T22:33:45Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

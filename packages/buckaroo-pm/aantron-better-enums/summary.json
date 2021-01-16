@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/aantron-better-enums",
+  "name": "aantron/better-enums",
+  "stars": 1070,
+  "topics": [
+    "enum",
+    "cpp",
+    "reflection",
+    "header-only"
+  ],
+  "description": "C++ compile-time enum to string, iteration, in a single header file.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T17:54:36Z",
+  "updatedUpstream": "2021-01-13T03:30:51Z"
+}

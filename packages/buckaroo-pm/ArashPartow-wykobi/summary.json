@@ -1,0 +1,13 @@
+{
+  "packageName": "buckaroo-pm/ArashPartow-wykobi",
+  "name": "ArashPartow/wykobi",
+  "stars": 115,
+  "topics": [
+    "c-plus-plus",
+    "computational-geometry"
+  ],
+  "description": "Wykobi C++ Computational Geometry Library",
+  "versions": [],
+  "updated": "2019-01-24T15:26:55Z",
+  "updatedUpstream": "2021-01-08T16:37:41Z"
+}

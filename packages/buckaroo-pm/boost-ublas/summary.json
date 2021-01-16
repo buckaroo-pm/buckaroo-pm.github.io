@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/boost-ublas",
+  "name": "boostorg/ublas",
+  "stars": 70,
+  "topics": [
+    "boost",
+    "ublas",
+    "tensor",
+    "matrix",
+    "linear-algebra",
+    "vector"
+  ],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 7,
+      "transitive": 11
+    }
+  ],
+  "updated": "2019-01-21T15:50:32Z",
+  "updatedUpstream": "2021-01-12T17:22:24Z"
+}

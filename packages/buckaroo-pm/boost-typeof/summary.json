@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-typeof",
+  "name": "boostorg/typeof",
+  "stars": 7,
+  "topics": [],
+  "description": "Boost.org typeof module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 8
+    }
+  ],
+  "updated": "2018-11-14T17:13:52Z",
+  "updatedUpstream": "2020-08-24T11:15:42Z"
+}

@@ -1,0 +1,30 @@
+{
+  "packageName": "buckaroo-pm/harfbuzz",
+  "name": "harfbuzz/harfbuzz",
+  "stars": 1777,
+  "topics": [
+    "opentype",
+    "fonts",
+    "c-plus-plus",
+    "c",
+    "library",
+    "unicode",
+    "text-shaping",
+    "aat",
+    "variable-fonts",
+    "typography",
+    "text-rendering"
+  ],
+  "description": "HarfBuzz text shaping engine",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-01-16T17:11:17Z",
+  "updatedUpstream": "2021-01-13T19:34:56Z"
+}

@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/hello",
+  "name": "buckaroo-pm/hello",
+  "licence": "MIT",
+  "description": "Demo package for Buckaroo 🏜️",
+  "readme": "# hello\n\nDemo package for Buckaroo 🏜️\n\nTo build the package:\n\n```bash\nbuck build //:hello\n```\n\nTo run the demo:\n\n```bash\nbuck run //:demo\n```\n\nTo consume the package:\n\n```bash\nbuckaroo add github.com/buckaroo-pm/hello\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:hello\" ]\n",
+      "lockFile": "",
+      "buck": "cxx_library(\n  name = 'hello',\n  header_namespace = '',\n  exported_headers = [\n    'hello.hpp',\n  ],\n  srcs = [\n    'hello.cpp',\n  ],\n  licenses = [\n    'LICENSE',\n  ], \n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'demo',\n  srcs = [\n    'demo.cpp',\n  ],\n  deps = [\n    ':hello',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-02-25T16:42:36Z",
+  "updatedUpstream": "2019-02-25T16:42:36Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

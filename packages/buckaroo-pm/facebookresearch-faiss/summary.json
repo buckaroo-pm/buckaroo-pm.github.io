@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/facebookresearch-faiss",
+  "name": "facebookresearch/faiss",
+  "stars": 12134,
+  "topics": [],
+  "description": "A library for efficient similarity search and clustering of dense vectors.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-22T16:11:16Z",
+  "updatedUpstream": "2021-01-13T22:52:57Z"
+}

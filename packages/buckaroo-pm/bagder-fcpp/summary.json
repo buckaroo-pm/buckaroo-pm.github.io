@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/bagder-fcpp",
+  "name": "bagder/fcpp",
+  "stars": 93,
+  "topics": [
+    "preprocessor",
+    "c",
+    "c-preprocessor"
+  ],
+  "description": "Frexx C preprocessor",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-20T15:32:02Z",
+  "updatedUpstream": "2021-01-11T20:29:36Z"
+}

@@ -1,0 +1,147 @@
+{
+  "packageName": "buckaroo-pm/boost-atomic",
+  "name": "boostorg/atomic",
+  "licence": "",
+  "description": null,
+  "readme": "# ![Boost.Atomic](doc/logo.png)\n\nBoost.Atomic, part of collection of the [Boost C++ Libraries](https://github.com/boostorg), implements atomic operations for various CPU architectures, reflecting and extending the standard interface defined in C++11.\n\n### Directories\n\n* **build** - Boost.Atomic build scripts\n* **doc** - QuickBook documentation sources\n* **include** - Interface headers of Boost.Atomic\n* **src** - Compilable source code of Boost.Atomic\n* **test** - Boost.Atomic unit tests\n\n### More information\n\n* [Documentation](https://boost.org/libs/atomic)\n* [Report bugs](https://svn.boost.org/trac/boost/newticket?component=atomic;version=Boost%20Release%20Branch). Be sure to mention Boost version, platform and compiler you're using. A small compilable code sample to reproduce the problem is always good as well.\n* Submit your patches as pull requests against **develop** branch. Note that by submitting patches you agree to license your modifications under the [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt).\n\n### Build status\n\nMaster: [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/master?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/master) [![Travis CI](https://travis-ci.org/boostorg/atomic.svg?branch=master)](https://travis-ci.org/boostorg/atomic)\nDevelop: [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/develop?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/develop) [![Travis CI](https://travis-ci.org/boostorg/atomic.svg?branch=develop)](https://travis-ci.org/boostorg/atomic)\n\n### License\n\nDistributed under the [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:atomic\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"84bd576909c2cae925df8bbc9b1c7c24781c6931ceeb9796c2f4fa6dde7553da\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\ntarget = \"//:assert\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[lock.\"github.com/buckaroo-pm/boost-assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"f9d6a7b63ef2902777b6078fdebc54e7a57aac03\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'atomic',\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  srcs = glob([\n    'src/**/*.cpp',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f9d6a7b63ef2902777b6078fdebc54e7a57aac03"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-17T22:51:09Z",
+  "updatedUpstream": "2020-11-20T10:58:55Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "hkaiser",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/568063?v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "viboes",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/721225?u=6cbc039c5c34787eb42ea66792563936f948c1d3&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "bazald",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1048437?v=4"
+    },
+    {
+      "login": "Lastique",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1589747?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "jhunold",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3115501?u=143d1f05ab1c7e5cf13ef4c8093aa3910d86c19e&v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    },
+    {
+      "login": "jeremy-murphy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4635570?u=0c995942302f88af7cb35dfa62779155116345a8&v=4"
+    },
+    {
+      "login": "jzmaddock",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5011768?v=4"
+    },
+    {
+      "login": "Mike-Devel",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/43199315?u=6bcb9f905c7278fa57b0a1986746be1ec2800985&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 40,
+  "forks": 40,
+  "topics": []
+}

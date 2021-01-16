@@ -1,0 +1,120 @@
+{
+  "packageName": "buckaroo-pm/DentonW-DevIL",
+  "name": "DentonW/DevIL",
+  "licence": "LGPL-2.1",
+  "description": "Developer's Image Library (DevIL) is a cross-platform image library utilizing a simple syntax to load, save, convert, manipulate, filter, and display a variety of images with ease. It is highly portable and has been ported to several platforms.",
+  "readme": "DevIL\n=====\n\nDeveloper's Image Library (DevIL) is a cross-platform image library utilizing a simple syntax to load, save, convert, manipulate, filter, and display a variety of images with ease. It is highly portable and has been ported to several platforms.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ '//:il', '//:ilu', //:ilut' ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libjpeg\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libpng\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libtiff\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"205a2ca6a0aae9dce674e950cecaaff5c3592861a6c9a3aafe0b7c03fd155bf7\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libjpeg\"\ntarget = \"//:jpeg\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libpng\"\ntarget = \"//:png\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libtiff\"\ntarget = \"//:tiff\"\n\n[lock.\"github.com/buckaroo-pm/luadist-libjpeg\"]\nversions = [ \"branch=master\" ]\nrevision = \"5e6a7dc7789af950e90b00b13ce36c099dc57bb5\"\n\n[lock.\"github.com/buckaroo-pm/luadist-libpng\"]\nversions = [ \"branch=master\" ]\nrevision = \"73a922fe950715414820b48fbf09810635302be5\"\n\n[lock.\"github.com/buckaroo-pm/luadist-libtiff\"]\nversions = [ \"branch=master\" ]\nrevision = \"0bbc506dbcc9012cf726dcb338de8c1135858200\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ngenrule(\n  name = 'config',\n  out = 'config.h',\n  cmd = 'touch $OUT'\n)\n  \ncxx_library(\n  name = 'devil-headers',\n  header_namespace = '',\n  exported_headers = subdir_glob([ \n    ('DevIL/include', '**/*.h'),\n  ]),\n  visibility = ['PUBLIC']\n)\n\ncxx_library(\n  name = 'devil-il',\n  header_namespace = '',\n  exported_headers = dict(subdir_glob([\n    ('DevIL/src-IL/include', '**/*.h')\n  ]).items() + [('IL/config.h', ':config')]),\n  deps = [':devil-headers'] + buckaroo_deps(),\n  srcs = glob([\n    'DevIL/src-IL/src/*.cpp'\n  ]),\n  visibility = ['PUBLIC']\n)\n\ncxx_library(\n  name = 'devil-ilu',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('DevIL/src-ILU/include', '**/*.h')\n  ]),\n  deps = [':devil-headers'],\n  srcs = glob([\n    'DevIL/src-ILU/src/*.cpp'\n  ]),\n  visibility = ['PUBLIC']\n)\n\ncxx_library(\n  name = 'devil-ilut',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('DevIL/src-ILUT/include', '**/*.h')\n  ]),\n  deps = [':devil-headers'],\n  srcs = glob([\n    'DevIL/src-ILUT/src/*.cpp'\n  ]),\n  visibility = ['PUBLIC']\n)\n\ncxx_binary(\n  name = 'ilur',\n  srcs = ['DevIL/src-ILU/ilur/ilur.c'],\n  deps = [':devil-il', ':devil-ilu', ':devil-ilut'],\n  visibility = ['PUBLIC'] \n)\n\n",
+      "bazel": "",
+      "deps": [],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/luadist-libjpeg",
+          "name": "buckaroo-pm/luadist-libjpeg",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "5e6a7dc7789af950e90b00b13ce36c099dc57bb5"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/luadist-libpng",
+          "name": "buckaroo-pm/luadist-libpng",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "73a922fe950715414820b48fbf09810635302be5"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/luadist-libtiff",
+          "name": "buckaroo-pm/luadist-libtiff",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "0bbc506dbcc9012cf726dcb338de8c1135858200"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-25T11:12:58Z",
+  "updatedUpstream": "2021-01-10T11:01:45Z",
+  "contributors": [
+    {
+      "login": "bcampbell",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/99150?v=4"
+    },
+    {
+      "login": "shybovycha",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/137882?v=4"
+    },
+    {
+      "login": "abma",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/301564?v=4"
+    },
+    {
+      "login": "dooglz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/823512?u=c1eb8eb34e93d51fc91139e14674c173fa8e9474&v=4"
+    },
+    {
+      "login": "noahmayr",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1039040?v=4"
+    },
+    {
+      "login": "s-ludwig",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1645969?v=4"
+    },
+    {
+      "login": "Alexpux",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1898153?v=4"
+    },
+    {
+      "login": "devnexen",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4922778?u=6b37d6e43905501e5eeac1b01801ea76a6631a08&v=4"
+    },
+    {
+      "login": "ramassin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5495549?u=e4e14cbd39b748411f06d4ea042267d1ee309116&v=4"
+    },
+    {
+      "login": "DentonW",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/7623416?u=f826c404d84fbed611385bb28efa9729ad8f5940&v=4"
+    },
+    {
+      "login": "pullmoll",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10061347?u=e62a374380f130aaba3e58b3cccfd009d549da25&v=4"
+    },
+    {
+      "login": "ChaosCat",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10373239?v=4"
+    },
+    {
+      "login": "Agadoul",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/19183707?u=4d0187580eea2d8f3e1769e66eb44758d32adba5&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 356,
+  "forks": 107,
+  "topics": []
+}

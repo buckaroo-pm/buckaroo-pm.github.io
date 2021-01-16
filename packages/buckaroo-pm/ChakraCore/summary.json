@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/ChakraCore",
+  "name": "chakra-core/ChakraCore",
+  "stars": 8388,
+  "topics": [
+    "chakracore",
+    "javascript-engine",
+    "jsrt",
+    "microsoft",
+    "vm",
+    "javascript",
+    "js",
+    "runtime",
+    "windows",
+    "linux",
+    "chakra",
+    "osx",
+    "help-wanted",
+    "up-for-grabs",
+    "cplusplus-11",
+    "cplusplus",
+    "mit-license"
+  ],
+  "description": "ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge",
+  "versions": [],
+  "updated": "2020-12-24T08:41:42Z",
+  "updatedUpstream": "2021-01-13T21:10:41Z"
+}

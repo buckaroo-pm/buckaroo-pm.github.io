@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/netsurf-parserutils",
+  "name": "buckaroo-pm/netsurf-parserutils",
+  "licence": "MIT",
+  "description": null,
+  "readme": "LibParserUtils -- a utility library for parser building\n=======================================================\n\nOverview\n--------\n\n  LibParserUtils provides various pieces of functionality that are useful\n  when writing parsers. These are:\n\n  + A number of character set convertors\n  + Mapping of character set names to/from MIB enum values\n  + UTF-8 and UTF-16 (host endian) support functions\n  + Various simple data structures (resizeable buffer, stack, vector)\n  + A UTF-8 input stream\n\nRequirements\n------------\n\n  LibParserUtils requires the following tools:\n\n    + A C99 capable C compiler\n    + GNU make or compatible\n    + Perl (for the testcases)\n    + Pkg-config (for the testcases)\n    + doxygen (for the API documentation)\n\n  For enhanced charset support, LibParserUtils requires an iconv() \n  implementation. If you don't have an implementation of iconv(),\n  this requirement may be disabled: see the \"Disabling iconv() \n  support\" section, below.\n\nCompilation\n-----------\n\n  The exact type of build may be configured by passing parameters to make.\n  Common usage is described below.\n\n  For a static library:\n\n  \t\t$ make\n\n  For a shared library:\n\n\t\t$ make COMPONENT_TYPE=lib-shared\n\n  For a static library with debug enabled:\n\n\t\t$ make BUILD=debug\n\n  To cross-compile a static library:\n\n\t\t$ make TARGET=<target-platform>\n\nVerification\n------------\n\n  The library's functionality may be verified, thus:\n  \n  \t\t$ make test\n\n  If you wish to see test coverage statistics, run:\n\n\t\t$ make coverage\n\n  Then open build/coverage/index.html in a web browser.\n\n  In both cases, ensure that the same parameters to make are passed as when \n  building the library.\n\n(Un)installation\n----------------\n\n  To install the library:\n\n\t\t$ make install\n\n  Ensure that the same parameters to make are passed as when building the\n  library.\n\n  To specify the installation prefix:\n\n\t\t$ make install PREFIX=/path/to/prefix\n\n  To specify a staging directory for packaging:\n\n\t\t$ make install DESTDIR=/path/to/directory\n\n  Items will be installed to $(DESTDIR)$(PREFIX)/\n\n  To uninstall:\n\n\t\t$ make uninstall\n\nAPI documentation\n-----------------\n\n  Use doxygen to auto-generate API documentation, thus:\n\n  \t\t$ make docs\n\n  Then open build/docs/html/index.html in a web browser.\n\n  The test driver code in test/ may also provide some useful pointers.\n\nDisabling iconv() support\n-------------------------\n\n  Without iconv() support enabled, libparserutils only supports the \n  following character sets:\n\n    + UTF-16 (platform-native endian)\n    + UTF-8\n    + ISO-8859-n\n    + Windows-125n\n    + US-ASCII\n\n  To disable iconv() support in libparserutils, do the following:\n\n  \t\t$ echo \"CFLAGS += -DWITHOUT_ICONV_FILTER\" \\\n\t\t\t\t>Makefile.config.override\n\n  Then build libparserutils as normal.\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:parserutils\" ]",
+      "lockFile": "manifest = \"1229f92f589d65c3e415de008d1190c53e3502affade836dc41f2c74744a14e6\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ngenrule(\n  name = 'aliases-inc',\n  out = 'aliases.inc',\n  srcs = [\n    'build/Aliases',\n    'build/make-aliases.pl',\n  ],\n  cmd = ' && '.join([\n    'cp -r $SRCDIR/. $TMP',\n    'cd $TMP',\n    'mkdir -p src/charset',\n    'perl build/make-aliases.pl',\n    'cp $TMP/src/charset/aliases.inc $OUT',\n  ]),\n)\n\ncxx_library(\n  name = 'parserutils',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  headers = dict(\n    subdir_glob([\n      ('src', '**/*.h'),\n    ]).items() + [\n      ('aliases.inc', ':aliases-inc'),\n    ]\n  ),\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-25T10:51:31Z",
+  "updatedUpstream": "2019-01-25T10:51:31Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

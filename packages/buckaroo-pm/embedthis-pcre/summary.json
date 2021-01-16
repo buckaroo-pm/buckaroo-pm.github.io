@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/embedthis-pcre",
+  "name": "sunfirefox/pcre",
+  "stars": 0,
+  "topics": [],
+  "description": "Pearl Regular Expressions",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2020-02-08T07:23:49Z",
+  "updatedUpstream": "2020-02-08T07:23:49Z"
+}

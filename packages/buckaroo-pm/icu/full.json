@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/icu",
+  "name": "unicode-org/icu",
+  "licence": "",
+  "description": "The new home of the ICU project source code.",
+  "readme": "#  International Components for Unicode\n\nThis is the repository for the [International Components for Unicode](http://site.icu-project.org). \nThe ICU project is under the stewardship of [The Unicode Consortium](https://www.unicode.org).\n\n- Source: https://github.com/unicode-org/icu\n- Bugs: https://unicode-org.atlassian.net/projects/ICU\n\n![ICU Logo](./tools/images/iculogo_64.png)\n\n### Build Status\n\nBuild | Status\n------|-------\nTravisCI | [![Build Status](https://travis-ci.org/unicode-org/icu.svg?branch=master)](https://travis-ci.org/unicode-org/icu)\nWin x64 Release | [![Build status](https://unicode-icu.visualstudio.com/ICU/_apis/build/status/ICU4C%20Build%20and%20Test%20%5Bx64%20Release%5D%20(CI))](https://unicode-icu.visualstudio.com/ICU/_build/latest?definitionId=8)\nWin x86 Release | [![Build status](https://unicode-icu.visualstudio.com/ICU/_apis/build/status/ICU4C%20Build%20and%20Test%20%5Bx86%20Release%5D%20(CI))](https://unicode-icu.visualstudio.com/ICU/_build/latest?definitionId=7)\n\n\n### Subdirectories and Information\n\n- [`icu4c/`](./icu4c/) [ICU for C/C++](./icu4c/readme.html)\n- [`icu4j/`](./icu4j/) [ICU for Java](./icu4j/readme.html)\n- [`tools/`](./tools/) Tools\n- [`vendor/`](./vendor/) Vendor dependencies\n\n### License\n\nPlease see [./icu4c/LICENSE](./icu4c/LICENSE) (C and J are under an identical license file.)\n\n> Copyright © 2016 and later Unicode, Inc. and others. All Rights Reserved.\nUnicode and the Unicode Logo are registered trademarks \nof Unicode, Inc. in the U.S. and other countries.\n[Terms of Use and License](http://www.unicode.org/copyright.html)\n",
+  "versions": [],
+  "updated": "2018-11-14T16:11:02Z",
+  "updatedUpstream": "2021-01-13T21:31:10Z",
+  "contributors": [
+    {
+      "login": "mojca",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/15606?u=4a5dcd09c12e9495b9f1c7bc08d7a431c0d2a3ee&v=4"
+    },
+    {
+      "login": "kengruven",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/22565?u=4ad1440121d2a26bba434bd64dc11e142e432a74&v=4"
+    },
+    {
+      "login": "behnam",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/37169?u=bc6140f785b3ba8398000f8c41817f3da4b033e7&v=4"
+    },
+    {
+      "login": "eldruin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/43125?u=793323189714f72073de4da82b3b4d097753ee35&v=4"
+    },
+    {
+      "login": "madscientist",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/109636?u=a90b60f3022a5f29336d30c1c233fb5860f40426&v=4"
+    },
+    {
+      "login": "ermshiperete",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/181336?v=4"
+    },
+    {
+      "login": "filmil",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/246576?v=4"
+    },
+    {
+      "login": "roozbehp",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/302255?u=b47708e9fe019d8a94880c57e9cf7ec7f4e3ddc1&v=4"
+    },
+    {
+      "login": "hsivonen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/478856?u=efbc4deb51e7378936b0bca66d7da6a08279e86d&v=4"
+    },
+    {
+      "login": "jugu",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/513057?u=895881ab4f056dbfae8b2b2b68c68297b3ede612&v=4"
+    },
+    {
+      "login": "mbooth101",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/597661?v=4"
+    },
+    {
+      "login": "donny-dont",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/666297?v=4"
+    },
+    {
+      "login": "roubert",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/724587?u=9927a86580b599fd1d7cd61b2b151fcf1a7c6b56&v=4"
+    },
+    {
+      "login": "apaprocki",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/767372?v=4"
+    },
+    {
+      "login": "Nafanya",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/832924?u=29b11f28f52f9def4e2727c014d6f1ce9f4952ba&v=4"
+    },
+    {
+      "login": "srl295",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/855219?u=d92006855541d5a9a78d5ac027a1657a89c6dbcb&v=4"
+    },
+    {
+      "login": "hagbard",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/867170?u=8dd9d4f350a2788eb200f3da7ca754bb27fc9034&v=4"
+    },
+    {
+      "login": "echeran",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/963108?v=4"
+    },
+    {
+      "login": "makotokato",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/965338?v=4"
+    },
+    {
+      "login": "Rainman73",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/979441?u=39e71482f086e10d59bc7ec919fc857b69d80103&v=4"
+    },
+    {
+      "login": "xhacker",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1051813?v=4"
+    },
+    {
+      "login": "hjl-tools",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1072356?v=4"
+    },
+    {
+      "login": "jmroot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1075699?u=f6797b47c8ff91429e3f9a96adcc5ae3226868b2&v=4"
+    },
+    {
+      "login": "jdapena",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1110395?v=4"
+    },
+    {
+      "login": "dscorbett",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1124347?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 941,
+  "forks": 378,
+  "topics": [
+    "icu",
+    "icu4c",
+    "icu4j",
+    "unicode",
+    "java",
+    "cpp",
+    "c-plus-plus",
+    "i18n",
+    "unicode-consortium"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/LibRaw",
+  "name": "LibRaw/LibRaw",
+  "stars": 652,
+  "topics": [],
+  "description": "LibRaw is a library for reading RAW files from digital cameras",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-22T11:02:31Z",
+  "updatedUpstream": "2021-01-13T05:56:13Z"
+}

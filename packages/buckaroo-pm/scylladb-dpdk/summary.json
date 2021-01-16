@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/scylladb-dpdk",
+  "name": "scylladb/dpdk",
+  "stars": 150,
+  "topics": [],
+  "description": "Mirror of Data Plane Development Kit, git://dpdk.org/dpdk (http://dpdk.org)",
+  "versions": [],
+  "updated": "2019-01-25T17:46:16Z",
+  "updatedUpstream": "2020-11-29T11:38:22Z"
+}

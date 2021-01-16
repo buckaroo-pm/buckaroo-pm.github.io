@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/luadist-libjpeg",
+  "name": "LuaDist/libjpeg",
+  "stars": 136,
+  "topics": [],
+  "description": "Independent JPEG Group's JPEG software",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-14T10:15:01Z",
+  "updatedUpstream": "2021-01-02T20:57:41Z"
+}

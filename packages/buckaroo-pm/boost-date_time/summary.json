@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-date_time",
+  "name": "boostorg/date_time",
+  "stars": 45,
+  "topics": [],
+  "description": "Boost.org date_time module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 17,
+      "transitive": 41
+    }
+  ],
+  "updated": "2018-11-17T22:52:58Z",
+  "updatedUpstream": "2020-11-24T07:19:42Z"
+}

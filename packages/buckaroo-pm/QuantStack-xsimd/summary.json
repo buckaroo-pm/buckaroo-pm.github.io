@@ -1,0 +1,30 @@
+{
+  "packageName": "buckaroo-pm/QuantStack-xsimd",
+  "name": "xtensor-stack/xsimd",
+  "stars": 928,
+  "topics": [
+    "simd-intrinsics",
+    "c-plus-plus-14",
+    "vectorization",
+    "simd",
+    "cpp",
+    "avx",
+    "neon",
+    "sse",
+    "avx512",
+    "simd-instructions",
+    "mathematical-functions"
+  ],
+  "description": "Modern, portable C++ wrappers for SIMD intrinsics and parallelized, optimized math implementations (SSE, AVX, NEON, AVX512)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-10-14T14:07:49Z",
+  "updatedUpstream": "2021-01-10T17:03:58Z"
+}

@@ -1,0 +1,126 @@
+{
+  "packageName": "buckaroo-pm/openssl",
+  "name": "openssl/openssl",
+  "licence": "NOASSERTION",
+  "description": "TLS/SSL and crypto library",
+  "readme": "\n OpenSSL 1.1.2-dev\n\n Copyright (c) 1998-2018 The OpenSSL Project\n Copyright (c) 1995-1998 Eric A. Young, Tim J. Hudson\n All rights reserved.\n\n DESCRIPTION\n -----------\n\n The OpenSSL Project is a collaborative effort to develop a robust,\n commercial-grade, fully featured, and Open Source toolkit implementing the\n Transport Layer Security (TLS) protocols (including SSLv3) as well as a\n full-strength general purpose cryptographic library.\n\n OpenSSL is descended from the SSLeay library developed by Eric A. Young\n and Tim J. Hudson.  The OpenSSL toolkit is licensed under a dual-license (the\n OpenSSL license plus the SSLeay license), which means that you are free to\n get and use it for commercial and non-commercial purposes as long as you\n fulfill the conditions of both licenses.\n\n OVERVIEW\n --------\n\n The OpenSSL toolkit includes:\n\n libssl (with platform specific naming):\n     Provides the client and server-side implementations for SSLv3 and TLS.\n\n libcrypto (with platform specific naming):\n     Provides general cryptographic and X.509 support needed by SSL/TLS but\n     not logically part of it.\n\n openssl:\n     A command line tool that can be used for:\n        Creation of key parameters\n        Creation of X.509 certificates, CSRs and CRLs\n        Calculation of message digests\n        Encryption and decryption\n        SSL/TLS client and server tests\n        Handling of S/MIME signed or encrypted mail\n        And more...\n\n INSTALLATION\n ------------\n\n See the appropriate file:\n        INSTALL         Linux, Unix, Windows, OpenVMS, ...\n        NOTES.*         INSTALL addendums for different platforms\n\n SUPPORT\n -------\n\n See the OpenSSL website www.openssl.org for details on how to obtain\n commercial technical support. Free community support is available through the\n openssl-users email list (see\n https://www.openssl.org/community/mailinglists.html for further details).\n\n If you have any problems with OpenSSL then please take the following steps\n first:\n\n    - Download the latest version from the repository\n      to see if the problem has already been addressed\n    - Configure with no-asm\n    - Remove compiler optimization flags\n\n If you wish to report a bug then please include the following information\n and create an issue on GitHub:\n\n    - OpenSSL version: output of 'openssl version -a'\n    - Configuration data: output of 'perl configdata.pm --dump'\n    - OS Name, Version, Hardware platform\n    - Compiler Details (name, version)\n    - Application Details (name, version)\n    - Problem Description (steps that will reproduce the problem, if known)\n    - Stack Traceback (if the application dumps core)\n\n Just because something doesn't work the way you expect does not mean it\n is necessarily a bug in OpenSSL. Use the openssl-users email list for this type\n of query.\n\n HOW TO CONTRIBUTE TO OpenSSL\n ----------------------------\n\n See CONTRIBUTING\n\n LEGALITIES\n ----------\n\n A number of nations restrict the use or export of cryptography. If you\n are potentially subject to such restrictions you should seek competent\n professional legal advice before attempting to develop or distribute\n cryptographic code.\n",
+  "versions": [],
+  "updated": "2018-09-24T14:40:58Z",
+  "updatedUpstream": "2021-01-13T22:41:07Z",
+  "contributors": [
+    {
+      "login": "alex",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/772?u=7c00c7c8ac3691da556d7686e16ff08b797d4a38&v=4"
+    },
+    {
+      "login": "JackDanger",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2071?u=f89e31923083594b4524f709cdff650e2df15df0&v=4"
+    },
+    {
+      "login": "thiagoarrais",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3014?v=4"
+    },
+    {
+      "login": "shlomif",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3150?v=4"
+    },
+    {
+      "login": "mikea",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3236?u=3d38aaa4a6ce19e8dd98cbb65d2a9bd7a06299d2&v=4"
+    },
+    {
+      "login": "mo",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7117?u=5f4f2d52e6e9e57b321fe90ddc5f86cae1969c85&v=4"
+    },
+    {
+      "login": "cardoe",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8839?u=4cbf6d26c0a81ef3197a158a71af78a2f8584f1e&v=4"
+    },
+    {
+      "login": "bdonlan",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/9473?v=4"
+    },
+    {
+      "login": "user-none",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/10814?u=12088bd19bbee7d5d0118612ee470e6409e74de0&v=4"
+    },
+    {
+      "login": "ronaldtse",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/11865?v=4"
+    },
+    {
+      "login": "zenazn",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12960?v=4"
+    },
+    {
+      "login": "jtbandes",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/14237?v=4"
+    },
+    {
+      "login": "briansmith",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/16816?u=ce56ceabd6c32b88943dda06a9a595cca82d7dbf&v=4"
+    },
+    {
+      "login": "sam-github",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/17607?u=742e8c56b91f17b08a5ca4d7d7126780b9be020b&v=4"
+    },
+    {
+      "login": "behrangsa",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/18451?u=9dcb9474d19567fbe88abe6ffe80e562adc0e74f&v=4"
+    },
+    {
+      "login": "xnox",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/19779?v=4"
+    },
+    {
+      "login": "agl",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/21203?u=db5ec5c020d0d91be41b08e96eee7a2e63356acc&v=4"
+    },
+    {
+      "login": "bbolli",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/21444?v=4"
+    },
+    {
+      "login": "Voker57",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/22776?v=4"
+    },
+    {
+      "login": "mcr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25774?v=4"
+    },
+    {
+      "login": "satta",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/27732?u=c5cb6cc2334f36a618d07377fcd02031c607f15e&v=4"
+    },
+    {
+      "login": "tycho",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/29616?u=7663ad2ed44e2c672fa4b415665e41313d8165ae&v=4"
+    },
+    {
+      "login": "richmoore",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/32254?v=4"
+    },
+    {
+      "login": "conradoplg",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/35766?u=efd09a827ffcb3ac31bc8d221009447fbf5b636d&v=4"
+    },
+    {
+      "login": "gustafn",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/35802?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/openssl"
+  ],
+  "contactLinks": [],
+  "stars": 14570,
+  "forks": 6484,
+  "topics": [
+    "cryptography",
+    "openssl",
+    "encryption",
+    "tls",
+    "ssl",
+    "decryption"
+  ]
+}

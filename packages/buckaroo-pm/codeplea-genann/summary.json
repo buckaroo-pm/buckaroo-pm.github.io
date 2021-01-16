@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/codeplea-genann",
+  "name": "codeplea/genann",
+  "stars": 1068,
+  "topics": [
+    "backpropagation",
+    "genetic-algorithm",
+    "artificial-neural-networks",
+    "ann",
+    "neurons",
+    "hidden-layers",
+    "neural-network",
+    "neural-networks",
+    "neural",
+    "ansi",
+    "c",
+    "tiny"
+  ],
+  "description": "simple neural network library in ANSI C",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T14:33:05Z",
+  "updatedUpstream": "2021-01-11T17:15:30Z"
+}

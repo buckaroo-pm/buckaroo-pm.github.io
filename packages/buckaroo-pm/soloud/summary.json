@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/soloud",
+  "name": "jarikomppa/soloud",
+  "stars": 1006,
+  "topics": [
+    "audio",
+    "game-development",
+    "engine",
+    "sound",
+    "sound-effects",
+    "synthesizer",
+    "game",
+    "portable",
+    "mp3",
+    "ogg",
+    "flac",
+    "opensl-es",
+    "python",
+    "c",
+    "cpp",
+    "ruby",
+    "gamemaker",
+    "blitzmax",
+    "speech",
+    "speech-to-text"
+  ],
+  "description": "Free, easy, portable audio engine for games",
+  "versions": [],
+  "updated": "2018-11-27T20:00:39Z",
+  "updatedUpstream": "2021-01-12T21:55:49Z"
+}

@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/ericniebler-range-v3",
+  "name": "ericniebler/range-v3",
+  "stars": 2897,
+  "topics": [
+    "range",
+    "range-library",
+    "proposal",
+    "iterator",
+    "c-plus-plus"
+  ],
+  "description": "Experimental range library for C++11/14/17",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-04T10:02:15Z",
+  "updatedUpstream": "2021-01-13T20:50:52Z"
+}

@@ -1,0 +1,20 @@
+{
+  "packageName": "buckaroo-pm/mapbox-variant",
+  "name": "mapbox/variant",
+  "stars": 310,
+  "topics": [
+    "c-plus-plus"
+  ],
+  "description": "C++11/C++14 Variant",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-16T10:14:46Z",
+  "updatedUpstream": "2021-01-07T08:01:53Z"
+}

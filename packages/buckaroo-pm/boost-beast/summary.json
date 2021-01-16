@@ -1,0 +1,39 @@
+{
+  "packageName": "buckaroo-pm/boost-beast",
+  "name": "boostorg/beast",
+  "stars": 2850,
+  "topics": [
+    "boost",
+    "c-plus-plus-11",
+    "websocket",
+    "websocket-client",
+    "websocket-server",
+    "http",
+    "http-client",
+    "http-server",
+    "asio",
+    "networking",
+    "async-programming",
+    "cplusplus",
+    "server",
+    "windows",
+    "linux",
+    "osx",
+    "tls",
+    "ssl",
+    "websockets",
+    "boost-libraries"
+  ],
+  "description": "HTTP and WebSocket built on Boost.Asio in C++11",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 57
+    }
+  ],
+  "updated": "2019-01-12T11:30:17Z",
+  "updatedUpstream": "2021-01-13T16:27:27Z"
+}

@@ -1,0 +1,35 @@
+{
+  "packageName": "buckaroo-pm/boost-geometry",
+  "name": "boostorg/geometry",
+  "stars": 273,
+  "topics": [
+    "boost",
+    "generic-geometry-library",
+    "geometry",
+    "computational-geometry",
+    "geometric-algorithms",
+    "cplusplus",
+    "ogc",
+    "spatial-analysis",
+    "spatial-index"
+  ],
+  "description": "Boost.Geometry - Generic Geometry Library",
+  "versions": [
+    {
+      "ref": "develop",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 1
+    },
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 27
+    }
+  ],
+  "updated": "2018-11-14T23:56:03Z",
+  "updatedUpstream": "2021-01-13T08:36:17Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-serialization",
+  "name": "boostorg/serialization",
+  "stars": 74,
+  "topics": [],
+  "description": "Boost.org serialization module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 7
+    }
+  ],
+  "updated": "2018-11-14T23:19:04Z",
+  "updatedUpstream": "2021-01-01T22:00:55Z"
+}

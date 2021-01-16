@@ -1,0 +1,39 @@
+{
+  "packageName": "buckaroo-pm/nvmd-libkdtree",
+  "name": "nvmd/libkdtree",
+  "licence": "Artistic-2.0",
+  "description": "libkdtree++  mirror",
+  "readme": "libkdtree++ README\n==================\n\nlibkdtree++ is (c) 2004-2007 Martin F. Krafft <libkdtree@pobox.madduck.net>\nand distributed under the terms of the Artistic License 2.0.\nSee the file LICENSE in the source distribution for more information.\n\nPlease send bugreports to <libkdtree-devel@lists.alioth.debian.org>.\n\nIntroduction\n------------\n\nlibkdtree++ is a C++ template container implementation of k-dimensional space\nsorting, using a kd-tree. It:\n\n  - sports an unlimited number of dimensions (in theory)\n  - can store any data structure, access and comparison between the\n    individual dimensional components defaults to the bracket operator, in\n    the range [0, k-1] and the std::less functor by default, but other\n    accessors and comparator can be defined.\n  - has support for custom allocators\n  - implements iterators\n  - provides standard find as well as range queries\n  - has amortised O(lg n) time (O(n lg n) worst case) on most\n    operations (insert/erase/find optimised) and worst-case O(n) space.\n  - provides a means to rebalance and thus optimise the tree.\n  - exists in its own namespace\n  - uses STL coding style, basing a lot of the code on stl_tree.h\n\nNotes\n-----\n\nNote that the library is not (yet) complete and it's not thoroughly tested.\nHowever, given the effort and grief I went through in writing it, I would\nlike to make it available to folks, get people to test it, and hopefully have\nsome peeps submit improvements. If you have any suggestions, please write to\nlibkdtree-devel@lists.alioth.debian.org .\n\nIt's not yet documented, although the usage should be fairly straight\nforward. I am hoping to find someone else to document it as I suck at\ndocumentation and as the author, it's exceptionally difficult to stay\ndidactically correct.\n\nCredits (Martin F. Kraft)\n-------------------------\n\nWhile the library was written all by myself, it would not have been possible\nwithout the help of a number of people. Foremost, I would like to thank the\nfolks from the #c++ channel on Freenode, specifically (in no particular order)\norbitz, quix, Erwin, pwned, wcstok, dasOp, Chaku, Adrinael, The_Vulture, and\nLIM2 (if I left anyone out, let me know). Finally, I thank the Artificial\nIntelligence Laboratory of the University of Zurich, Dr. Peter Eggenberger and\nGabriel Gómez for giving me the opportunity to write this stuff.\n\nSince libkdtree++ makes an effort to stay as close as possible to the feel of\na STL container, concepts and inspiration was gained from the SGI C++\nimplementation of red-black trees (stl_tree.h).\n\nI also have to thank the Debian project for providing an amazingly reliable\nand flexible developer station with their operating system. I am sorry for\neveryone who has to use something else.\n\nInstallation\n------------\n\nAs there is no need to compile any files, you can just:\n\n$ ./configure\n$ sudo make install\n\n\nIt now also supports cmake, which can be used to build the examples\nand tests.\nTo build with cmake, do an out-of-source build like so:\n\n# ASSUMING you have decompressed it into a directory called libkdtree,\n# and you are currently in that directory...\n\n$ cd ..  # go up, out of the kdtree source directory\n$ mkdir build\n$ cd build\n$ cmake ../libkdtree\n$ make\n\n\nYou can use cmake to build the tests and examples on Windows with\nVisual C++.  Use the windows cmake to create a Visual C++ solution and\nbuild that.\n\nNote that cmake and ./configure is not needed at all in order to use\nkdtree in your application.  As kdtree is a header-only library, you\njust need to #include the kdtree.hpp\n\n\nRead the following to make use of the library.\n\nUsage\n-----\n\nA simple example program is provided in the ./examples directory\n(/usr/share/doc/libkdtree++-dev/examples on Debian).\n\nFor those using the ./configure system, the library supports pkg-config.\nThus, to compile with the library,\n\n  #include <kdtree++/kdtree.hpp>\n\nand append the output of `pkg-config libkdtree++ --cflags` to your $CPPFLAGS.\n\nEach call to erase() and insert() unbalances the tree.  It is possible that\nnodes will not be found while the tree is unbalanced.  You rebalance the\ntree by calling optimize(), and you should call it before you need to search\nthe tree (this includes erase(value) calls, which search the tree).  \n\nIt is ok to call insert(value) many times and optimize() at the end, but \nevery erase() call should be followed with optimize().\n\nThese notes are a bit out of date, please check the webpage and mailing list\nfor more info.  Documentation is on the TODO list.\n\nHave fun.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:kdtree\" ]\n",
+      "lockFile": "manifest = \"d27bd3cec4e516bcf656fbc0106d73f11a6d7ba68f63c6d3b094eb0accf30a01\"\n\n",
+      "buck": "cxx_library(\n  name = \"kdtree\",\n  header_namespace = \"kdtree++\",\n  srcs = [],\n  exported_headers = glob([\"kdtree++/*.hpp\"]),\n  visibility = [\"PUBLIC\"]\n)\n\ncxx_binary(\n  name = \"test\",\n  deps = [\":kdtree++\"],\n  srcs = [\"examples/test_hayne.cpp\"]\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-23T15:38:59Z",
+  "updatedUpstream": "2020-11-23T04:21:28Z",
+  "contributors": [
+    {
+      "login": "nvmd",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/524492?u=173f23b43e7eb6d5e7e6ec4914aaed34040fcac4&v=4"
+    },
+    {
+      "login": "wrichert",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/970921?v=4"
+    },
+    {
+      "login": "poelmanc",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3414387?u=6e0f022382f66a97e74aba00c4bc2af25e3ad38b&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 29,
+  "forks": 19,
+  "topics": []
+}

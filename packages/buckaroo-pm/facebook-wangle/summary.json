@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/facebook-wangle",
+  "name": "facebook/wangle",
+  "stars": 2626,
+  "topics": [],
+  "description": "Wangle is a framework providing a set of common client/server abstractions for building services in a consistent, modular, and composable way.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 71
+    }
+  ],
+  "updated": "2019-09-07T09:04:04Z",
+  "updatedUpstream": "2021-01-13T21:53:29Z"
+}

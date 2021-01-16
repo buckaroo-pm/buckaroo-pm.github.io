@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-app-kit",
+  "name": "buckaroo-pm/host-app-kit",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for AppKit framework ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-12T21:03:26Z",
+  "updatedUpstream": "2018-11-12T21:03:26Z"
+}

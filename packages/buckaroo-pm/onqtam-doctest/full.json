@@ -1,0 +1,145 @@
+{
+  "packageName": "buckaroo-pm/onqtam-doctest",
+  "name": "onqtam/doctest",
+  "licence": "MIT",
+  "description": "The fastest feature-rich C++11/14/17/20 single-header testing framework for unit tests and TDD",
+  "readme": "<p align=\"center\"><img src=\"scripts/data/logo/logo_1.svg\"></p>\n<b>\n<table>\n    <tr>\n        <td>\n            master branch\n        </td>\n        <td>\n            Linux/OSX <a href=\"https://travis-ci.org/onqtam/doctest\"><img src=\"https://travis-ci.org/onqtam/doctest.svg?branch=master\"></a>\n        </td>\n        <td>\n            Windows <a href=\"https://ci.appveyor.com/project/onqtam/doctest/branch/master\"><img src=\"https://ci.appveyor.com/api/projects/status/j89qxtahyw1dp4gd/branch/master?svg=true\"></a>\n        </td>\n        <td>\n            <a href=\"https://coveralls.io/github/onqtam/doctest?branch=master\"><img src=\"https://coveralls.io/repos/github/onqtam/doctest/badge.svg?branch=master\"></a>\n        </td>\n        <td>\n            <a href=\"https://scan.coverity.com/projects/onqtam-doctest\"><img src=\"https://scan.coverity.com/projects/7865/badge.svg\"></a>\n        </td>\n    </tr>\n    <tr>\n        <td>\n            dev branch\n        </td>\n        <td>\n            Linux/OSX <a href=\"https://travis-ci.org/onqtam/doctest\"><img src=\"https://travis-ci.org/onqtam/doctest.svg?branch=dev\"></a>\n        </td>\n        <td>\n            Windows <a href=\"https://ci.appveyor.com/project/onqtam/doctest/branch/dev\"><img src=\"https://ci.appveyor.com/api/projects/status/j89qxtahyw1dp4gd/branch/dev?svg=true\"></a>\n        </td>\n        <td>\n            <a href=\"https://coveralls.io/github/onqtam/doctest?branch=dev\"><img src=\"https://coveralls.io/repos/github/onqtam/doctest/badge.svg?branch=dev\"></a>\n        </td>\n        <td>\n        </td>\n    </tr>\n</table>\n</b>\n\n**doctest** is a new C++ testing framework but is by far the fastest both in compile times (by [**orders of magnitude**](doc/markdown/benchmarks.md)) and runtime compared to other feature-rich alternatives. It brings the ability of compiled languages such as [**D**](https://dlang.org/spec/unittest.html) / [**Rust**](https://doc.rust-lang.org/book/second-edition/ch11-00-testing.html) / [**Nim**](https://nim-lang.org/docs/unittest.html) to have tests written directly in the production code by providing a fast, transparent and flexible test runner with a clean interface.\n\n[<img src=\"https://cloud.githubusercontent.com/assets/8225057/5990484/70413560-a9ab-11e4-8942-1a63607c0b00.png\" align=\"right\">](http://www.patreon.com/onqtam)\n\nThe framework is and will stay free but needs your support to sustain its development. There are lots of <a href=\"doc/markdown/roadmap.md\"><b>new features</b></a> and maintenance to do. If you work for a company using **doctest** or have the means to do so, please consider financial support. Monthly donations via Patreon and one-offs via PayPal.\n\n[<img src=\"https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif\" align=\"right\">](https://www.paypal.me/onqtam/10)\n\nA complete example with a self-registering test that compiles to an executable looks like this:\n\n![cover-example](scripts/data/using_doctest_888px_wide.gif)\n\nThere are many C++ testing frameworks - [Catch](https://github.com/philsquared/Catch), [Boost.Test](http://www.boost.org/doc/libs/1_64_0/libs/test/doc/html/index.html), [UnitTest++](https://github.com/unittest-cpp/unittest-cpp), [cpputest](https://github.com/cpputest/cpputest), [googletest](https://github.com/google/googletest) and many [other](https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B).\n\nThe **key** differences between it and other testing frameworks are that it is light and unintrusive:\n- Ultra light on compile times both in terms of [**including the header**](doc/markdown/benchmarks.md#cost-of-including-the-header) and writing [**thousands of asserts**](doc/markdown/benchmarks.md#cost-of-an-assertion-macro)\n- Doesn't produce any warnings even on the [**most aggressive**](scripts/cmake/common.cmake#L84) warning levels for **MSVC**/**GCC**/**Clang**\n- Offers a way to remove **everything** testing-related from the binary with the [**```DOCTEST_CONFIG_DISABLE```**](doc/markdown/configuration.md#doctest_config_disable) identifier\n- [**thread-safe**](doc/markdown/faq.md#is-doctest-thread-aware) - asserts (and logging) can be used from multiple threads spawned from a single test case - [**example**](examples/all_features/concurrency.cpp)\n- asserts can be used [**outside of a testing context**](doc/markdown/assertions.md#using-asserts-out-of-a-testing-context) - as a general purpose assert library - [**example**](examples/all_features/asserts_used_outside_of_tests.cpp)\n- Doesn't pollute the global namespace (everything is in namespace ```doctest```) and doesn't drag **any** headers with it\n- Very [**portable**](doc/markdown/features.md#extremely-portable) C++11 (use tag [**1.2.9**](https://github.com/onqtam/doctest/tree/1.2.9) for C++98) with over 180 different CI builds (static analysis, sanitizers...)\n- binaries (exe/dll) can use the test runner of another binary - so tests end up in a single registry - [**example**](examples/executable_dll_and_plugin/)\n\n![cost-of-including-the-framework-header](scripts/data/benchmarks/header.png)\n\nThis allows the framework to be used in more ways than any other - tests can be written directly in the production code!\n\nMantra: *Tests can be considered a form of documentation and should be able to reside near the production code which they test.*\n\n- This makes the barrier for writing tests **much lower** - you don't have to: **1)** make a separate source file **2)** include a bunch of stuff in it **3)** add it to the build system and **4)** add it to source control - You can just write the tests for a class or a piece of functionality at the bottom of its source file - or even header file!\n- Tests in the production code can be thought of as documentation or up-to-date comments - showing how an API is used\n- Testing internals that are not exposed through the public API and headers is no longer a mind-bending exercise\n- [**Test-driven development**](https://en.wikipedia.org/wiki/Test-driven_development) in C++ has never been easier!\n\nThe framework can be used like any other if you don't want/need to mix production code and tests - check out the [**features**](doc/markdown/features.md).\n\n**doctest** is modeled after [**Catch**](https://github.com/philsquared/Catch) and some parts of the code have been taken directly - check out [**the differences**](doc/markdown/faq.md#how-is-doctest-different-from-catch).\n\n[This table](https://github.com/martinmoene/catch-lest-other-comparison) compares **doctest** / [**Catch**](https://github.com/philsquared/Catch) / [**lest**](https://github.com/martinmoene/lest) which are all very similar.\n\n[![Standard](https://img.shields.io/badge/c%2B%2B-11/14/17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B#Standardization)\n[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)\n[![Version](https://badge.fury.io/gh/onqtam%2Fdoctest.svg)](https://github.com/onqtam/doctest/releases)\n[![download](https://img.shields.io/badge/download%20%20-latest-blue.svg)](https://raw.githubusercontent.com/onqtam/doctest/master/doctest/doctest.h)\n[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/503/badge)](https://bestpractices.coreinfrastructure.org/projects/503)\n[![Join the chat at https://gitter.im/onqtam/doctest](https://badges.gitter.im/onqtam/doctest.svg)](https://gitter.im/onqtam/doctest?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Try it online](https://img.shields.io/badge/try%20it-online-orange.svg)](https://wandbox.org/permlink/WpIiohiJKefTZnRI)\n<!--\n[![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)\n[![documentation](https://img.shields.io/badge/documentation%20%20-online-blue.svg)](https://github.com/onqtam/doctest/blob/master/doc/markdown/readme.md#reference)\n-->\n\nCheckout the [**CppCon 2017 talk**](https://cppcon2017.sched.com/event/BgsI/mix-tests-and-production-code-with-doctest-implementing-and-using-the-fastest-modern-c-testing-framework) on [**YouTube**](https://www.youtube.com/watch?v=eH1CxEC29l8) to get a better understanding of how the framework works and read about how to use it in [**the article**](https://accu.org/var/uploads/journals/Overload137.pdf) of the february edition of ACCU Overload 2017!\n\n[![CppCon 2017 talk about doctest on youtube](scripts/data/youtube-cppcon-talk-thumbnail.png)](https://www.youtube.com/watch?v=eH1CxEC29l8)\n\nDocumentation\n-------------\n\nProject:\n\n- [Features and design goals](doc/markdown/features.md) - the complete list of features\n- [Roadmap](doc/markdown/roadmap.md) - upcoming features\n- [Benchmarks](doc/markdown/benchmarks.md) - compile-time and runtime supremacy\n- [Contributing](CONTRIBUTING.md) - how to make a proper pull request\n- [Changelog](CHANGELOG.md) - generated changelog based on closed issues/PRs\n\nUsage:\n\n- [Tutorial](doc/markdown/tutorial.md) - make sure you have read it before the other parts of the documentation\n- [Assertion macros](doc/markdown/assertions.md)\n- [Test cases, subcases and test fixtures](doc/markdown/testcases.md)\n- [Parameterized test cases](doc/markdown/parameterized-tests.md)\n- [Command line](doc/markdown/commandline.md)\n- [Logging macros](doc/markdown/logging.md)\n- [```main()``` entry point](doc/markdown/main.md)\n- [Configuration](doc/markdown/configuration.md)\n- [String conversions](doc/markdown/stringification.md)\n- [Reporters](doc/markdown/reporters.md)\n- [FAQ](doc/markdown/faq.md)\n- [Build systems](doc/markdown/build-systems.md)\n- [Examples](examples)\n\nContributing\n------------\n\n[<img src=\"https://cloud.githubusercontent.com/assets/8225057/5990484/70413560-a9ab-11e4-8942-1a63607c0b00.png\" align=\"right\">](http://www.patreon.com/onqtam)\n\nSupport the development of the project with donations! There is a list of planned features which are all important and big - see the [**roadmap**](doc/markdown/roadmap.md). I took a break from working in the industry to make open source software so every cent is a big deal.\n\n[<img src=\"https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif\" align=\"right\">](https://www.paypal.me/onqtam/10)\n\nIf you work for a company using **doctest** or have the means to do so, please consider financial support.\n\nContributions in the form of issues and pull requests are welcome as well - check out the [**Contributing**](CONTRIBUTING.md) page.\n\nLogo\n------------\n\nThe [logo](scripts/data/logo) is licensed under a Creative Commons Attribution 4.0 International License. Copyright &copy; 2018 [area55git](https://github.com/area55git) &nbsp; [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](https://creativecommons.org/licenses/by/4.0/)\n\n<p align=\"center\"><img src=\"scripts/data/logo/icon_2.svg\"></p>\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:doctest\" ]\n",
+      "lockFile": "",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'doctest', \n  header_namespace = '', \n  exported_headers = subdir_glob([\n    ('doctest', '**/*.h'), \n  ]), \n  srcs = glob([\n    'doctest/**/*.cpp', \n  ]), \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-11T23:38:17Z",
+  "updatedUpstream": "2021-01-13T21:15:11Z",
+  "contributors": [
+    {
+      "login": "tbleher",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/38255?v=4"
+    },
+    {
+      "login": "mikezackles",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/77851?u=b4a6d82f7154253f9d2fc5eb39d102d3ed140574&v=4"
+    },
+    {
+      "login": "m-bd",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/104222?u=c307673bd1af3f8879dc359187df8e0e7b6f37ed&v=4"
+    },
+    {
+      "login": "dankamongmen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/143473?v=4"
+    },
+    {
+      "login": "zah",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/175462?u=e5829a3f2d1ada0fbf691b4fd4d96d1b27b37baa&v=4"
+    },
+    {
+      "login": "godbyk",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/195036?v=4"
+    },
+    {
+      "login": "tomasnilefrost",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/209170?u=751faf7a353baef59026d6529734ff6873fcd0d8&v=4"
+    },
+    {
+      "login": "cameronwhite",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/303951?v=4"
+    },
+    {
+      "login": "ashutosh108",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/321795?u=41ac9aa0cb7e16ad26137e4aaec4805514f53152&v=4"
+    },
+    {
+      "login": "UnePierre",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/398986?u=60654cb241375037268b3696c5f45ccc0cceb9e1&v=4"
+    },
+    {
+      "login": "lichray",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/433009?v=4"
+    },
+    {
+      "login": "ydm",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/568909?v=4"
+    },
+    {
+      "login": "McMartin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/747995?u=aaf633a72313b41b17492f8ace4763bc41309956&v=4"
+    },
+    {
+      "login": "nickhutchinson",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/755692?v=4"
+    },
+    {
+      "login": "tals",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/761863?u=a8830d4ed10dcea85fc28e41445da57bd2f001c2&v=4"
+    },
+    {
+      "login": "smcallis",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/804394?v=4"
+    },
+    {
+      "login": "Coeur",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/839992?v=4"
+    },
+    {
+      "login": "nyanpasu64",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/913957?u=ef1652d3e49e21af5b73395cdfd4665e79a3343c&v=4"
+    },
+    {
+      "login": "pr0g",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1136625?v=4"
+    },
+    {
+      "login": "RedDwarf69",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1608276?v=4"
+    },
+    {
+      "login": "lukaszgemborowski",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1671959?v=4"
+    },
+    {
+      "login": "jkriegshauser",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1697375?v=4"
+    },
+    {
+      "login": "ferkulat",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1757239?u=d9cef5b558e0627c4425b95f934dbccd15385658&v=4"
+    },
+    {
+      "login": "ClausKlein",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1833050?u=c1266918df33cc343db29fe8f4ffe4c9233307f5&v=4"
+    },
+    {
+      "login": "martinmoene",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1999290?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/onqtam",
+    "https://patreon.com/onqtam",
+    "https://www.paypal.me/onqtam/10"
+  ],
+  "contactLinks": [],
+  "stars": 2978,
+  "forks": 316,
+  "topics": [
+    "c-plus-plus",
+    "doctest",
+    "tdd",
+    "testing",
+    "unit-testing",
+    "header-only",
+    "cpp",
+    "cpp11",
+    "cpp14",
+    "cpp17",
+    "cpp20",
+    "single-file",
+    "testing-framework"
+  ]
+}

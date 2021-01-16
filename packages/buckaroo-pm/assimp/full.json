@@ -1,0 +1,310 @@
+{
+  "packageName": "buckaroo-pm/assimp",
+  "name": "assimp/assimp",
+  "licence": "NOASSERTION",
+  "description": "Official Open Asset Import Library Repository. Loads 40+ 3D file formats into one unified and clean data structure. ",
+  "readme": "Open Asset Import Library (assimp)\n==================================\nA library to import and export various 3d-model-formats including scene-post-processing to generate missing render data.\n### Current build status ###\n[![Linux Build Status](https://travis-ci.org/assimp/assimp.svg)](https://travis-ci.org/assimp/assimp)\n[![Windows Build Status](https://ci.appveyor.com/api/projects/status/tmo433wax6u6cjp4?svg=true)](https://ci.appveyor.com/project/kimkulling/assimp)\n<a href=\"https://scan.coverity.com/projects/5607\">\n  <img alt=\"Coverity Scan Build Status\"\n       src=\"https://scan.coverity.com/projects/5607/badge.svg\"/>\n</a>\n[![Coverage Status](https://coveralls.io/repos/github/assimp/assimp/badge.svg?branch=master)](https://coveralls.io/github/assimp/assimp?branch=master)\n[![Join the chat at https://gitter.im/assimp/assimp](https://badges.gitter.im/assimp/assimp.svg)](https://gitter.im/assimp/assimp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/assimp/assimp.svg)](http://isitmaintained.com/project/assimp/assimp \"Average time to resolve an issue\")\n[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5be56faac64f46fc941ac890fb4febef)](https://www.codacy.com/app/kimkulling/assimp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=assimp/assimp&amp;utm_campaign=Badge_Grade)\n<br>\n\nAPIs are provided for C and C++. There are various bindings to other languages (C#, Java, Python, Delphi, D). Assimp also runs on Android and iOS.\n\nAdditionally, assimp features various __mesh post processing tools__: normals and tangent space generation, triangulation, vertex cache locality optimization, removal of degenerate primitives and duplicate vertices, sorting by primitive type, merging of redundant materials and many more.\n\nThis is the development repo containing the latest features and bugfixes. For productive use though, we recommend one of the stable releases available from [Github Assimp Releases](https://github.com/assimp/assimp/releases).\n\nMonthly donations via Patreon:\n<br>[![Patreon](https://cloud.githubusercontent.com/assets/8225057/5990484/70413560-a9ab-11e4-8942-1a63607c0b00.png)](http://www.patreon.com/assimp)\n\n<br>\n\nOne-off donations via PayPal:\n<br>[![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JRJVPXC4QJM4)\n\n<br>\n\nPlease check our Wiki as well: https://github.com/assimp/assimp/wiki\n\nIf you want to check our Model-Database, use the following repo: https://github.com/assimp/assimp-mdb\n\n#### Supported file formats ####\n\n__Importers__:\n\n- 3D\n- [3DS](https://en.wikipedia.org/wiki/.3ds)\n- [3MF](https://en.wikipedia.org/wiki/3D_Manufacturing_Format)\n- AC\n- [AC3D](https://en.wikipedia.org/wiki/AC3D)\n- ACC\n- AMJ\n- ASE\n- ASK\n- B3D\n- [BLEND](https://en.wikipedia.org/wiki/.blend_(file_format))\n- [BVH](https://en.wikipedia.org/wiki/Biovision_Hierarchy)\n- CMS\n- COB\n- [DAE/Collada](https://en.wikipedia.org/wiki/COLLADA)\n- [DXF](https://en.wikipedia.org/wiki/AutoCAD_DXF)\n- ENFF\n- [FBX](https://en.wikipedia.org/wiki/FBX)\n- [glTF 1.0](https://en.wikipedia.org/wiki/GlTF#glTF_1.0) + GLB\n- [glTF 2.0](https://en.wikipedia.org/wiki/GlTF#glTF_2.0)\n- HMB\n- IFC-STEP\n- IRR / IRRMESH\n- [LWO](https://en.wikipedia.org/wiki/LightWave_3D)\n- LWS\n- LXO\n- MD2\n- MD3\n- MD5\n- MDC\n- MDL\n- MESH / MESH.XML\n- MOT\n- MS3D\n- NDO\n- NFF\n- [OBJ](https://en.wikipedia.org/wiki/Wavefront_.obj_file)\n- [OFF](https://en.wikipedia.org/wiki/OFF_(file_format))\n- [OGEX](https://en.wikipedia.org/wiki/Open_Game_Engine_Exchange)\n- [PLY](https://en.wikipedia.org/wiki/PLY_(file_format))\n- PMX\n- PRJ\n- Q3O\n- Q3S\n- RAW\n- SCN\n- SIB\n- SMD\n- [STP](https://en.wikipedia.org/wiki/ISO_10303-21)\n- [STL](https://en.wikipedia.org/wiki/STL_(file_format))\n- TER\n- UC\n- VTA\n- X\n- [X3D](https://en.wikipedia.org/wiki/X3D)\n- XGL\n- ZGL\n\nAdditionally, some formats are supported by dependency on non-free code or external SDKs (not built by default):\n\n- [C4D](https://en.wikipedia.org/wiki/Cinema_4D) (https://github.com/assimp/assimp/wiki/Cinema4D-&-Melange)\n\n__Exporters__:\n\n- DAE (Collada)\n- STL\n- OBJ\n- PLY\n- X\n- 3DS\n- JSON (for WebGl, via https://github.com/acgessler/assimp2json)\n- ASSBIN\n- STEP\n- glTF 1.0 (partial)\n- glTF 2.0 (partial)\n- 3MF ( experimental )\n- FBX ( experimental )\n\n### Building ###\nTake a look into the https://github.com/assimp/assimp/blob/master/Build.md file. Our build system is CMake, if you used CMake before there is a good chance you know what to do.\n\n### Ports ###\n* [Android](port/AndroidJNI/README.md)\n* [Python](port/PyAssimp/README.md)\n* [.NET](port/AssimpNET/Readme.md)\n* [Pascal](port/AssimpPascal/Readme.md)\n* [Javascript (Alpha)](https://github.com/makc/assimp2json)\n* [Unity 3d Plugin](https://www.assetstore.unity3d.com/en/#!/content/91777)\n* [JVM](https://github.com/kotlin-graphics/assimp) Full jvm port (current [status](https://github.com/kotlin-graphics/assimp/wiki/Status))\n\n### Other tools ###\n[open3mod](https://github.com/acgessler/open3mod) is a powerful 3D model viewer based on Assimp's import and export abilities.\n\n#### Repository structure ####\nOpen Asset Import Library is implemented in C++. The directory structure is:\n\n\t/code\t\tSource code\n\t/contrib\tThird-party libraries\n\t/doc\t\tDocumentation (doxysource and pre-compiled docs)\n\t/include\tPublic header C and C++ header files\n\t/scripts \tScripts used to generate the loading code for some formats\n\t/port\t\tPorts to other languages and scripts to maintain those.\n\t/test\t\tUnit- and regression tests, test suite of models\n\t/tools\t\tTools (old assimp viewer, command line `assimp`)\n\t/samples\tA small number of samples to illustrate possible\n                        use cases for Assimp\n\n\n### Where to get help ###\nFor more information, visit [our website](http://assimp.org/). Or check out the `./doc`- folder, which contains the official documentation in HTML format.\n(CHMs for Windows are included in some release packages and should be located right here in the root folder).\n\nIf the docs don't solve your problem, ask on [StackOverflow](http://stackoverflow.com/questions/tagged/assimp?sort=newest). If you think you found a bug, please open an issue on Github.\n\nFor development discussions, there is also a (very low-volume) mailing list, _assimp-discussions_\n  [(subscribe here)]( https://lists.sourceforge.net/lists/listinfo/assimp-discussions)\n\nOpen Asset Import Library is a library to load various 3d file formats into a shared, in-memory format. It supports more than __40 file formats__ for import and a growing selection of file formats for export.\n\nAnd we also have a Gitter-channel:Gitter [![Join the chat at https://gitter.im/assimp/assimp](https://badges.gitter.im/assimp/assimp.svg)](https://gitter.im/assimp/assimp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)<br>\n\n### Contributing ###\nContributions to assimp are highly appreciated. The easiest way to get involved is to submit\na pull request with your changes against the main repository's `master` branch.\n\n### License ###\nOur license is based on the modified, __3-clause BSD__-License.\n\nAn _informal_ summary is: do whatever you want, but include Assimp's license text with your product -\nand don't sue us if our code doesn't work. Note that, unlike LGPLed code, you may link statically to Assimp.\nFor the legal details, see the `LICENSE` file.\n\n### Why this name ###\nSorry, we're germans :-), no english native speakers ...\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-poly2tri\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/irrlicht-irrxml\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/kimkulling-openddl-parser\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/kuba-zip\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/ledger-utfcpp\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-rapidjson\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/nmoinvaz-minizip\"\nversion = \"branch=1.2\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/openexr-openexr\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/skyrpex-clipper\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/unicode-convertutf\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"5f88045dd2fdd4c19e450f6f29a9c24362f77042ba79781080d467fdb60e2d5f\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-poly2tri\"\ntarget = \"//:poly2tri\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/irrlicht-irrxml\"\ntarget = \"//:irrxml\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/kimkulling-openddl-parser\"\ntarget = \"//:openddlparser\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/kuba-zip\"\ntarget = \"//:miniz\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/ledger-utfcpp\"\ntarget = \"//:utfcpp\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-rapidjson\"\ntarget = \"//:rapidjson\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/nmoinvaz-minizip\"\ntarget = \"//:minizip\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/openexr-openexr\"\ntarget = \"//OpenEXR:openexr\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/skyrpex-clipper\"\ntarget = \"//:clipper\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/unicode-convertutf\"\ntarget = \"//:convertutf\"\n\n[lock.\"github.com/buckaroo-pm/google-poly2tri\"]\nversions = [ \"branch=master\" ]\nrevision = \"6e7b82f812f29b2358e17b33c1878c85882b2df2\"\n\n[lock.\"github.com/buckaroo-pm/host-pthread\"]\nversions = [ \"branch=master\" ]\nrevision = \"a62519aa69c8e3243d6065fbf4c1d2de072f86f6\"\n\n[lock.\"github.com/buckaroo-pm/irrlicht-irrxml\"]\nversions = [ \"branch=master\" ]\nrevision = \"efc10ce7a134f241decf31eaa1d9fb81f399772d\"\n\n[lock.\"github.com/buckaroo-pm/kimkulling-openddl-parser\"]\nversions = [ \"branch=master\" ]\nrevision = \"f85b46e8ed485f26d27f8db2d041752dc3989417\"\n\n[lock.\"github.com/buckaroo-pm/kuba-zip\"]\nversions = [ \"branch=master\" ]\nrevision = \"e6e718d64454a34e2984e5684874b18c160f14c8\"\n\n[lock.\"github.com/buckaroo-pm/ledger-utfcpp\"]\nversions = [ \"branch=master\" ]\nrevision = \"9674114525f46f37f54792690a8ca6b2717c1a3d\"\n\n[lock.\"github.com/buckaroo-pm/mapbox-rapidjson\"]\nversions = [ \"branch=master\" ]\nrevision = \"44ccecfb229c4862ef4fa924a4841749196abfc7\"\n\n[lock.\"github.com/buckaroo-pm/nmoinvaz-minizip\"]\nversions = [ \"branch=1.2\" ]\nrevision = \"2a750715a9217b47ff73f9aeefeeab2903a34cdd\"\n\n[lock.\"github.com/buckaroo-pm/openexr-openexr\"]\nversions = [ \"branch=master\" ]\nrevision = \"38e1a6805a20f7100eaa522d588997bc34438f07\"\n\n[lock.\"github.com/buckaroo-pm/skyrpex-clipper\"]\nversions = [ \"branch=master\" ]\nrevision = \"df4fc76046e87cc4140770c8cff7eec2af210185\"\n\n[lock.\"github.com/buckaroo-pm/unicode-convertutf\"]\nversions = [ \"branch=master\" ]\nrevision = \"51ee74e1ac2604179a56cff6f9f33885f67084f2\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\n\ngenrule(\n  name = 'config.h',\n  out = 'config.h',\n  srcs = ['include/assimp/config.h.in'],\n  cmd = 'cat $SRCS | sed -e \\'s/#cmake/#/\\' > $OUT',\n)\n\n\ngenrule(\n  name = 'revision.h',\n  out = 'revision.h',\n  cmd = 'echo \"#ifndef ASSIMP_REVISION_H_INC \\n' +\n  '#define ASSIMP_REVISION_H_INC \\n' +\n  ' \\n' +\n  '#define GitVersion 0x0 \\n' +\n  '#define GitBranch \\\\\"buckaroo-managed-dep\\\\\" \\n' +\n  ' \\n' +\n  '#endif // ASSIMP_REVISION_H_INC\\n\" > $OUT',\n)\n\nwindows_sources = glob([\n  'code/C4DImporter.cpp',\n])\n\nplatform_sources = windows_sources\n\nmacos_flags = [\n  '-DASSIMP_BUILD_NO_OWN_ZLIB',\n#  '-DASSIMP_BUILD_NO_C4D_IMPORTER',\n]\n\nlinux_flags = [\n  '-DASSIMP_BUILD_NO_OWN_ZLIB',\n#  '-DASSIMP_BUILD_NO_C4D_IMPORTER',\n]\n\nprebuilt_cxx_library(\n  name = 'assimp-headers',\n  header_only = True,\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('code', '**/*.h'),\n  ]),\n)\n\ncxx_library(\n  name = 'assimp',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('include', 'assimp/**/*.hpp'),\n      ('include', 'assimp/**/*.h'),\n      ('include', 'assimp/**/*.inl'),\n    ]).items() + [\n      ('revision.h', ':revision.h'),\n      ('assimp/config.h', ':config.h')\n    ]\n  ),\n  headers = subdir_glob([\n    ('', 'code/**/*.h'),\n    ('', 'code/**/*.hpp'),\n  ]),\n  srcs = glob([\n    'code/**/*.cpp',\n    'contrib/irrXML/**/*.cpp',\n  ], exclude = platform_sources),\n  platform_srcs = [\n    ('^windows.*', windows_sources),\n  ],\n  platform_compiler_flags = [\n    ('default', linux_flags),\n    ('^macos.*', macos_flags),\n    ('^linux.*', linux_flags),\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n  deps = buckaroo_deps() + [\n    ':assimp-headers'\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/google-poly2tri",
+          "name": "buckaroo-pm/google-poly2tri",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/irrlicht-irrxml",
+          "name": "buckaroo-pm/irrlicht-irrxml",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/kimkulling-openddl-parser",
+          "name": "buckaroo-pm/kimkulling-openddl-parser",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/kuba-zip",
+          "name": "buckaroo-pm/kuba-zip",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/ledger-utfcpp",
+          "name": "buckaroo-pm/ledger-utfcpp",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-rapidjson",
+          "name": "buckaroo-pm/mapbox-rapidjson",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/nmoinvaz-minizip",
+          "name": "buckaroo-pm/nmoinvaz-minizip",
+          "version": "branch=1.2"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/openexr-openexr",
+          "name": "buckaroo-pm/openexr-openexr",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/skyrpex-clipper",
+          "name": "buckaroo-pm/skyrpex-clipper",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/unicode-convertutf",
+          "name": "buckaroo-pm/unicode-convertutf",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/google-poly2tri",
+          "name": "buckaroo-pm/google-poly2tri",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6e7b82f812f29b2358e17b33c1878c85882b2df2"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/host-pthread",
+          "name": "buckaroo-pm/host-pthread",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a62519aa69c8e3243d6065fbf4c1d2de072f86f6"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/irrlicht-irrxml",
+          "name": "buckaroo-pm/irrlicht-irrxml",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "efc10ce7a134f241decf31eaa1d9fb81f399772d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/kimkulling-openddl-parser",
+          "name": "buckaroo-pm/kimkulling-openddl-parser",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f85b46e8ed485f26d27f8db2d041752dc3989417"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/kuba-zip",
+          "name": "buckaroo-pm/kuba-zip",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "e6e718d64454a34e2984e5684874b18c160f14c8"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/ledger-utfcpp",
+          "name": "buckaroo-pm/ledger-utfcpp",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "9674114525f46f37f54792690a8ca6b2717c1a3d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-rapidjson",
+          "name": "buckaroo-pm/mapbox-rapidjson",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "44ccecfb229c4862ef4fa924a4841749196abfc7"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/nmoinvaz-minizip",
+          "name": "buckaroo-pm/nmoinvaz-minizip",
+          "spec": {
+            "versions": [
+              "branch=1.2"
+            ],
+            "revision": "2a750715a9217b47ff73f9aeefeeab2903a34cdd"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/openexr-openexr",
+          "name": "buckaroo-pm/openexr-openexr",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "38e1a6805a20f7100eaa522d588997bc34438f07"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/skyrpex-clipper",
+          "name": "buckaroo-pm/skyrpex-clipper",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "df4fc76046e87cc4140770c8cff7eec2af210185"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/unicode-convertutf",
+          "name": "buckaroo-pm/unicode-convertutf",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "51ee74e1ac2604179a56cff6f9f33885f67084f2"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-30T11:40:43Z",
+  "updatedUpstream": "2021-01-13T07:56:40Z",
+  "contributors": [
+    {
+      "login": "dnadlinger",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/19335?u=f2e7f41bd3c546b3b0932f600b1777d182f75f6d&v=4"
+    },
+    {
+      "login": "iamsergio",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/20387?v=4"
+    },
+    {
+      "login": "ajshort",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31570?v=4"
+    },
+    {
+      "login": "fire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/32321?u=c2e06a3d2b49a467aa907e54aa259516440267cc&v=4"
+    },
+    {
+      "login": "shawwn",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/59632?u=31b89ebd7a1fb78a0b31323ef35a52b05af7394b&v=4"
+    },
+    {
+      "login": "abussuhail",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/59768?v=4"
+    },
+    {
+      "login": "devurandom",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/63082?v=4"
+    },
+    {
+      "login": "rodrigob",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/65367?v=4"
+    },
+    {
+      "login": "odalet",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/79333?v=4"
+    },
+    {
+      "login": "hgs3",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/82091?u=67e6ba3fe7da3b178c47c291f26687e35ddfd002&v=4"
+    },
+    {
+      "login": "adrianbroher",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/84891?v=4"
+    },
+    {
+      "login": "lbt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/88080?v=4"
+    },
+    {
+      "login": "sakrist",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/110199?v=4"
+    },
+    {
+      "login": "lieven",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/138759?v=4"
+    },
+    {
+      "login": "snikulov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/142123?u=be2f1f345d100a2b13545ba9eb6b9906830de00c&v=4"
+    },
+    {
+      "login": "ov",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/151412?v=4"
+    },
+    {
+      "login": "Calinou",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/180032?v=4"
+    },
+    {
+      "login": "follower",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/189962?v=4"
+    },
+    {
+      "login": "smokris",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/190164?v=4"
+    },
+    {
+      "login": "rdb",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/194842?u=2963a8455e5bec52f85fc39a30c1adc8accff311&v=4"
+    },
+    {
+      "login": "umlaeute",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/214034?v=4"
+    },
+    {
+      "login": "trond",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/217357?v=4"
+    },
+    {
+      "login": "enginmanap",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/237148?u=7a288db0b733165b8e0394b0682d916f202b0e2b&v=4"
+    },
+    {
+      "login": "NickNick",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/239522?u=abde68bfb8d7f967d40d6cc9b764d0b797f690c5&v=4"
+    },
+    {
+      "login": "mesilliac",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/243646?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://patreon.com/assimp",
+    "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JRJVPXC4QJM4"
+  ],
+  "contactLinks": [],
+  "stars": 6174,
+  "forks": 1850,
+  "topics": [
+    "asset-pipeline",
+    "assets",
+    "game-development",
+    "c-plus-plus",
+    "assimp",
+    "patreon",
+    "stl",
+    "dae",
+    "collada",
+    "cmake",
+    "objective-c",
+    "ifc",
+    "fbx",
+    "android",
+    "3mf",
+    "python",
+    "jvm"
+  ]
+}

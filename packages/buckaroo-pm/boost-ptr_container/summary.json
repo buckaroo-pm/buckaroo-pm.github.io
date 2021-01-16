@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-ptr_container",
+  "name": "boostorg/ptr_container",
+  "stars": 10,
+  "topics": [],
+  "description": "Boost.org ptr_container module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 15,
+      "transitive": 32
+    }
+  ],
+  "updated": "2018-11-14T19:44:17Z",
+  "updatedUpstream": "2020-04-16T14:49:51Z"
+}

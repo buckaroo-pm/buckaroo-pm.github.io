@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-regex",
+  "name": "boostorg/regex",
+  "stars": 50,
+  "topics": [],
+  "description": "Boost.org regex module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 11,
+      "transitive": 19
+    }
+  ],
+  "updated": "2018-11-14T23:12:25Z",
+  "updatedUpstream": "2021-01-04T10:34:13Z"
+}

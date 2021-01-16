@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-system",
+  "name": "boostorg/system",
+  "stars": 17,
+  "topics": [],
+  "description": "Boost.org system module ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 8
+    }
+  ],
+  "updated": "2018-11-17T23:54:23Z",
+  "updatedUpstream": "2021-01-02T20:17:33Z"
+}

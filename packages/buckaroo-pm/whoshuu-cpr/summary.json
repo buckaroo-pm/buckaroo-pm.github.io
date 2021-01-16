@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/whoshuu-cpr",
+  "name": "whoshuu/cpr",
+  "stars": 3362,
+  "topics": [
+    "c-plus-plus",
+    "libcurl",
+    "http",
+    "requests"
+  ],
+  "description": "C++ Requests: Curl for People, a spiritual port of Python Requests",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 3
+    }
+  ],
+  "updated": "2019-01-23T16:48:59Z",
+  "updatedUpstream": "2021-01-13T11:53:35Z"
+}

@@ -1,0 +1,116 @@
+{
+  "packageName": "buckaroo-pm/netsurf-dom",
+  "name": "buckaroo-pm/netsurf-dom",
+  "licence": "MIT",
+  "description": null,
+  "readme": "LibDOM -- an implementation of the W3C DOM\n==========================================\n\nOverview\n--------\n\nLibDOM is an implementation of the W3C DOM API in C.\n\n\nRequirements\n------------\n\nThe library uses the Netsurf core buildsystem which must be available\n(usually at the same level as the libsvg source)\n\nThe PREFIX variable can be used to perform builds which do not install\nto global system paths.\n\nlibdom requires the following tools:\n\n - A C99 capable C compiler\n - GNU make or compatible\n - Perl (for the testcases)\n   `sudo apt-get install libxml-xpath-perl`\n\nLibDOM also requires the following libraries to be installed:\n\n - LibParserUtils\n - LibWapcaplet\n - LibHubbub\n\n\nCompilation\n-----------\n\nIf necessary, modify the toolchain settings in the Makefile.\n\nInvoke make:\n\n  make\n\nThe VARIANT variable allows builds for \"release\" (the default) and \"debug\"\ne.g.\n\n  make VARIANT=debug\n\n\nVerification\n------------\n\nTo verify that the library is working, it is necessary to specify a\ndifferent makefile target than that used for normal compilation, thus:\n\n  make test\n\n\nAPI documentation\n-----------------\n\nCurrently, there is none. However, the code is well commented and the\npublic API may be found in the \"include\" directory. The testcase\nsources may also be of use in working out how to use it.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:dom\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-hubbub\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-parserutils\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-wapcaplet\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xml2\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"960967b57e9242de3ca3227768de3c78b3747d2005536bd56b9081e40da20bb1\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-hubbub\"\ntarget = \"//:hubbub\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-parserutils\"\ntarget = \"//:parserutils\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-wapcaplet\"\ntarget = \"//:wapcaplet\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xml2\"\ntarget = \"//:xml2\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-hubbub\"]\nversions = [ \"branch=master\" ]\nrevision = \"a927156c467f628d541a7692e431a70b55a24cde\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-parserutils\"]\nversions = [ \"branch=master\" ]\nrevision = \"bdee37e518fa178e8eaaa80fc6a8ac2eeb23f0be\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-wapcaplet\"]\nversions = [ \"branch=master\" ]\nrevision = \"6312c7378ab40e37594b04fcce7f8753998e737e\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-wapcaplet\".lock.\"github.com/buckaroo-pm/check\"]\nversions = [ \"branch=master\" ]\nrevision = \"53e84bd2ed5d98cf98cb91e781a2983d7d01425d\"\n\n[lock.\"github.com/buckaroo-pm/xml2\"]\nversions = [ \"branch=master\" ]\nrevision = \"d50aefc251efb38ed3c7ed5e7ee643583e0d4b9e\"\n\n[lock.\"github.com/buckaroo-pm/xz\"]\nversions = [ \"branch=master\" ]\nrevision = \"593cc1510a5b0f62d0d2167bdd57d36182a0cf35\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nparserutils = \\\n  buckaroo_deps_from_package('github.com/buckaroo-pm/netsurf-parserutils')\n\nwapcaplet = \\\n  buckaroo_deps_from_package('github.com/buckaroo-pm/netsurf-wapcaplet')\n\nprebuilt_cxx_library(\n  name = 'internal-headers',\n  header_namespace = '',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('src', '**/*.h'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_library(\n  name = 'dom',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  headers = subdir_glob([\n    ('src', '**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  deps = parserutils + wapcaplet,\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-hubbub",
+          "name": "buckaroo-pm/netsurf-hubbub",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-parserutils",
+          "name": "buckaroo-pm/netsurf-parserutils",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-wapcaplet",
+          "name": "buckaroo-pm/netsurf-wapcaplet",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xml2",
+          "name": "buckaroo-pm/xml2",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-hubbub",
+          "name": "buckaroo-pm/netsurf-hubbub",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a927156c467f628d541a7692e431a70b55a24cde"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-parserutils",
+          "name": "buckaroo-pm/netsurf-parserutils",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "bdee37e518fa178e8eaaa80fc6a8ac2eeb23f0be"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-wapcaplet",
+          "name": "buckaroo-pm/netsurf-wapcaplet",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6312c7378ab40e37594b04fcce7f8753998e737e",
+            "lock": {
+              "github.com/buckaroo-pm/check": {
+                "versions": [
+                  "branch=master"
+                ],
+                "revision": "53e84bd2ed5d98cf98cb91e781a2983d7d01425d"
+              }
+            }
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xml2",
+          "name": "buckaroo-pm/xml2",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "d50aefc251efb38ed3c7ed5e7ee643583e0d4b9e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xz",
+          "name": "buckaroo-pm/xz",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "593cc1510a5b0f62d0d2167bdd57d36182a0cf35"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-25T16:28:41Z",
+  "updatedUpstream": "2019-01-25T16:28:41Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

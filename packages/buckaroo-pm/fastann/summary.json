@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/fastann",
+  "name": "philbinj/fastann",
+  "stars": 21,
+  "topics": [],
+  "description": "A library for fast approximate nearest neighbours",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T16:55:54Z",
+  "updatedUpstream": "2020-05-22T11:04:48Z"
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "buckaroo-pm/mongo-cxx-driver",
+  "name": "mongodb/mongo-cxx-driver",
+  "stars": 777,
+  "topics": [
+    "driver",
+    "mongodb",
+    "c-plus-plus",
+    "c-plus-plus-11",
+    "networking",
+    "bson",
+    "mongo-cdriver",
+    "database",
+    "nosql",
+    "c-plus-plus-14",
+    "c-plus-plus-17",
+    "bson-library",
+    "database-driver",
+    "mongodb-driver"
+  ],
+  "description": "C++ Driver for MongoDB",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 3
+    }
+  ],
+  "updated": "2019-12-23T13:07:52Z",
+  "updatedUpstream": "2021-01-12T07:45:04Z"
+}

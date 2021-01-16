@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/boost-gil",
+  "name": "boostorg/gil",
+  "stars": 105,
+  "topics": [
+    "boost",
+    "generic-image-library",
+    "gil",
+    "image-processing-library",
+    "image-processing",
+    "raster-processing",
+    "image",
+    "raster",
+    "cplusplus",
+    "cplusplus-11"
+  ],
+  "description": "Boost.GIL - Generic Image Library | Requires C++11 since Boost 1.68",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 10,
+      "transitive": 17
+    }
+  ],
+  "updated": "2018-11-13T13:13:00Z",
+  "updatedUpstream": "2021-01-11T13:16:33Z"
+}

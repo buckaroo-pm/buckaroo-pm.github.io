@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/libgit2",
+  "name": "libgit2/libgit2",
+  "stars": 7733,
+  "topics": [
+    "libgit2",
+    "git",
+    "library",
+    "dvcs",
+    "version-control"
+  ],
+  "description": "A cross-platform, linkable library implementation of Git that you can use in your application.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 3
+    }
+  ],
+  "updated": "2019-03-22T11:06:53Z",
+  "updatedUpstream": "2021-01-13T21:19:18Z"
+}

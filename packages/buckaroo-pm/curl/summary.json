@@ -1,0 +1,33 @@
+{
+  "packageName": "buckaroo-pm/curl",
+  "name": "curl/curl",
+  "stars": 19084,
+  "topics": [
+    "http",
+    "https",
+    "ftp",
+    "user-agent",
+    "client",
+    "library",
+    "curl",
+    "libcurl",
+    "c",
+    "transfer-data",
+    "ldap",
+    "mqtt",
+    "sftp",
+    "scp"
+  ],
+  "description": "A command line tool and library for transferring data with URL syntax, supporting HTTP, HTTPS, FTP, FTPS, GOPHER, TFTP, SCP, SFTP, SMB, TELNET, DICT, LDAP, LDAPS, FILE, IMAP, SMTP, POP3, RTSP and RTMP. libcurl offers a myriad of powerful features",
+  "versions": [
+    {
+      "ref": "v7.49.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 4
+    }
+  ],
+  "updated": "2018-12-04T10:47:17Z",
+  "updatedUpstream": "2021-01-13T22:22:40Z"
+}

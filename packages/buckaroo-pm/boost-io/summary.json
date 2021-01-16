@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-io",
+  "name": "boostorg/io",
+  "stars": 8,
+  "topics": [],
+  "description": "Boost.org io module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 3
+    }
+  ],
+  "updated": "2018-11-17T23:10:46Z",
+  "updatedUpstream": "2020-05-08T13:25:49Z"
+}

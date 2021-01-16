@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-Optional",
+  "name": "mapbox/Optional",
+  "stars": 2,
+  "topics": [],
+  "description": "optional (nullable) objects for C++14",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-11T22:58:18Z",
+  "updatedUpstream": "2020-11-17T08:12:30Z"
+}

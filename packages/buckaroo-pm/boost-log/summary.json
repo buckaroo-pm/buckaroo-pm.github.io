@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-log",
+  "name": "boostorg/log",
+  "stars": 103,
+  "topics": [],
+  "description": "Boost Logging library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 13,
+      "transitive": 71
+    }
+  ],
+  "updated": "2019-01-29T13:30:52Z",
+  "updatedUpstream": "2021-01-09T02:05:54Z"
+}

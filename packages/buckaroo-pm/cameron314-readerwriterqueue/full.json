@@ -1,0 +1,99 @@
+{
+  "packageName": "buckaroo-pm/cameron314-readerwriterqueue",
+  "name": "cameron314/readerwriterqueue",
+  "licence": "NOASSERTION",
+  "description": "A fast single-producer, single-consumer lock-free queue for C++",
+  "readme": "# A single-producer, single-consumer lock-free queue for C++\n\nThis mini-repository has my very own implementation of a lock-free queue (that I designed from scratch) for C++.\n\nIt only supports a two-thread use case (one consuming, and one producing). The threads can't switch roles, though\nyou could use this queue completely from a single thread if you wish (but that would sort of defeat the purpose!).\n\nNote: If you need a general-purpose multi-producer, multi-consumer lock free queue, I have [one of those too][mpmc].\n\n\n## Features\n\n- [Blazing fast][benchmarks]\n- Compatible with C++11 (supports moving objects instead of making copies)\n- Fully generic (templated container of any type) -- just like `std::queue`, you never need to allocate memory for elements yourself\n  (which saves you the hassle of writing a lock-free memory manager to hold the elements you're queueing)\n- Allocates memory up front, in contiguous blocks\n- Provides a `try_enqueue` method which is guaranteed never to allocate memory (the queue starts with an initial capacity)\n- Also provides an `enqueue` method which can dynamically grow the size of the queue as needed\n- Also provides `try_emplace`/`emplace` convenience methods\n- Has a blocking version with `wait_dequeue`\n- Completely \"wait-free\" (no compare-and-swap loop). Enqueue and dequeue are always O(1) (not counting memory allocation)\n- On x86, the memory barriers compile down to no-ops, meaning enqueue and dequeue are just a simple series of loads and stores (and branches)\n\n\n## Use\n\nSimply drop the readerwriterqueue.h and atomicops.h files into your source code and include them :-)\nA modern compiler is required (MSVC2010+, GCC 4.7+, ICC 13+, or any C++11 compliant compiler should work).\n\nNote: If you're using GCC, you really do need GCC 4.7 or above -- [4.6 has a bug][gcc46bug] that prevents the atomic fence primitives\nfrom working correctly.\n\nExample:\n\n```cpp\nusing namespace moodycamel;\n\nReaderWriterQueue<int> q(100);       // Reserve space for at least 100 elements up front\n\nq.enqueue(17);                       // Will allocate memory if the queue is full\nbool succeeded = q.try_enqueue(18);  // Will only succeed if the queue has an empty slot (never allocates)\nassert(succeeded);\n\nint number;\nsucceeded = q.try_dequeue(number);  // Returns false if the queue was empty\n\nassert(succeeded && number == 17);\n\n// You can also peek at the front item of the queue (consumer only)\nint* front = q.peek();\nassert(*front == 18);\nsucceeded = q.try_dequeue(number);\nassert(succeeded && number == 18);\nfront = q.peek(); \nassert(front == nullptr);           // Returns nullptr if the queue was empty\n```\n\nThe blocking version has the exact same API, with the addition of `wait_dequeue` and\n`wait_dequeue_timed` methods:\n\n```cpp\nBlockingReaderWriterQueue<int> q;\n\nstd::thread reader([&]() {\n    int item;\n    for (int i = 0; i != 100; ++i) {\n        // Fully-blocking:\n        q.wait_dequeue(item);\n\n        // Blocking with timeout\n        if (q.wait_dequeue_timed(item, std::chrono::milliseconds(5)))\n            ++i;\n    }\n});\nstd::thread writer([&]() {\n    for (int i = 0; i != 100; ++i) {\n        q.enqueue(i);\n        std::this_thread::sleep_for(std::chrono::milliseconds(10));\n    }\n});\nwriter.join();\nreader.join();\n\nassert(q.size_approx() == 0);\n```\n    \nNote that `wait_dequeue` will block indefinitely while the queue is empty; this\nmeans care must be taken to only call `wait_dequeue` if you're sure another element\nwill come along eventually, or if the queue has a static lifetime. This is because\ndestroying the queue while a thread is waiting on it will invoke undefined behaviour.\n\n    \n## Disclaimers\n\nThe queue should only be used on platforms where aligned integer and pointer access is atomic; fortunately, that\nincludes all modern processors (e.g. x86/x86-64, ARM, and PowerPC). *Not* for use with a DEC Alpha processor (which has very weak memory ordering) :-)\n\nNote that it's only been tested on x86(-64); if someone has access to other processors I'd love to run some tests on\nanything that's not x86-based.\n\nFinally, I am not an expert. This is my first foray into lock-free programming, and though I'm confident in the code,\nit's possible that there are bugs despite the effort I put into designing and testing this data structure.\n\nUse this code at your own risk; in particular, lock-free programming is a patent minefield, and this code may very\nwell violate a pending patent (I haven't looked). It's worth noting that I came up with this algorithm and\nimplementation from scratch, independent of any existing lock-free queues.\n\n\n## More info\n\nSee the [LICENSE.md][license] file for the license (simplified BSD).\n\nMy [blog post][blog] introduces the context that led to this code, and may be of interest if you're curious\nabout lock-free programming.\n\n\n[blog]: http://moodycamel.com/blog/2013/a-fast-lock-free-queue-for-c++\n[license]: LICENSE.md\n[benchmarks]: http://moodycamel.com/blog/2013/a-fast-lock-free-queue-for-c++#benchmarks\n[gcc46bug]: http://stackoverflow.com/questions/16429669/stdatomic-thread-fence-has-undefined-reference\n[mpmc]: https://github.com/cameron314/concurrentqueue\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:readerwriterqueue\" ]\n",
+      "lockFile": "manifest = \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'readerwriterqueue',\n  header_namespace = '',\n  header_only = True,\n  exported_headers = [\n    'atomicops.h',\n    'readerwriterqueue.h',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-09-07T18:27:01Z",
+  "updatedUpstream": "2021-01-13T16:47:10Z",
+  "contributors": [
+    {
+      "login": "neomantra",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/26842?u=dc4ee0aafab55e8a177088924f7d1f993927cacf&v=4"
+    },
+    {
+      "login": "cameron314",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/116235?v=4"
+    },
+    {
+      "login": "kletoz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/142893?v=4"
+    },
+    {
+      "login": "smoe",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/207407?u=a14a86806db3c3c4719cda16ba9ed1709caeb718&v=4"
+    },
+    {
+      "login": "nikreiman",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/312573?v=4"
+    },
+    {
+      "login": "joeyo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/372147?v=4"
+    },
+    {
+      "login": "trilorez",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3771859?u=f6cf574129c5c5683bca155dcaa3182d85c9531d&v=4"
+    },
+    {
+      "login": "Cleroth",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4611301?v=4"
+    },
+    {
+      "login": "tbeu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5444067?v=4"
+    },
+    {
+      "login": "benaryorg",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6145260?u=72965188a7fc0ac8b48b7f40553330113bcedc5a&v=4"
+    },
+    {
+      "login": "jonathonracz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6502300?u=c85cd17bad45bc21e85698184d661102f1bf860a&v=4"
+    },
+    {
+      "login": "hanickadot",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6557263?u=d85f643ba14b75c8bb46820db101ff44b48f999e&v=4"
+    },
+    {
+      "login": "halx99",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6977319?u=0f3ff44da167cc4e3bbbf61ce62920e198e1e5df&v=4"
+    },
+    {
+      "login": "zosrothko",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7262593?v=4"
+    },
+    {
+      "login": "AGSaidi",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/10063075?v=4"
+    },
+    {
+      "login": "CrushedPixel",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/10288753?u=4c6f4085fdeae929f07766fbb909d3b47044507a&v=4"
+    },
+    {
+      "login": "sommern",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10468072?u=d5dc2b554fe4e5ec8b858a04783805847769df60&v=4"
+    },
+    {
+      "login": "nkari82",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/15668659?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1975,
+  "forks": 439,
+  "topics": []
+}

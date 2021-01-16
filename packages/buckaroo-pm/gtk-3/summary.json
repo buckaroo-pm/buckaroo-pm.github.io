@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/gtk-3",
+  "name": "buckaroo-pm/gtk-3",
+  "stars": 0,
+  "topics": [],
+  "description": "pkg-config-port; WIP",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-31T11:28:43Z",
+  "updatedUpstream": "2019-01-31T11:28:43Z"
+}

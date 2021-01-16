@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-type_traits",
+  "name": "boostorg/type_traits",
+  "stars": 47,
+  "topics": [],
+  "description": "Boost.org type_traits module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-07-03T12:03:28Z",
+  "updatedUpstream": "2020-12-25T16:56:20Z"
+}

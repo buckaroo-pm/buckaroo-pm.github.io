@@ -1,0 +1,88 @@
+{
+  "packageName": "buckaroo-pm/boost-contract",
+  "name": "boostorg/contract",
+  "stars": 28,
+  "topics": [
+    "boost",
+    "contracts-programming",
+    "design-by-contracts",
+    "design-by-contract",
+    "contracts",
+    "contract"
+  ],
+  "description": "Contract programming for C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 54
+    },
+    {
+      "ref": "v0.5.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.4.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.4.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.3.490",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.3.469",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.2.190",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.1.126",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.1.55",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.1.50",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-29T15:21:56Z",
+  "updatedUpstream": "2020-02-03T03:19:29Z"
+}

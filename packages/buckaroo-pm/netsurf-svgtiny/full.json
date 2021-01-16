@@ -1,0 +1,141 @@
+{
+  "packageName": "buckaroo-pm/netsurf-svgtiny",
+  "name": "buckaroo-pm/netsurf-svgtiny",
+  "licence": "MIT",
+  "description": null,
+  "readme": "Libsvgtiny\n==========\n\nhttp://www.netsurf-browser.org/projects/libsvgtiny/\n\nLibsvgtiny is a library for parsing SVG files for display.\n\nThe overall idea of the library is to take some SVG as input, and\nreturn a list of paths and texts which can be rendered easily. The\nlibrary does not do the actual rendering.\n\nAll supported SVG objects, for example circles, lines, and gradient\nfilled shapes, are converted to flat-filled paths or a fragment of\ntext, and all coordinates are converted, transformed etc. to pixels.\n\nLibsvgtiny is Licensed under the MIT License,\nhttp://opensource.org/licenses/mit-license.php\n\nWritten by James Bursa <james@netsurf-browser.org>.\n\n\nSVG support\n-----------\n\nLibsvgtiny is initially aiming to implement SVG Tiny, as defined in\nhttp://www.w3.org/TR/SVGMobile/.\n\nSVG Tiny elements supported: defs, g, svg, circle, line, path, polygon,\npolyline, rect, text\n\nSVG Tiny elements not yet supported: desc, metadata, title, use, a,\nswitch, ellipse, image, font, font-face, font-face-name, font-face-src,\nglyph, hkern, missing-glyph, animate, animateColor, animateMotion,\nanimateTransform, mpath, set, foreignObject\n\nAdditional elements supported: linearGradient, stop\n\nText support is incomplete.\n\nThe style attribute is supported.\n\n\nBuilding libsvgtiny\n-------------------\n\nThe library uses the Netsurf core buildsystem which must be available\n(usually at the same level as the libsvg source)\n\nThe PREFIX variable can be used to perform builds which do not install\nto global system paths.\n\nYou will require the following tools:\n\n - a C compiler (some parts of C99 support are required)\n - gperf\n\nfollowing additional libraries are required:\n\n - libwapcaplet\n - libdom\n\nTo compile libsvgtiny, use the command\n\n  make\n\nTo install libsvgtiny into /usr/local, use\n\n  make install\n\nThe VARIANT variable allows builds for \"release\" (the default) and \"debug\"\ne.g.\n\n  make VARIANT=debug\n\n\nTesting libsvgtiny\n------------------\n\nThe core buildsystem provides a test target which performs basic checks\n\n  make test\n\nFor manual testing a svgtiny_display script is available which renders\nan svg to a bitmap. This script uses the svgtiny_test program to\nrender an SVG to an imagemagic MVG. It requires that ImageMagick\nconvert is installed to convert the MVG into a bitmap.\n\nGet an suitable SVG file, for example the tiger svg can be found in\nthe examples directory or downloaded [1]\n\nThen use svgtiny_display to parse and render it:\n\n  ./svgtiny_display tiger.svg\n  ./svgtiny_display tiger.svg 2\n\nThe optional 2nd argument is a scale.\n\n\nUsing libsvgtiny\n----------------\n\nThe interface is in the header svgtiny.h\n\n  #include <svgtiny.h>\n\nFirst create a svgtiny_diagram using svgtiny_create():\n\n  struct svgtiny_diagram *diagram;\n  diagram = svgtiny_create();\n\nThis will return a pointer to a new diagram, or NULL if there was not enough\nmemory.\n\nSVGs are parsed from memory using svgtiny_parse():\n\n  svgtiny_code code;\n  code = svgtiny_parse(diagram, buffer, size, url, 1000, 1000);\n\nThe arguments are the pointer returned by svgtiny_create(), a buffer\ncontaining the SVG data, the size of the SVG in bytes, the url that\nthe SVG came from, and the target viewport width and height in pixels.\n\nThe function returns svgtiny_OK if there were no problems, and diagram\nis updated. The diagram can then be rendered by looping through the\narray diagram->shape[0..diagram->shape_count]:\n\n  for (unsigned int i = 0; i != diagram->shape_count; i++) {\n\nPath shapes have a non-NULL path pointer. The path is an array of\nfloats of length path_length. The array contains segment type codes\nfollowed by 0 to 3 pairs of coordinates (depending on the segment\ntype):\n\n- svgtiny_PATH_MOVE x y\n- svgtiny_PATH_CLOSE\n- svgtiny_PATH_LINE x y\n- svgtiny_PATH_BEZIER x1 y1 x2 y2 x3 y3\n\nA path always starts with a MOVE.\n\nThe fill and stroke attributes give the colors of the path, or\nsvgtiny_TRANSPARENT if the path is not filled or stroked. Colors are\nin 0xRRGGBB format (except when compiled for RISC OS). The macros\nsvgtiny_RED, svgtiny_GREEN, and svgtiny_BLUE can be used to extract\nthe components.\n\nThe width of the path is in stroke_width.\n\nText shapes have a NULL path pointer and a non-NULL text pointer. Text\nis in UTF-8. The coordinates of the text are in text_x, text_y. Text\ncolors and stroke width are as for paths.\n\nIf memory runs out during parsing, svgtiny_parse() returns\nsvgtiny_OUT_OF_MEMORY, but the diagram is still valid up to the point\nwhen memory was exhausted, and may safely be rendered.\n\nIf there is an error in the SVG (for example, an element is missing an\nattribute required by the specification), svgtiny_SVG_ERROR is\nreturned, but the diagram is still valid up to the point of the\nerror. The error is recorded in diagram->error_message and the line\nthat caused it in diagram->error_line.\n\nsvgtiny_LIBXML_ERROR indicates that parsing the XML failed. The\nreturned diagram will contain no shapes. svgtiny_NOT_SVG means that\nthe XML did not contain a top-level <svg> element.\n\nTo free memory used by a diagram, use svgtiny_free():\n\n  svgtiny_free(diagram);\n\nFor an example, see svgtiny_test.c.\n\n\n[1] http://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:svgtiny\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-dom\"\nversion = \"branch=master\"\ntargets = [ \"//:dom\", \"//bindings/xml:xml\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-cairo\"\nversion = \"branch=master\"\nprivate = true\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-x11\"\nversion = \"branch=master\"\nprivate = true\n",
+      "lockFile": "manifest = \"d3b4e1fdde2fa9ca17b69622d2ae0f87d3fc8777045082698f27f7768ec02eb9\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/netsurf-dom\"\ntarget = \"//:dom\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-cairo\"\ntarget = \"//:cairo\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-x11\"\ntarget = \"//:x11\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-dom\"]\nversions = [ \"branch=master\" ]\nrevision = \"c4036fb0220413065f1e5c596b8fc586cd0499c5\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-hubbub\"]\nversions = [ \"branch=master\" ]\nrevision = \"a927156c467f628d541a7692e431a70b55a24cde\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-parserutils\"]\nversions = [ \"branch=master\" ]\nrevision = \"bdee37e518fa178e8eaaa80fc6a8ac2eeb23f0be\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-wapcaplet\"]\nversions = [ \"branch=master\" ]\nrevision = \"6312c7378ab40e37594b04fcce7f8753998e737e\"\n\n[lock.\"github.com/buckaroo-pm/netsurf-wapcaplet\".lock.\"github.com/buckaroo-pm/check\"]\nversions = [ \"branch=master\" ]\nrevision = \"53e84bd2ed5d98cf98cb91e781a2983d7d01425d\"\n\n[lock.\"github.com/buckaroo-pm/pkg-config-cairo\"]\nversions = [ \"branch=master\" ]\nrevision = \"a4774a6e445f193b7474dbcaf3c42e7e909f2735\"\n\n[lock.\"github.com/buckaroo-pm/pkg-config-x11\"]\nversions = [ \"branch=master\" ]\nrevision = \"6f292a6166cd3c45c776b294485a24e7d71c0e0c\"\n\n[lock.\"github.com/buckaroo-pm/xml2\"]\nversions = [ \"branch=master\" ]\nrevision = \"d50aefc251efb38ed3c7ed5e7ee643583e0d4b9e\"\n\n[lock.\"github.com/buckaroo-pm/xz\"]\nversions = [ \"branch=master\" ]\nrevision = \"593cc1510a5b0f62d0d2167bdd57d36182a0cf35\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_cell')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ndom_cell = \\\n  buckaroo_cell('github.com/buckaroo-pm/netsurf-dom')\n\ngenrule(\n  name = 'autogenerated-colors-c',\n  out = 'autogenerated_colors.c',\n  srcs = [\n    'src/colors.gperf',\n  ],\n  cmd = ' && '.join([\n    'gperf $SRCS --output-file=$OUT',\n    'sed -e \\'s/^\\(const struct svgtiny_named_color\\)/static \\1/\\' $OUT > $OUT',\n  ]),\n)\n\ncxx_library(\n  name = 'svgtiny',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  headers = dict(\n    subdir_glob([\n      ('src', '**/*.h'),\n    ]).items() + [\n      ('autogenerated_colors.c', ':autogenerated-colors-c'),\n    ]\n  ),\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  deps = [\n    dom_cell + '//:dom',\n    dom_cell + '//bindings/xml:xml',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-dom",
+          "name": "buckaroo-pm/netsurf-dom",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-cairo",
+          "name": "buckaroo-pm/pkg-config-cairo",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-x11",
+          "name": "buckaroo-pm/pkg-config-x11",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-dom",
+          "name": "buckaroo-pm/netsurf-dom",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "c4036fb0220413065f1e5c596b8fc586cd0499c5"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-hubbub",
+          "name": "buckaroo-pm/netsurf-hubbub",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a927156c467f628d541a7692e431a70b55a24cde"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-parserutils",
+          "name": "buckaroo-pm/netsurf-parserutils",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "bdee37e518fa178e8eaaa80fc6a8ac2eeb23f0be"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/netsurf-wapcaplet",
+          "name": "buckaroo-pm/netsurf-wapcaplet",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6312c7378ab40e37594b04fcce7f8753998e737e",
+            "lock": {
+              "github.com/buckaroo-pm/check": {
+                "versions": [
+                  "branch=master"
+                ],
+                "revision": "53e84bd2ed5d98cf98cb91e781a2983d7d01425d"
+              }
+            }
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-cairo",
+          "name": "buckaroo-pm/pkg-config-cairo",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a4774a6e445f193b7474dbcaf3c42e7e909f2735"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-x11",
+          "name": "buckaroo-pm/pkg-config-x11",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6f292a6166cd3c45c776b294485a24e7d71c0e0c"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xml2",
+          "name": "buckaroo-pm/xml2",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "d50aefc251efb38ed3c7ed5e7ee643583e0d4b9e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xz",
+          "name": "buckaroo-pm/xz",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "593cc1510a5b0f62d0d2167bdd57d36182a0cf35"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-08-13T10:17:18Z",
+  "updatedUpstream": "2019-08-13T10:17:18Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1,
+  "forks": 1,
+  "topics": []
+}

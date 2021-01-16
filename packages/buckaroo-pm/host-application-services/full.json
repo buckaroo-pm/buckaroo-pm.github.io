@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/host-application-services",
+  "name": "buckaroo-pm/host-application-services",
+  "licence": "",
+  "description": "Buck wrapper for ApplicationServices framework ",
+  "readme": "# host-application-services\nBuck wrapper for ApplicationServices framework \n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:application-services\" ]\n",
+      "lockFile": "",
+      "buck": "xcode_developer_dir = read_config('apple', 'xcode_developer_dir', '/Applications/Xcode.app/Contents/Developer')\n\ngenrule(\n  name = 'application-services-framework', \n  out = 'ApplicationServices.framework', \n  cmd = 'cp -r ' + xcode_developer_dir + '/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/ApplicationServices.framework $OUT', \n)\n\nprebuilt_apple_framework(\n  name = 'application-services', \n  framework = ':application-services-framework', \n  preferred_linkage = 'static', \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-12T21:45:39Z",
+  "updatedUpstream": "2018-11-12T21:45:39Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

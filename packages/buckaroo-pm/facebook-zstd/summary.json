@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/facebook-zstd",
+  "name": "facebook/zstd",
+  "stars": 13763,
+  "topics": [],
+  "description": "Zstandard - Fast real-time compression algorithm",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T18:07:47Z",
+  "updatedUpstream": "2021-01-13T22:58:15Z"
+}

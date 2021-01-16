@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/opencv",
+  "name": "buckaroo-pm/opencv",
+  "stars": 0,
+  "topics": [],
+  "description": "pkg-config-port; WIP",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-31T11:29:13Z",
+  "updatedUpstream": "2019-01-31T11:29:13Z"
+}

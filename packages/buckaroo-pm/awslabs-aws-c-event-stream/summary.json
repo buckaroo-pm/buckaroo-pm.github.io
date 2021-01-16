@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-c-event-stream",
+  "name": "awslabs/aws-c-event-stream",
+  "stars": 21,
+  "topics": [],
+  "description": "C99 implementation of the vnd.amazon.eventstream content-type.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2018-12-04T15:25:51Z",
+  "updatedUpstream": "2020-12-17T00:26:35Z"
+}

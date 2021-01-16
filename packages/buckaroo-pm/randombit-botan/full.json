@@ -1,0 +1,124 @@
+{
+  "packageName": "buckaroo-pm/randombit-botan",
+  "name": "randombit/botan",
+  "licence": "BSD-2-Clause",
+  "description": "Crypto and TLS for Modern C++",
+  "readme": "Botan: Crypto and TLS for Modern C++\n========================================\n\nBotan (Japanese for peony flower) is a C++ cryptography library released under the\npermissive `Simplified BSD <https://botan.randombit.net/license.txt>`_ license.\n\nBotan's goal is to be the best option for cryptography in C++ by offering the\ntools necessary to implement a range of practical systems, such as TLS protocol,\nX.509 certificates, modern AEAD ciphers, PKCS#11 and TPM hardware support,\npassword hashing, and post quantum crypto schemes.\nSee the `documentation <https://botan.randombit.net/manual>`_ for more information.\n\nA Python binding is included, and several other `language bindings\n<https://github.com/randombit/botan/wiki/Language-Bindings>`_ are available.\n\nDevelopment is coordinated on `GitHub <https://github.com/randombit/botan>`_\nand contributions are welcome. If you need help, please open an issue on\n`GitHub <https://github.com/randombit/botan/issues>`_ or email the\n`botan-devel mailing list <https://lists.randombit.net/mailman/listinfo/botan-devel/>`_.\nNew releases are announced on the `botan-announce mailing list\n<https://lists.randombit.net/mailman/listinfo/botan-announce/>`_.\nIf you think you have found a security issue, see the `security page\n<https://botan.randombit.net/security.html>`_ for contact information.\n\nThe latest release is\n`2.8.0 <https://botan.randombit.net/releases/Botan-2.8.0.tgz>`_\n`(sig) <https://botan.randombit.net/releases/Botan-2.8.0.tgz.asc>`_,\nreleased on 2018-10-01.\nAll releases are signed with a `PGP key <https://botan.randombit.net/pgpkey.txt>`_.\nSee the `release notes <https://botan.randombit.net/news.html>`_ for\nwhat is new. Botan is also available through most\n`distributions <https://github.com/randombit/botan/wiki/Distros>`_\nsuch as Fedora, Debian, Arch and Homebrew.\n\n.. image:: https://travis-ci.org/randombit/botan.svg?branch=master\n    :target: https://travis-ci.org/randombit/botan\n    :alt: Travis CI status\n\n.. image:: https://ci.appveyor.com/api/projects/status/n9f94dljd03j2lce/branch/master?svg=true\n    :target: https://ci.appveyor.com/project/randombit/botan/branch/master\n    :alt: AppVeyor CI status\n\n.. image:: https://botan-ci.kullo.net/badge\n    :target: https://botan-ci.kullo.net/\n    :alt: Kullo CI status\n\n.. image:: https://codecov.io/github/randombit/botan/coverage.svg?branch=master\n    :target: https://codecov.io/github/randombit/botan\n    :alt: Code coverage report\n\n.. image:: https://scan.coverity.com/projects/624/badge.svg\n    :target: https://scan.coverity.com/projects/624\n    :alt: Coverity results\n\n.. image:: https://bestpractices.coreinfrastructure.org/projects/531/badge\n    :target: https://bestpractices.coreinfrastructure.org/projects/531\n    :alt: CII Best Practices statement\n\nFind Enclosed\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nTransport Layer Security (TLS) Protocol\n----------------------------------------\n\n* TLS v1.0, v1.1, and v1.2. The broken SSLv3 protocol is no longer supported.\n* DTLS v1.0 and v1.2 are adaptations of TLS to datagram operation.\n* Supported extensions include session tickets, SNI, ALPN, OCSP stapling,\n  encrypt-then-mac CBC, and extended master secret.\n* Supports authentication using preshared keys (PSK) or passwords (SRP)\n* Supports record encryption with ChaCha20Poly1305, AES/OCB, AES/GCM, AES/CCM,\n  Camellia/GCM as well as legacy CBC ciphersuites.\n* Key exchange using CECPQ1, ECDH, FFDHE, or RSA\n\nPublic Key Infrastructure\n----------------------------------------\n\n* X.509v3 certificates and CRL creation and handling\n* PKIX certificate path validation, including name constraints.\n* OCSP request creation and response handling\n* PKCS #10 certificate request generation and processing\n* SQL database backed certificate store\n\nPublic Key Cryptography\n----------------------------------------\n\n* RSA signatures and encryption\n* DH and ECDH key agreement\n* Signature schemes ECDSA, DSA, Ed25519, ECGDSA, ECKCDSA, SM2, GOST 34.10-2001\n* Post-quantum signature scheme XMSS\n* Post-quantum key agreement schemes McEliece and NewHope\n* ElGamal encryption\n* Padding schemes OAEP, PSS, PKCS #1 v1.5, X9.31\n\nCiphers, hashes, MACs, and checksums\n----------------------------------------\n\n* Authenticated cipher modes EAX, OCB, GCM, SIV, CCM, (X)ChaCha20Poly1305\n* Cipher modes CTR, CBC, XTS, CFB, OFB\n* Block ciphers AES, ARIA, Blowfish, Camellia, CAST-128, DES/3DES, GOST 28147,\n  IDEA, Lion, Noekeon, SEED, Serpent, SHACAL2, SM4, Threefish-512, Twofish, XTEA\n* Stream ciphers (X)ChaCha20, (X)Salsa20, SHAKE-128, RC4\n* Hash functions SHA-1, SHA-2, SHA-3, MD4, MD5, RIPEMD-160, BLAKE2b,\n  Skein-512, SM3, Tiger, Whirlpool, GOST 34.11\n* Authentication codes HMAC, CMAC, Poly1305, SipHash, GMAC, X9.19 DES-MAC\n* Non-cryptographic checksums Adler32, CRC24, CRC32\n\nOther Useful Things\n----------------------------------------\n\n* Full C++ PKCS #11 API wrapper\n* Interfaces for TPM v1.2 device access\n* Simple compression API wrapping zlib, bzip2, and lzma libraries\n* RNG wrappers for system RNG and hardware RNGs\n* HMAC_DRBG and entropy collection system for userspace RNGs\n* Password hashing schemes PBKDF2, Scrypt, bcrypt\n* SRP-6a password authenticated key exchange\n* Key derivation functions including HKDF, KDF2, SP 800-108, SP 800-56A, SP 800-56C\n* HOTP and TOTP algorithms\n* Format preserving encryption scheme FE1\n* Threshold secret sharing\n* NIST key wrapping\n",
+  "versions": [],
+  "updated": "2018-12-04T15:40:07Z",
+  "updatedUpstream": "2021-01-13T15:06:00Z",
+  "contributors": [
+    {
+      "login": "alex",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/772?u=7c00c7c8ac3691da556d7686e16ff08b797d4a38&v=4"
+    },
+    {
+      "login": "shlomif",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3150?v=4"
+    },
+    {
+      "login": "orip",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/36193?v=4"
+    },
+    {
+      "login": "volka",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/36235?v=4"
+    },
+    {
+      "login": "catap",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/37775?u=d3a30ff7be54e9a1d199f83d35173a914c1e01f9&v=4"
+    },
+    {
+      "login": "gut",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/40444?u=4f8412ac80d24e90276c711e2a08474eeaf9bb5a&v=4"
+    },
+    {
+      "login": "liuqun",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/64795?v=4"
+    },
+    {
+      "login": "tcely",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/138864?v=4"
+    },
+    {
+      "login": "mwanner",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/184024?u=8442ea37a9cccdcfae5aa2216172ee404d7ff892&v=4"
+    },
+    {
+      "login": "bluerise",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/262511?u=256e282a297cfa39d311b39f1440d02a792c4e77&v=4"
+    },
+    {
+      "login": "yurivict",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/271906?v=4"
+    },
+    {
+      "login": "nathanhourt",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/271977?u=c7dad185082cbb3961d7eb85d796e2535d9817f8&v=4"
+    },
+    {
+      "login": "sledgehammer999",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/273315?v=4"
+    },
+    {
+      "login": "jsonn",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/296817?v=4"
+    },
+    {
+      "login": "oNaiPs",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/374130?u=904f53093ea4b6f1dbd2488d5c15798148499a2c&v=4"
+    },
+    {
+      "login": "louiz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/376280?u=cd850b2a2ac48b5b22a2767f25971088a50be0c6&v=4"
+    },
+    {
+      "login": "tobiasbrunner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/457648?v=4"
+    },
+    {
+      "login": "randombit",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/469092?v=4"
+    },
+    {
+      "login": "alnkpa",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/509141?v=4"
+    },
+    {
+      "login": "bazineta",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/564060?v=4"
+    },
+    {
+      "login": "fschoenm",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/687230?u=226be79769295a7defe55ea0eeb4e25c10dc4750&v=4"
+    },
+    {
+      "login": "matejk",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/699334?u=4fa0a654b363604fd4c21c103db7fd394c072848&v=4"
+    },
+    {
+      "login": "0xdefaced",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/710474?u=c8a6afd56ccb19b4da6f888cbcd2cc14b406b1e2&v=4"
+    },
+    {
+      "login": "dewyatt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/711649?u=1190332a0a1bc14d073ca939ab0398816e7be569&v=4"
+    },
+    {
+      "login": "Bjoe",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/727911?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1575,
+  "forks": 384,
+  "topics": [
+    "crypto",
+    "cryptography",
+    "cryptography-library",
+    "tls",
+    "x509",
+    "c-plus-plus"
+  ]
+}

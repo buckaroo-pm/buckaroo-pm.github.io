@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/kuba-zip",
+  "name": "kuba--/zip",
+  "stars": 555,
+  "topics": [
+    "zip",
+    "compression",
+    "c",
+    "miniz",
+    "portable",
+    "hacking"
+  ],
+  "description": "A portable, simple zip library written in C",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T17:54:24Z",
+  "updatedUpstream": "2021-01-13T22:30:58Z"
+}

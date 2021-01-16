@@ -1,0 +1,156 @@
+{
+  "packageName": "buckaroo-pm/QuantStack-xsimd",
+  "name": "xtensor-stack/xsimd",
+  "licence": "BSD-3-Clause",
+  "description": "Modern, portable C++ wrappers for SIMD intrinsics and parallelized, optimized math implementations (SSE, AVX, NEON, AVX512)",
+  "readme": "# ![xsimd](docs/source/xsimd.svg)\n\n[![Travis](https://travis-ci.org/QuantStack/xsimd.svg?branch=master)](https://travis-ci.org/QuantStack/xsimd)\n[![Appveyor](https://ci.appveyor.com/api/projects/status/unk39xhu0wxmiif7?svg=true)](https://ci.appveyor.com/project/QuantStack/xsimd)\n[![Documentation Status](http://readthedocs.org/projects/xsimd/badge/?version=latest)](https://xsimd.readthedocs.io/en/latest/?badge=latest)\n[![Join the Gitter Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/QuantStack/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\nC++ wrappers for SIMD intrinsics\n\n## Introduction\n\nSIMD (Single Instruction, Multiple Data) is a feature of microprocessors that has been available for many years. SIMD instructions perform a single operation\non a batch of values at once, and thus provide a way to significantly accelerate code execution. However, these instructions differ between microprocessor\nvendors and compilers.\n\n`xsimd` provides a unified means for using these features for library authors. Namely, it enables manipulation of batches of numbers with the same arithmetic\noperators as for single values. It also provides accelerated implementation of common mathematical functions operating on batches.\n\nYou can find out more about this implementation of C++ wrappers for SIMD intrinsics at the [The C++ Scientist](http://johanmabille.github.io/blog/archives/).\nThe mathematical functions are a lightweight implementation of the algorithms used in [boost.SIMD](https://github.com/NumScale/boost.simd).\n\n`xsimd` requires a C++14 compliant compiler. The following C++ compilers are supported:\n\nCompiler                | Version\n------------------------|-------------------------------\nMicrosoft Visual Studio | MSVC 2015 update 2 and above\ng++                     | 4.9 and above\nclang                   | 3.7 and above\n\nThe following SIMD instruction set extensions are supported:\n\nArchitecture | Instruction set extensions\n-------------|-----------------------------------------------------\nx86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2\nx86          | AVX512 (gcc7 and higher)\nx86 AMD      | same as above + SSE4A, FMA4, XOP\nARM          | ARMv7, ARMv8\n\n## Installation\n\n`xsimd` is a header-only library. We provide a package for the conda package manager.\n\n```bash\nconda install -c conda-forge xsimd\n```\n\nOr you can directly install it from the sources:\n\n```bash\ncmake -D CMAKE_INSTALL_PREFIX=your_install_prefix\nmake install\n```\n\n## Documentation\n\nTo get started with using `xsimd`, check out the full documentation\n\nhttp://xsimd.readthedocs.io/\n\n## Usage\n\n### Explicit use of an instruction set extension\n\nHere is an example that computes the mean of two sets of 4 double floating point values, assuming AVX extension is supported:\n```cpp\n#include <iostream>\n#include \"xsimd/xsimd.hpp\"\n\nnamespace xs = xsimd;\n\nint main(int argc, char* argv[])\n{\n    xs::batch<double, 4> a(1.5, 2.5, 3.5, 4.5);\n    xs::batch<double, 4> b(2.5, 3.5, 4.5, 5.5);\n    auto mean = (a + b) / 2;\n    std::cout << mean << std::endl;\n    return 0;\n}\n```\n\nThis example outputs:\n\n```cpp\n(2.0, 3.0, 4.0, 5.0)\n```\n\n### Auto detection of the instruction set extension to be used\n\nThe same computation operating on vectors and using the most performant instruction set available:\n\n```cpp\n#include <cstddef>\n#include <vector>\n#include \"xsimd/xsimd.hpp\"\n\nnamespace xs = xsimd;\nusing vector_type = std::vector<double, xsimd::aligned_allocator<double, XSIMD_DEFAULT_ALIGNMENT>>;\n\nvoid mean(const vector_type& a, const vector_type& b, vector_type& res)\n{\n    std::size_t size = a.size();\n    constexpr std::size_t simd_size = xsimd::simd_type<double>::size;\n    std::size_t vec_size = size - size % simd_size;\n\n    for(std::size_t i = 0; i < vec_size; i += simd_size)\n    {\n        auto ba = xs::load_aligned(&a[i]);\n        auto bb = xs::load_aligned(&b[i]);\n        auto bres = (ba + bb) / 2.;\n        bres.store_aligned(&res[i]);\n    }\n    for(std::size_t i = vec_size; i < size; ++i)\n    {\n        res[i] = (a[i] + b[i]) / 2.;\n    }\n}\n```\n\nWe also implement STL algorithms to work optimally on batches. Using `xsimd::transform`\nthe loop from the example becomes:\n\n```cpp\n#include <cstddef>\n#include <vector>\n#include \"xsimd/xsimd.hpp\"\n#include \"xsimd/stl/algorithms.hpp\"\n\nnamespace xs = xsimd;\nusing vector_type = std::vector<double, xsimd::aligned_allocator<double, XSIMD_DEFAULT_ALIGNMENT>>;\n\nvoid mean(const vector_type& a, const vector_type& b, vector_type& res)\n{\n    xsimd::transform(a.begin(), a.end(), b.begin(), res.begin(),\n                     [](const auto& x, const auto& y) { (x + y) / 2.; });\n}\n```\n\n\n## Building and Running the Tests\n\nBuilding the tests requires the [GTest](https://github.com/google/googletest) testing framework and [cmake](https://cmake.org).\n\ngtest and cmake are available as a packages for most linux distributions. Besides, they can also be installed with the `conda` package manager (even on windows):\n\n```bash\nconda install -c conda-forge gtest cmake\n```\n\nOnce `gtest` and `cmake` are installed, you can build and run the tests:\n\n```bash\nmkdir build\ncd build\ncmake ../ -DBUILD_TESTS=ON\nmake xtest\n```\n\nIn the context of continuous integration with Travis CI, tests are run in a `conda` environment, which can be activated with\n\n```bash\ncd test\nconda env create -f ./test-environment.yml\nsource activate test-xsimd\ncd ..\ncmake . -DBUILD_TESTS=ON\nmake xtest\n```\n\n## Building the HTML Documentation\n\nxsimd's documentation is built with three tools\n\n - [doxygen](http://www.doxygen.org)\n - [sphinx](http://www.sphinx-doc.org)\n - [breathe](https://breathe.readthedocs.io)\n\nWhile doxygen must be installed separately, you can install breathe by typing\n\n```bash\npip install breathe\n``` \n\nBreathe can also be installed with `conda`\n\n```bash\nconda install -c conda-forge breathe\n```\n\nFinally, build the documentation with\n\n```bash\nmake html\n```\n\nfrom the `docs` subdirectory.\n\n## License\n\nWe use a shared copyright model that enables all contributors to maintain the\ncopyright on their contributions.\n\nThis software is licensed under the BSD-3-Clause license. See the [LICENSE](LICENSE) file for details.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:xsimd\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\nversion = \"*\"\nprivate = true\n",
+      "lockFile": "manifest = \"d0cfd2b79a9d8a24d31aaf6106f363d2fd13d2d85bdc4d33d20c2c6a368018f9\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\ntarget = \"//:googletest\"\n\n[lock.\"github.com/buckaroo-pm/google-googletest\"]\nversions = [ \"branch=master\" ]\nrevision = \"cb8d2c1a2fcd344953e6c129a1a699a2c230551d\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'xsimd',\n  header_only = True,\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.hpp'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "version": "*"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "cb8d2c1a2fcd344953e6c129a1a699a2c230551d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-10-14T14:07:49Z",
+  "updatedUpstream": "2021-01-10T17:03:58Z",
+  "contributors": [
+    {
+      "login": "hleclerc",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/222970?v=4"
+    },
+    {
+      "login": "bluescarni",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/623038?u=503a0d485a371ad7de75e5d746709104284b5661&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "serge-sans-paille",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/863807?v=4"
+    },
+    {
+      "login": "wolfv",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/885054?u=833ad7754e88429d7e610f9324ca6bc18d8e1bf0&v=4"
+    },
+    {
+      "login": "ukoethe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/897680?v=4"
+    },
+    {
+      "login": "mainland",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1089866?v=4"
+    },
+    {
+      "login": "emmenlau",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1098087?u=395c03e6379b326128c268c3bd3a12c3da17ea60&v=4"
+    },
+    {
+      "login": "andre-bergner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1143094?v=4"
+    },
+    {
+      "login": "HadrienG2",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1305080?u=89566450597ec178f3a090c51c8640545a754274&v=4"
+    },
+    {
+      "login": "ax3l",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1353258?u=5bf40e16b963cf080bc0d3a1a0e0192dbd80d422&v=4"
+    },
+    {
+      "login": "AlessioZanga",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2170744?u=25547b2fe2b524d20a375ccfbe86ea5a81438041&v=4"
+    },
+    {
+      "login": "SylvainCorlay",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2397974?u=8c2e50e43baf59740e5b12b48b0f1699caa058f8&v=4"
+    },
+    {
+      "login": "robertodr",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3708689?v=4"
+    },
+    {
+      "login": "adytzu2007",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4578823?v=4"
+    },
+    {
+      "login": "davidbrochart",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4711805?u=64de197496f253da73b96559d0fcf1c89e64beec&v=4"
+    },
+    {
+      "login": "omaralvarez",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5764407?u=1dc9053cc5f98c66b6b981c027d3c43ec0b37f81&v=4"
+    },
+    {
+      "login": "egpbos",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6146598?u=c66c20108b3068c0d31746b7544c7da92935a939&v=4"
+    },
+    {
+      "login": "easyaspi314",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6258309?u=422f9c6eae6706269fdd2e0e4f873f517d2a948c&v=4"
+    },
+    {
+      "login": "JohanMabille",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/6754742?u=775b86dd500eb42711a48b35928b898bfa183c92&v=4"
+    },
+    {
+      "login": "tdegeus",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7030445?u=4ae813be4d6381a7dd012a3ec28e95d0b24b1eb4&v=4"
+    },
+    {
+      "login": "gouarin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7510549?u=12fdb4d769af1a23d1694f12ce2cb8d29e2f85eb&v=4"
+    },
+    {
+      "login": "chriselrod",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/8043603?v=4"
+    },
+    {
+      "login": "cstratopoulos",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/10555060?u=363d372cde492eb06978576d34d4c7c2add30188&v=4"
+    },
+    {
+      "login": "zouyxdut",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/11425914?u=1d5096684cb9f861bf81728869fb56ed7baf010e&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 928,
+  "forks": 115,
+  "topics": [
+    "simd-intrinsics",
+    "c-plus-plus-14",
+    "vectorization",
+    "simd",
+    "cpp",
+    "avx",
+    "neon",
+    "sse",
+    "avx512",
+    "simd-instructions",
+    "mathematical-functions"
+  ]
+}

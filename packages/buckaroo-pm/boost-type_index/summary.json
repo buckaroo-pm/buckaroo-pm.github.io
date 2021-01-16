@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-type_index",
+  "name": "boostorg/type_index",
+  "stars": 20,
+  "topics": [],
+  "description": "Runtime/Compile time copyable type info.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 11
+    }
+  ],
+  "updated": "2018-11-15T14:10:11Z",
+  "updatedUpstream": "2021-01-04T15:30:03Z"
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/xiph-vorbis",
+  "name": "xiph/vorbis",
+  "stars": 257,
+  "topics": [
+    "audio",
+    "codec",
+    "ogg",
+    "ogg-vorbis",
+    "vorbis-specification",
+    "libvorbis",
+    "libvorbisenc",
+    "libvorbisfile",
+    "xiph",
+    "encoder"
+  ],
+  "description": "Reference implementation of the Ogg Vorbis audio format.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-02-08T16:09:18Z",
+  "updatedUpstream": "2021-01-13T19:45:51Z"
+}

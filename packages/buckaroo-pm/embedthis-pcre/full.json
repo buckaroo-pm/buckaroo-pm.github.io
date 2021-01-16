@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/embedthis-pcre",
+  "name": "sunfirefox/pcre",
+  "licence": "NOASSERTION",
+  "description": "Pearl Regular Expressions",
+  "readme": "Perl Compatible Regular Expressions\n===\n\nLicensing\n---\nSee LICENSE.md for details.\n\n### To Read Documentation:\n\n  See doc/index.html\n\n### Prerequisites:\n    MakeMe (https://embedthis.com/makeme/download.html) for MakeMe to configure and build.\n\n### To Build:\n\n    ./configure\n    me\n\nAlternatively to build MakeMe:\n\n    make\n\nImages are built into */bin. The build configuration is saved in */inc/me.h.\n\n### To Test:\n\n    me test\n\n### To Run:\n\n    me run\n\nThis will run appweb in the src/server directory using the src/server/appweb.conf configuration file.\n\n### To Install:\n\n    me install\n\n### To Create Packages:\n\n    me package\n\nResources\n---\n  - [Embedthis web site](https://embedthis.com/)\n  - [Appweb web site](http://appwebserver.org/)\n  - [MPR GitHub repository](http://github.com/embedthis/mpr)\n  - [Appweb GitHub repository](http://github.com/embedthis/appweb)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:pcre\" ]\n",
+      "lockFile": "",
+      "buck": "macos_headers = {\n  'me.h': 'projects/pcre-macosx-default-me.h',\n}\n\nlinux_headers = {\n  'me.h': 'projects/pcre-linux-default-me.h',\n}\n\ncxx_library(\n  name = 'pcre',\n  header_namespace = '',\n  exported_headers = {\n    'pcre.h': 'src/pcre.h', \n  }, \n  headers = subdir_glob([\n    ('src', '**/*.h'),\n  ]),\n  platform_headers = [\n    ('macos.*', macos_headers),\n    ('linux.*', linux_headers),\n  ],\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2020-02-08T07:23:49Z",
+  "updatedUpstream": "2020-02-08T07:23:49Z",
+  "contributors": [
+    {
+      "login": "sunfirefox",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5207758?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 9,
+  "topics": []
+}

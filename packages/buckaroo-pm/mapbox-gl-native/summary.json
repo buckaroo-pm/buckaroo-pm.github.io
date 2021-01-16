@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/mapbox-gl-native",
+  "name": "mapbox/mapbox-gl-native",
+  "stars": 3935,
+  "topics": [
+    "map",
+    "mapbox-gl",
+    "opengl",
+    "android",
+    "ios",
+    "macos",
+    "nodejs",
+    "qt",
+    "c-plus-plus",
+    "java",
+    "objective-c",
+    "swift",
+    "vector-tiles",
+    "objective-c-plus-plus",
+    "openstreetmap",
+    "monorepo",
+    "mapbox",
+    "geojson",
+    "opengl-es",
+    "maps"
+  ],
+  "description": "Interactive, thoroughly customizable maps in native Android, iOS, macOS, Node.js, and Qt applications, powered by vector tiles and OpenGL",
+  "versions": [],
+  "updated": "2018-11-20T17:22:20Z",
+  "updatedUpstream": "2021-01-11T15:23:23Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-assign",
+  "name": "boostorg/assign",
+  "stars": 8,
+  "topics": [],
+  "description": "Boost.org assign module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 10,
+      "transitive": 33
+    }
+  ],
+  "updated": "2018-11-14T19:40:23Z",
+  "updatedUpstream": "2021-01-04T06:18:58Z"
+}

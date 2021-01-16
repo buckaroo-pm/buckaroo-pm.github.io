@@ -1,0 +1,133 @@
+{
+  "packageName": "buckaroo-pm/nanopb",
+  "name": "nanopb/nanopb",
+  "licence": "Zlib",
+  "description": "Protocol Buffers with small code size",
+  "readme": "Nanopb - Protocol Buffers for Embedded Systems\n==============================================\n\n[![Build Status](https://travis-ci.org/nanopb/nanopb.svg?branch=master)](https://travis-ci.org/nanopb/nanopb)\n\nNanopb is a small code-size Protocol Buffers implementation in ansi C. It is\nespecially suitable for use in microcontrollers, but fits any memory\nrestricted system.\n\n* **Homepage:** https://jpa.kapsi.fi/nanopb/\n* **Documentation:** https://jpa.kapsi.fi/nanopb/docs/\n* **Downloads:** https://jpa.kapsi.fi/nanopb/download/\n* **Forum:** https://groups.google.com/forum/#!forum/nanopb\n\n\n\nUsing the nanopb library\n------------------------\nTo use the nanopb library, you need to do two things:\n\n1. Compile your .proto files for nanopb, using `protoc`.\n2. Include *pb_encode.c*, *pb_decode.c* and *pb_common.c* in your project.\n\nThe easiest way to get started is to study the project in \"examples/simple\".\nIt contains a Makefile, which should work directly under most Linux systems.\nHowever, for any other kind of build system, see the manual steps in\nREADME.txt in that folder.\n\n\n\nUsing the Protocol Buffers compiler (protoc)\n--------------------------------------------\nThe nanopb generator is implemented as a plugin for the Google's own `protoc`\ncompiler. This has the advantage that there is no need to reimplement the\nbasic parsing of .proto files. However, it does mean that you need the\nGoogle's protobuf library in order to run the generator.\n\nIf you have downloaded a binary package for nanopb (either Windows, Linux or\nMac OS X version), the `protoc` binary is included in the 'generator-bin'\nfolder. In this case, you are ready to go. Simply run this command:\n\n    generator-bin/protoc --nanopb_out=. myprotocol.proto\n\nHowever, if you are using a git checkout or a plain source distribution, you\nneed to provide your own version of `protoc` and the Google's protobuf library.\nOn Linux, the necessary packages are `protobuf-compiler` and `python-protobuf`.\nOn Windows, you can either build Google's protobuf library from source or use\none of the binary distributions of it. In either case, if you use a separate\n`protoc`, you need to manually give the path to nanopb generator:\n\n    protoc --plugin=protoc-gen-nanopb=nanopb/generator/protoc-gen-nanopb ...\n\n\n\nRunning the tests\n-----------------\nIf you want to perform further development of the nanopb core, or to verify\nits functionality using your compiler and platform, you'll want to run the\ntest suite. The build rules for the test suite are implemented using Scons,\nso you need to have that installed (ex: `sudo apt install scons` on Ubuntu). To run the tests:\n\n    cd tests\n    scons\n\nThis will show the progress of various test cases. If the output does not\nend in an error, the test cases were successful.\n\nNote: Mac OS X by default aliases 'clang' as 'gcc', while not actually\nsupporting the same command line options as gcc does. To run tests on\nMac OS X, use: \"scons CC=clang CXX=clang\". Same way can be used to run\ntests with different compilers on any platform.\n\n\n\nBuild systems and integration\n-----------------------------\nNanopb C code itself is designed to be portable and easy to build\non any platform. Often the bigger hurdle is running the generator which\ntakes in the `.proto` files and outputs `.pb.c` definitions.\n\nThere exist build rules for several systems:\n\n* **Makefiles**: `extra/nanopb.mk`, see `examples/simple`\n* **CMake**: `extra/FindNanopb.cmake`, see `examples/cmake`\n* **SCons**: `tests/site_scons` (generator only)\n* **Bazel**: `BUILD` in source root\n* **PlatformIO**: https://platformio.org/lib/show/431/Nanopb\n\nAnd also integration to platform interfaces:\n\n* **Arduino**: http://platformio.org/lib/show/1385/nanopb-arduino\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:nanopb\" ]",
+      "lockFile": "manifest = \"393b6295df17649bb9465568028727ecdbc7cdcaf9ab9dbd2b1c6cf2f507ea97\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'nanopb',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  licenses = [\n    'LICENSE.txt',\n  ],\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "licenses([\"notice\"])\n\nexports_files([\"LICENSE.txt\"])\n\npackage(default_visibility = [\"//visibility:public\"])\n\ncc_library(\n  name = \"nanopb\",\n  visibility = [\"//visibility:public\"],\n  hdrs = [\n    \"pb.h\",\n    \"pb_common.h\",\n    \"pb_decode.h\",\n    \"pb_encode.h\",\n  ],\n  srcs = [\n    \"pb_common.c\",\n    \"pb_decode.c\",\n    \"pb_encode.c\",\n  ],\n)\n",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-22T19:25:57Z",
+  "updatedUpstream": "2021-01-13T17:42:10Z",
+  "contributors": [
+    {
+      "login": "ezyang",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/13564?v=4"
+    },
+    {
+      "login": "kfitch",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/17753?v=4"
+    },
+    {
+      "login": "prusnak",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/42201?u=24bd00b1856db9374d16f863f8f66fabe0d93341&v=4"
+    },
+    {
+      "login": "kamalmarhubi",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/50936?u=05810201d17e59bae23d53c218494f544bcff6ec&v=4"
+    },
+    {
+      "login": "paulb777",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/73870?v=4"
+    },
+    {
+      "login": "kalbasit",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/87115?u=7eca50b25a2f27112687ad99657b27548e575e5a&v=4"
+    },
+    {
+      "login": "rjshade",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/97579?v=4"
+    },
+    {
+      "login": "twam",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/112843?v=4"
+    },
+    {
+      "login": "Tasssadar",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/120108?v=4"
+    },
+    {
+      "login": "aeruder",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/130169?u=a7a7a5bbb709da23d2b35537339fa2c04f9d27c3&v=4"
+    },
+    {
+      "login": "PiotrSikora",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/190297?u=d74930462c3fab97d56d4b95b92f7a6f64714e9a&v=4"
+    },
+    {
+      "login": "JenSte",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/272885?v=4"
+    },
+    {
+      "login": "a1ien",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/280794?u=537f3189d1811d495c449bd75a516e449a300c39&v=4"
+    },
+    {
+      "login": "recursify",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/403253?v=4"
+    },
+    {
+      "login": "Cloudef",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/480330?u=716ae8a9ccd4ed481f356b18be1da80930aea263&v=4"
+    },
+    {
+      "login": "haraldF",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/547273?v=4"
+    },
+    {
+      "login": "matejcik",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/596073?v=4"
+    },
+    {
+      "login": "efisher",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/599823?v=4"
+    },
+    {
+      "login": "dimbleby",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/875184?v=4"
+    },
+    {
+      "login": "tmroeder",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/889223?v=4"
+    },
+    {
+      "login": "mhaberler",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/901479?u=3d8f0d9ee113f5f2a2d16d4683f66551e00b2ccf&v=4"
+    },
+    {
+      "login": "PetteriAimonen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/922265?u=14ce5a89695c2e2e9f4a45948345741e7c9ea90a&v=4"
+    },
+    {
+      "login": "squidfunk",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/932156?u=f8199559a1c46c5f08edad751720df2571ee1c67&v=4"
+    },
+    {
+      "login": "isotes",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/934246?u=f5229ca34ad9738c4070c4dc38a82d155b638e3c&v=4"
+    },
+    {
+      "login": "kylemanna",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/936367?u=8480881613ff39b728dadbfe1090bfd7c1e28aa0&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2169,
+  "forks": 503,
+  "topics": [
+    "nanopb",
+    "protocol-buffers",
+    "c",
+    "embedded",
+    "embedded-c"
+  ]
+}

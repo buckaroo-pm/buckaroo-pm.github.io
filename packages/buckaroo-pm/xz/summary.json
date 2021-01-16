@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/xz",
+  "name": "buckaroo-pm/xz",
+  "stars": 0,
+  "topics": [],
+  "description": "Buckaroo mirror of xz. Contains lzma. ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T16:48:38Z",
+  "updatedUpstream": "2019-01-25T16:48:38Z"
+}

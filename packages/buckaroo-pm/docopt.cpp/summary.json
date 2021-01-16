@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/docopt.cpp",
+  "name": "docopt/docopt.cpp",
+  "stars": 868,
+  "topics": [],
+  "description": "C++11 port of docopt",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-22T12:00:56Z",
+  "updatedUpstream": "2021-01-04T15:20:06Z"
+}

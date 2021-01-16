@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mongo-c-driver",
+  "name": "mongodb/mongo-c-driver",
+  "stars": 630,
+  "topics": [],
+  "description": "A high-performance MongoDB driver for C",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-12-23T13:13:42Z",
+  "updatedUpstream": "2021-01-13T19:37:46Z"
+}

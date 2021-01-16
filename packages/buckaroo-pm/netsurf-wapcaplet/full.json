@@ -1,0 +1,43 @@
+{
+  "packageName": "buckaroo-pm/netsurf-wapcaplet",
+  "name": "buckaroo-pm/netsurf-wapcaplet",
+  "licence": "MIT",
+  "description": null,
+  "readme": "LibWapcaplet - a string internment library\n==========================================\n\nOverview\n--------\n\nLibWapcaplet provides a reference counted string internment system\ndesigned to store small strings and allow rapid comparison of them in\nterms of equality. It supports a caseless comparison where it will\nautomatically intern a lowercased variant of the string and use that\nfor comparison if needed.\n\nRationale\n---------\n\nPrior to LibWapcaplet, LibParserUtils contained a dictionary and hash\nimplementation along with a red-black tree implementation\ninternally. These three things were then used by client applications\nand libraries such as LibCSS. However, the code was deemed to be\ninefficient and the features in the wrong library. The behaviour\nrequired of the client libraries was therefore split out so that\ninternment would still be able to be shared between different client\nlibraries in the same application. (E.g. LibCSS and Hubbub)\n\nFor those interested, The name 'Wapcaplet' is from the Monty Python\nsketch in which Mr Simpson (who is not French) attempts to sell\n122,000 miles of string which was unfortunately cut up into 3 inch\nlengths, and Adrian Wapcaplet comes up with the idea of \"Simpson's\nindividual emperor stringettes - Just the right length!\"\n\nRequirements\n------------\n\nTo compile LibWapcaplet you need:\n\n * GNU Make 3.81 or better\n * A version of GCC capable of -MMD -MF (unless you change the build\n   system)\n\nTo compile the test suite you need:\n\n * Check v0.9.5 or better.\n\nCompilation\n-----------\n\nTo build LibWapcaplet in release mode, type 'make'. To build it in\ndebug mode type 'make BUILD=debug'.  To install, run 'make\ninstall'. If you wish to install LibWapcaplet into somewhere other\nthan /usr/local/ then add PREFIX=/path/to/place to the installation\nmake command.\n\nVerification\n------------\n\nTo build and run the tests, run 'make test'.\n\nIn release mode, fewer tests will be run as the assert() calls will be\nelided.\n\nAPI documentation\n-----------------\n\nFor API documentation see include/libwapcaplet/libwapcaplet.h\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:wapcaplet\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/check\"\nversion = \"branch=master\"\nprivate = true\n",
+      "lockFile": "manifest = \"dae9cf7faa3a872e81ddfbdbe224719e387171ee50adf8b3d8abf0980b2682e4\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/check\"\ntarget = \"//:check\"\n\n[lock.\"github.com/buckaroo-pm/check\"]\nversions = [ \"branch=master\" ]\nrevision = \"53e84bd2ed5d98cf98cb91e781a2983d7d01425d\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'wapcaplet',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/check",
+          "name": "buckaroo-pm/check",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/check",
+          "name": "buckaroo-pm/check",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "53e84bd2ed5d98cf98cb91e781a2983d7d01425d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-25T10:52:41Z",
+  "updatedUpstream": "2019-01-25T10:52:41Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

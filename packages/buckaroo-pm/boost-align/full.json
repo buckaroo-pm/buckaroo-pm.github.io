@@ -1,0 +1,150 @@
+{
+  "packageName": "buckaroo-pm/boost-align",
+  "name": "boostorg/align",
+  "licence": "",
+  "description": "Boost.Align",
+  "readme": "# Boost.Align\n\nThe Boost Align C++ library provides functions, classes, templates, traits,\nand macros, for the control, inspection, and diagnostic of memory alignment.\n\n### License\n\nDistributed under the\n[Boost Software License, Version 1.0](http://www.boost.org/LICENSE_1_0.txt).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:align\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"fb43b83dd3e2762c868db3251a289c53d79202f620342b698584f582a943ae50\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\ntarget = \"//:assert\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\ntarget = \"//:core\"\n\n[lock.\"github.com/buckaroo-pm/boost-assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"f9d6a7b63ef2902777b6078fdebc54e7a57aac03\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n\n[lock.\"github.com/buckaroo-pm/boost-core\"]\nversions = [ \"branch=master\" ]\nrevision = \"4f59c5f06f11cd029a85d932ef51b9d511761f49\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'align',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f9d6a7b63ef2902777b6078fdebc54e7a57aac03"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4f59c5f06f11cd029a85d932ef51b9d511761f49"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-14T23:23:02Z",
+  "updatedUpstream": "2020-12-31T17:33:08Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "jfalcou",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/285977?u=aa9be7c63023593e6e3fb7765390e789f31b7509&v=4"
+    },
+    {
+      "login": "muggenhor",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/484066?u=5264fe5285af77f083ef09c4be9dde327dbcc955&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "Lastique",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1589747?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    },
+    {
+      "login": "jzmaddock",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5011768?v=4"
+    },
+    {
+      "login": "glenjofe",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7797122?v=4"
+    },
+    {
+      "login": "Mike-Devel",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/43199315?u=6bcb9f905c7278fa57b0a1986746be1ec2800985&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 7,
+  "forks": 29,
+  "topics": []
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-crc",
+  "name": "boostorg/crc",
+  "stars": 10,
+  "topics": [],
+  "description": "Boost.org crc module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 4,
+      "transitive": 12
+    }
+  ],
+  "updated": "2018-11-20T18:27:16Z",
+  "updatedUpstream": "2020-04-15T06:42:34Z"
+}

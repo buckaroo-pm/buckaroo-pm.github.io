@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/netsurf-svgtiny",
+  "name": "buckaroo-pm/netsurf-svgtiny",
+  "stars": 1,
+  "topics": [],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 9
+    }
+  ],
+  "updated": "2019-08-13T10:17:18Z",
+  "updatedUpstream": "2019-08-13T10:17:18Z"
+}

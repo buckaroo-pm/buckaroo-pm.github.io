@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/orangeduck-mpc",
+  "name": "orangeduck/mpc",
+  "stars": 2020,
+  "topics": [],
+  "description": "A Parser Combinator library for C",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T17:00:34Z",
+  "updatedUpstream": "2021-01-13T22:13:03Z"
+}

@@ -1,0 +1,27 @@
+{
+  "packageName": "buckaroo-pm/ikalnytskyi-termcolor",
+  "name": "ikalnytskyi/termcolor",
+  "stars": 505,
+  "topics": [
+    "c-plus-plus",
+    "terminal",
+    "console",
+    "fancy",
+    "colors",
+    "windows",
+    "linux",
+    "macos"
+  ],
+  "description": "Termcolor is a header-only C++ library for printing colored messages to the terminal. Written just for fun with a help of the Force.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-31T17:04:35Z",
+  "updatedUpstream": "2021-01-11T23:31:22Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-glog",
+  "name": "google/glog",
+  "stars": 4257,
+  "topics": [],
+  "description": "C++ implementation of the Google logging module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-14T15:54:27Z",
+  "updatedUpstream": "2021-01-13T14:55:19Z"
+}

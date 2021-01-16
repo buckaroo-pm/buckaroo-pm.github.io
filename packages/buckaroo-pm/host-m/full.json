@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/host-m",
+  "name": "buckaroo-pm/host-m",
+  "licence": "",
+  "description": null,
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \":host-m\" ]\n",
+      "lockFile": "manifest = \"b664fcb4bb3d6db017719965fc7dd0592b6ed93d7e94b1a611c8101c4329a6d3\"\n\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'host-m', \n  header_namespace = '', \n  header_only = True, \n  exported_linker_flags = [\n    '-ldl', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-31T18:14:27Z",
+  "updatedUpstream": "2019-01-31T18:14:27Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

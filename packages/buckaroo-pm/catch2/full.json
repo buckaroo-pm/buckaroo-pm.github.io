@@ -1,0 +1,158 @@
+{
+  "packageName": "buckaroo-pm/catch2",
+  "name": "catchorg/Catch2",
+  "licence": "BSL-1.0",
+  "description": "A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later (or C++03 on the Catch1.x branch)",
+  "readme": "<a id=\"top\"></a>\n![catch logo](artwork/catch2-logo-small.png)\n\n[![Github Releases](https://img.shields.io/github/release/catchorg/catch2.svg)](https://github.com/catchorg/catch2/releases)\n[![Build Status](https://travis-ci.org/catchorg/Catch2.svg?branch=master)](https://travis-ci.org/catchorg/Catch2)\n[![Build status](https://ci.appveyor.com/api/projects/status/github/catchorg/Catch2?svg=true)](https://ci.appveyor.com/project/catchorg/catch2)\n[![codecov](https://codecov.io/gh/catchorg/Catch2/branch/master/graph/badge.svg)](https://codecov.io/gh/catchorg/Catch2)\n[![Try online](https://img.shields.io/badge/try-online-blue.svg)](https://wandbox.org/permlink/rbkudthN4hBNJznk)\n[![Join the chat in Discord: https://discord.gg/4CWS9zD](https://img.shields.io/badge/Discord-Chat!-brightgreen.svg)](https://discord.gg/4CWS9zD)\n\n\n<a href=\"https://github.com/catchorg/Catch2/releases/download/v2.4.2/catch.hpp\">The latest version of the single header can be downloaded directly using this link</a>\n\n## Catch2 is released!\n\nIf you've been using an earlier version of Catch, please see the\nBreaking Changes section of [the release notes](https://github.com/catchorg/Catch2/releases/tag/v2.0.1)\nbefore moving to Catch2. You might also like to read [this blog post](http://www.levelofindirection.com/journal/2017/11/3/catch2-released.html) for more details.\n\n## What's the Catch?\n\nCatch2 stands for C++ Automated Test Cases in a Header and is a\nmulti-paradigm test framework for C++. which also supports Objective-C\n(and maybe C).\nIt is primarily distributed as a single header file, although certain\nextensions may require additional headers.\n\n## How to use it\nThis documentation comprises these three parts:\n\n* [Why do we need yet another C++ Test Framework?](docs/why-catch.md#top)\n* [Tutorial](docs/tutorial.md#top) - getting started\n* [Reference section](docs/Readme.md#top) - all the details\n\n## More\n* Issues and bugs can be raised on the [Issue tracker on GitHub](https://github.com/catchorg/Catch2/issues)\n* For discussion or questions please use [the dedicated Google Groups forum](https://groups.google.com/forum/?fromgroups#!forum/catch-forum) or our [Discord](https://discord.gg/4CWS9zD)\n* See [who else is using Catch2](docs/opensource-users.md#top)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:catch\" ]\n",
+      "lockFile": "\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'catch',\n  header_only = True,\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('single_include', '**/*.hpp'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v2.10.2",
+      "manifest": "targets = [ \"//:catch2\" ]\n",
+      "lockFile": "manifest = \"857546fd15dcc9af6d593faaf8853acd385d73e537f39b68205f8ee6d9703672\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'catch2',\n  header_namespace = '',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('single_include', '**/*.hpp'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.12.1",
+      "manifest": "targets = [ \"//:catch2\" ]\n",
+      "lockFile": "manifest = \"857546fd15dcc9af6d593faaf8853acd385d73e537f39b68205f8ee6d9703672\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'catch2',\n  header_namespace = '',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('single_include', '**/*.hpp'),\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-05T16:49:01Z",
+  "updatedUpstream": "2021-01-13T15:43:30Z",
+  "contributors": [
+    {
+      "login": "socantre",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8063?v=4"
+    },
+    {
+      "login": "godlygeek",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/29423?u=5b900b84ba1ff14f8db2589ca0454d76758c1b07&v=4"
+    },
+    {
+      "login": "jbytheway",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/52664?u=591504b49dcbe318cffb4975f33468e579143097&v=4"
+    },
+    {
+      "login": "rpavlik",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61129?u=7d08cfe95729dfb58415f39b2d33d756572ab142&v=4"
+    },
+    {
+      "login": "hanneskaeufler",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/68024?v=4"
+    },
+    {
+      "login": "drewish",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/68750?v=4"
+    },
+    {
+      "login": "andybalaam",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76812?v=4"
+    },
+    {
+      "login": "mikezackles",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/77851?u=b4a6d82f7154253f9d2fc5eb39d102d3ed140574&v=4"
+    },
+    {
+      "login": "berkus",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/80306?u=440974c67ab28a37bf695706ed49826a9f74fb9e&v=4"
+    },
+    {
+      "login": "mloskot",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/80741?v=4"
+    },
+    {
+      "login": "philsquared",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/92878?u=ddd00849f81db6094bb807a1cd12a89285e15bb2&v=4"
+    },
+    {
+      "login": "nanoant",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/103067?v=4"
+    },
+    {
+      "login": "aivarsk",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/103240?v=4"
+    },
+    {
+      "login": "johnelse",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/112119?u=917f8a81c8656713202c0461d49a9c22246e2fd3&v=4"
+    },
+    {
+      "login": "Minoru",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/118875?v=4"
+    },
+    {
+      "login": "vadz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/146917?v=4"
+    },
+    {
+      "login": "JLospinoso",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/147698?u=f2715d73c9ba434d8063d7e2646a88fe6704391e&v=4"
+    },
+    {
+      "login": "tomhughes",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/147741?v=4"
+    },
+    {
+      "login": "razeh",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/174737?u=00c8f640aa316d6bd00a8c711d632795d833809b&v=4"
+    },
+    {
+      "login": "snewell",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/187986?u=e3eaa56570dfb1d6359d982ef1af1f65828bac54&v=4"
+    },
+    {
+      "login": "Fraser999",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/190532?u=cec01d107011d30d1f75c8ed912f5bacbca36f82&v=4"
+    },
+    {
+      "login": "wichert",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/199657?u=6cfb09ea002ecf81a7e7353297f1d10be850dab6&v=4"
+    },
+    {
+      "login": "benagain",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/201727?u=3f1a190a429f95bc3eb46330b31e6d784ed21089&v=4"
+    },
+    {
+      "login": "jweyrich",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/206930?u=39df645e62b2d91403649d029c11d668d46f5930&v=4"
+    },
+    {
+      "login": "girtsf",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/260191?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://www.paypal.me/horenmar"
+  ],
+  "contactLinks": [],
+  "stars": 12623,
+  "forks": 2122,
+  "topics": [
+    "c-plus-plus",
+    "cpp11",
+    "testing",
+    "test-framework",
+    "tdd",
+    "bdd",
+    "header-only",
+    "single-file",
+    "no-dependencies",
+    "framework"
+  ]
+}

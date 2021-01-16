@@ -1,0 +1,17 @@
+{
+  "packageName": "buckaroo-pm/randombit-botan",
+  "name": "randombit/botan",
+  "stars": 1575,
+  "topics": [
+    "crypto",
+    "cryptography",
+    "cryptography-library",
+    "tls",
+    "x509",
+    "c-plus-plus"
+  ],
+  "description": "Crypto and TLS for Modern C++",
+  "versions": [],
+  "updated": "2018-12-04T15:40:07Z",
+  "updatedUpstream": "2021-01-13T15:06:00Z"
+}

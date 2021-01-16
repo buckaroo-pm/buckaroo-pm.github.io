@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-cocoa",
+  "name": "buckaroo-pm/host-cocoa",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for Cocoa framework",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-12T21:30:23Z",
+  "updatedUpstream": "2018-11-12T21:30:23Z"
+}

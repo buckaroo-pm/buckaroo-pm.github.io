@@ -1,0 +1,21 @@
+{
+  "packageName": "buckaroo-pm/copperspice-libguarded",
+  "name": "copperspice/cs_libguarded",
+  "stars": 143,
+  "topics": [
+    "multithreading",
+    "cpp"
+  ],
+  "description": "Header-only library for multithreaded programming",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-18T15:11:17Z",
+  "updatedUpstream": "2021-01-11T04:43:29Z"
+}

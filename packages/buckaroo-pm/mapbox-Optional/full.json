@@ -1,0 +1,83 @@
+{
+  "packageName": "buckaroo-pm/mapbox-Optional",
+  "name": "mapbox/Optional",
+  "licence": "NOASSERTION",
+  "description": "optional (nullable) objects for C++14",
+  "readme": "Optional\n========\n\nA single-header header-only library for representing optional (nullable) objects for C++14 (and C++11 to some extent) and passing them by value. This is the reference implementation of proposal N3793 (see http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3793.html). Optional is now accepted into Library Fundamentals Technical Specification (see http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3848.html). The interface is based on Fernando Cacciola's Boost.Optional library (see http://www.boost.org/doc/libs/1_52_0/libs/optional/doc/html/index.html)\n\n\nUsage\n-----\n\n```cpp\noptional<int> readInt(); // this function may return int or a not-an-int\n\nif (optional<int> oi = readInt()) // did I get a real int\n  cout << \"my int is: \" << *oi;   // use my int\nelse\n  cout << \"I have no int\";\n```\n\nFor more usage examples and the overview see http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3527.html\n\n\nSupported compilers\n-------------------\n\nClang 3.2, Clang 3.4, G++ 4.7.2, G++ 4.8.1. Tested only with libstdc++, versions 20130531, 20120920, 20110428. Others have reported it also works with libc++.\n\n\n\nKnown Issues\n------------\n\n - Currently, the reference (and the only known) implementation of certain pieces of functionality explore what C++11 identifies as undefined behavior (see national body comment FI 15: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3770.html#FI15). This is mostly why Optional was removed from C++14 and put into Library Fundamentals TS. Luckily what the Standard identifies as UB is well defined on all known platforms. We expect that the C++14 wil fix this problem, so that our trick becomes well-defined.\n - In libstdc++ versions below 20130531 the constructor taking `initializer_list` argument is not `constexpr`. This is because `initializer_list` operations are not `constexpr` in C++11. This works however in version 20130531. It is also not enabled for libc++ because I do not have access to it and do not know if it provides `constexpr` `initializer_list`.\n - In G++ 4.7.2 and 4.8.0 member function `value_or` does not have rvalue reference overload. These compilers do not support rvalue overloding on `*this`.\n - In order for the library to work with slightly older compilers, we emulate some missing type traits. On some platforms we cannot correctly detect the available features, and attempts at workarounds for missing type trait definitions can cause compile-time errors. Define macro `TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS` if you know that all the necessary type traits are defined, and no emulation is required.\n\nLicense\n-------\nDistributed under the [Boost Software License, Version 1.0](http://www.boost.org/LICENSE_1_0.txt).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:optional\" ]\n",
+      "lockFile": "",
+      "buck": "prebuilt_cxx_library(\n  name = 'optional', \n  header_namespace = '', \n  header_only = True, \n  exported_headers = [\n    'optional.hpp', \n  ], \n  licenses = [\n    'LICENSE', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n\ncxx_binary(\n  name = 'test-optional', \n  srcs = [\n    'test_optional.cpp', \n  ], \n  deps = [\n    ':optional', \n  ], \n)\n\ncxx_binary(\n  name = 'test-type-traits', \n  srcs = [\n    'test_type_traits.cpp', \n  ], \n  deps = [\n    ':optional', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-11T22:58:18Z",
+  "updatedUpstream": "2020-11-17T08:12:30Z",
+  "contributors": [
+    {
+      "login": "willwhite",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/93564?u=3e17a4a45e3ce686ca811d9ed79257db04ff345f&v=4"
+    },
+    {
+      "login": "cmulli",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/475316?u=b1c7a2d06598e9e7943eb92ec24f4e2506b0e663&v=4"
+    },
+    {
+      "login": "rclark",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/515424?v=4"
+    },
+    {
+      "login": "tmpsantos",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/996307?v=4"
+    },
+    {
+      "login": "ArpitaBiswas",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3260021?u=a05ba5a53cae750c4df144e4d9e1fe5d001098e3&v=4"
+    },
+    {
+      "login": "npeternel",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10649205?u=7001985db8cddc3bfc9ba581aaee4473a5909e18&v=4"
+    },
+    {
+      "login": "jlin12358",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/18368871?v=4"
+    },
+    {
+      "login": "Hotelkin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/19272678?u=b5924fce2af6b92a26335a7f5ad28ab4f32f5f38&v=4"
+    },
+    {
+      "login": "trevorspecht",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/29611310?u=0a53808c4bb714c22424f2da07022122de64f58e&v=4"
+    },
+    {
+      "login": "platanosf",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/44051572?v=4"
+    },
+    {
+      "login": "cole-seph-work",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/53199598?u=c71e5b7a71747e17a316b7cc14b9bf127ca8ea35&v=4"
+    },
+    {
+      "login": "mapboxit",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/55812960?v=4"
+    },
+    {
+      "login": "shaina43",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/57018853?u=214f118fb6981a1a81b126f0301f3fc50c73fa83&v=4"
+    },
+    {
+      "login": "mapbox-machine-integration",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/57966702?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2,
+  "forks": 3,
+  "topics": []
+}

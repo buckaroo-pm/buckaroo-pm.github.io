@@ -1,0 +1,194 @@
+{
+  "packageName": "buckaroo-pm/boost-bind",
+  "name": "boostorg/bind",
+  "licence": "",
+  "description": "Boost.org bind module",
+  "readme": "# Boost.Bind\n\nBranch   | Travis | Appveyor\n---------|--------|---------\nDevelop  | [![Build Status](https://travis-ci.org/boostorg/bind.svg?branch=develop)](https://travis-ci.org/boostorg/bind) | [![Build Status](https://ci.appveyor.com/api/projects/status/github/boostorg/bind?branch=develop&svg=true)](https://ci.appveyor.com/project/pdimov/bind)\nMaster   | [![Build Status](https://travis-ci.org/boostorg/bind.svg?branch=master)](https://travis-ci.org/boostorg/bind) | [![Build Status](https://ci.appveyor.com/api/projects/status/github/boostorg/bind?branch=master&svg=true)](https://ci.appveyor.com/project/pdimov/bind)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:bind\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"9366a51d832ec29a3e505b6115d3f65b14670da3f10b7f88ed321f6d69d3cd0e\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\ntarget = \"//:core\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\ntarget = \"//:detail\"\n\n[lock.\"github.com/buckaroo-pm/boost-assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"f9d6a7b63ef2902777b6078fdebc54e7a57aac03\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n\n[lock.\"github.com/buckaroo-pm/boost-core\"]\nversions = [ \"branch=master\" ]\nrevision = \"4f59c5f06f11cd029a85d932ef51b9d511761f49\"\n\n[lock.\"github.com/buckaroo-pm/boost-detail\"]\nversions = [ \"branch=master\" ]\nrevision = \"54bb4a90a75f96cc22e3376f8a3221f96aa80528\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_traits\"]\nversions = [ \"branch=master\" ]\nrevision = \"2146ff039c062639fa99fbd5e1b8b441adb5d5a8\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'bind',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(), \n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'bind-as-compose', \n  srcs = [\n    'bind_as_compose.cpp', \n  ], \n  deps = [\n    ':bind', \n  ], \n)\n\ncxx_binary(\n  name = 'bind-visitor', \n  srcs = [\n    'bind_visitor.cpp', \n  ], \n  deps = [\n    ':bind', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f9d6a7b63ef2902777b6078fdebc54e7a57aac03"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4f59c5f06f11cd029a85d932ef51b9d511761f49"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "54bb4a90a75f96cc22e3376f8a3221f96aa80528"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "2146ff039c062639fa99fbd5e1b8b441adb5d5a8"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-14T13:37:48Z",
+  "updatedUpstream": "2020-12-20T00:05:47Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "dabrahams",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/44065?v=4"
+    },
+    {
+      "login": "straszheim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/75593?v=4"
+    },
+    {
+      "login": "swatanabe",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/82176?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "brycelelbach",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/398194?u=2513466c85f4da25eaab9b4f2ffadb19167067a5&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "fmhess",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2271711?v=4"
+    },
+    {
+      "login": "morinmorin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2411812?v=4"
+    },
+    {
+      "login": "rxg",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2762664?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "jhunold",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3115501?u=143d1f05ab1c7e5cf13ef4c8093aa3910d86c19e&v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    },
+    {
+      "login": "toonknapen",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3373062?u=4e0b678393f3835f6645209648921cf393179b30&v=4"
+    },
+    {
+      "login": "agurtovoy",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3394202?u=cfbc10771a4234553d052d7e465b3d21a4ac1927&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 19,
+  "forks": 34,
+  "topics": []
+}

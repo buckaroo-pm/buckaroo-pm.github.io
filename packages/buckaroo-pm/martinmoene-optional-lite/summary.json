@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/martinmoene-optional-lite",
+  "name": "martinmoene/optional-lite",
+  "stars": 283,
+  "topics": [
+    "cpp98",
+    "cpp17",
+    "no-dependencies",
+    "single-file",
+    "header-only",
+    "optional",
+    "optional-implementations"
+  ],
+  "description": "optional lite - A C++17-like optional, a nullable object for C++98, C++11 and later in a single-file header-only  library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-15T17:10:56Z",
+  "updatedUpstream": "2021-01-05T16:50:06Z"
+}

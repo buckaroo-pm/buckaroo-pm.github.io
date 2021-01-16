@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/host-pthread",
+  "name": "buckaroo-pm/host-pthread",
+  "licence": "",
+  "description": "Buck wrapper for the host's pthread implementation",
+  "readme": "# host-pthread\nBuck wrapper for the host's pthread implementation\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:pthread\" ]\n",
+      "lockFile": "",
+      "buck": "prebuilt_cxx_library(\n  name = 'pthread', \n  header_namespace = '', \n  header_only = True, \n  exported_linker_flags = [\n    '-lpthread', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-08T10:15:26Z",
+  "updatedUpstream": "2018-12-08T10:15:26Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

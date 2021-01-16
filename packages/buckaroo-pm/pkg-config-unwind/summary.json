@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-unwind",
+  "name": "buckaroo-pm/pkg-config-unwind",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for libunwind managed by pkg-config ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-14T19:31:24Z",
+  "updatedUpstream": "2019-01-14T19:31:24Z"
+}

@@ -1,0 +1,137 @@
+{
+  "packageName": "buckaroo-pm/electronicarts-EASTL",
+  "name": "electronicarts/EASTL",
+  "licence": "NOASSERTION",
+  "description": "EASTL stands for Electronic Arts Standard Template Library.  It is an extensive and robust implementation that has an emphasis on high performance.",
+  "readme": "# EA Standard Template Library\n\n[![Build Status](https://travis-ci.org/electronicarts/EASTL.svg?branch=master)](https://travis-ci.org/electronicarts/EASTL)  [![Build status](https://ci.appveyor.com/api/projects/status/dtn82qr8tw8o3vmi?svg=true)](https://ci.appveyor.com/project/rparolin/eastl)\n\nEASTL stands for Electronic Arts Standard Template Library. It is a C++ template library of containers, algorithms, and iterators useful for runtime and tool development across multiple platforms. It is a fairly extensive and robust implementation of such a library and has an emphasis on high performance above all other considerations.\n\n\n## Usage\n\nIf you are familiar with the C++ STL or have worked with other templated container/algorithm libraries, you probably don't need to read this. If you have no familiarity with C++ templates at all, then you probably will need more than this document to get you up to speed. In this case, you need to understand that templates, when used properly, are powerful vehicles for the ease of creation of optimized C++ code. A description of C++ templates is outside the scope of this documentation, but there is plenty of such documentation on the Internet.\n\nEASTL is suitable for any tools and shipping applications where the functionality of EASTL is useful. Modern compilers are capable of producing good code with templates and many people are using them in both current generation and future generation applications on multiple platforms from embedded systems to servers and mainframes.\n\n\n## Documentation\n\nPlease see [EASTL Introduction](https://rawgit.com/electronicarts/EASTL/master/doc/EASTL%20Introduction.html).\n\n\n## Compiling sources\n\nPlease see [CONTRIBUTING.md](CONTRIBUTING.md) for details on compiling and testing the source.\n\n## Credits\n\nEASTL was created by Paul Pedriana and he maintained the project for roughly 10 years.  \n\nRoberto Parolin is the current EASTL owner within EA and is responsible for the open source repository.\n\nSignificant EASTL contributions were made by (in alphabetical order):\n\n* Avery Lee\n* Colin Andrews\n* JP Flouret\n* Liam Mitchell\n* Matt Newport\n* Max Winkler\n* Paul Pedriana\n* Roberto Parolin\n* Simon Everett\n\n\n## License\n\nModified BSD License (3-Clause BSD license) see the file LICENSE in the project root.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:eastl\" ]\n",
+      "lockFile": "manifest = \"0713cbbbccc94da269b9407f169a90b40bade331d119ec33b0926c4c4b525eea\"\n\n",
+      "buck": "cxx_library(\n  name = 'eastl',\n  header_namespace = 'EASTL',\n  exported_headers = subdir_glob([\n    ('include/EASTL', '**/*.h'),\n  ]),\n  srcs = glob([\n    'source/**/*.cpp',\n  ]),\n  licenses = [\n    'LICENSE',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n  deps = [\n    '//test/packages/EABase:eabase',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-27T19:48:05Z",
+  "updatedUpstream": "2021-01-13T02:41:44Z",
+  "contributors": [
+    {
+      "login": "kfitch",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/17753?v=4"
+    },
+    {
+      "login": "nemerle",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/96597?u=c8d22b2929bb55334422905a17d37013e027c633&v=4"
+    },
+    {
+      "login": "philix",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/207795?v=4"
+    },
+    {
+      "login": "Meorawr",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/287102?u=05cf641ebc5d8401dd26bf0d2d6fb7f49e291546&v=4"
+    },
+    {
+      "login": "martty",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/395730?v=4"
+    },
+    {
+      "login": "Leandros",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/396475?u=0648d86919102e0d34b3c0f0445169db2e00d370&v=4"
+    },
+    {
+      "login": "Nuclearfossil",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/398853?u=53c439f762f8e178c4eb7483176179bfbab553c3&v=4"
+    },
+    {
+      "login": "CaseyCarter",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/456873?v=4"
+    },
+    {
+      "login": "lukaszdk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/526443?u=22234bc87b8c055e04e48e39bf7053125afc84ae&v=4"
+    },
+    {
+      "login": "swardle",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/679256?u=9e2bc481899840f8fa47a6969788f1c446bd4031&v=4"
+    },
+    {
+      "login": "gian21391",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/784317?v=4"
+    },
+    {
+      "login": "mwolting",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/815869?v=4"
+    },
+    {
+      "login": "prayagverma",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/829526?u=3113fc3d2e3b580b43574398ed920324e6901129&v=4"
+    },
+    {
+      "login": "moretromain",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/917327?v=4"
+    },
+    {
+      "login": "rparolin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1320845?u=d66ebbd7d64e10bb9fe41f45fc6d1ee3c0e75523&v=4"
+    },
+    {
+      "login": "BillyONeal",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1544943?v=4"
+    },
+    {
+      "login": "BlamKiwi",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1551722?v=4"
+    },
+    {
+      "login": "njlr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1577531?u=b805a63f8054b62169749f2c9d2e89eb53af57d7&v=4"
+    },
+    {
+      "login": "DragoonX6",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1615215?v=4"
+    },
+    {
+      "login": "pzychotic",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1724400?u=6cdef5532f0665cad54626a85c0558a361916f6b&v=4"
+    },
+    {
+      "login": "christinaa",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2118877?v=4"
+    },
+    {
+      "login": "virt00l",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2372872?v=4"
+    },
+    {
+      "login": "Valakor",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2442395?u=7023f061fc382ace09c5b8f33d43f9bd4ec86307&v=4"
+    },
+    {
+      "login": "breannansmith",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2569097?u=309e3246a2390f171baa41f3aac2d4eafc6638d7&v=4"
+    },
+    {
+      "login": "IonicaBizau",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2864371?u=59abf020e792410b078a7eeb3f8c9f034dd4aba5&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 5210,
+  "forks": 625,
+  "topics": [
+    "eastl",
+    "stl",
+    "games",
+    "c-plus-plus",
+    "c-plus-plus-11",
+    "c-plus-plus-14",
+    "c-plus-plus-17",
+    "modern-cpp",
+    "c-plus-plus-20"
+  ]
+}

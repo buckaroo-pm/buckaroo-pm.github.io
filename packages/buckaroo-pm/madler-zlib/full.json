@@ -1,0 +1,265 @@
+{
+  "packageName": "buckaroo-pm/madler-zlib",
+  "name": "njlr/zlib",
+  "licence": "",
+  "description": "A massively spiffy yet delicately unobtrusive compression library.",
+  "readme": "ZLIB DATA COMPRESSION LIBRARY\n\nzlib 1.2.11 is a general purpose data compression library.  All the code is\nthread safe.  The data format used by the zlib library is described by RFCs\n(Request for Comments) 1950 to 1952 in the files\nhttp://tools.ietf.org/html/rfc1950 (zlib format), rfc1951 (deflate format) and\nrfc1952 (gzip format).\n\nAll functions of the compression library are documented in the file zlib.h\n(volunteer to write man pages welcome, contact zlib@gzip.org).  A usage example\nof the library is given in the file test/example.c which also tests that\nthe library is working correctly.  Another example is given in the file\ntest/minigzip.c.  The compression library itself is composed of all source\nfiles in the root directory.\n\nTo compile all files and run the test program, follow the instructions given at\nthe top of Makefile.in.  In short \"./configure; make test\", and if that goes\nwell, \"make install\" should work for most flavors of Unix.  For Windows, use\none of the special makefiles in win32/ or contrib/vstudio/ .  For VMS, use\nmake_vms.com.\n\nQuestions about zlib should be sent to <zlib@gzip.org>, or to Gilles Vollant\n<info@winimage.com> for the Windows DLL version.  The zlib home page is\nhttp://zlib.net/ .  Before reporting a problem, please check this site to\nverify that you have the latest version of zlib; otherwise get the latest\nversion and check whether the problem still exists or not.\n\nPLEASE read the zlib FAQ http://zlib.net/zlib_faq.html before asking for help.\n\nMark Nelson <markn@ieee.org> wrote an article about zlib for the Jan.  1997\nissue of Dr.  Dobb's Journal; a copy of the article is available at\nhttp://marknelson.us/1997/01/01/zlib-engine/ .\n\nThe changes made in version 1.2.11 are documented in the file ChangeLog.\n\nUnsupported third party contributions are provided in directory contrib/ .\n\nzlib is available in Java using the java.util.zip package, documented at\nhttp://java.sun.com/developer/technicalArticles/Programming/compression/ .\n\nA Perl interface to zlib written by Paul Marquess <pmqs@cpan.org> is available\nat CPAN (Comprehensive Perl Archive Network) sites, including\nhttp://search.cpan.org/~pmqs/IO-Compress-Zlib/ .\n\nA Python interface to zlib written by A.M. Kuchling <amk@amk.ca> is\navailable in Python 1.5 and later versions, see\nhttp://docs.python.org/library/zlib.html .\n\nzlib is built into tcl: http://wiki.tcl.tk/4610 .\n\nAn experimental package to read and write files in .zip format, written on top\nof zlib by Gilles Vollant <info@winimage.com>, is available in the\ncontrib/minizip directory of zlib.\n\n\nNotes for some targets:\n\n- For Windows DLL versions, please see win32/DLL_FAQ.txt\n\n- For 64-bit Irix, deflate.c must be compiled without any optimization. With\n  -O, one libpng test fails. The test works in 32 bit mode (with the -n32\n  compiler flag). The compiler bug has been reported to SGI.\n\n- zlib doesn't work with gcc 2.6.3 on a DEC 3000/300LX under OSF/1 2.1 it works\n  when compiled with cc.\n\n- On Digital Unix 4.0D (formely OSF/1) on AlphaServer, the cc option -std1 is\n  necessary to get gzprintf working correctly. This is done by configure.\n\n- zlib doesn't work on HP-UX 9.05 with some versions of /bin/cc. It works with\n  other compilers. Use \"make test\" to check your compiler.\n\n- gzdopen is not supported on RISCOS or BEOS.\n\n- For PalmOs, see http://palmzlib.sourceforge.net/\n\n\nAcknowledgments:\n\n  The deflate format used by zlib was defined by Phil Katz.  The deflate and\n  zlib specifications were written by L.  Peter Deutsch.  Thanks to all the\n  people who reported problems and suggested various improvements in zlib; they\n  are too numerous to cite here.\n\nCopyright notice:\n\n (C) 1995-2017 Jean-loup Gailly and Mark Adler\n\n  This software is provided 'as-is', without any express or implied\n  warranty.  In no event will the authors be held liable for any damages\n  arising from the use of this software.\n\n  Permission is granted to anyone to use this software for any purpose,\n  including commercial applications, and to alter it and redistribute it\n  freely, subject to the following restrictions:\n\n  1. The origin of this software must not be misrepresented; you must not\n     claim that you wrote the original software. If you use this software\n     in a product, an acknowledgment in the product documentation would be\n     appreciated but is not required.\n  2. Altered source versions must be plainly marked as such, and must not be\n     misrepresented as being the original software.\n  3. This notice may not be removed or altered from any source distribution.\n\n  Jean-loup Gailly        Mark Adler\n  jloup@gzip.org          madler@alumni.caltech.edu\n\nIf you use the zlib library in a product, we would appreciate *not* receiving\nlengthy legal documents to sign.  The sources are provided for free but without\nwarranty of any kind.  The library has been entirely written by Jean-loup\nGailly and Mark Adler; it does not include third-party code.\n\nIf you redistribute modified sources, we would appreciate that you include in\nthe file ChangeLog history information documenting your changes.  Please read\nthe FAQ for more information on the distribution of modified source versions.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"40b17eb95b225ddd40f6c2b9b128db9336f1c8b8e03ea6f76dc0d0b9154982c6\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.11",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    # '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.10",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.9",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    # '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.8",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.7",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.6",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.5",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.4",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.4-pre2",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.4-pre1",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.3",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.2",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.1",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.2.0",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.1.4",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.1.3",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.1.2",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.1.1",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.1.0",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.9",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.8",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.7",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.5",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.4",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.2",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    },
+    {
+      "ref": "v1.0.1",
+      "manifest": "targets = [ \"//:zlib\" ]\n",
+      "lockFile": "manifest = \"c4854dc6f90766e74a03f350bd3d92348ece893ea308f4d6674a9447c9291ca1\"\n\n",
+      "buck": "cxx_library(\n  name = 'zlib',\n  header_namespace = '',\n  exported_headers = glob([\n    '*.h',\n  ]),\n  srcs = glob([\n    '*.c',\n  ]),\n  preprocessor_flags = [\n    '-DMY_ZCALLOC=1',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-02-07T09:34:44Z",
+  "updatedUpstream": "2018-10-24T15:43:23Z",
+  "contributors": [
+    {
+      "login": "njlr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1577531?u=b805a63f8054b62169749f2c9d2e89eb53af57d7&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

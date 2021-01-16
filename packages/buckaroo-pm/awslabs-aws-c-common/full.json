@@ -1,0 +1,130 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-c-common",
+  "name": "awslabs/aws-c-common",
+  "licence": "Apache-2.0",
+  "description": "Core c99 package for AWS SDK for C. Includes cross-platform primitives, configuration, data structures, and error handling.",
+  "readme": "## AWS C Common\n\n\n[![GitHub](https://img.shields.io/github/license/awslabs/aws-c-common.svg)](https://github.com/awslabs/aws-c-common/blob/master/LICENSE)\n[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/awslabs/aws-c-common.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/awslabs/aws-c-common/context:cpp)\n[![Total alerts](https://img.shields.io/lgtm/alerts/g/awslabs/aws-c-common.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/awslabs/aws-c-common/alerts/)\n\nCore c99 package for AWS SDK for C. Includes cross-platform primitives, configuration, data structures, and error handling.\n\n## License\n\nThis library is licensed under the Apache 2.0 License.\n\n## Usage\n### Building\naws-c-common uses CMake for setting up build environments. This library has no non-kernel dependencies so the build is quite\nsimple.\n\nFor example:\n\n    git clone git@github.com:awslabs/aws-c-common.git aws-c-common\n    mkdir aws-c-common-build\n    cd aws-c-common-build\n    cmake ../aws-c-common\n    make -j 12\n    make test\n    sudo make install\n\nKeep in mind that CMake supports multiple build systems, so for each platform you can pass your own build system\nas the `-G` option. For example:\n\n    cmake -GNinja ../aws-c-common\n    ninja build\n    ninja test\n    sudo ninja install\n\nOr on windows,\n\n    cmake -G \"Visual Studio 14 2015 Win64\" ../aws-c-common\n    msbuild.exe ALL_BUILD.vcproj\n\n### CMake Options\n* -DCMAKE_CLANG_TIDY=/path/to/clang-tidy (or just clang-tidy or clang-tidy-7.0 if it is in your PATH) - Runs clang-tidy as part of your build.\n* -DENABLE_SANITIZERS=ON - Enables gcc/clang sanitizers, by default this adds -fsanitizer=address,undefined to the compile flags for projects that call aws_add_sanitizers.\n* -DENABLE_FUZZ_TESTS=ON - Includes fuzz tests in the unit test suite. Off by default, because fuzz tests can take a long time. Set -DFUZZ_TESTS_MAX_TIME=N to determine how long to run each fuzz test (default 60s).\n* -DCMAKE_INSTALL_PREFIX=/path/to/install - Standard way of installing to a user defined path. If specified when configuring aws-c-common, ensure the same prefix is specified when configuring other aws-c-* SDKs.\n\n### API style and conventions\nEvery API has a specific set of styles and conventions. We'll outline them here. These conventions are followed in every\nlibrary in the AWS C SDK ecosystem.\n\n#### Error handling\nEvery function that returns an `int` type, returns `AWS_OP_SUCCESS` ( 0 ) or `AWS_OP_ERR` (-1) on failure. To retrieve\nthe error code, use the function `aws_last_error()`. Each error code also has a corresponding error string that can be\naccessed via the `aws_error_str()` function.\n\nIn addition, you can install both a global and a thread local error handler by using the `aws_set_global_error_handler_fn()`\nand `aws_set_thread_local_error_handler_fn()` functions.\n\nAll error functions are in the `include/aws/common/error.h` header file.\n\n#### Naming\nAny function that allocates and initializes an object will be suffixed with `new`. Similarly, these objects will always\nhave a corresponding function with a `destroy` suffix. The `new` functions will return the allocated object\non success and `NULL` on failure. To respond to the error, call `aws_last_error()`. If several `new` or `destroy`\nfunctions are available, the variants should be named like `new_x` or `destroy_x` (e.g. `new_copy` or `destroy_secure`).\n\nAny function that initializes an existing object will be suffixed with `init`. These objects will have a corresponding\n`clean_up` function if necessary. In these cases, you are responsible for making the decisions for how your object is\nallocated. The `init` functions return `AWS_OP_SUCCESS` ( 0 ) or `AWS_OP_ERR` (-1) on failure. If several `init` or\n`clean_up` functions are available, they should be named like `init_x` or `clean_up_x` (e.g. `init_static` or\n`clean_up_secure`).\n\n## Contributing\n\nIf you are contributing to this code-base, first off, THANK YOU!. There are a few things to keep in mind to minimize the\npull request turn around time.\n\n### Coding \"guidelines\"\nThese \"guidelines\" are followed in every library in the AWS C SDK ecosystem.\n\n#### Memory Management\n* All APIs that need to be able to allocate memory, must take an instance of `aws_allocator` and use that. No `malloc()` or\n`free()` calls should be made directly.\n* If an API does not allocate the memory, it does not free it. All allocations and deallocations should take place at the same level.\nFor example, if a user allocates memory, the user is responsible for freeing it. There will inevitably be a few exceptions to this\nrule, but they will need significant justification to make it through the code-review.\n* All functions that allocate memory must raise an `AWS_ERROR_OOM` error code upon allocation failures. If it is a `new()` function\nit should return NULL. If it is an `init()` function, it should return `AWS_OP_ERR`.\n\n#### Threading\n* Occasionally a thread is necessary. In those cases, prefer for memory not to be shared between threads. If memory must cross\na thread barrier it should be a complete ownership hand-off. Bias towards, \"if I need a mutex, I'm doing it wrong\".\n* Do not sleep or block .... ever .... under any circumstances, in non-test-code.\n* Do not expose blocking APIs.\n\n### Error Handling\n* For APIs returning an `int` error code. The only acceptable return types are `AWS_OP_SUCCESS` and `AWS_OP_ERR`. Before\nreturning control to the caller, if you have an error to raise, use the `aws_raise_error()` function.\n* For APIs returning an allocated instance of an object, return the memory on success, and `NULL` on failure. Before\nreturning control to the caller, if you have an error to raise, use the `aws_raise_error()` function.\n\n#### Error Codes\nThe error handling infrastructure is designed to support multiple libraries. For this to work, AWS maintained libraries\nhave pre-slotted error codes for each library. The currently allocated error ranges are:\n\n| Range | Library Name |\n| --- | --- |\n| [0x0000, 0x0400) | aws-c-common |\n| [0x0400, 0x0800) | aws-c-io |\n| [0x0800, 0x0C00) | aws-c-http |\n| [0x0C00, 0x1000) | aws-c-compression |\n| [0x1000, 0x1400) | aws-c-eventstream |\n| [0x1400, 0x1800) | aws-c-mqtt |\n| [0x1800, 0x1C00) | (reserved for future project) |\n| [0x1C00, 0x2000) | (reserved for future project) |\n| [0x2000, 0x2400) | (reserved for future project) |\n| [0x2400, 0x2800) | (reserved for future project) |\n| [0x2800, 0x2C00) | (reserved for future project) |\n| [0x2C00, 0x3000) | (reserved for future project) |\n| [0x3000, 0x3400) | (reserved for future project) |\n| [0x3400, 0x3800) | (reserved for future project) |\n| [0x3800, 0x3C00) | (reserved for future project) |\n| [0x3C00, 0x4000) | (reserved for future project) |\n\nEach library should begin its error codes at the beginning of its range and follow in sequence (don't skip codes). Upon\nadding an AWS maintained library, an error code range must be approved and added to the above table.\n\n### Testing\nWe have a high bar for test coverage, and PRs fixing bugs or introducing new functionality need to have tests before\nthey will be accepted. A couple of tips:\n\n#### Aws Test Harness\nWe provide a test harness for writing unit tests. This includes an allocator that will fail your test if you have any\nmemory leaks, as well as some `ASSERT` macros. To write a test:\n\n* Create a *.c test file in the tests directory of the project.\n* Implement one or more tests with the signature `int test_case_name(struct aws_allocator *, void *ctx)`\n* Use the `AWS_TEST_CASE` macro to declare the test.\n* Include your test in the `tests/main.c` file.\n* Include yur test in the `tests/CMakeLists.txt` file.\n\n### Coding Style\n* No Tabs.\n* Indent is 4 spaces.\n* K & R style for braces.\n* Space after if, before the `(`.\n* `else` and `else if` stay on the same line as the closing brace.\n\nExample:\n\n    if (condition) {\n        do_something();\n    } else {\n        do_something_else();\n    }\n* Avoid C99 features in header files. For some types such as bool, uint32_t etc..., these are defined if not available for the language\nstandard being used in `aws/common/common.h`, so feel free to use them.\n* For C++ compatibility, don't put const members in structs.\n* Avoid C++ style comments e.g. `//`.\n* All public API functions need C++ guards and Windows dll semantics.\n* Use Unix line endings.\n* Where implementation hiding is desired for either ABI or runtime polymorphism reasons, use the `void *impl` pattern. v-tables\n should be the last member in the struct.\n* For #ifdef, put a # as the first character on the line and then indent the compilation branches.\n\nExample:\n\n\n    #ifdef FOO\n        do_something();\n\n    #   ifdef BAR\n        do_something_else();\n    #   endif\n    #endif\n\n\n* For all error code names with the exception of aws-c-common, use `AWS_ERROR_<lib name>_<error name>`.\n* All error strings should be written using correct English grammar.\n* SNAKE_UPPER_CASE constants, macros, and enum members.\n* snake_lower_case everything else.\n* `static` (local file scope) variables that are not `const` are prefixed by `s_` and lower snake case.\n* Global variables not prefixed as `const` are prefixed by `g_` and lower snake case.\n* Thread local variables are prefixed as `tl_` and lower snake case.\n* Macros and `const` variables are upper snake case.\n* For constants, prefer anonymous enums.\n* Don't typedef structs. It breaks forward declaration ability.\n* Don't typedef enums. It breaks forward declaration ability.\n* typedef function definitions for use as function pointers as values and suffixed with _fn.\n\nExample:\n\n    typedef int(fn_name_fn)(void *);\n\nNot:\n\n    typedef int(*fn_name_fn)(void *);\n\n* Every source and header file must have a copyright header (The standard AWS one for apache 2).\n* Use standard include guards (e.g. #IFNDEF HEADER_NAME #define HEADER_NAME etc...).\n* Include order should be:\n    the header for the translation unit for the .c file\n    newline\n    header files in a directory in alphabetical order\n    newline\n    header files not in a directory (system and stdlib headers)\n* Platform specifics should be handled in c files and partitioned by directory.\n* Do not use `extern inline`. It's too unpredictable between compiler versions and language standards.\n* Namespace all definitions in header files with `aws_<libname>?_<api>_<what it does>`. Lib name is\nnot always required if a conflict is not likely and it provides better ergonomics.\n* `init`, `clean_up`, `new`, `destroy` are suffixed to the function names for their object.\n\nExample:\n\n    AWS_COMMON_API\n int aws_module_init(aws_module_t *module);\n    AWS_COMMON_API\n void aws_module_clean_up(aws_module_t *module);\n    AWS_COMMON_API\n aws_module_t *aws_module_new(aws_allocator_t *allocator);\n    AWS_COMMON_API\n void aws_module_destroy(aws_module_t *module);\n\n* Avoid c-strings, and don't write code that depends on `NULL` terminators. Expose `struct aws_byte_buf` APIs\nand let the user figure it out.\n* There is only one valid character encoding-- UTF-8. Try not to ever need to care about character encodings, but\nwhere you do, the working assumption should always be UTF-8 unless it's something we don't get a choice in (e.g. a protocol\nexplicitly mandates a character set).\n* If you are adding/using a compiler specific keyword, macro, or intrinsic, hide it behind a platform independent macro\ndefinition. This mainly applies to header files. Obviously, if you are writing a file that will only be built on a certain\nplatform, you have more liberty on this.\n\n\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:aws-c-common\" ]",
+      "lockFile": "manifest = \"2d9f2e6c10ea5d3db4f739349f8eb592bf6e35d95a883089c93572d54d6710ad\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ngenrule(\n  name = 'config-h', \n  out = 'config.h', \n  srcs = glob([\n    'cmake/**/*.c', \n    'cmake/**/*.cmake', \n    'cmake/**/*.txt', \n    'include/**/*.in', \n    'source/**/*.c', \n    'source/**/*.in', \n    'source/**/*.txt', \n    'CMakeLists.txt', \n  ]), \n  cmd = ' && '.join([\n    'mkdir -p $SRCDIR/tests', \n    'touch $SRCDIR/tests/CMakeLists.txt', \n    'cd $TMP', \n    'cmake $SRCDIR -G \"Unix Makefiles\"', \n    'cp $TMP/generated/include/aws/common/config.h $OUT', \n  ]), \n)\n\nlinux_srcs = glob([\n  'source/posix/**/*.c', \n])\n\nmacos_srcs = glob([\n  'source/posix/**/*.c', \n])\n\nwindows_srcs = glob([\n  'source/windows/**/*.c', \n])\n\ncxx_library(\n  name = 'aws-c-common', \n  header_namespace = '', \n  exported_headers = dict(\n    subdir_glob([\n      ('include', '**/*.c'), \n      ('include', '**/*.h'), \n      ('include', '**/*.inl'), \n    ]).items() + [\n      ('aws/common/config.h', ':config-h'), \n    ]\n  ), \n  srcs = glob([\n    'source/*.c', \n  ]), \n  platform_srcs = [\n    ('linux.*', linux_srcs), \n    ('macos.*', macos_srcs), \n    ('windows.*', windows_srcs), \n  ], \n  exported_platform_linker_flags = [\n    ('linux.*', [ '-lpthread' ]), \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-04T13:33:42Z",
+  "updatedUpstream": "2021-01-08T20:06:59Z",
+  "contributors": [
+    {
+      "login": "bdonlan",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/9473?v=4"
+    },
+    {
+      "login": "jpeddicord",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/95346?u=cc24a84b19083856c6b207b07f35e03b7e8252cd&v=4"
+    },
+    {
+      "login": "marcomagdy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/115965?v=4"
+    },
+    {
+      "login": "jonahharris",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/194874?v=4"
+    },
+    {
+      "login": "dagnir",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/261310?u=f97caed4f506318834684359e6e2f00dec4fe9e4&v=4"
+    },
+    {
+      "login": "bretambrose",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/341314?v=4"
+    },
+    {
+      "login": "hyandell",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/477715?u=981ae536caa2d71790a1ce14ef42a0add7c90896&v=4"
+    },
+    {
+      "login": "rcoh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/492903?v=4"
+    },
+    {
+      "login": "tautschnig",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1144736?u=946ba3fd3a17b60dec68081e4d85869a68b6a129&v=4"
+    },
+    {
+      "login": "ashovlin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1170880?u=4a879abca797c8402808f1c1ed67a6b4053995d3&v=4"
+    },
+    {
+      "login": "kankri",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1339570?v=4"
+    },
+    {
+      "login": "ColdenCullen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1354824?v=4"
+    },
+    {
+      "login": "mlabieniec",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1417045?u=9e5a5fd903f6470754ce88caaa3e48eb2217c752&v=4"
+    },
+    {
+      "login": "SaswatPadhi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1577944?u=b83642049d14cf38eeb9f83299e5904868f12d8a&v=4"
+    },
+    {
+      "login": "RandyGaul",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1919825?u=4685259167f29cffe789a5bba98d05b63f2d394d&v=4"
+    },
+    {
+      "login": "mswilson",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1986233?u=74c60f4b942281269bc2a0e98bfea05205f0464b&v=4"
+    },
+    {
+      "login": "yoroto",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2706878?v=4"
+    },
+    {
+      "login": "karkhaz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2887605?u=03fd23e87408afeb2b8840a35ad7e9b852611b8d&v=4"
+    },
+    {
+      "login": "xomyakus",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2965351?v=4"
+    },
+    {
+      "login": "justinboswell",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3382222?u=47f93d50147580a3dd303103fde6c6e08535b10f&v=4"
+    },
+    {
+      "login": "singku",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3468296?u=a545974331443816ee27b2acadc8eedb071708da&v=4"
+    },
+    {
+      "login": "alexw91",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3596374?u=7482333a16b1c3056ccb0e8933d5003d9f54f13a&v=4"
+    },
+    {
+      "login": "asbhat",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3885798?u=7966843cb111046e354f2b29d1bb78fc6820db7d&v=4"
+    },
+    {
+      "login": "JonathanHenson",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3926469?u=0df58df774d94224ce63dacfcbe6d6701d656857&v=4"
+    },
+    {
+      "login": "madebr",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4138939?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 153,
+  "forks": 88,
+  "topics": [
+    "hacktoberfest",
+    "aws-sdk"
+  ]
+}

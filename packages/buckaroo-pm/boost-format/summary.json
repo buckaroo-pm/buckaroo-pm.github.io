@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-format",
+  "name": "boostorg/format",
+  "stars": 17,
+  "topics": [],
+  "description": "Boost.org format module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 16
+    }
+  ],
+  "updated": "2019-02-06T20:39:35Z",
+  "updatedUpstream": "2020-09-14T15:40:08Z"
+}

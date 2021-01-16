@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-rapidjson",
+  "name": "mapbox/rapidjson",
+  "stars": 0,
+  "topics": [],
+  "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-13T12:08:28Z",
+  "updatedUpstream": "2018-12-13T19:45:46Z"
+}

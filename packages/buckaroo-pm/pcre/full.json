@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/pcre",
+  "name": "nikhedonia/pcre-1",
+  "licence": "NOASSERTION",
+  "description": "Mirror of pcre",
+  "readme": "# pcre\n\nBuckaroo package for PCRE\n\n[![Travis (.org)](https://img.shields.io/travis/buckaroo-pm/pcre.svg)](https://travis-ci.org/buckaroo-pm/pcre)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:pcre\" ]\n",
+      "lockFile": "manifest = \"fd553425e042d11caa21f729be7e31d53b65e03cb4710b5401871190b0ee8615\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nmacos_flags = [\n  '-DHAVE_DIRENT_H=1',\n  '-DHAVE_SYS_STAT_H=1',\n  '-DHAVE_SYS_TYPES_H=1',\n  '-DHAVE_UNISTD_H=1',\n  '-DHAVE_STDINT_H=1',\n  '-DHAVE_INTTYPES_H=1',\n  '-DHAVE_BCOPY=1',\n  '-DHAVE_MEMMOVE=1',\n  '-DHAVE_STRERROR=1',\n  '-DHAVE_STRTOLL=1',\n  '-DHAVE_STRTOQ=1',\n  '-DPCRE_STATIC=1',\n  '-DSUPPORT_PCRE8=1',\n  '-DNEWLINE=10',\n  '-DPOSIX_MALLOC_THRESHOLD=10',\n  '-DLINK_SIZE=2',\n  '-DPARENS_NEST_LIMIT=250',\n  '-DMATCH_LIMIT=10000000',\n  '-DMATCH_LIMIT_RECURSION=MATCH_LIMIT',\n  '-DPCREGREP_BUFSIZE=20480',\n  '-DMAX_NAME_SIZE=32',\n  '-DMAX_NAME_COUNT=10000',\n]\n\nlinux_flags = [\n  '-DHAVE_DIRENT_H=1',\n  '-DHAVE_SYS_STAT_H=1',\n  '-DHAVE_SYS_TYPES_H=1',\n  '-DHAVE_UNISTD_H=1',\n  '-DHAVE_STDINT_H=1',\n  '-DHAVE_INTTYPES_H=1',\n  '-DHAVE_BCOPY=1',\n  '-DHAVE_MEMMOVE=1',\n  '-DHAVE_STRERROR=1',\n  '-DHAVE_STRTOLL=1',\n  '-DHAVE_STRTOQ=1',\n  '-DPCRE_STATIC=1',\n  '-DSUPPORT_PCRE8=1',\n  '-DNEWLINE=10',\n  '-DPOSIX_MALLOC_THRESHOLD=10',\n  '-DLINK_SIZE=2',\n  '-DPARENS_NEST_LIMIT=250',\n  '-DMATCH_LIMIT=10000000',\n  '-DMATCH_LIMIT_RECURSION=MATCH_LIMIT',\n  '-DPCREGREP_BUFSIZE=20480',\n  '-DMAX_NAME_SIZE=32',\n  '-DMAX_NAME_COUNT=10000',\n]\n\ncxx_binary(\n  name = 'dftables',\n  headers = dict(subdir_glob([\n    ('', '*.h'),\n    ('', 'pcre_maketables.c'),\n  ]).items() + [\n    ('pcre.h', 'pcre.h.generic'),\n  ]),\n  srcs = [\n    'dftables.c',\n  ],\n  platform_preprocessor_flags = [\n    ('macos.*', macos_flags),\n    ('linux.*', linux_flags),\n  ],\n)\n\ngenrule(\n  name = 'pcre_chartables',\n  out = 'pcre_chartables.c',\n  cmd = '$(exe :dftables) $OUT',\n)\n\ncxx_library(\n  name = 'pcre',\n  header_namespace = '',\n  exported_headers = dict(subdir_glob([\n    ('', '*.h'),\n  ]).items() + [\n    ('pcre.h', 'pcre.h.generic'),\n  ]),\n  headers = {\n    'config.h': 'config.h.generic',\n  },\n  srcs = glob([\n    'pcre_*.c',\n  ], exclude = glob([\n    'pcre_*_test.c',\n  ])) + [\n    ':pcre_chartables',\n  ],\n  platform_preprocessor_flags = [\n    ('macos.*', macos_flags),\n    ('linux.*', linux_flags),\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n\ncxx_binary(\n  name = 'demo',\n  srcs = [\n    'pcredemo.c',\n  ],\n  deps = [\n    ':pcre',\n  ],\n)\n\ncxx_binary(\n  name = 'test',\n  header_namespace = '',\n  headers = [\n    'pcre_tables.c',\n    'pcre_ucd.c',\n  ],\n  srcs = [\n    'pcretest.c',\n  ],\n  platform_preprocessor_flags = [\n    ('macos.*', macos_flags),\n    ('linux.*', linux_flags),\n  ],\n  linker_flags = [\n    '-lreadline',\n  ],\n  deps = [\n    ':pcre',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-06T19:34:08Z",
+  "updatedUpstream": "2018-06-07T20:06:52Z",
+  "contributors": [
+    {
+      "login": "nikhedonia",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4670055?u=bc57cd14c2edb07f86ee33f56e6598e8d7c71017&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

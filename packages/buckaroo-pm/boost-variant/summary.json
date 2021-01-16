@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-variant",
+  "name": "boostorg/variant",
+  "stars": 35,
+  "topics": [],
+  "description": "Boost.org variant module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 15
+    }
+  ],
+  "updated": "2018-11-14T23:29:29Z",
+  "updatedUpstream": "2021-01-04T08:06:41Z"
+}

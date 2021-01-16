@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-predef",
+  "name": "boostorg/predef",
+  "stars": 35,
+  "topics": [],
+  "description": "Boost.Predef (a Boost C++ Library)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-14T20:08:35Z",
+  "updatedUpstream": "2021-01-06T04:20:17Z"
+}

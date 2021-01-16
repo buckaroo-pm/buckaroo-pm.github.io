@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-python",
+  "name": "boostorg/python",
+  "stars": 303,
+  "topics": [],
+  "description": "Boost.org python module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 12,
+      "transitive": 70
+    }
+  ],
+  "updated": "2019-01-30T11:15:31Z",
+  "updatedUpstream": "2021-01-10T05:35:14Z"
+}

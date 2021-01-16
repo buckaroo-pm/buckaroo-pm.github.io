@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-gzip-hpp",
+  "name": "mapbox/gzip-hpp",
+  "stars": 158,
+  "topics": [],
+  "description": "Gzip header-only C++ library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2018-11-11T20:54:22Z",
+  "updatedUpstream": "2021-01-08T18:15:55Z"
+}

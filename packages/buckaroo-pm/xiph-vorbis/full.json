@@ -1,0 +1,155 @@
+{
+  "packageName": "buckaroo-pm/xiph-vorbis",
+  "name": "xiph/vorbis",
+  "licence": "NOASSERTION",
+  "description": "Reference implementation of the Ogg Vorbis audio format.",
+  "readme": "# Vorbis\n\n[![Travis Build Status](https://travis-ci.org/xiph/vorbis.svg?branch=master)](https://travis-ci.org/xiph/vorbis)\n[![Jenkins Build Status](https://mf4.xiph.org/jenkins/job/libvorbis/badge/icon)](https://mf4.xiph.org/jenkins/job/libvorbis/)\n[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/github/xiph/vorbis?branch=master&svg=true)](https://ci.appveyor.com/project/rillian/vorbis)\n\nVorbis is a general purpose audio and music encoding format\ncontemporary to MPEG-4's AAC and TwinVQ, the next generation beyond\nMPEG audio layer 3. Unlike the MPEG sponsored formats (and other\nproprietary formats such as RealAudio G2 and Windows' flavor of the\nmonth), the Vorbis CODEC specification belongs to the public domain.\nAll the technical details are published and documented, and any\nsoftware entity may make full use of the format without license\nfee, royalty or patent concerns.\n\nThis package contains:\n\n- libvorbis, a BSD-style license software implementation of\n  the Vorbis specification by the Xiph.Org Foundation\n  (https://www.xiph.org/)\n\n- libvorbisfile, a BSD-style license convenience library\n  built on Vorbis designed to simplify common uses\n\n- libvorbisenc, a BSD-style license library that provides a simple,\n  programmatic encoding setup interface\n\n- example code making use of libogg, libvorbis, libvorbisfile and\n  libvorbisenc\n\n## What's here ##\n\nThis source distribution includes libvorbis and an example\nencoder/player to demonstrate use of libvorbis as well as\ndocumentation on the Ogg Vorbis audio coding format.\n\nYou'll need libogg (distributed separately) to compile this library.\nA more comprehensive set of utilities is available in the vorbis-tools\npackage.\n\nDirectory:\n\n- `lib` The source for the libraries, a BSD-license implementation of the public domain Ogg Vorbis audio encoding format.\n\n- `include` Library API headers\n\n- `debian` Rules/spec files for building Debian .deb packages\n\n- `doc` Vorbis documentation\n\n- `examples` Example code illustrating programmatic use of libvorbis, libvorbisfile and libvorbisenc\n\n- `macosx` Project files for MacOS X.\n\n- `win32` Win32 projects files and build automation\n\n- `vq` Internal utilities for training/building new LSP/residue and auxiliary codebooks.\n\n## Contact ##\n\nThe Ogg homepage is located at 'https://www.xiph.org/ogg/'.\nVorbis's homepage is located at 'https://www.xiph.org/vorbis/'.\nUp to date technical documents, contact information, source code and\npre-built utilities may be found there.\n\nThe user website for Ogg Vorbis software and audio is http://vorbis.com/\n\n## Building ##\n\n#### Building from master ####\n\nDevelopment source is under git revision control at\nhttps://git.xiph.org/vorbis.git. You will also need the\nnewest versions of autoconf, automake, libtool and pkg-config in\norder to compile Vorbis from development source. A configure script\nis provided for you in the source tarball distributions.\n\n    ./autogen.sh\n    ./configure\n    make\n\nand as root if desired:\n\n    make install\n\nThis will install the Vorbis libraries (static and shared) into\n/usr/local/lib, includes into /usr/local/include and API manpages\n(once we write some) into /usr/local/man.\n\nDocumentation building requires xsltproc and pdfxmltex.\n\n#### Building from tarball distributions ####\n\n    ./configure\n    make\n\nand optionally (as root):\n\n    make install\n\n#### Building RPM packages ####\n\nafter normal configuring:\n\n    make dist\n    rpm -ta libvorbis-<version>.tar.gz\n\n## Building with CMake ##\n\nOgg supports building using [CMake](http://www.cmake.org/). CMake is a meta build system that generates native projects for each platform.\nTo generate projects just run cmake replacing `YOUR-PROJECT-GENERATOR` with a proper generator from a list [here](http://www.cmake.org/cmake/help/v3.2/manual/cmake-generators.7.html):\n\n    cmake -G YOUR-PROJECT-GENERATOR .\n\nNote that by default cmake generates projects that will build static libraries.\nTo generate projects that will build dynamic library use `BUILD_SHARED_LIBS` option like this:\n\n    cmake -G YOUR-PROJECT-GENERATOR -DBUILD_SHARED_LIBS=1 .\n\nAfter projects are generated use them as usual\n\n#### Building on Windows ####\n\nUse proper generator for your Visual Studio version like:\n\n    cmake -G \"Visual Studio 12 2013\" .\n\n#### Building on Mac OS X ####\n\nUse Xcode generator. To build framework run:\n\n    cmake -G Xcode -DBUILD_FRAMEWORK=1 .\n\n#### Building on Linux ####\n\nUse Makefile generator which is default one.\n\n    cmake .\n    make\n\n## License ##\n\nTHIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.\nUSE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS\nGOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE\nIN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.\n\nTHE OggVorbis SOURCE CODE IS COPYRIGHT (C) 1994-2018\nby the Xiph.Org Foundation https://www.xiph.org/\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:vorbis\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xiph-ogg\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"66339cd27fcb5adb170a5b500094d2be0f6bcae12b3920b93bc1a503f7be7825\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xiph-ogg\"\ntarget = \"//:ogg\"\n\n[lock.\"github.com/buckaroo-pm/xiph-ogg\"]\nversions = [ \"branch=master\" ]\nrevision = \"eb31a551c48339c07aa2af9fb8baeac7988f4f81\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'vorbis',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', 'vorbis/**/*.h'),\n  ]),\n  headers = subdir_glob([\n    ('lib', '**/*.h'),\n  ]),\n  srcs = glob([\n    'lib/**/*.c',\n  ],\n  excludes = glob([\n    'lib/psytune.c',\n    'lib/barkmel.c',\n  ])),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/xiph-ogg",
+          "name": "buckaroo-pm/xiph-ogg",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/xiph-ogg",
+          "name": "buckaroo-pm/xiph-ogg",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "eb31a551c48339c07aa2af9fb8baeac7988f4f81"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-02-08T16:09:18Z",
+  "updatedUpstream": "2021-01-13T19:45:51Z",
+  "contributors": [
+    {
+      "login": "stopiccot",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/24836?u=5e545c5382f361bcea8ce0db3e79024cf405f927&v=4"
+    },
+    {
+      "login": "metajack",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/28357?u=83e28aabcefc43345d562e0a33efd6001526e7bf&v=4"
+    },
+    {
+      "login": "cweiske",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/59036?v=4"
+    },
+    {
+      "login": "smarter",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/63430?v=4"
+    },
+    {
+      "login": "tmatth",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/66862?u=0aca7feea4c09a991f63370b5edd183e3cc5b8ac&v=4"
+    },
+    {
+      "login": "adrianbroher",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/84891?v=4"
+    },
+    {
+      "login": "reaperhulk",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/161495?u=91f187e76de5632a28e6fbebe55b7be0d8c064b8&v=4"
+    },
+    {
+      "login": "bemasc",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/191945?u=1f9a6d2d2eaa6ced7421b3e14d3253198de16d37&v=4"
+    },
+    {
+      "login": "rillian",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/225102?v=4"
+    },
+    {
+      "login": "negge",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/280940?v=4"
+    },
+    {
+      "login": "erikd",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/307277?v=4"
+    },
+    {
+      "login": "mbebenita",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/311082?v=4"
+    },
+    {
+      "login": "ePirat",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/323210?u=abaabc5aae49143e22f3c2d3a7525c302f855b18&v=4"
+    },
+    {
+      "login": "jmvalin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/345545?v=4"
+    },
+    {
+      "login": "ph3-der-loewe",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/482543?v=4"
+    },
+    {
+      "login": "mlrsmithold",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/679115?v=4"
+    },
+    {
+      "login": "petterreinholdtsen",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/731031?v=4"
+    },
+    {
+      "login": "gmaxwell",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/858454?u=63e5c438c242094837a9deeda775d77988b508bf&v=4"
+    },
+    {
+      "login": "penguin359",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/876348?v=4"
+    },
+    {
+      "login": "tterribe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/887194?v=4"
+    },
+    {
+      "login": "suhasHere",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/947528?u=8341cb48ac1f1f74189011396a96a789ee8790b8&v=4"
+    },
+    {
+      "login": "gcp",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1104290?v=4"
+    },
+    {
+      "login": "stephengroat",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1159138?u=5dfa8464ae8884695e3214800085ac02a5da9283&v=4"
+    },
+    {
+      "login": "gongminmin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1177147?u=548871f3431ef5e04fe6c4bde88819fcf32c9fa8&v=4"
+    },
+    {
+      "login": "jcowgill",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1226825?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 257,
+  "forks": 119,
+  "topics": [
+    "audio",
+    "codec",
+    "ogg",
+    "ogg-vorbis",
+    "vorbis-specification",
+    "libvorbis",
+    "libvorbisenc",
+    "libvorbisfile",
+    "xiph",
+    "encoder"
+  ]
+}

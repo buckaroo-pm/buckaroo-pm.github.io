@@ -1,0 +1,117 @@
+{
+  "packageName": "buckaroo-pm/SRombauts-SQLiteCpp",
+  "name": "SRombauts/SQLiteCpp",
+  "licence": "MIT",
+  "description": "SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.",
+  "readme": "SQLiteC++\r\n---------\r\n\r\n[![release](https://img.shields.io/github/release/SRombauts/SQLiteCpp.svg)](https://github.com/SRombauts/SQLiteCpp/releases)\r\n[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SRombauts/SQLiteCpp/blob/master/LICENSE.txt)\r\n[![Travis CI Linux Build Status](https://travis-ci.org/SRombauts/SQLiteCpp.svg)](https://travis-ci.org/SRombauts/SQLiteCpp \"Travis CI Linux Build Status\")\r\n[![AppVeyor Windows Build status](https://ci.appveyor.com/api/projects/status/github/SRombauts/SQLiteCpp?svg=true)](https://ci.appveyor.com/project/SbastienRombauts/SQLiteCpp \"AppVeyor Windows Build status\")\r\n[![Coveralls](https://img.shields.io/coveralls/SRombauts/SQLiteCpp.svg)](https://coveralls.io/github/SRombauts/SQLiteCpp \"Coveralls test coverage\")\r\n[![Coverity](https://img.shields.io/coverity/scan/14508.svg)](https://scan.coverity.com/projects/srombauts-sqlitecpp \"Coverity Scan Build Status\")\r\n[![Join the chat at https://gitter.im/SRombauts/SQLiteCpp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SRombauts/SQLiteCpp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\r\n\r\nSQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.\r\n\r\nKeywords: sqlite, sqlite3, C, library, wrapper C++\r\n\r\n## About SQLiteC++:\r\n\r\nSQLiteC++ offers an encapsulation around the native C APIs of SQLite,\r\nwith a few intuitive and well documented C++ classes.\r\n\r\n### License:\r\n\r\nCopyright (c) 2012-2018 Sébastien Rombauts (sebastien.rombauts@gmail.com)\r\n<a href=\"https://www.paypal.me/SRombauts\" title=\"Pay Me a Beer! Donate with PayPal :)\"><img src=\"https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png\" width=\"118\"></a>\r\n\r\nDistributed under the MIT License (MIT) (See accompanying file LICENSE.txt\r\nor copy at http://opensource.org/licenses/MIT)\r\n\r\n#### Note on redistribution of SQLite source files\r\n\r\nAs stated by the MIT License, you are welcome to reuse, modify, and redistribute the SQLiteCpp source code\r\nthe way you want it to, be it a git submodule, a subdirectory, or a selection of some source files.\r\n\r\nI would love a mention in your README, a web link to the SQLite repository, and a mention of the author,\r\nbut none of those are mandatory.\r\n\r\n### About SQLite underlying library:\r\n\r\nSQLite is a library that implements a serverless transactional SQL database engine.\r\nIt is the most widely deployed SQL database engine in the world.\r\nAll of the code and documentation in SQLite has been dedicated to the public domain by the authors.\r\nhttp://www.sqlite.org/about.html\r\n\r\n### The goals of SQLiteC++ are:\r\n\r\n- to offer the best of the existing simple C++ SQLite wrappers\r\n- to be elegantly written with good C++ design, STL, exceptions and RAII idiom\r\n- to keep dependencies to a minimum (STL and SQLite3)\r\n- to be portable\r\n- to be light and fast\r\n- to be thread-safe only as much as SQLite \"Multi-thread\" mode (see below)\r\n- to have a good unit test coverage\r\n- to use API names sticking with those of the SQLite library\r\n- to be well documented with Doxygen tags, and with some good examples\r\n- to be well maintained\r\n- to use a permissive MIT license, similar to BSD or Boost, for proprietary/commercial usage\r\n\r\nIt is designed using the Resource Acquisition Is Initialization (RAII) idiom\r\n(see http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization),\r\nand throwing exceptions in case of SQLite errors (exept in destructors,\r\nwhere assert() are used instead).\r\nEach SQLiteC++ object must be constructed with a valid SQLite database connection,\r\nand then is always valid until destroyed.\r\n\r\n### Supported platforms:\r\n\r\nDevelopements and tests are done under the following OSs:\r\n- Ubuntu 14.04 (Travis CI)\r\n- Windows XP/10\r\n- OS X 10.11 (Travis CI)\r\n\r\nAnd the following IDEs/Compilers\r\n- GCC 4.8.4, 4.9.3, 5.3.0 and 6.1.1 (C++03, C++11, C++14, C++1z)\r\n- Clang 3.5 and 3.8\r\n- Xcode 8\r\n- Visual Studio Community 2015\r\n- Eclipse CDT under Linux\r\n\r\n### Dependencies\r\n\r\n- an STL implementation (even an old one, like the one provided with VC6 should work)\r\n- exception support (the class Exception inherits from std::runtime_error)\r\n- the SQLite library (3.7.15 minimum from 2012-12-12) either by linking to it dynamicaly or statically (install the libsqlite3-dev package under Debian/Ubuntu/Mint Linux),\r\n  or by adding its source file in your project code base (source code provided in src/sqlite3 for Windows),\r\n  with the SQLITE_ENABLE_COLUMN_METADATA macro defined (see http://www.sqlite.org/compile.html#enable_column_metadata).\r\n\r\n## Getting started\r\n### Installation\r\n\r\nTo use this wrapper, you need to add the SQLiteC++ source files from the src/ directory\r\nin your project code base, and compile/link against the sqlite library.\r\n\r\nThe easiest way to do this is to add the wrapper as a library.\r\nThe \"CMakeLists.txt\" file defining the static library is provided in the root directory,\r\nso you simply have to add_subdirectory(SQLiteCpp) to you main CMakeLists.txt\r\nand link to the \"SQLiteCpp\" wrapper library.\r\n\r\nExample for Linux: \r\n```cmake\r\nadd_subdirectory(${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp)\r\n\r\ninclude_directories(\r\n  ${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp/include\r\n)\r\n\r\nadd_executable(main src/main.cpp)\r\ntarget_link_libraries(main\r\n  SQLiteCpp\r\n  sqlite3\r\n  pthread\r\n  dl\r\n  )\r\n``` \r\nThus this SQLiteCpp repository can be directly used as a Git submoldule.\r\nSee the [SQLiteCpp_Example](https://github.com/SRombauts/SQLiteCpp_Example) side repository for a standalone \"from scratch\" example.\r\n\r\nUnder Debian/Ubuntu/Mint Linux, you can install the libsqlite3-dev package if you don't want to use the embedded sqlite3 library.\r\n\r\n### Building example and unit-tests:\r\n\r\nUse git to clone the repository. Then init and update submodule \"googletest\".\r\n\r\n```Shell\r\ngit clone https://github.com/SRombauts/SQLiteCpp.git\r\ncd SQLiteCpp\r\ngit submodule init\r\ngit submodule update\r\n```\r\n\r\n#### CMake and tests\r\nA CMake configuration file is also provided for multiplatform support and testing.\r\n\r\nTypical generic build for MS Visual Studio under Windows (from [build.bat](build.bat)):\r\n\r\n```Batchfile\r\nmkdir build\r\ncd build\r\n\r\ncmake ..        # cmake .. -G \"Visual Studio 10\"    # for Visual Studio 2010\r\n@REM Generate a Visual Studio solution for latest version found\r\ncmake -DSQLITECPP_BUILD_EXAMPLES=ON -DSQLITECPP_BUILD_TESTS=ON ..\r\n\r\n@REM Build default configuration (ie 'Debug')\r\ncmake --build .\r\n\r\n@REM Build and run tests\r\nctest --output-on-failure\r\n```\r\n\r\nGenerating the Linux Makefile, building in Debug and executing the tests (from [build.sh](build.sh)):\r\n\r\n```Shell\r\nmkdir Debug\r\ncd Debug\r\n\r\n# Generate a Makefile for GCC (or Clang, depanding on CC/CXX envvar)\r\ncmake -DSQLITECPP_BUILD_EXAMPLES=ON -DSQLITECPP_BUILD_TESTS=ON ..\r\n\r\n# Build (ie 'make')\r\ncmake --build .\r\n\r\n# Build and run unit-tests (ie 'make test')\r\nctest --output-on-failure\r\n```\r\n\r\n#### CMake options\r\n\r\n  * For more options on customizing the build, see the [CMakeLists.txt](https://github.com/SRombauts/SQLiteCpp/blob/master/CMakeLists.txt) file.\r\n\r\n#### Troubleshooting\r\n\r\nUnder Linux, if you get muliple linker errors like \"undefined reference to sqlite3_xxx\",\r\nit's that you lack the \"sqlite3\" library: install the libsqlite3-dev package.\r\n\r\nIf you get a single linker error \"Column.cpp: undefined reference to sqlite3_column_origin_name\",\r\nit's that your \"sqlite3\" library was not compiled with\r\nthe SQLITE_ENABLE_COLUMN_METADATA macro defined (see http://www.sqlite.org/compile.html#enable_column_metadata).\r\nYou can either recompile it yourself (seek help online) or you can comment out the following line in src/Column.h:\r\n\r\n```C++\r\n#define SQLITE_ENABLE_COLUMN_METADATA\r\n```\r\n\r\n### Continuous Integration\r\n\r\nThis project is continuously tested under Ubuntu Linux with the gcc and clang compilers\r\nusing the Travis CI community service with the above CMake building and testing procedure.\r\nIt is also tested in the same way under Windows Server 2012 R2 with Visual Studio 2013 compiler\r\nusing the AppVeyor countinuous integration service.\r\n\r\nDetailed results can be seen online:\r\n - https://travis-ci.org/SRombauts/SQLiteCpp\r\n - https://ci.appveyor.com/project/SbastienRombauts/SQLiteCpp\r\n\r\n### Thread-safety\r\n\r\nSQLite supports three modes of thread safety, as describe in \"SQLite And Multiple Threads\":\r\nsee http://www.sqlite.org/threadsafe.html\r\n\r\nThis SQLiteC++ wrapper does no add any locks (no mutexes) nor any other thread-safety mechanism\r\nabove the SQLite library itself, by design, for lightness and speed.\r\n\r\nThus, SQLiteC++ naturally supports the \"Multi Thread\" mode of SQLite:\r\n\"In this mode, SQLite can be safely used by multiple threads\r\nprovided that no single database connection is used simultaneously in two or more threads.\"\r\n\r\nBut SQLiteC++ does not support the fully thread-safe \"Serialized\" mode of SQLite,\r\nbecause of the way it shares the underlying SQLite precompiled statement\r\nin a custom shared pointer (See the inner class \"Statement::Ptr\").\r\n\r\n## Examples\r\n### The first sample demonstrates how to query a database and get results: \r\n\r\n```C++\r\ntry\r\n{\r\n    // Open a database file\r\n    SQLite::Database    db(\"example.db3\");\r\n    \r\n    // Compile a SQL query, containing one parameter (index 1)\r\n    SQLite::Statement   query(db, \"SELECT * FROM test WHERE size > ?\");\r\n    \r\n    // Bind the integer value 6 to the first parameter of the SQL query\r\n    query.bind(1, 6);\r\n    \r\n    // Loop to execute the query step by step, to get rows of result\r\n    while (query.executeStep())\r\n    {\r\n        // Demonstrate how to get some typed column value\r\n        int         id      = query.getColumn(0);\r\n        const char* value   = query.getColumn(1);\r\n        int         size    = query.getColumn(2);\r\n        \r\n        std::cout << \"row: \" << id << \", \" << value << \", \" << size << std::endl;\r\n    }\r\n}\r\ncatch (std::exception& e)\r\n{\r\n    std::cout << \"exception: \" << e.what() << std::endl;\r\n}\r\n```\r\n\r\n### The second sample shows how to manage a transaction:\r\n\r\n```C++\r\ntry\r\n{\r\n    SQLite::Database    db(\"transaction.db3\", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);\r\n\r\n    db.exec(\"DROP TABLE IF EXISTS test\");\r\n\r\n    // Begin transaction\r\n    SQLite::Transaction transaction(db);\r\n\r\n    db.exec(\"CREATE TABLE test (id INTEGER PRIMARY KEY, value TEXT)\");\r\n\r\n    int nb = db.exec(\"INSERT INTO test VALUES (NULL, \\\"test\\\")\");\r\n    std::cout << \"INSERT INTO test VALUES (NULL, \\\"test\\\")\\\", returned \" << nb << std::endl;\r\n\r\n    // Commit transaction\r\n    transaction.commit();\r\n}\r\ncatch (std::exception& e)\r\n{\r\n    std::cout << \"exception: \" << e.what() << std::endl;\r\n}\r\n```\r\n\r\n### How to handle assertion in SQLiteC++:\r\nExceptions shall not be used in destructors, so SQLiteC++ uses SQLITECPP_ASSERT() to check for errors in destructors.\r\nIf you don't want assert() to be called, you have to enable and define an assert handler as shown below,\r\nand by setting the flag SQLITECPP_ENABLE_ASSERT_HANDLER when compiling the lib.\r\n\r\n```C++\r\n#ifdef SQLITECPP_ENABLE_ASSERT_HANDLER\r\nnamespace SQLite\r\n{\r\n/// definition of the assertion handler enabled when SQLITECPP_ENABLE_ASSERT_HANDLER is defined in the project (CMakeList.txt)\r\nvoid assertion_failed(const char* apFile, const long apLine, const char* apFunc, const char* apExpr, const char* apMsg)\r\n{\r\n    // Print a message to the standard error output stream, and abort the program.\r\n    std::cerr << apFile << \":\" << apLine << \":\" << \" error: assertion failed (\" << apExpr << \") in \" << apFunc << \"() with message \\\"\" << apMsg << \"\\\"\\n\";\r\n    std::abort();\r\n}\r\n}\r\n#endif\r\n```\r\n\r\n## How to contribute\r\n### GitHub website\r\nThe most efficient way to help and contribute to this wrapper project is to\r\nuse the tools provided by GitHub:\r\n- please fill bug reports and feature requests here: https://github.com/SRombauts/SQLiteCpp/issues\r\n- fork the repository, make some small changes and submit them with pull-request\r\n\r\n### Contact\r\nYou can also email me directly, I will try to answer questions and requests whenever I get the time for it.\r\n\r\n### Coding Style Guidelines\r\nThe source code use the CamelCase naming style variant where:\r\n- type names (class, struct, typedef, enums...) begin with a capital letter\r\n- files (.cpp/.h) are named like the class they contain\r\n- function and variable names begin with a lower case letter\r\n- member variables begin with a 'm', function arguments begin with a 'a', booleans with a 'b', pointers with a 'p'\r\n- each file, class, method and member variable is documented using Doxygen tags\r\nSee also http://www.appinf.com/download/CppCodingStyleGuide.pdf for good guidelines\r\n\r\n## See also - Some other simple C++ SQLite wrappers:\r\n\r\nSee bellow a short comparison of other wrappers done at the time of writing:\r\n - [sqdbcpp](http://code.google.com/p/sqdbcpp/): RAII design, simple, no dependencies, UTF-8/UTF-16, new BSD license\r\n - [sqlite3cc](http://ed.am/dev/sqlite3cc): uses boost, modern design, LPGPL\r\n - [sqlite3pp](https://github.com/iwongu/sqlite3pp): modern design inspired by boost, MIT License\r\n - [SQLite++](http://sqlitepp.berlios.de/): uses boost build system, Boost License 1.0 \r\n - [CppSQLite](http://www.codeproject.com/Articles/6343/CppSQLite-C-Wrapper-for-SQLite/): famous Code Project but old design, BSD License \r\n - [easySQLite](http://code.google.com/p/easysqlite/): manages table as structured objects, complex \r\n - [sqlite_modern_cpp](https://github.com/keramer/sqlite_modern_cpp): modern C++11, all in one file, MIT license\r\n - [sqlite_orm](https://github.com/fnc12/sqlite_orm): modern C++14, header only all in one file, no raw string queries, BSD-3 license\r\n",
+  "versions": [],
+  "updated": "2018-11-07T23:35:40Z",
+  "updatedUpstream": "2021-01-10T01:16:36Z",
+  "contributors": [
+    {
+      "login": "jrave",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/40087?v=4"
+    },
+    {
+      "login": "snej",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/43241?u=a26d1e59be5c016352be099d677ac05e7c512bbc&v=4"
+    },
+    {
+      "login": "wjl",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/67229?v=4"
+    },
+    {
+      "login": "nitric1",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/172585?v=4"
+    },
+    {
+      "login": "DouglasHeriot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/238401?v=4"
+    },
+    {
+      "login": "KOLANICH",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/240344?v=4"
+    },
+    {
+      "login": "drivehappy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/248761?v=4"
+    },
+    {
+      "login": "onur",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/345828?v=4"
+    },
+    {
+      "login": "jowr",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/769593?v=4"
+    },
+    {
+      "login": "AndyLing",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/779088?v=4"
+    },
+    {
+      "login": "4brunu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/784666?u=aa1d35cf449c4d260df7819b3dce825c831538ae&v=4"
+    },
+    {
+      "login": "SRombauts",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/868490?u=1daf271b727fb65a8f38f6db41eaa1a18c6b32df&v=4"
+    },
+    {
+      "login": "vbraun",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/888729?v=4"
+    },
+    {
+      "login": "xvitaly",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/966711?u=1456e2e8f59dc31e70cdeb6a74a8e051daa0fca2&v=4"
+    },
+    {
+      "login": "matthin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/997925?u=b30046030c1864f56a0d67faf3b4c6fb3b8ada74&v=4"
+    },
+    {
+      "login": "emmenlau",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1098087?u=395c03e6379b326128c268c3bd3a12c3da17ea60&v=4"
+    },
+    {
+      "login": "gocarlos",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1331762?v=4"
+    },
+    {
+      "login": "ncorgan",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1406260?u=c7d295aabe4f155884a0e632ff59ffebe073baa5&v=4"
+    },
+    {
+      "login": "os12",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1539014?v=4"
+    },
+    {
+      "login": "patflick",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1636084?u=fbfd70467ce2c5d7160e347ffa15bb9f955d621b&v=4"
+    },
+    {
+      "login": "xforce",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1780766?u=1f8d2ba09b103f22cafcc278c612b23541370aab&v=4"
+    },
+    {
+      "login": "kelvinhammond",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1824682?v=4"
+    },
+    {
+      "login": "aurelien35",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1894532?v=4"
+    },
+    {
+      "login": "rwrx",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2378743?u=cea3accf687ad9ab9ce6798734335cd4aa7bdcb2&v=4"
+    },
+    {
+      "login": "saaqibz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2548078?u=441ed2f051e1572ba37c82774a2406cbb561a008&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1074,
+  "forks": 318,
+  "topics": []
+}

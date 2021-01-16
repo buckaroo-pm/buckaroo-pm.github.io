@@ -1,0 +1,259 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/a0584ae5515792e72ab5.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a0584ae5515792e72ab5.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.ae3781fe50e43492a499.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.9b549cceddc4472f1953.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" as="script"/><link rel="preload" href="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/packages/%5Bowner%5D/%5Bname%5D-bc25a6cf0982fd349b0a.js" as="script"/></head><body><div id="__next"><div class="site"><div class="navigation"><div class="view row space-between"><div class="links"><a class="buckaroo" href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="/blog">Blog</a></div><div class="search"><input placeholder="search for a module..." value=""/><button class="fa fa-search fa-large"></button></div><iframe id="star-button" src="https://ghbtns.com/github-btn.html?user=LoopPerfect&amp;repo=buckaroo&amp;type=star&amp;count=true&amp;size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe></div></div><div></div><div class="banner"><div style="display:flex"><div class="package"><img src="/packages/buckaroo-pm/xz/logo.png"/></div><div><h1>buckaroo-pm/xz</h1><div style="max-width:600px">Buckaroo mirror of xz. Contains lzma. </div><br/></div></div><div style="display:inline-flex;flex-flow:row wrap"></div></div><div style="display:flex;width:100%;justify-content:center;margin-top:-2.7em"><div class="tab-control" style="padding:0.5em;border-radius:0.2em;font-size:1.5em;background:white;color:black;border:solid 1px #fff">ReadMe</div><div class="tab-control" style="padding:0.5em;border-radius:0.2em;font-size:1.5em;background:none;color:white;border:solid 1px #fff">Manifest</div><div class="tab-control" style="padding:0.5em;border-radius:0.2em;font-size:1.5em;background:none;color:white;border:solid 1px #fff">Dependencies</div></div><div class="banner white"><div class="view column"><h2>ReadMe</h2><h1>XZ Utils</h1><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>0. Overview
+</span>1. Documentation
+<!-- -->   1.1. Overall documentation
+<!-- -->   1.2. Documentation for command-line tools
+<!-- -->   1.3. Documentation for liblzma
+<!-- -->2. Version numbering
+<!-- -->3. Reporting bugs
+<!-- -->4. Translating the xz tool
+<!-- -->5. Other implementations of the .xz format
+<!-- -->6. Contact information
+</code></pre><ol start="0"><li>Overview</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>XZ Utils provide a general-purpose data-compression library plus
+</span>command-line tools. The native file format is the .xz format, but
+<!-- -->also the legacy .lzma format is supported. The .xz format supports
+<!-- -->multiple compression algorithms, which are called &quot;filters&quot; in the
+<!-- -->context of XZ Utils. The primary filter is currently LZMA2. With
+<!-- -->typical files, XZ Utils create about 30 % smaller files than gzip.
+<!-- -->
+<!-- -->To ease adapting support for the .xz format into existing applications
+<!-- -->and scripts, the API of liblzma is somewhat similar to the API of the
+<!-- -->popular zlib library. For the same reason, the command-line tool xz
+<!-- -->has a command-line syntax similar to that of gzip.
+<!-- -->
+<!-- -->When aiming for the highest compression ratio, the LZMA2 encoder uses
+<!-- -->a lot of CPU time and may use, depending on the settings, even
+<!-- -->hundreds of megabytes of RAM. However, in fast modes, the LZMA2 encoder
+<!-- -->competes with bzip2 in compression speed, RAM usage, and compression
+<!-- -->ratio.
+<!-- -->
+<!-- -->LZMA2 is reasonably fast to decompress. It is a little slower than
+<!-- -->gzip, but a lot faster than bzip2. Being fast to decompress means
+<!-- -->that the .xz format is especially nice when the same file will be
+<!-- -->decompressed very many times (usually on different computers), which
+<!-- -->is the case e.g. when distributing software packages. In such
+<!-- -->situations, it&#x27;s not too bad if the compression takes some time,
+<!-- -->since that needs to be done only once to benefit many people.
+<!-- -->
+<!-- -->With some file types, combining (or &quot;chaining&quot;) LZMA2 with an
+<!-- -->additional filter can improve the compression ratio. A filter chain may
+<!-- -->contain up to four filters, although usually only one or two are used.
+<!-- -->For example, putting a BCJ (Branch/Call/Jump) filter before LZMA2
+<!-- -->in the filter chain can improve compression ratio of executable files.
+<!-- -->
+<!-- -->Since the .xz format allows adding new filter IDs, it is possible that
+<!-- -->some day there will be a filter that is, for example, much faster to
+<!-- -->compress than LZMA2 (but probably with worse compression ratio).
+<!-- -->Similarly, it is possible that some day there is a filter that will
+<!-- -->compress better than LZMA2.
+<!-- -->
+<!-- -->XZ Utils doesn&#x27;t support multithreaded compression or decompression
+<!-- -->yet. It has been planned though and taken into account when designing
+<!-- -->the .xz file format.
+</code></pre><ol><li>Documentation</li></ol><hr/><p>1.1. Overall documentation</p><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>README              This file
+</span>
+<!-- -->INSTALL.generic     Generic install instructions for those not familiar
+<!-- -->                    with packages using GNU Autotools
+<!-- -->INSTALL             Installation instructions specific to XZ Utils
+<!-- -->PACKAGERS           Information to packagers of XZ Utils
+<!-- -->
+<!-- -->COPYING             XZ Utils copyright and license information
+<!-- -->COPYING.GPLv2       GNU General Public License version 2
+<!-- -->COPYING.GPLv3       GNU General Public License version 3
+<!-- -->COPYING.LGPLv2.1    GNU Lesser General Public License version 2.1
+<!-- -->
+<!-- -->AUTHORS             The main authors of XZ Utils
+<!-- -->THANKS              Incomplete list of people who have helped making
+<!-- -->                    this software
+<!-- -->NEWS                User-visible changes between XZ Utils releases
+<!-- -->ChangeLog           Detailed list of changes (commit log)
+<!-- -->TODO                Known bugs and some sort of to-do list
+<!-- -->
+<!-- -->Note that only some of the above files are included in binary
+<!-- -->packages.
+</code></pre><p>1.2. Documentation for command-line tools</p><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>The command-line tools are documented as man pages. In source code
+</span>releases (and possibly also in some binary packages), the man pages
+<!-- -->are also provided in plain text (ASCII only) and PDF formats in the
+<!-- -->directory &quot;doc/man&quot; to make the man pages more accessible to those
+<!-- -->whose operating system doesn&#x27;t provide an easy way to view man pages.
+</code></pre><p>1.3. Documentation for liblzma</p><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>The liblzma API headers include short docs about each function
+</span>and data type as Doxygen tags. These docs should be quite OK as
+<!-- -->a quick reference.
+<!-- -->
+<!-- -->I have planned to write a bunch of very well documented example
+<!-- -->programs, which (due to comments) should work as a tutorial to
+<!-- -->various features of liblzma. No such example programs have been
+<!-- -->written yet.
+<!-- -->
+<!-- -->For now, if you have never used liblzma, libbzip2, or zlib, I
+<!-- -->recommend learning the *basics* of the zlib API. Once you know that,
+<!-- -->it should be easier to learn liblzma.
+<!-- -->
+<!-- -->    http://zlib.net/manual.html
+<!-- -->    http://zlib.net/zlib_how.html
+</code></pre><ol start="2"><li>Version numbering</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>The version number format of XZ Utils is X.Y.ZS:
+</span>
+<!-- -->  - X is the major version. When this is incremented, the library
+<!-- -->    API and ABI break.
+<!-- -->
+<!-- -->  - Y is the minor version. It is incremented when new features
+<!-- -->    are added without breaking the existing API or ABI. An even Y
+<!-- -->    indicates a stable release and an odd Y indicates unstable
+<!-- -->    (alpha or beta version).
+<!-- -->
+<!-- -->  - Z is the revision. This has a different meaning for stable and
+<!-- -->    unstable releases:
+<!-- -->
+<!-- -->      * Stable: Z is incremented when bugs get fixed without adding
+<!-- -->        any new features. This is intended to be convenient for
+<!-- -->        downstream distributors that want bug fixes but don&#x27;t want
+<!-- -->        any new features to minimize the risk of introducing new bugs.
+<!-- -->
+<!-- -->      * Unstable: Z is just a counter. API or ABI of features added
+<!-- -->        in earlier unstable releases having the same X.Y may break.
+<!-- -->
+<!-- -->  - S indicates stability of the release. It is missing from the
+<!-- -->    stable releases, where Y is an even number. When Y is odd, S
+<!-- -->    is either &quot;alpha&quot; or &quot;beta&quot; to make it very clear that such
+<!-- -->    versions are not stable releases. The same X.Y.Z combination is
+<!-- -->    not used for more than one stability level, i.e. after X.Y.Zalpha,
+<!-- -->    the next version can be X.Y.(Z+1)beta but not X.Y.Zbeta.
+</code></pre><ol start="3"><li>Reporting bugs</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>Naturally it is easiest for me if you already know what causes the
+</span>unexpected behavior. Even better if you have a patch to propose.
+<!-- -->However, quite often the reason for unexpected behavior is unknown,
+<!-- -->so here are a few things to do before sending a bug report:
+<!-- -->
+<!-- -->  1. Try to create a small example how to reproduce the issue.
+<!-- -->
+<!-- -->  2. Compile XZ Utils with debugging code using configure switches
+<!-- -->     --enable-debug and, if possible, --disable-shared. If you are
+<!-- -->     using GCC, use CFLAGS=&#x27;-O0 -ggdb3&#x27;. Don&#x27;t strip the resulting
+<!-- -->     binaries.
+<!-- -->
+<!-- -->  3. Turn on core dumps. The exact command depends on your shell;
+<!-- -->     for example in GNU bash it is done with &quot;ulimit -c unlimited&quot;,
+<!-- -->     and in tcsh with &quot;limit coredumpsize unlimited&quot;.
+<!-- -->
+<!-- -->  4. Try to reproduce the suspected bug. If you get &quot;assertion failed&quot;
+<!-- -->     message, be sure to include the complete message in your bug
+<!-- -->     report. If the application leaves a coredump, get a backtrace
+<!-- -->     using gdb:
+<!-- -->       $ gdb /path/to/app-binary   # Load the app to the debugger.
+<!-- -->       (gdb) core core   # Open the coredump.
+<!-- -->       (gdb) bt   # Print the backtrace. Copy &amp; paste to bug report.
+<!-- -->       (gdb) quit   # Quit gdb.
+<!-- -->
+<!-- -->Report your bug via email or IRC (see Contact information below).
+<!-- -->Don&#x27;t send core dump files or any executables. If you have a small
+<!-- -->example file(s) (total size less than 256 KiB), please include
+<!-- -->it/them as an attachment. If you have bigger test files, put them
+<!-- -->online somewhere and include a URL to the file(s) in the bug report.
+<!-- -->
+<!-- -->Always include the exact version number of XZ Utils in the bug report.
+<!-- -->If you are using a snapshot from the git repository, use &quot;git describe&quot;
+<!-- -->to get the exact snapshot version. If you are using XZ Utils shipped
+<!-- -->in an operating system distribution, mention the distribution name,
+<!-- -->distribution version, and exact xz package version; if you cannot
+<!-- -->repeat the bug with the code compiled from unpatched source code,
+<!-- -->you probably need to report a bug to your distribution&#x27;s bug tracking
+<!-- -->system.
+</code></pre><ol start="4"><li>Translating the xz tool</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>The messages from the xz tool have been translated into a few
+</span>languages. Before starting to translate into a new language, ask
+<!-- -->the author whether someone else hasn&#x27;t already started working on it.
+<!-- -->
+<!-- -->Test your translation. Testing includes comparing the translated
+<!-- -->output to the original English version by running the same commands
+<!-- -->in both your target locale and with LC_ALL=C. Ask someone to
+<!-- -->proof-read and test the translation.
+<!-- -->
+<!-- -->Testing can be done e.g. by installing xz into a temporary directory:
+<!-- -->
+<!-- -->    ./configure --disable-shared --prefix=/tmp/xz-test
+<!-- -->    # &lt;Edit the .po file in the po directory.&gt;
+<!-- -->    make -C po update-po
+<!-- -->    make install
+<!-- -->    bash debug/translation.bash | less
+<!-- -->    bash debug/translation.bash | less -S  # For --list outputs
+<!-- -->
+<!-- -->Repeat the above as needed (no need to re-run configure though).
+<!-- -->
+<!-- -->Note especially the following:
+<!-- -->
+<!-- -->  - The output of --help and --long-help must look nice on
+<!-- -->    an 80-column terminal. It&#x27;s OK to add extra lines if needed.
+<!-- -->
+<!-- -->  - In contrast, don&#x27;t add extra lines to error messages and such.
+<!-- -->    They are often preceded with e.g. a filename on the same line,
+<!-- -->    so you have no way to predict where to put a \n. Let the terminal
+<!-- -->    do the wrapping even if it looks ugly. Adding new lines will be
+<!-- -->    even uglier in the generic case even if it looks nice in a few
+<!-- -->    limited examples.
+<!-- -->
+<!-- -->  - Be careful with column alignment in tables and table-like output
+<!-- -->    (--list, --list --verbose --verbose, --info-memory, --help, and
+<!-- -->    --long-help):
+<!-- -->
+<!-- -->      * All descriptions of options in --help should start in the
+<!-- -->        same column (but it doesn&#x27;t need to be the same column as
+<!-- -->        in the English messages; just be consistent if you change it).
+<!-- -->        Check that both --help and --long-help look OK, since they
+<!-- -->        share several strings.
+<!-- -->
+<!-- -->      * --list --verbose and --info-memory print lines that have
+<!-- -->        the format &quot;Description:   %s&quot;. If you need a longer
+<!-- -->        description, you can put extra space between the colon
+<!-- -->        and %s. Then you may need to add extra space to other
+<!-- -->        strings too so that the result as a whole looks good (all
+<!-- -->        values start at the same column).
+<!-- -->
+<!-- -->      * The columns of the actual tables in --list --verbose --verbose
+<!-- -->        should be aligned properly. Abbreviate if necessary. It might
+<!-- -->        be good to keep at least 2 or 3 spaces between column headings
+<!-- -->        and avoid spaces in the headings so that the columns stand out
+<!-- -->        better, but this is a matter of opinion. Do what you think
+<!-- -->        looks best.
+<!-- -->
+<!-- -->  - Be careful to put a period at the end of a sentence when the
+<!-- -->    original version has it, and don&#x27;t put it when the original
+<!-- -->    doesn&#x27;t have it. Similarly, be careful with \n characters
+<!-- -->    at the beginning and end of the strings.
+<!-- -->
+<!-- -->  - Read the TRANSLATORS comments that have been extracted from the
+<!-- -->    source code and included in xz.pot. If they suggest testing the
+<!-- -->    translation with some type of command, do it. If testing needs
+<!-- -->    input files, use e.g. tests/files/good-*.xz.
+<!-- -->
+<!-- -->  - When updating the translation, read the fuzzy (modified) strings
+<!-- -->    carefully, and don&#x27;t mark them as updated before you actually
+<!-- -->    have updated them. Reading through the unchanged messages can be
+<!-- -->    good too; sometimes you may find a better wording for them.
+<!-- -->
+<!-- -->  - If you find language problems in the original English strings,
+<!-- -->    feel free to suggest improvements. Ask if something is unclear.
+<!-- -->
+<!-- -->  - The translated messages should be understandable (sometimes this
+<!-- -->    may be a problem with the original English messages too). Don&#x27;t
+<!-- -->    make a direct word-by-word translation from English especially if
+<!-- -->    the result doesn&#x27;t sound good in your language.
+<!-- -->
+<!-- -->In short, take your time and pay attention to the details. Making
+<!-- -->a good translation is not a quick and trivial thing to do. The
+<!-- -->translated xz should look as polished as the English version.
+</code></pre><ol start="5"><li>Other implementations of the .xz format</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>7-Zip and the p7zip port of 7-Zip support the .xz format starting
+</span>from the version 9.00alpha.
+<!-- -->
+<!-- -->    http://7-zip.org/
+<!-- -->    http://p7zip.sourceforge.net/
+<!-- -->
+<!-- -->XZ Embedded is a limited implementation written for use in the Linux
+<!-- -->kernel, but it is also suitable for other embedded use.
+<!-- -->
+<!-- -->    https://tukaani.org/xz/embedded.html
+</code></pre><ol start="6"><li>Contact information</li></ol><hr/><pre style="color:black;background:#f5f2f0;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto"><code style="color:black;background:none;text-shadow:0 1px white;font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span>If you have questions, bug reports, patches etc. related to XZ Utils,
+</span>contact Lasse Collin &lt;lasse.collin@tukaani.org&gt; (in Finnish or English).
+<!-- -->I&#x27;m sometimes slow at replying. If you haven&#x27;t got a reply within two
+<!-- -->weeks, assume that your email has got lost and resend it or use IRC.
+<!-- -->
+<!-- -->You can find me also from #tukaani on Freenode; my nick is Larhzu.
+<!-- -->The channel tends to be pretty quiet, so just ask your question and
+<!-- -->someone may wake up.
+</code></pre></div></div><div class="banner footer"><div class="view column"><div class="actions"><div class="links"><a href="/">Buckaroo</a><a href="https://github.com/LoopPerfect/buckaroo/wiki" target="_blank">Docs</a><a href="https://github.com/LoopPerfect/buckaroo" target="_blank">GitHub</a></div><div class="signup"><h1 class="action">Sign up for our Newsletter</h1><div class="info">Get the latest updates about new packages and Buckaroo releases.</div><button>Sign Up</button></div></div><div class="powered"><img src="/LoopPerfectInvertSmall.png"/><span>Powered by LoopPerfect</span></div></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"data":{"packageName":"buckaroo-pm/xz","name":"buckaroo-pm/xz","licence":"NOASSERTION","description":"Buckaroo mirror of xz. Contains lzma. ","readme":"\nXZ Utils\n========\n\n    0. Overview\n    1. Documentation\n       1.1. Overall documentation\n       1.2. Documentation for command-line tools\n       1.3. Documentation for liblzma\n    2. Version numbering\n    3. Reporting bugs\n    4. Translating the xz tool\n    5. Other implementations of the .xz format\n    6. Contact information\n\n\n0. Overview\n-----------\n\n    XZ Utils provide a general-purpose data-compression library plus\n    command-line tools. The native file format is the .xz format, but\n    also the legacy .lzma format is supported. The .xz format supports\n    multiple compression algorithms, which are called \"filters\" in the\n    context of XZ Utils. The primary filter is currently LZMA2. With\n    typical files, XZ Utils create about 30 % smaller files than gzip.\n\n    To ease adapting support for the .xz format into existing applications\n    and scripts, the API of liblzma is somewhat similar to the API of the\n    popular zlib library. For the same reason, the command-line tool xz\n    has a command-line syntax similar to that of gzip.\n\n    When aiming for the highest compression ratio, the LZMA2 encoder uses\n    a lot of CPU time and may use, depending on the settings, even\n    hundreds of megabytes of RAM. However, in fast modes, the LZMA2 encoder\n    competes with bzip2 in compression speed, RAM usage, and compression\n    ratio.\n\n    LZMA2 is reasonably fast to decompress. It is a little slower than\n    gzip, but a lot faster than bzip2. Being fast to decompress means\n    that the .xz format is especially nice when the same file will be\n    decompressed very many times (usually on different computers), which\n    is the case e.g. when distributing software packages. In such\n    situations, it's not too bad if the compression takes some time,\n    since that needs to be done only once to benefit many people.\n\n    With some file types, combining (or \"chaining\") LZMA2 with an\n    additional filter can improve the compression ratio. A filter chain may\n    contain up to four filters, although usually only one or two are used.\n    For example, putting a BCJ (Branch/Call/Jump) filter before LZMA2\n    in the filter chain can improve compression ratio of executable files.\n\n    Since the .xz format allows adding new filter IDs, it is possible that\n    some day there will be a filter that is, for example, much faster to\n    compress than LZMA2 (but probably with worse compression ratio).\n    Similarly, it is possible that some day there is a filter that will\n    compress better than LZMA2.\n\n    XZ Utils doesn't support multithreaded compression or decompression\n    yet. It has been planned though and taken into account when designing\n    the .xz file format.\n\n\n1. Documentation\n----------------\n\n1.1. Overall documentation\n\n    README              This file\n\n    INSTALL.generic     Generic install instructions for those not familiar\n                        with packages using GNU Autotools\n    INSTALL             Installation instructions specific to XZ Utils\n    PACKAGERS           Information to packagers of XZ Utils\n\n    COPYING             XZ Utils copyright and license information\n    COPYING.GPLv2       GNU General Public License version 2\n    COPYING.GPLv3       GNU General Public License version 3\n    COPYING.LGPLv2.1    GNU Lesser General Public License version 2.1\n\n    AUTHORS             The main authors of XZ Utils\n    THANKS              Incomplete list of people who have helped making\n                        this software\n    NEWS                User-visible changes between XZ Utils releases\n    ChangeLog           Detailed list of changes (commit log)\n    TODO                Known bugs and some sort of to-do list\n\n    Note that only some of the above files are included in binary\n    packages.\n\n\n1.2. Documentation for command-line tools\n\n    The command-line tools are documented as man pages. In source code\n    releases (and possibly also in some binary packages), the man pages\n    are also provided in plain text (ASCII only) and PDF formats in the\n    directory \"doc/man\" to make the man pages more accessible to those\n    whose operating system doesn't provide an easy way to view man pages.\n\n\n1.3. Documentation for liblzma\n\n    The liblzma API headers include short docs about each function\n    and data type as Doxygen tags. These docs should be quite OK as\n    a quick reference.\n\n    I have planned to write a bunch of very well documented example\n    programs, which (due to comments) should work as a tutorial to\n    various features of liblzma. No such example programs have been\n    written yet.\n\n    For now, if you have never used liblzma, libbzip2, or zlib, I\n    recommend learning the *basics* of the zlib API. Once you know that,\n    it should be easier to learn liblzma.\n\n        http://zlib.net/manual.html\n        http://zlib.net/zlib_how.html\n\n\n2. Version numbering\n--------------------\n\n    The version number format of XZ Utils is X.Y.ZS:\n\n      - X is the major version. When this is incremented, the library\n        API and ABI break.\n\n      - Y is the minor version. It is incremented when new features\n        are added without breaking the existing API or ABI. An even Y\n        indicates a stable release and an odd Y indicates unstable\n        (alpha or beta version).\n\n      - Z is the revision. This has a different meaning for stable and\n        unstable releases:\n\n          * Stable: Z is incremented when bugs get fixed without adding\n            any new features. This is intended to be convenient for\n            downstream distributors that want bug fixes but don't want\n            any new features to minimize the risk of introducing new bugs.\n\n          * Unstable: Z is just a counter. API or ABI of features added\n            in earlier unstable releases having the same X.Y may break.\n\n      - S indicates stability of the release. It is missing from the\n        stable releases, where Y is an even number. When Y is odd, S\n        is either \"alpha\" or \"beta\" to make it very clear that such\n        versions are not stable releases. The same X.Y.Z combination is\n        not used for more than one stability level, i.e. after X.Y.Zalpha,\n        the next version can be X.Y.(Z+1)beta but not X.Y.Zbeta.\n\n\n3. Reporting bugs\n-----------------\n\n    Naturally it is easiest for me if you already know what causes the\n    unexpected behavior. Even better if you have a patch to propose.\n    However, quite often the reason for unexpected behavior is unknown,\n    so here are a few things to do before sending a bug report:\n\n      1. Try to create a small example how to reproduce the issue.\n\n      2. Compile XZ Utils with debugging code using configure switches\n         --enable-debug and, if possible, --disable-shared. If you are\n         using GCC, use CFLAGS='-O0 -ggdb3'. Don't strip the resulting\n         binaries.\n\n      3. Turn on core dumps. The exact command depends on your shell;\n         for example in GNU bash it is done with \"ulimit -c unlimited\",\n         and in tcsh with \"limit coredumpsize unlimited\".\n\n      4. Try to reproduce the suspected bug. If you get \"assertion failed\"\n         message, be sure to include the complete message in your bug\n         report. If the application leaves a coredump, get a backtrace\n         using gdb:\n           $ gdb /path/to/app-binary   # Load the app to the debugger.\n           (gdb) core core   # Open the coredump.\n           (gdb) bt   # Print the backtrace. Copy \u0026 paste to bug report.\n           (gdb) quit   # Quit gdb.\n\n    Report your bug via email or IRC (see Contact information below).\n    Don't send core dump files or any executables. If you have a small\n    example file(s) (total size less than 256 KiB), please include\n    it/them as an attachment. If you have bigger test files, put them\n    online somewhere and include a URL to the file(s) in the bug report.\n\n    Always include the exact version number of XZ Utils in the bug report.\n    If you are using a snapshot from the git repository, use \"git describe\"\n    to get the exact snapshot version. If you are using XZ Utils shipped\n    in an operating system distribution, mention the distribution name,\n    distribution version, and exact xz package version; if you cannot\n    repeat the bug with the code compiled from unpatched source code,\n    you probably need to report a bug to your distribution's bug tracking\n    system.\n\n\n4. Translating the xz tool\n--------------------------\n\n    The messages from the xz tool have been translated into a few\n    languages. Before starting to translate into a new language, ask\n    the author whether someone else hasn't already started working on it.\n\n    Test your translation. Testing includes comparing the translated\n    output to the original English version by running the same commands\n    in both your target locale and with LC_ALL=C. Ask someone to\n    proof-read and test the translation.\n\n    Testing can be done e.g. by installing xz into a temporary directory:\n\n        ./configure --disable-shared --prefix=/tmp/xz-test\n        # \u003cEdit the .po file in the po directory.\u003e\n        make -C po update-po\n        make install\n        bash debug/translation.bash | less\n        bash debug/translation.bash | less -S  # For --list outputs\n\n    Repeat the above as needed (no need to re-run configure though).\n\n    Note especially the following:\n\n      - The output of --help and --long-help must look nice on\n        an 80-column terminal. It's OK to add extra lines if needed.\n\n      - In contrast, don't add extra lines to error messages and such.\n        They are often preceded with e.g. a filename on the same line,\n        so you have no way to predict where to put a \\n. Let the terminal\n        do the wrapping even if it looks ugly. Adding new lines will be\n        even uglier in the generic case even if it looks nice in a few\n        limited examples.\n\n      - Be careful with column alignment in tables and table-like output\n        (--list, --list --verbose --verbose, --info-memory, --help, and\n        --long-help):\n\n          * All descriptions of options in --help should start in the\n            same column (but it doesn't need to be the same column as\n            in the English messages; just be consistent if you change it).\n            Check that both --help and --long-help look OK, since they\n            share several strings.\n\n          * --list --verbose and --info-memory print lines that have\n            the format \"Description:   %s\". If you need a longer\n            description, you can put extra space between the colon\n            and %s. Then you may need to add extra space to other\n            strings too so that the result as a whole looks good (all\n            values start at the same column).\n\n          * The columns of the actual tables in --list --verbose --verbose\n            should be aligned properly. Abbreviate if necessary. It might\n            be good to keep at least 2 or 3 spaces between column headings\n            and avoid spaces in the headings so that the columns stand out\n            better, but this is a matter of opinion. Do what you think\n            looks best.\n\n      - Be careful to put a period at the end of a sentence when the\n        original version has it, and don't put it when the original\n        doesn't have it. Similarly, be careful with \\n characters\n        at the beginning and end of the strings.\n\n      - Read the TRANSLATORS comments that have been extracted from the\n        source code and included in xz.pot. If they suggest testing the\n        translation with some type of command, do it. If testing needs\n        input files, use e.g. tests/files/good-*.xz.\n\n      - When updating the translation, read the fuzzy (modified) strings\n        carefully, and don't mark them as updated before you actually\n        have updated them. Reading through the unchanged messages can be\n        good too; sometimes you may find a better wording for them.\n\n      - If you find language problems in the original English strings,\n        feel free to suggest improvements. Ask if something is unclear.\n\n      - The translated messages should be understandable (sometimes this\n        may be a problem with the original English messages too). Don't\n        make a direct word-by-word translation from English especially if\n        the result doesn't sound good in your language.\n\n    In short, take your time and pay attention to the details. Making\n    a good translation is not a quick and trivial thing to do. The\n    translated xz should look as polished as the English version.\n\n\n5. Other implementations of the .xz format\n------------------------------------------\n\n    7-Zip and the p7zip port of 7-Zip support the .xz format starting\n    from the version 9.00alpha.\n\n        http://7-zip.org/\n        http://p7zip.sourceforge.net/\n\n    XZ Embedded is a limited implementation written for use in the Linux\n    kernel, but it is also suitable for other embedded use.\n\n        https://tukaani.org/xz/embedded.html\n\n\n6. Contact information\n----------------------\n\n    If you have questions, bug reports, patches etc. related to XZ Utils,\n    contact Lasse Collin \u003classe.collin@tukaani.org\u003e (in Finnish or English).\n    I'm sometimes slow at replying. If you haven't got a reply within two\n    weeks, assume that your email has got lost and resend it or use IRC.\n\n    You can find me also from #tukaani on Freenode; my nick is Larhzu.\n    The channel tends to be pretty quiet, so just ask your question and\n    someone may wake up.\n\n","versions":[{"ref":"master","manifest":"targets = [ \"//src/liblzma:lzma\" ]","lockFile":"manifest = \"d8e194ae179456c63336c16c87c35e53150ac28232c23d71f1e08835967c2dc2\"\n\n","buck":"","bazel":"","deps":[],"lock":[]}],"updated":"2019-01-25T16:48:38Z","updatedUpstream":"2019-01-25T16:48:38Z","contributors":[],"fundingLinks":[],"contactLinks":[],"stars":0,"forks":1,"topics":[]}},"__N_SSG":true},"page":"/packages/[owner]/[name]","query":{"owner":"buckaroo-pm","name":"xz"},"buildId":"XEnVUsOG7VkTdg59Wro6f","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-617a3a2c770be2525c7f.js"></script><script src="/_next/static/chunks/main-7d1613afc8c8f43cb50f.js" async=""></script><script src="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" async=""></script><script src="/_next/static/chunks/framework.ae3781fe50e43492a499.js" async=""></script><script src="/_next/static/chunks/commons.9b549cceddc4472f1953.js" async=""></script><script src="/_next/static/chunks/pages/_app-3e4ffec4bbf3a45ef50f.js" async=""></script><script src="/_next/static/chunks/c18d713dde5d8f274a9340ae8a63196292880c5e.7af0c42e7b17c91d2be5.js" async=""></script><script src="/_next/static/chunks/pages/packages/%5Bowner%5D/%5Bname%5D-bc25a6cf0982fd349b0a.js" async=""></script><script src="/_next/static/XEnVUsOG7VkTdg59Wro6f/_buildManifest.js" async=""></script><script src="/_next/static/XEnVUsOG7VkTdg59Wro6f/_ssgManifest.js" async=""></script></body></html>

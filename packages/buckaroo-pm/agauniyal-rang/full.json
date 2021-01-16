@@ -1,0 +1,108 @@
+{
+  "packageName": "buckaroo-pm/agauniyal-rang",
+  "name": "agauniyal/rang",
+  "licence": "Unlicense",
+  "description": "A Minimal, Header only Modern c++ library for terminal goodies 💄✨",
+  "readme": "# rang [![Build Status](https://travis-ci.org/agauniyal/rang.svg?branch=master)](https://travis-ci.org/agauniyal/rang) [![Build status](https://ci.appveyor.com/api/projects/status/jqpdoelli38h2a7w?svg=true)](https://ci.appveyor.com/project/agauniyal/rang) [![codecov](https://codecov.io/gh/agauniyal/rang/branch/master/graph/badge.svg)](https://codecov.io/gh/agauniyal/rang) [ ![Download](https://api.bintray.com/packages/agauniyal/rang/rang%3Arang/images/download.svg) ](https://bintray.com/agauniyal/rang/rang%3Arang/_latestVersion)\n\n##### Colors for your Terminal.\n\n![rang-demo](https://cloud.githubusercontent.com/assets/7630575/13501282/0bd00074-e18c-11e5-9848-5bd1f20566d9.gif)\n<details>\n <summary>Windows Demo</summary>\n\n![rang-windows-demo](https://cloud.githubusercontent.com/assets/11349690/19836886/8134975e-9ebe-11e6-9ee4-c4657784ff3b.gif)\n</details>\n\n\nExample usage\n-------------\n\n```c++\n#include \"rang.hpp\"\n\nusing namespace std;\nusing namespace rang;\n\nint main()\n{\n    cout << \"Plain old text\"\n         << style::bold << \"Rang styled text!!\"\n         << style::reset << endl;\n}\n```\n\nDependencies\n------------\n*rang* only depends on [C++ standard library](http://en.cppreference.com/w/cpp/header), `unistd.h` system header on unix and `windows.h` & `io.h` system headers on windows based systems. In other words, you don't need any 3rd party dependencies.\n\n\nInstallation\n------------\n\n*rang* is a single header-only library. Put `rang.hpp` in the [include](include) folder directly into the project source tree or somewhere reachable from your project.\n\nOr, if you use the [conan package manager](https://www.conan.io/), follow these steps:\n\n1. Add a reference to *rang* to the *requires* section of your project's `conanfile.txt` file:\n\n        [requires]\n        rang/3.1.0@rang/stable\n\n2. Run conan's install command:\n\n        conan install\n\n\n## How to use\n\n*Rang* uses iostream objects - `cout`/`clog`/`cerr` to apply attributes to output text. Since *rang* aims to support both windows and unix like systems, it takes care of the os specific details and tries to provide a uniform interface. Due to incompatiblities b/w different OS versions, not all kinds of attributes are supported on every system so rang will try to skip the ones which might produce garbage(instead of pushing random ANSI escape codes on your streams). Detection of tty is also handled internally so you don't need to check if application user might redirect output to a file.\n\n> **Need support for non-ansi terminals? Check out [Termdb](https://github.com/agauniyal/termdb) which supports virtually all terminals and their capablities.**\n\nApart from setting text attributes, you can also ask rang to override its default behaviour through these methods -\n```cpp\nvoid rang::setControlMode(rang::control);\n```\nwhere `rang::control` takes\n - `control::Auto` - Automatically detects whether terminal supports color or not(**Default**)\n - `control::Off` - Turn off colors completely\n - `control::Force` - Force colors even if terminal doesn't supports them or output is redirected to non-terminal\n\n```cpp\nvoid rang::setWinTermMode(rang::winTerm);\n```\nwhere `rang::winTerm` takes\n - `winTerm::Auto` - Checks for newer windows and picks Ansi otherwise falls back to Native(**Default**)\n - `winTerm::Native` - This method is supported in all versions of windows but supports less attributes\n - `winTerm::Ansi` - This method is supported in newer versions of windows and supports rich variety of attributes\n\n\nSupported attributes with their compatiblity are listed below -\n\n**Text Styles**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::style::bold`      | yes   | yes   |\n| `rang::style::dim`       | yes   | no    |\n| `rang::style::italic`    | yes   | no    |\n| `rang::style::underline` | yes   | no    |\n| `rang::style::blink`     | no    | no    |\n| `rang::style::rblink`    | no    | no    |\n| `rang::style::reversed`  | yes   | yes   |\n| `rang::style::conceal`   | maybe | yes   |\n| `rang::style::crossed`   | yes   | no    |\n\n**Text Color**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::fg::black`     | yes | yes |\n| `rang::fg::red`       | yes | yes |\n| `rang::fg::green`     | yes | yes |\n| `rang::fg::yellow`    | yes | yes |\n| `rang::fg::blue`      | yes | yes |\n| `rang::fg::magenta`   | yes | yes |\n| `rang::fg::cyan`      | yes | yes |\n| `rang::fg::gray`      | yes | yes |\n\n**Background Color**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::bg::black`     | yes | yes |\n| `rang::bg::red`       | yes | yes |\n| `rang::bg::green`     | yes | yes |\n| `rang::bg::yellow`    | yes | yes |\n| `rang::bg::blue`      | yes | yes |\n| `rang::bg::magenta`   | yes | yes |\n| `rang::bg::cyan`      | yes | yes |\n| `rang::bg::gray`      | yes | yes |\n\n**Bright Foreground Color**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::fgB::black`     | yes | yes |\n| `rang::fgB::red`       | yes | yes |\n| `rang::fgB::green`     | yes | yes |\n| `rang::fgB::yellow`    | yes | yes |\n| `rang::fgB::blue`      | yes | yes |\n| `rang::fgB::magenta`   | yes | yes |\n| `rang::fgB::cyan`      | yes | yes |\n| `rang::fgB::gray`      | yes | yes |\n\n**Bright Background Color**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::bgB::black`     | yes | yes |\n| `rang::bgB::red`       | yes | yes |\n| `rang::bgB::green`     | yes | yes |\n| `rang::bgB::yellow`    | yes | yes |\n| `rang::bgB::blue`      | yes | yes |\n| `rang::bgB::magenta`   | yes | yes |\n| `rang::bgB::cyan`      | yes | yes |\n| `rang::bgB::gray`      | yes | yes |\n\n**Reset Styles/Colors**:\n\n| Code | Linux/Win/Others | Old Win\n| ---- | --------- | ------ |\n| `rang::style::reset`  | yes   | yes |\n| `rang::fg::reset`     | yes   | yes |\n| `rang::bg::reset`     | yes   | yes |\n\n-----\n## My terminal is not detected/gets garbage output!\n\nCheck your env variable `TERM`'s value. Then open an issue [here](https://github.com/agauniyal/rang/issues/new) and make sure to mention `TERM`'s value along with your terminal name.\n\n## Redirecting `cout`/`cerr`/`clog` rdbuf?\n\nRang doesn't interfere if you try to redirect `cout`/`cerr`/`clog` to somewhere else and leaves the decision to the library user. Make sure you've read this [conversation](https://github.com/agauniyal/rang/pull/77#issuecomment-360991652) and check out the example code [here](https://gist.github.com/kingseva/a918ec66079a9475f19642ec31276a21).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:rang\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/onqtam-doctest\"\nversion = \"branch=master\"\nprivate = true\n",
+      "lockFile": "manifest = \"defda5ad05aef554e0f26a6830bcb87a0c0e25d90393db4a6167414f9c412f8b\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/onqtam-doctest\"\ntarget = \"//:doctest\"\n\n[lock.\"github.com/buckaroo-pm/onqtam-doctest\"]\nversion = \"branch=master\"\nrevision = \"d7756fc7f51408dd0f4fa423a1f1d4aa8ace0656\"\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'rang', \n  header_namespace = '', \n  header_only = True, \n  exported_headers = {\n    'rang.hpp': 'include/rang.hpp', \n  }, \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/onqtam-doctest",
+          "name": "buckaroo-pm/onqtam-doctest",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/onqtam-doctest",
+          "name": "buckaroo-pm/onqtam-doctest",
+          "spec": {
+            "version": "branch=master",
+            "revision": "d7756fc7f51408dd0f4fa423a1f1d4aa8ace0656"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-12-11T23:47:21Z",
+  "updatedUpstream": "2021-01-13T19:48:59Z",
+  "contributors": [
+    {
+      "login": "SuperV1234",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/918661?u=777c33754c4a5ae474a0b3c99f0c260de9768f5c&v=4"
+    },
+    {
+      "login": "pfultz2",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1306044?v=4"
+    },
+    {
+      "login": "jibsen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1367512?v=4"
+    },
+    {
+      "login": "blastrock",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1370530?v=4"
+    },
+    {
+      "login": "benni012",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3243872?v=4"
+    },
+    {
+      "login": "QzSG",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5106502?v=4"
+    },
+    {
+      "login": "agauniyal",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7630575?u=0cc8856bf0f3b02980d639f042df4265e0988cba&v=4"
+    },
+    {
+      "login": "kingseva",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/9908175?v=4"
+    },
+    {
+      "login": "AxelStrem",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/11349690?v=4"
+    },
+    {
+      "login": "LumpBloom7",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12001167?u=ea0883d8b54cee55c98ca2044afca6aec11b9992&v=4"
+    },
+    {
+      "login": "vladimirgamalyan",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/12879954?u=c4fe2c11fa0d0d29816886c568ef058e1fcd3375&v=4"
+    },
+    {
+      "login": "zeokav",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/13984650?u=05696370af4456636167bdfffc201a8dd3a992e8&v=4"
+    },
+    {
+      "login": "tkhurana96",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/17436449?u=ca03dcb7d3a31bcc4bdb30c5172530d3f1f36505&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1061,
+  "forks": 106,
+  "topics": [
+    "cli",
+    "ansi",
+    "rang",
+    "cpp",
+    "cpp11",
+    "console",
+    "command-line",
+    "color",
+    "terminal",
+    "cpp14",
+    "cpp17",
+    "cplusplus",
+    "cpp-library"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/draco",
+  "name": "google/draco",
+  "stars": 3902,
+  "topics": [
+    "point-cloud",
+    "3d-graphics",
+    "compression",
+    "mesh"
+  ],
+  "description": "Draco is a library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-31T15:33:59Z",
+  "updatedUpstream": "2021-01-13T19:51:40Z"
+}

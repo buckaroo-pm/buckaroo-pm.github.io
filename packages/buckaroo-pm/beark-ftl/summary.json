@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/beark-ftl",
+  "name": "beark/ftl",
+  "stars": 971,
+  "topics": [],
+  "description": "C++ template library for fans of functional programming",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T13:10:29Z",
+  "updatedUpstream": "2021-01-07T15:02:59Z"
+}

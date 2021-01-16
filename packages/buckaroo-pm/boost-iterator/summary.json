@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-iterator",
+  "name": "boostorg/iterator",
+  "stars": 11,
+  "topics": [],
+  "description": "Boost.org iterator module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 9
+    }
+  ],
+  "updated": "2018-11-13T15:31:45Z",
+  "updatedUpstream": "2020-10-14T09:16:00Z"
+}

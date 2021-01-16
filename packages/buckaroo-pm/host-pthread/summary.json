@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-pthread",
+  "name": "buckaroo-pm/host-pthread",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for the host's pthread implementation",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-08T10:15:26Z",
+  "updatedUpstream": "2018-12-08T10:15:26Z"
+}

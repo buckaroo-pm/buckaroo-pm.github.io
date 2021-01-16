@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-filesystem",
+  "name": "boostorg/filesystem",
+  "stars": 100,
+  "topics": [],
+  "description": "Boost.org filesystem module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 17,
+      "transitive": 54
+    }
+  ],
+  "updated": "2018-11-16T14:30:12Z",
+  "updatedUpstream": "2021-01-06T00:36:27Z"
+}

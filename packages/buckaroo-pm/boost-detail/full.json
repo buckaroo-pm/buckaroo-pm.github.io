@@ -1,0 +1,159 @@
+{
+  "packageName": "buckaroo-pm/boost-detail",
+  "name": "boostorg/detail",
+  "licence": "",
+  "description": "Boost.org detail module",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:type_traits\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"82e2c26e1b364f57e4ec932713f4921857068f2772482939aa8a4865f868248f\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\ntarget = \"//:type_traits\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"ad9027758ba695c4285425eb73c8989d132b650d\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_traits\"]\nversions = [ \"branch=master\" ]\nrevision = \"a7b59d0f1a851b1a9166a5340be55886eb6026b1\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'detail',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)",
+      "bazel": "cc_library(\n  name = \"detail\",\n  includes = [\n    \"include\",\n  ],\n  hdrs = glob([\n    \"include/**/*.hpp\",\n  ]),\n  visibility = [\n    '//visibility:public',\n  ],\n)\n",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "ad9027758ba695c4285425eb73c8989d132b650d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a7b59d0f1a851b1a9166a5340be55886eb6026b1"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-07-03T12:04:05Z",
+  "updatedUpstream": "2020-05-23T16:04:19Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "dabrahams",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/44065?v=4"
+    },
+    {
+      "login": "straszheim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/75593?v=4"
+    },
+    {
+      "login": "swatanabe",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/82176?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "brycelelbach",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/398194?u=2513466c85f4da25eaab9b4f2ffadb19167067a5&v=4"
+    },
+    {
+      "login": "hkaiser",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/568063?v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "viboes",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/721225?u=6cbc039c5c34787eb42ea66792563936f948c1d3&v=4"
+    },
+    {
+      "login": "timblechmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/792880?v=4"
+    },
+    {
+      "login": "ChrisJefferson",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/811527?v=4"
+    },
+    {
+      "login": "igaztanaga",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/931338?v=4"
+    },
+    {
+      "login": "kirkshoop",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/982716?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "turkanis",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1216968?u=04985169d5e8ebb0e4b5b2949f09a4bc969f3f21&v=4"
+    },
+    {
+      "login": "DanielaE",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1381823?v=4"
+    },
+    {
+      "login": "Lastique",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1589747?v=4"
+    },
+    {
+      "login": "robertramey",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1970652?u=7bc7db910fa799747cb58c6eda3150f06cecf58e&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 5,
+  "forks": 38,
+  "topics": []
+}

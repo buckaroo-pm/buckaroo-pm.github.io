@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/dropbox-json11",
+  "name": "dropbox/json11",
+  "stars": 2112,
+  "topics": [],
+  "description": "A tiny JSON library for C++11.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v1.0.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-15T16:37:50Z",
+  "updatedUpstream": "2021-01-12T12:54:03Z"
+}

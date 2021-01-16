@@ -1,0 +1,123 @@
+{
+  "packageName": "buckaroo-pm/boost-mp11",
+  "name": "boostorg/mp11",
+  "licence": "",
+  "description": "C++11 metaprogramming library",
+  "readme": "# Mp11, a C++11 metaprogramming library\n\nMp11 is a C++11 metaprogramming library based on template aliases and variadic templates.\nIt implements the approach outlined in the article\n[\"Simple C++11 metaprogramming\"](http://pdimov.com/cpp2/simple_cxx11_metaprogramming.html)\nand [its sequel](http://pdimov.com/cpp2/simple_cxx11_metaprogramming_2.html).\n\nMp11 is part of [Boost](http://boost.org/libs/mp11), starting with release 1.66.0. It\nhowever has no Boost dependencies and can be used standalone, as a Git submodule, for\ninstance. For CMake users, `add_subdirectory` is supported, as is installation and\n`find_package(BoostMp11)`.\n\n## Supported compilers\n\n* g++ 4.7 or later\n* clang++ 3.3 or later\n* Visual Studio 2013, 2015, 2017\n\nTested on [Travis](https://travis-ci.org/boostorg/mp11/) and [Appveyor](https://ci.appveyor.com/project/pdimov/mp11/).\n\n## License\n\nDistributed under the [Boost Software License, Version 1.0](http://boost.org/LICENSE_1_0.txt).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:mp11\" ]",
+      "lockFile": "manifest = \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'mp11',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-12T12:34:09Z",
+  "updatedUpstream": "2020-12-26T19:18:54Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "breese",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/241540?u=39596c4e2a21bb55d1555bdc20d05e5009c42c27&v=4"
+    },
+    {
+      "login": "theZiz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/385145?u=fb0a0998230e88b46629d3a7987f35a1b7ee1ad3&v=4"
+    },
+    {
+      "login": "slymz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/613314?v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "ax3l",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1353258?u=5bf40e16b963cf080bc0d3a1a0e0192dbd80d422&v=4"
+    },
+    {
+      "login": "DanielaE",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1381823?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    },
+    {
+      "login": "jzmaddock",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5011768?v=4"
+    },
+    {
+      "login": "foonathan",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/9192733?v=4"
+    },
+    {
+      "login": "vahtis",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10445226?v=4"
+    },
+    {
+      "login": "D-Barber",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/12411743?v=4"
+    },
+    {
+      "login": "zerotypos-found",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/14864931?v=4"
+    },
+    {
+      "login": "inobelar",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/20372668?u=8a510a081dd7181fd97098a04ae20a1ee0aca67b&v=4"
+    },
+    {
+      "login": "kris-jusiak",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/21334955?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 148,
+  "forks": 30,
+  "topics": []
+}

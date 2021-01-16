@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/host-rt",
+  "name": "buckaroo-pm/host-rt",
+  "licence": "",
+  "description": " Buck wrapper for the host's rt implementation ",
+  "readme": "# host-rt\n\n Buck wrapper for the host's rt implementation \n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:rt\" ]\n",
+      "lockFile": "",
+      "buck": "prebuilt_cxx_library(\n  name = 'rt', \n  header_namespace = '', \n  header_only = True, \n  exported_linker_flags = [\n    '-lrt', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-14T11:27:33Z",
+  "updatedUpstream": "2019-01-14T11:27:33Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/lewissbaker-cppcoro",
+  "name": "lewissbaker/cppcoro",
+  "stars": 1533,
+  "topics": [
+    "coroutines",
+    "cplusplus",
+    "asynchronous-programming",
+    "async-await",
+    "coroutines-ts",
+    "windows",
+    "msvc",
+    "clang",
+    "cpp",
+    "async",
+    "asyncio",
+    "linux"
+  ],
+  "description": "A library of C++ coroutine abstractions for the coroutines TS",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-19T10:52:46Z",
+  "updatedUpstream": "2021-01-13T12:24:15Z"
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/martinmoene-gsl-lite",
+  "name": "gsl-lite/gsl-lite",
+  "stars": 607,
+  "topics": [
+    "gsl",
+    "cpp98",
+    "cpp11",
+    "cpp14",
+    "cpp17",
+    "header-only",
+    "single-file",
+    "gsl-implementations",
+    "no-dependencies"
+  ],
+  "description": "gsl lite - A single-file header-only version of ISO C++ Guideline Support Library (GSL) for C++98, C++11 and later",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2020-01-24T12:32:26Z",
+  "updatedUpstream": "2021-01-04T12:48:29Z"
+}

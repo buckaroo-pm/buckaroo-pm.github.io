@@ -1,0 +1,104 @@
+{
+  "packageName": "buckaroo-pm/khizmax-libcds",
+  "name": "khizmax/libcds",
+  "licence": "BSL-1.0",
+  "description": "A C++ library of Concurrent Data Structures",
+  "readme": "CDS C++ library\r\n===============\r\n[![GitHub version](https://badge.fury.io/gh/khizmax%2Flibcds.svg)](http://badge.fury.io/gh/khizmax%2Flibcds)\r\n[![License](https://img.shields.io/:license-boost-blue.svg?style=round-square)](https://github.com/khizmax/libcds/blob/master/LICENSE)\r\n[![Build Status](https://travis-ci.org/khizmax/libcds.svg?branch=dev)](https://travis-ci.org/khizmax/libcds)\r\n[![Build status](https://ci.appveyor.com/api/projects/status/github/khizmax/libcds?branch=dev&svg=true)](https://ci.appveyor.com/project/khizmax/libcds)\r\n\r\n<!---\r\nThe coverity dataset is about 4G of size and about 1G in compressed state so it is a problem to upload it to the coverity server\r\n[![Coverity Scan Build Status](https://scan.coverity.com/projects/4445/badge.svg)](https://scan.coverity.com/projects/4445)\r\n-->\r\n\r\nThe Concurrent Data Structures (CDS) library is a collection of concurrent containers\r\nthat don't require external (manual) synchronization for shared access, and safe memory reclamation (SMR) \r\nalgorithms like [Hazard Pointer](http://en.wikipedia.org/wiki/Hazard_pointer) \r\nand user-space [RCU](http://en.wikipedia.org/wiki/Read-copy-update) that is used as an epoch-based SMR.\r\n\r\nCDS is mostly header-only template library. Only SMR core implementation is segregated to .so/.dll file.\r\n\r\nThe library contains the implementations of the following containers:\r\n  - [lock-free](http://en.wikipedia.org/wiki/Non-blocking_algorithm) stack with optional elimination support\r\n  - several algo for lock-free queue, including classic Michael & Scott algorithm and its derivatives,\r\n    the flat combining queue, the segmented queue.\r\n  - several implementation of unordered set/map - lock-free and fine-grained lock-based\r\n  - [flat-combining](http://mcg.cs.tau.ac.il/projects/projects/flat-combining) technique\r\n  - lock-free [skip-list](http://en.wikipedia.org/wiki/Skip_list)\r\n  - lock-free FeldmanHashMap/Set [Multi-Level Array Hash](http://samos-conference.com/Resources_Samos_Websites/Proceedings_Repository_SAMOS/2013/Files/2013-IC-20.pdf)\r\n    with thread-safe bidirectional iterator support\r\n  - Bronson's et al algorithm for fine-grained lock-based AVL tree\r\n  \r\nGenerally, each container has an intrusive and non-intrusive (STL-like) version belonging to \r\n*cds::intrusive* and *cds::container* namespace respectively. \r\n\r\nVersion 2.x of the library is written on C++11 and can be compiled by GCC 4.8+, clang 3.6+, Intel C++ 15+, \r\nand MS VC++ 14 (2015) and above\r\n\r\nDownload the latest release from http://sourceforge.net/projects/libcds/files/\r\n\r\nSee online doxygen-generated doc here: http://libcds.sourceforge.net/doc/cds-api/index.html\r\n\r\nEvolution of libcds (Gource visualization by Landon Wilkins): https://www.youtube.com/watch?v=FHaJvVdmJ0w\r\n\r\n**How to build**\r\n   - *nix: [use CMake](build/cmake/readme.md)\r\n   - Windows: use MS Visual C++ 2017 project\r\n\r\nSome parts of libcds may depend on DCAS (double-width compare-and-swap) atomic primitive if\r\nthe target architecture supports it. For x86, cmake build script enables `-mcx16` compiler flag that\r\nswitches DCAS support on. You may manually disable DCAS support with the following command line flags\r\nin GCC/clang (for MS VC++ compiler DCAS is not supported):\r\n  - `-DCDS_DISABLE_128BIT_ATOMIC` - for 64bit build\r\n  - `-DCDS_DISABLE_64BIT_ATOMIC` - for 32bit build\r\n\r\n**All your projects AND libcds MUST be compiled with the same flags - either with DCAS support or without it.**\r\n   \r\n   \r\n**Pull request requirements**\r\n- Pull-request to *master* branch will be unconditionally rejected\r\n- *integration* branch is intended for pull-request. Usually, *integration* branch is the same as *master*\r\n- *dev* branch is intended for main developing. Usually, it contains unstable code\r\n\r\n[![Project stats](https://www.openhub.net/p/khizmax-libcds/widgets/project_thin_badge.gif)](https://www.openhub.net/p/khizmax-libcds)\r\n\r\nReferences\r\n----------\r\n*Stack*\r\n  - *TreiberStack*: [1986] R. K. Treiber. Systems programming: Coping with parallelism. Technical Report RJ 5118, IBM Almaden Research Center, April 1986.\r\n  - Elimination back-off implementation is based on idea from [2004] Danny Hendler, Nir Shavit, Lena Yerushalmi \"A Scalable Lock-free Stack Algorithm\"\r\n        [pdf](http://people.csail.mit.edu/shanir/publications/Lock_Free.pdf)\r\n  - *FCStack* - flat-combining wrapper for *std::stack*\r\n        \r\n*Queue*\r\n  - *BasketQueue*: [2007] Moshe Hoffman, Ori Shalev, Nir Shavit \"The Baskets Queue\"\r\n        [pdf](http://people.csail.mit.edu/shanir/publications/Baskets%20Queue.pdf)\r\n  - *MSQueue*:\r\n    * [1998] Maged Michael, Michael Scott \"Simple, fast, and practical non-blocking and blocking concurrent queue algorithms\"\r\n        [pdf](http://www.cs.rochester.edu/~scott/papers/1996_PODC_queues.pdf)\r\n    * [2002] Maged M.Michael \"Safe memory reclamation for dynamic lock-free objects using atomic reads and writes\"\r\n        [pdf](http://www.research.ibm.com/people/m/michael/podc-2002.pdf)\r\n    * [2003] Maged M.Michael \"Hazard Pointers: Safe memory reclamation for lock-free objects\"\r\n        [pdf](http://www.research.ibm.com/people/m/michael/ieeetpds-2004.pdf)\r\n  - *RWQueue*: [1998] Maged Michael, Michael Scott \"Simple, fast, and practical non-blocking and blocking concurrent queue algorithms\"\r\n        [pdf](http://www.cs.rochester.edu/~scott/papers/1996_PODC_queues.pdf)\r\n  - *MoirQueue*: [2000] Simon Doherty, Lindsay Groves, Victor Luchangco, Mark Moir \"Formal Verification of a practical lock-free queue algorithm\"\r\n        [pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.9954&rep=rep1&type=pdf)\r\n  - *OptimisticQueue*: [2008] Edya Ladan-Mozes, Nir Shavit \"An Optimistic Approach to Lock-Free FIFO Queues\"\r\n        [pdf](https://people.csail.mit.edu/edya/publications/OptimisticFIFOQueue-journal.pdf)\r\n  - *SegmentedQueue*: [2010] Afek, Korland, Yanovsky \"Quasi-Linearizability: relaxed consistency for improved concurrency\"\r\n        [pdf](http://mcg.cs.tau.ac.il/papers/opodis2010-quasi.pdf)\r\n  - *FCQueue* - flat-combining wrapper for *std::queue*\r\n  - *VyukovMPMCCycleQueue* Dmitry Vyukov (see http://www.1024cores.net)\r\n\r\n*Deque*\r\n  - flat-combining deque based on *stl::deque*\r\n\r\n*Map, set*\r\n  - *MichaelHashMap*: [2002] Maged Michael \"High performance dynamic lock-free hash tables and list-based sets\"\r\n        [pdf](http://www.research.ibm.com/people/m/michael/spaa-2002.pdf)\r\n  - *SplitOrderedList*: [2003] Ori Shalev, Nir Shavit \"Split-Ordered Lists - Lock-free Resizable Hash Tables\"\r\n        [pdf](http://people.csail.mit.edu/shanir/publications/Split-Ordered_Lists.pdf)\r\n  - *StripedMap*, *StripedSet*: [2008] Maurice Herlihy, Nir Shavit \"The Art of Multiprocessor Programming\"\r\n  - *CuckooMap*, *CuckooSet*: [2008] Maurice Herlihy, Nir Shavit \"The Art of Multiprocessor Programming\"\r\n  - *SkipListMap*, *SkipListSet*: [2008] Maurice Herlihy, Nir Shavit \"The Art of Multiprocessor Programming\"\r\n  - *FeldmanHashMap*, *FeldmanHashSet*: [2013] Steven Feldman, Pierre LaBorde, Damian Dechev \"Concurrent Multi-level Arrays:\r\n        Wait-free Extensible Hash Maps\". Supports **thread-safe bidirectional iterators**\r\n        [pdf](http://samos-conference.com/Resources_Samos_Websites/Proceedings_Repository_SAMOS/2013/Files/2013-IC-20.pdf)\r\n        \r\n*Ordered single-linked list*\r\n  - *LazyList*: [2005] Steve Heller, Maurice Herlihy, Victor Luchangco, Mark Moir, William N. Scherer III, and Nir Shavit \"A Lazy Concurrent List-Based Set Algorithm\"\r\n        [pdf](http://people.csail.mit.edu/shanir/publications/Lazy_Concurrent.pdf)\r\n  - *MichaelList*: [2002] Maged Michael \"High performance dynamic lock-free hash tables and list-based sets\"\r\n        [pdf](http://www.research.ibm.com/people/m/michael/spaa-2002.pdf)\r\n\r\n*Priority queue*\r\n  - *MSPriorityQueue*: [1996] G.Hunt, M.Michael, S. Parthasarathy, M.Scott \"An efficient algorithm for concurrent priority queue heaps\"\r\n        [pdf](http://web.cse.ohio-state.edu/dmrl/papers/heap96.pdf)\r\n\r\n*Tree*\r\n  - *EllenBinTree*: [2010] F.Ellen, P.Fatourou, E.Ruppert, F.van Breugel \"Non-blocking Binary Search Tree\"\r\n        [pdf](http://www.cs.vu.nl/~tcs/cm/faith.pdf)\r\n  - *BronsonAVLTreeMap* - lock-based fine-grained AVL-tree implementation: \r\n        [2010] Nathan Bronson, Jared Casper, Hassan Chafi, Kunle Olukotun \"A Practical Concurrent Binary Search Tree\"\r\n        [pdf](https://ppl.stanford.edu/papers/ppopp207-bronson.pdf)\r\n\r\n*SMR*\r\n  - Hazard Pointers\r\n    * [2002] Maged M.Michael \"Safe memory reclamation for dynamic lock-free objects using atomic reads and writes\" \r\n             [pdf](http://www.research.ibm.com/people/m/michael/podc-2002.pdf)\r\n    * [2003] Maged M.Michael \"Hazard Pointers: Safe memory reclamation for lock-free objects\" \r\n             [pdf](http://www.research.ibm.com/people/m/michael/ieeetpds-2004.pdf)\r\n    * [2004] Andrei Alexandrescy, Maged Michael \"Lock-free Data Structures with Hazard Pointers\" \r\n             [pdf](http://www.researchgate.net/profile/Andrei_Alexandrescu/publication/252573326_Lock-Free_Data_Structures_with_Hazard_Pointers/links/0deec529e7804288fe000000.pdf)\r\n  - User-space RCU\r\n    * [2009] M.Desnoyers \"Low-Impact Operating System Tracing\" PhD Thesis,\r\n             Chapter 6 \"User-Level Implementations of Read-Copy Update\"\r\n             [pdf](http://www.lttng.org/files/thesis/desnoyers-dissertation-2009-12-v27.pdf)\r\n    * [2011] M.Desnoyers, P.McKenney, A.Stern, M.Dagenias, J.Walpole \"User-Level\r\n             Implementations of Read-Copy Update\"\r\n             [pdf](http://www.dorsal.polymtl.ca/sites/www.dorsal.polymtl.ca/files/publications/desnoyers-ieee-urcu-submitted.pdf)\r\n\r\n*Flat Combining* technique\r\n  - [2010] Hendler, Incze, Shavit and Tzafrir \"Flat Combining and the Synchronization-Parallelism Tradeoff\"\r\n            [pdf](http://www.cs.bgu.ac.il/~hendlerd/papers/flat-combining.pdf)\r\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:cds\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\nversion = \"branch=master\"\nprivate = true\n",
+      "lockFile": "manifest = \"cdb12821ae5a66b870461f9fc47e565107a26844a842b54e803aa59a3d174fe7\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\ntarget = \"//:googletest\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/google-googletest\"\nversion = \"branch=master\"\nrevision = \"cb8d2c1a2fcd344953e6c129a1a699a2c230551d\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'cds',\n  header_namespace = 'cds',\n  exported_headers = subdir_glob([\n    ('cds', '**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.cpp',\n  ]),\n  compiler_flags = [\n    '-std=c++14',\n  ],\n  visibility = [\n    'PUBLIC',\n  ]\n)\n\ncxx_test(\n  name = 'misc-only',\n  deps = [':cds'] + buckaroo_deps(),\n  srcs = glob([\n   'test/unit/main.cpp',\n   'test/unit/misc/*.cpp'\n  ]),\n  headers = subdir_glob([\n    ('test/unit', '**/*.h'),\n    ('test/include', '**/*.h')\n  ])\n)\n\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "0",
+          "name": "0",
+          "spec": {
+            "name": "github.com/buckaroo-pm/google-googletest",
+            "version": "branch=master",
+            "revision": "cb8d2c1a2fcd344953e6c129a1a699a2c230551d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-24T12:13:13Z",
+  "updatedUpstream": "2021-01-13T18:31:07Z",
+  "contributors": [
+    {
+      "login": "toddlipcon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/14135?u=4f9d4bdacdb9d688e6e419b0b6994d02bee102f8&v=4"
+    },
+    {
+      "login": "khegeman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/488514?v=4"
+    },
+    {
+      "login": "eugenyk",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/667552?v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "biddisco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/941548?u=7c3c1406d6ca0a8a1222c2dd58b0919bc516ae4f&v=4"
+    },
+    {
+      "login": "krinkinmu",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1177715?v=4"
+    },
+    {
+      "login": "isaachier",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2578297?u=4de5d18b468b4e0b7cb723228c40ab7fa9532c01&v=4"
+    },
+    {
+      "login": "nemothenoone",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2765860?v=4"
+    },
+    {
+      "login": "lukas-w",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2879917?v=4"
+    },
+    {
+      "login": "khizmax",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7014966?u=44e6f159dbde85da7450d09fc980de4f78c5ba42&v=4"
+    },
+    {
+      "login": "mgalimullin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10575578?v=4"
+    },
+    {
+      "login": "Krock21rus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/14953722?v=4"
+    },
+    {
+      "login": "codacy-badger",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/23704769?u=21e928698454bf73cc4411e14226b3847d39703a&v=4"
+    },
+    {
+      "login": "NancyLi1013",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/46708020?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1758,
+  "forks": 292,
+  "topics": [
+    "lock-free",
+    "containers",
+    "hazard-pointer",
+    "rcu"
+  ]
+}

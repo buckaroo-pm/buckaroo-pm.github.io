@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/skeeto-pdjson",
+  "name": "skeeto/pdjson",
+  "stars": 175,
+  "topics": [],
+  "description": "C JSON parser library that doesn't suck",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-28T21:16:35Z",
+  "updatedUpstream": "2021-01-01T11:19:09Z"
+}

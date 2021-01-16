@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pcre",
+  "name": "nikhedonia/pcre-1",
+  "stars": 0,
+  "topics": [],
+  "description": "Mirror of pcre",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-06T19:34:08Z",
+  "updatedUpstream": "2018-06-07T20:06:52Z"
+}

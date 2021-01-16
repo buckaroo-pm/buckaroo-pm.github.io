@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/boost-spirit",
+  "name": "boostorg/spirit",
+  "stars": 251,
+  "topics": [
+    "spirit",
+    "boost",
+    "c-plus-plus",
+    "cpp",
+    "parser-combinators"
+  ],
+  "description": "Boost.org spirit module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 15,
+      "transitive": 29
+    }
+  ],
+  "updated": "2018-11-14T16:40:58Z",
+  "updatedUpstream": "2021-01-09T12:51:33Z"
+}

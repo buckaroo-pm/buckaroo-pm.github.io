@@ -1,0 +1,27 @@
+{
+  "packageName": "buckaroo-pm/skypjack-uvw",
+  "name": "skypjack/uvw",
+  "stars": 1182,
+  "topics": [
+    "libuv",
+    "header-only",
+    "wrapper",
+    "uvw",
+    "event-loop",
+    "modern-cpp",
+    "cpp",
+    "cpp17"
+  ],
+  "description": "Header-only, event based, tiny and easy to use libuv wrapper in modern C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-01-22T16:59:49Z",
+  "updatedUpstream": "2021-01-13T20:15:52Z"
+}

@@ -1,0 +1,132 @@
+{
+  "packageName": "buckaroo-pm/xiph-ogg",
+  "name": "xiph/ogg",
+  "licence": "NOASSERTION",
+  "description": "Reference implementation of the Ogg media container",
+  "readme": "# Ogg\n\n[![Travis Build Status](https://travis-ci.org/xiph/ogg.svg?branch=master)](https://travis-ci.org/xiph/ogg)\n[![Jenkins Build Status](https://mf4.xiph.org/jenkins/job/libogg/badge/icon)](https://mf4.xiph.org/jenkins/job/libogg/)\n[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/xiph/ogg?branch=master&svg=true)](https://ci.appveyor.com/project/rillian/ogg)\n\nOgg project codecs use the Ogg bitstream format to arrange the raw,\ncompressed bitstream into a more robust, useful form. For example,\nthe Ogg bitstream makes seeking, time stamping and error recovery\npossible, as well as mixing several sepearate, concurrent media\nstreams into a single physical bitstream.\n\n## What's here ##\nThis source distribution includes libogg and nothing else. Other modules\n(eg, the modules libvorbis, vorbis-tools for the Vorbis music codec,\nlibtheora for the Theora video codec) contain the codec libraries for\nuse with Ogg bitstreams.\n\nDirectory:\n\n- `src` The source for libogg, a BSD-license inplementation of the public domain Ogg bitstream format\n\n- `include` Library API headers\n\n- `doc` Ogg specification and libogg API documents\n\n- `win32` Win32 projects and build automation\n\n- `macosx` Mac OS X project and build files\n\n## Contact ##\n\nThe Ogg homepage is located at https://www.xiph.org/ogg/ .\nUp to date technical documents, contact information, source code and\npre-built utilities may be found there.\n\n## Building ##\n\n#### Building from tarball distributions ####\n\n    ./configure\n    make\n\nand optionally (as root):\n\n    make install\n\nThis will install the Ogg libraries (static and shared) into\n/usr/local/lib, includes into /usr/local/include and API\ndocumentation into /usr/local/share/doc.\n\n#### Building from repository source ####\n\nA standard svn build should consist of nothing more than:\n\n    ./autogen.sh\n    ./configure\n    make\n\nand as root if desired :\n\n    make install\n\n#### Building on Windows ####\n\nUse the project file in the win32 directory. It should compile out of the box.\n\n#### Cross-compiling from Linux to Windows ####\n\nIt is also possible to cross compile from Linux to windows using the MinGW\ncross tools and even to run the test suite under Wine, the Linux/*nix\nwindows emulator.\n\nOn Debian and Ubuntu systems, these cross compiler tools can be installed\nby doing:\n\n    sudo apt-get mingw32 mingw32-binutils mingw32-runtime wine\n\nOnce these tools are installed its possible to compile and test by\nexecuting the following commands, or something similar depending on\nyour system:\n\n    ./configure --host=i586-mingw32msvc --target=i586-mingw32msvc --build=i586-linux\n    make\n    make check\n\n(Build instructions for Ogg codecs such as vorbis are similar and may\nbe found in those source modules' README files)\n\n## Building with CMake ##\n\nOgg supports building using [CMake](http://www.cmake.org/). CMake is a meta build system that generates native projects for each platform.\nTo generate projects just run cmake replacing `YOUR-PROJECT-GENERATOR` with a proper generator from a list [here](http://www.cmake.org/cmake/help/v3.2/manual/cmake-generators.7.html):\n\n    cmake -G YOUR-PROJECT-GENERATOR .\n\nNote that by default cmake generates projects that will build static libraries.\nTo generate projects that will build dynamic library use `BUILD_SHARED_LIBS` option like this:\n\n    cmake -G YOUR-PROJECT-GENERATOR -DBUILD_SHARED_LIBS=1 .\n\nAfter projects are generated use them as usual\n\n#### Building on Windows ####\n\nUse proper generator for your Visual Studio version like:\n\n    cmake -G \"Visual Studio 12 2013\" .\n\n#### Building on Mac OS X ####\n\nUse Xcode generator. To build framework run:\n\n    cmake -G Xcode -DBUILD_FRAMEWORK=1 .\n\n#### Building on Linux ####\n\nUse Makefile generator which is default one.\n\n    cmake .\n    make\n\n## License ##\n\nTHIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.\nUSE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS\nGOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE\nIN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.\n\nTHE OggVorbis SOURCE CODE IS COPYRIGHT (C) 1994-2015\nby the Xiph.Org Foundation https://www.xiph.org/\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:ogg\" ]",
+      "lockFile": "manifest = \"4ed2c6c92ec7266e7345f954c2c6e0a683b6163592a2bfa3c92069ac7bec8098\"\n\n",
+      "buck": "cxx_library(\n  name = 'ogg',\n  header_namespace = '',\n  exported_headers = {\n    'ogg/ogg.h': 'include/ogg/ogg.h',\n    'ogg/os_types.h': 'include/ogg/os_types.h',\n  },\n  exported_platform_headers = [\n    ('default.*', {\n      'ogg/config_types.h': 'include/ogg/config_types.linux.h',\n    }),\n    ('linux.*', {\n      'ogg/config_types.h': 'include/ogg/config_types.linux.h',\n    }),\n    ('macos.*', {\n      'ogg/config_types.h': 'include/ogg/config_types.macos.h',\n    }),\n  ],\n  platform_headers = [\n    ('macos.*', {\n      'config.h': 'config.macos.h',\n    }),\n  ],\n  srcs = glob([\n    'src/*.c',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "genrule(\n  name = \"config\",\n  srcs = select({\n    \"@bazel_tools//src/conditions:linux_x86_64\": [\n      \"include/ogg/config_types.linux.h\",\n    ],\n    \"@bazel_tools//src/conditions:darwin_x86_64\": [\n      \"include/ogg/config_types.macos.h\",\n    ],\n    \"//conditions:default\": [\n      \"include/ogg/config_types.linux.h\",\n    ],\n  }),\n  outs = [\n    \"include/ogg/config_types.h\",\n  ],\n  cmd = \"cp $< $@\",\n)\n\ncc_library(\n  name = \"ogg\",\n  includes = [\n    \"include\",\n  ],\n  hdrs = glob([\n    \"include/**/*.h\",\n  ]) + [\n    \":config\",\n  ],\n  srcs = glob([\n    \"src/**/*.h\",\n    \"src/**/*.c\",\n  ]),\n  visibility = [\n    \"//visibility:public\",\n  ],\n)\n",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-09-16T16:06:50Z",
+  "updatedUpstream": "2021-01-13T13:22:01Z",
+  "contributors": [
+    {
+      "login": "stopiccot",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/24836?u=5e545c5382f361bcea8ce0db3e79024cf405f927&v=4"
+    },
+    {
+      "login": "metajack",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/28357?u=83e28aabcefc43345d562e0a33efd6001526e7bf&v=4"
+    },
+    {
+      "login": "ubitux",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/34467?v=4"
+    },
+    {
+      "login": "smarter",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/63430?v=4"
+    },
+    {
+      "login": "tmatth",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/66862?u=0aca7feea4c09a991f63370b5edd183e3cc5b8ac&v=4"
+    },
+    {
+      "login": "adrianbroher",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/84891?v=4"
+    },
+    {
+      "login": "brion",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/103075?v=4"
+    },
+    {
+      "login": "wiiaboo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/111605?v=4"
+    },
+    {
+      "login": "rossy",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/162837?u=18f94fd43961a8fe566def6f57212fd1c81601e6&v=4"
+    },
+    {
+      "login": "bemasc",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/191945?u=1f9a6d2d2eaa6ced7421b3e14d3253198de16d37&v=4"
+    },
+    {
+      "login": "rillian",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/225102?v=4"
+    },
+    {
+      "login": "negge",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/280940?v=4"
+    },
+    {
+      "login": "erikd",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/307277?v=4"
+    },
+    {
+      "login": "mbebenita",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/311082?v=4"
+    },
+    {
+      "login": "ePirat",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/323210?u=abaabc5aae49143e22f3c2d3a7525c302f855b18&v=4"
+    },
+    {
+      "login": "jmvalin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/345545?v=4"
+    },
+    {
+      "login": "vividos",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/429902?v=4"
+    },
+    {
+      "login": "mlrsmithold",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/679115?v=4"
+    },
+    {
+      "login": "bradc6",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/819300?v=4"
+    },
+    {
+      "login": "gmaxwell",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/858454?u=63e5c438c242094837a9deeda775d77988b508bf&v=4"
+    },
+    {
+      "login": "tterribe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/887194?v=4"
+    },
+    {
+      "login": "suhasHere",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/947528?u=8341cb48ac1f1f74189011396a96a789ee8790b8&v=4"
+    },
+    {
+      "login": "gcp",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1104290?v=4"
+    },
+    {
+      "login": "stephengroat",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1159138?u=5dfa8464ae8884695e3214800085ac02a5da9283&v=4"
+    },
+    {
+      "login": "tdaede",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1308314?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 190,
+  "forks": 104,
+  "topics": [
+    "ogg-bitstream",
+    "libogg",
+    "codecs",
+    "ogg"
+  ]
+}

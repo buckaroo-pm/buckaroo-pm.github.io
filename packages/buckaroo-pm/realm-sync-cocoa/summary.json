@@ -1,0 +1,32 @@
+{
+  "packageName": "buckaroo-pm/realm-sync-cocoa",
+  "name": "buckaroo-pm/realm-sync-cocoa",
+  "stars": 0,
+  "topics": [],
+  "description": null,
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "3.14.12",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "3.13.3",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-02-21T22:38:16Z",
+  "updatedUpstream": "2019-02-21T22:38:16Z"
+}

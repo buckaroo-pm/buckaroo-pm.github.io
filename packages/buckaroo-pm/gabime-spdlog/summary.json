@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/gabime-spdlog",
+  "name": "gabime/spdlog",
+  "stars": 10639,
+  "topics": [
+    "header-only",
+    "cpp11",
+    "cpp",
+    "logging",
+    "spdlog"
+  ],
+  "description": "Fast C++ logging library.",
+  "versions": [
+    {
+      "ref": "v1.4.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-10-04T19:57:04Z",
+  "updatedUpstream": "2021-01-13T16:19:33Z"
+}

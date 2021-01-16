@@ -1,0 +1,24 @@
+{
+  "packageName": "buckaroo-pm/jpcy-xatlas",
+  "name": "jpcy/xatlas",
+  "stars": 779,
+  "topics": [
+    "mesh",
+    "parameterization",
+    "lightmap",
+    "texture-atlas",
+    "uv"
+  ],
+  "description": "Mesh parameterization library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-20T16:16:42Z",
+  "updatedUpstream": "2021-01-13T08:08:56Z"
+}

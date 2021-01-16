@@ -1,0 +1,544 @@
+{
+  "packageName": "buckaroo-pm/boost-algorithm",
+  "name": "boostorg/algorithm",
+  "licence": "",
+  "description": "Boost.org algorithm module",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:algorithm\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-move\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-utility\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-static_assert\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-throw_exception\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-regex\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-iterator\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-exception\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-tuple\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-array\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-concept_check\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-range\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-unordered\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-function\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"d8ff67b4b0b141aa3ffab8f808794f824c08511e28381486957b4fdd771bf063\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-array\"\ntarget = \"//:array\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-assert\"\ntarget = \"//:assert\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-concept_check\"\ntarget = \"//:concept-check\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-config\"\ntarget = \"//:config\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-core\"\ntarget = \"//:core\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-detail\"\ntarget = \"//:detail\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-exception\"\ntarget = \"//:exception\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-function\"\ntarget = \"//:function\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-iterator\"\ntarget = \"//:iterator\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-move\"\ntarget = \"//:move\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-mpl\"\ntarget = \"//:mpl\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-range\"\ntarget = \"//:range\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-regex\"\ntarget = \"//:regex\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-static_assert\"\ntarget = \"//:static-assert\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-throw_exception\"\ntarget = \"//:throw-exception\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-tuple\"\ntarget = \"//:tuple\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-type_traits\"\ntarget = \"//:type-traits\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-unordered\"\ntarget = \"//:unordered\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/boost-utility\"\ntarget = \"//:utility\"\n\n[lock.\"github.com/buckaroo-pm/boost-align\"]\nversions = [ \"branch=master\" ]\nrevision = \"6da7695406e00e3f59c47f1b0a369710db6e51f8\"\n\n[lock.\"github.com/buckaroo-pm/boost-array\"]\nversions = [ \"branch=master\" ]\nrevision = \"33b398e1da5f9267d4c1e54df8651beaee611102\"\n\n[lock.\"github.com/buckaroo-pm/boost-assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"f9d6a7b63ef2902777b6078fdebc54e7a57aac03\"\n\n[lock.\"github.com/buckaroo-pm/boost-bind\"]\nversions = [ \"branch=master\" ]\nrevision = \"cfad39eb7381d02a0914f1c939140aa4f8195a1e\"\n\n[lock.\"github.com/buckaroo-pm/boost-concept_check\"]\nversions = [ \"branch=master\" ]\nrevision = \"a1412ec177bb12170fc64a174c55b31cfee853e7\"\n\n[lock.\"github.com/buckaroo-pm/boost-config\"]\nversions = [ \"branch=master\" ]\nrevision = \"4392ed19b232ed2dde7623843d7e30ef669d860e\"\n\n[lock.\"github.com/buckaroo-pm/boost-container_hash\"]\nversions = [ \"branch=master\" ]\nrevision = \"0b9332d4df895e1077bab8ee34473a8882bfedf5\"\n\n[lock.\"github.com/buckaroo-pm/boost-core\"]\nversions = [ \"branch=master\" ]\nrevision = \"84411b155dae6f08ea749bdeb1e71aecd0718d52\"\n\n[lock.\"github.com/buckaroo-pm/boost-detail\"]\nversions = [ \"branch=master\" ]\nrevision = \"e8b834a93f7ba935aa63a3d6690804f3bd2b0963\"\n\n[lock.\"github.com/buckaroo-pm/boost-exception\"]\nversions = [ \"branch=master\" ]\nrevision = \"c43bde6de716aeaa1958f523576599c384791da2\"\n\n[lock.\"github.com/buckaroo-pm/boost-function\"]\nversions = [ \"branch=master\" ]\nrevision = \"e4d9d72383b94eacc9d383da77ba2dcedf096543\"\n\n[lock.\"github.com/buckaroo-pm/boost-function_types\"]\nversions = [ \"branch=master\" ]\nrevision = \"fd648b89c18430fa4cb3622018cc99ba99412ffe\"\n\n[lock.\"github.com/buckaroo-pm/boost-functional\"]\nversions = [ \"branch=master\" ]\nrevision = \"c0c241d85df00f7f081180aec6711812136be89e\"\n\n[lock.\"github.com/buckaroo-pm/boost-integer\"]\nversions = [ \"branch=master\" ]\nrevision = \"43c7296e8513fcb9cda6e88396e863995c0d0cb5\"\n\n[lock.\"github.com/buckaroo-pm/boost-iterator\"]\nversions = [ \"branch=master\" ]\nrevision = \"6cf70fbf057ecbfec43013b7e39ef5011000798a\"\n\n[lock.\"github.com/buckaroo-pm/boost-move\"]\nversions = [ \"branch=master\" ]\nrevision = \"c50bef004827b93d7f60e3c53b8c9c3b54fa0084\"\n\n[lock.\"github.com/buckaroo-pm/boost-mpl\"]\nversions = [ \"branch=master\" ]\nrevision = \"a1873af9c1d31fb8ec2a87482b6bb9729439b4ac\"\n\n[lock.\"github.com/buckaroo-pm/boost-optional\"]\nversions = [ \"branch=master\" ]\nrevision = \"aa1d0a7f495d943570dfbd9ccc3e80aabe260fb7\"\n\n[lock.\"github.com/buckaroo-pm/boost-predef\"]\nversions = [ \"branch=master\" ]\nrevision = \"c52d78d2ae7cc323da79c23375b7efe8c2c8078d\"\n\n[lock.\"github.com/buckaroo-pm/boost-preprocessor\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064\"\n\n[lock.\"github.com/buckaroo-pm/boost-range\"]\nversions = [ \"branch=master\" ]\nrevision = \"2fcd53bd05419d4aedacacee1465f593433c15f0\"\n\n[lock.\"github.com/buckaroo-pm/boost-regex\"]\nversions = [ \"branch=master\" ]\nrevision = \"1db2ae17e5e5b188688bbab0fca61731b4d9d6d8\"\n\n[lock.\"github.com/buckaroo-pm/boost-smart_ptr\"]\nversions = [ \"branch=master\" ]\nrevision = \"894f4bae92fd47f51fa15a13247905195f914118\"\n\n[lock.\"github.com/buckaroo-pm/boost-static_assert\"]\nversions = [ \"branch=master\" ]\nrevision = \"fdc2df7f811436674a1c55c766b8830a8cd02e96\"\n\n[lock.\"github.com/buckaroo-pm/boost-throw_exception\"]\nversions = [ \"branch=master\" ]\nrevision = \"3951e0ca1d6b909bbc815858acbe2449c4a53eed\"\n\n[lock.\"github.com/buckaroo-pm/boost-tuple\"]\nversions = [ \"branch=master\" ]\nrevision = \"5548bd44b949ccd04331c4fb25b0bb3c9b0db0d8\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_index\"]\nversions = [ \"branch=master\" ]\nrevision = \"1ac6205cc64073c8142265daad63a7d734ead36e\"\n\n[lock.\"github.com/buckaroo-pm/boost-type_traits\"]\nversions = [ \"branch=master\" ]\nrevision = \"4d0a507c0d1a1011c5a98d57acc9f6b755141e4f\"\n\n[lock.\"github.com/buckaroo-pm/boost-typeof\"]\nversions = [ \"branch=master\" ]\nrevision = \"eb8685995412f4d637925d26525c9211379ff875\"\n\n[lock.\"github.com/buckaroo-pm/boost-unordered\"]\nversions = [ \"branch=master\" ]\nrevision = \"9cc71067825a32bfcd7249d607fcd5f895682502\"\n\n[lock.\"github.com/buckaroo-pm/boost-utility\"]\nversions = [ \"branch=master\" ]\nrevision = \"f04cf922658a7e03776631a96c3ad346ad179d5f\"\n\n[lock.\"github.com/buckaroo-pm/icu4c\"]\nversions = [ \"branch=master\" ]\nrevision = \"2bfbe715e2c1cd41e301b6a67fd50ae54273a504\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'algorithm',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-move",
+          "name": "buckaroo-pm/boost-move",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-utility",
+          "name": "buckaroo-pm/boost-utility",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-static_assert",
+          "name": "buckaroo-pm/boost-static_assert",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-throw_exception",
+          "name": "buckaroo-pm/boost-throw_exception",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-regex",
+          "name": "buckaroo-pm/boost-regex",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-iterator",
+          "name": "buckaroo-pm/boost-iterator",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-exception",
+          "name": "buckaroo-pm/boost-exception",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-tuple",
+          "name": "buckaroo-pm/boost-tuple",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-array",
+          "name": "buckaroo-pm/boost-array",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-concept_check",
+          "name": "buckaroo-pm/boost-concept_check",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-range",
+          "name": "buckaroo-pm/boost-range",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-unordered",
+          "name": "buckaroo-pm/boost-unordered",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-function",
+          "name": "buckaroo-pm/boost-function",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/boost-align",
+          "name": "buckaroo-pm/boost-align",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6da7695406e00e3f59c47f1b0a369710db6e51f8"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-array",
+          "name": "buckaroo-pm/boost-array",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "33b398e1da5f9267d4c1e54df8651beaee611102"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-assert",
+          "name": "buckaroo-pm/boost-assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f9d6a7b63ef2902777b6078fdebc54e7a57aac03"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-bind",
+          "name": "buckaroo-pm/boost-bind",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "cfad39eb7381d02a0914f1c939140aa4f8195a1e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-concept_check",
+          "name": "buckaroo-pm/boost-concept_check",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a1412ec177bb12170fc64a174c55b31cfee853e7"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-config",
+          "name": "buckaroo-pm/boost-config",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4392ed19b232ed2dde7623843d7e30ef669d860e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-container_hash",
+          "name": "buckaroo-pm/boost-container_hash",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "0b9332d4df895e1077bab8ee34473a8882bfedf5"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-core",
+          "name": "buckaroo-pm/boost-core",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "84411b155dae6f08ea749bdeb1e71aecd0718d52"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-detail",
+          "name": "buckaroo-pm/boost-detail",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "e8b834a93f7ba935aa63a3d6690804f3bd2b0963"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-exception",
+          "name": "buckaroo-pm/boost-exception",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "c43bde6de716aeaa1958f523576599c384791da2"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-function",
+          "name": "buckaroo-pm/boost-function",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "e4d9d72383b94eacc9d383da77ba2dcedf096543"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-function_types",
+          "name": "buckaroo-pm/boost-function_types",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "fd648b89c18430fa4cb3622018cc99ba99412ffe"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-functional",
+          "name": "buckaroo-pm/boost-functional",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "c0c241d85df00f7f081180aec6711812136be89e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-integer",
+          "name": "buckaroo-pm/boost-integer",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "43c7296e8513fcb9cda6e88396e863995c0d0cb5"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-iterator",
+          "name": "buckaroo-pm/boost-iterator",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "6cf70fbf057ecbfec43013b7e39ef5011000798a"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-move",
+          "name": "buckaroo-pm/boost-move",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "c50bef004827b93d7f60e3c53b8c9c3b54fa0084"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-mpl",
+          "name": "buckaroo-pm/boost-mpl",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "a1873af9c1d31fb8ec2a87482b6bb9729439b4ac"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-optional",
+          "name": "buckaroo-pm/boost-optional",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "aa1d0a7f495d943570dfbd9ccc3e80aabe260fb7"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-predef",
+          "name": "buckaroo-pm/boost-predef",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "c52d78d2ae7cc323da79c23375b7efe8c2c8078d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-preprocessor",
+          "name": "buckaroo-pm/boost-preprocessor",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d01d0f9c0ae3ae3cd20e3cbfddbc9909ce8e064"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-range",
+          "name": "buckaroo-pm/boost-range",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "2fcd53bd05419d4aedacacee1465f593433c15f0"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-regex",
+          "name": "buckaroo-pm/boost-regex",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "1db2ae17e5e5b188688bbab0fca61731b4d9d6d8"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-smart_ptr",
+          "name": "buckaroo-pm/boost-smart_ptr",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "894f4bae92fd47f51fa15a13247905195f914118"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-static_assert",
+          "name": "buckaroo-pm/boost-static_assert",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "fdc2df7f811436674a1c55c766b8830a8cd02e96"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-throw_exception",
+          "name": "buckaroo-pm/boost-throw_exception",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "3951e0ca1d6b909bbc815858acbe2449c4a53eed"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-tuple",
+          "name": "buckaroo-pm/boost-tuple",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "5548bd44b949ccd04331c4fb25b0bb3c9b0db0d8"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_index",
+          "name": "buckaroo-pm/boost-type_index",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "1ac6205cc64073c8142265daad63a7d734ead36e"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-type_traits",
+          "name": "buckaroo-pm/boost-type_traits",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "4d0a507c0d1a1011c5a98d57acc9f6b755141e4f"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-typeof",
+          "name": "buckaroo-pm/boost-typeof",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "eb8685995412f4d637925d26525c9211379ff875"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-unordered",
+          "name": "buckaroo-pm/boost-unordered",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "9cc71067825a32bfcd7249d607fcd5f895682502"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/boost-utility",
+          "name": "buckaroo-pm/boost-utility",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "f04cf922658a7e03776631a96c3ad346ad179d5f"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/icu4c",
+          "name": "buckaroo-pm/icu4c",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "2bfbe715e2c1cd41e301b6a67fd50ae54273a504"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-14T20:17:02Z",
+  "updatedUpstream": "2020-12-08T12:07:32Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "dabrahams",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/44065?v=4"
+    },
+    {
+      "login": "trel",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/55238?v=4"
+    },
+    {
+      "login": "straszheim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/75593?v=4"
+    },
+    {
+      "login": "kundor",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/75901?u=9311604e6f740cbad10c069d907732ba6bafb4ba&v=4"
+    },
+    {
+      "login": "swatanabe",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/82176?v=4"
+    },
+    {
+      "login": "tzlaine",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/82177?u=77ed0c2e28a50671a931f467242b7d0ddb22f821&v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "samuela",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/226872?u=77a7e7d5d716a64aa859dd02f3d5564848f4c0dc&v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "brycelelbach",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/398194?u=2513466c85f4da25eaab9b4f2ffadb19167067a5&v=4"
+    },
+    {
+      "login": "nigels-com",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/545677?u=aacb08b00d14a8168fbe831dd80639355a3db138&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "pabigot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/964298?v=4"
+    },
+    {
+      "login": "Belcourt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/964973?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "DanielaE",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1381823?v=4"
+    },
+    {
+      "login": "Lastique",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1589747?v=4"
+    },
+    {
+      "login": "apolukhin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1700098?u=5b39ca8e2b4d512395ce4254846fd6fc7de8c964&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 82,
+  "forks": 88,
+  "topics": []
+}

@@ -1,0 +1,159 @@
+{
+  "packageName": "buckaroo-pm/xml2",
+  "name": "GNOME/libxml2",
+  "licence": "NOASSERTION",
+  "description": "XML parser and markup toolkit",
+  "readme": "\n                  XML toolkit from the GNOME project\n\nFull documentation is available on-line at\n    http://xmlsoft.org/\n\nThis code is released under the MIT Licence see the Copyright file.\n\nTo build on an Unixised setup:\n   ./configure ; make ; make install\nTo build on Windows:\n   see instructions on win32/Readme.txt\n\nTo assert build quality:\n   on an Unixised setup:\n      run make tests\n   otherwise:\n       There is 3 standalone tools runtest.c runsuite.c testapi.c, which\n       should compile as part of the build or as any application would.\n       Launch them from this directory to get results, runtest checks \n       the proper functionning of libxml2 main APIs while testapi does\n       a full coverage check. Report failures to the list.\n\nTo report bugs, follow the instructions at: \n  http://xmlsoft.org/bugs.html\n\nA mailing-list xml@gnome.org is available, to subscribe:\n    http://mail.gnome.org/mailman/listinfo/xml\n\nThe list archive is at:\n    http://mail.gnome.org/archives/xml/\n\nAll technical answers asked privately will be automatically answered on\nthe list and archived for public access unless privacy is explicitly\nrequired and justified.\n\nDaniel Veillard\n\n$Id$\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:xml2\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xz\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"3ef99f99b41ac9238871c380175b9d78fe05fc4a0058e8d74f6cbb29485eed6f\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\ntarget = \"//:zlib\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/xz\"\ntarget = \"//src/liblzma:lzma\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n\n[lock.\"github.com/buckaroo-pm/xz\"]\nversions = [ \"branch=master\" ]\nrevision = \"593cc1510a5b0f62d0d2167bdd57d36182a0cf35\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ngenrule(\n  name = 'config-h',\n  out = 'config.h',\n  cmd = 'touch $OUT',\n)\n\nlinux_headers = {\n  'config.h': 'config-generic.h',\n}\n\nmacos_headers = {\n  'config.h': 'macos/src/config-mac.h',\n}\n\ncxx_library(\n  name = 'xml2',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('include', '**/*.h'),\n    ]).items() + [\n      ('libxml/xmlversion.h', 'include/libxml/xmlversion-generic.h'),\n    ]\n  ),\n  headers = subdir_glob([\n    ('', '*.h'),\n  ]),\n  platform_headers = [\n    ('macos.*', macos_headers),\n    ('linux.*', linux_headers),\n  ],\n  # preprocessor_flags = [\n  #   '-DLIBXML_LZMA_ENABLED=1',\n  # ],\n  srcs = glob([\n    '*.c',\n  ], exclude = glob([\n    'run*.c',\n    'test*.c',\n    'trio.c',\n  ])),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xz",
+          "name": "buckaroo-pm/xz",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/xz",
+          "name": "buckaroo-pm/xz",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "593cc1510a5b0f62d0d2167bdd57d36182a0cf35"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-25T16:22:49Z",
+  "updatedUpstream": "2021-01-13T00:03:23Z",
+  "contributors": [
+    {
+      "login": "sgraham",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1822?u=4e60af1521c3dbd5b099cccccb1701aec76349cd&v=4"
+    },
+    {
+      "login": "shlomif",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3150?v=4"
+    },
+    {
+      "login": "nico",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3487?v=4"
+    },
+    {
+      "login": "now",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5711?v=4"
+    },
+    {
+      "login": "triplef",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/6037?v=4"
+    },
+    {
+      "login": "ssssam",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6330?v=4"
+    },
+    {
+      "login": "libc",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7838?v=4"
+    },
+    {
+      "login": "flavorjones",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8207?v=4"
+    },
+    {
+      "login": "timgaleckas",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/19242?v=4"
+    },
+    {
+      "login": "peti",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/28323?u=5e47c81d432182abf4588b89e7624bb75431abd7&v=4"
+    },
+    {
+      "login": "swenson",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33404?v=4"
+    },
+    {
+      "login": "ender672",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/41417?v=4"
+    },
+    {
+      "login": "kylev",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/46888?v=4"
+    },
+    {
+      "login": "tetromino",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/52517?v=4"
+    },
+    {
+      "login": "pwithnall",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/53172?v=4"
+    },
+    {
+      "login": "obliviand",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/59957?u=4bfe6698ac64299d9e811daaba5879bafa9d2ad3&v=4"
+    },
+    {
+      "login": "KuSh",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/60970?v=4"
+    },
+    {
+      "login": "rctay",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/61553?u=38555fa890bc627920d012455316e759fae48c7d&v=4"
+    },
+    {
+      "login": "nwellnhof",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/63962?u=7764b001a30e4e81ed11a317e2eaa49fad06efee&v=4"
+    },
+    {
+      "login": "0lvin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/73573?v=4"
+    },
+    {
+      "login": "LRN",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/91705?v=4"
+    },
+    {
+      "login": "ConradIrwin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/94272?u=6c4966a02a365c4eacd00a3fa313c99d1bdf649d&v=4"
+    },
+    {
+      "login": "danwinship",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/96040?u=c98413d9801dd204eb67f8f2d9df672f2df44c6c&v=4"
+    },
+    {
+      "login": "mvidner",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/102056?v=4"
+    },
+    {
+      "login": "scop",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/109152?u=782addb4cabd3acc673e2595ba43377f88414b6b&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 298,
+  "forks": 241,
+  "topics": []
+}

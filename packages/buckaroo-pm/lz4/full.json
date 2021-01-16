@@ -1,0 +1,131 @@
+{
+  "packageName": "buckaroo-pm/lz4",
+  "name": "lz4/lz4",
+  "licence": "NOASSERTION",
+  "description": "Extremely Fast Compression algorithm",
+  "readme": "LZ4 - Extremely fast compression\n================================\n\nLZ4 is lossless compression algorithm,\nproviding compression speed > 500 MB/s per core,\nscalable with multi-cores CPU.\nIt features an extremely fast decoder,\nwith speed in multiple GB/s per core,\ntypically reaching RAM speed limits on multi-core systems.\n\nSpeed can be tuned dynamically, selecting an \"acceleration\" factor\nwhich trades compression ratio for faster speed.\nOn the other end, a high compression derivative, LZ4_HC, is also provided,\ntrading CPU time for improved compression ratio.\nAll versions feature the same decompression speed.\n\nLZ4 is also compatible with [dictionary compression](https://github.com/facebook/zstd#the-case-for-small-data-compression),\nand can ingest any input file as dictionary,\nincluding those created by [Zstandard Dictionary Builder](https://github.com/facebook/zstd/blob/v1.3.5/programs/zstd.1.md#dictionary-builder).\n(note: only the final 64KB are used).\n\nLZ4 library is provided as open-source software using BSD 2-Clause license.\n\n\n|Branch      |Status   |\n|------------|---------|\n|master      | [![Build Status][travisMasterBadge]][travisLink] [![Build status][AppveyorMasterBadge]][AppveyorLink] [![coverity][coverBadge]][coverlink] |\n|dev         | [![Build Status][travisDevBadge]][travisLink]    [![Build status][AppveyorDevBadge]][AppveyorLink]                                         |\n\n[travisMasterBadge]: https://travis-ci.org/lz4/lz4.svg?branch=master \"Continuous Integration test suite\"\n[travisDevBadge]: https://travis-ci.org/lz4/lz4.svg?branch=dev \"Continuous Integration test suite\"\n[travisLink]: https://travis-ci.org/lz4/lz4\n[AppveyorMasterBadge]: https://ci.appveyor.com/api/projects/status/github/lz4/lz4?branch=master&svg=true \"Windows test suite\"\n[AppveyorDevBadge]: https://ci.appveyor.com/api/projects/status/github/lz4/lz4?branch=dev&svg=true \"Windows test suite\"\n[AppveyorLink]: https://ci.appveyor.com/project/YannCollet/lz4-1lndh\n[coverBadge]: https://scan.coverity.com/projects/4735/badge.svg \"Static code analysis of Master branch\"\n[coverlink]: https://scan.coverity.com/projects/4735\n\n> **Branch Policy:**\n> - The \"master\" branch is considered stable, at all times.\n> - The \"dev\" branch is the one where all contributions must be merged\n    before being promoted to master.\n>   + If you plan to propose a patch, please commit into the \"dev\" branch,\n      or its own feature branch.\n      Direct commit to \"master\" are not permitted.\n\nBenchmarks\n-------------------------\n\nThe benchmark uses [lzbench], from @inikep\ncompiled with GCC v7.3.0 on Linux 64-bits (Debian 4.15.17-1).\nThe reference system uses a Core i7-6700K CPU @ 4.0GHz.\nBenchmark evaluates the compression of reference [Silesia Corpus]\nin single-thread mode.\n\n[lzbench]: https://github.com/inikep/lzbench\n[Silesia Corpus]: http://sun.aei.polsl.pl/~sdeor/index.php?page=silesia\n\n|  Compressor             | Ratio   | Compression | Decompression |\n|  ----------             | -----   | ----------- | ------------- |\n|  memcpy                 |  1.000  |13100 MB/s   |  13100 MB/s   |\n|**LZ4 default (v1.8.2)** |**2.101**|**730 MB/s** | **3900 MB/s** |\n|  LZO 2.09               |  2.108  |  630 MB/s   |    800 MB/s   |\n|  QuickLZ 1.5.0          |  2.238  |  530 MB/s   |    720 MB/s   |\n|  Snappy 1.1.4           |  2.091  |  525 MB/s   |   1750 MB/s   |\n|  [Zstandard] 1.3.4 -1   |  2.877  |  470 MB/s   |   1380 MB/s   |\n|  LZF v3.6               |  2.073  |  380 MB/s   |    840 MB/s   |\n| [zlib] deflate 1.2.11 -1|  2.730  |  100 MB/s   |    380 MB/s   |\n|**LZ4 HC -9 (v1.8.2)**   |**2.721**|   40 MB/s   | **3920 MB/s** |\n| [zlib] deflate 1.2.11 -6|  3.099  |   34 MB/s   |    410 MB/s   |\n\n[zlib]: http://www.zlib.net/\n[Zstandard]: http://www.zstd.net/\n\nLZ4 is also compatible and optimized for x32 mode,\nfor which it provides additional speed performance.\n\n\nInstallation\n-------------------------\n\n```\nmake\nmake install     # this command may require root permissions\n```\n\nLZ4's `Makefile` supports standard [Makefile conventions],\nincluding [staged installs], [redirection], or [command redefinition].\nIt is compatible with parallel builds (`-j#`).\n\n[Makefile conventions]: https://www.gnu.org/prep/standards/html_node/Makefile-Conventions.html\n[staged installs]: https://www.gnu.org/prep/standards/html_node/DESTDIR.html\n[redirection]: https://www.gnu.org/prep/standards/html_node/Directory-Variables.html\n[command redefinition]: https://www.gnu.org/prep/standards/html_node/Utilities-in-Makefiles.html\n\n\nDocumentation\n-------------------------\n\nThe raw LZ4 block compression format is detailed within [lz4_Block_format].\n\nArbitrarily long files or data streams are compressed using multiple blocks,\nfor streaming requirements. These blocks are organized into a frame,\ndefined into [lz4_Frame_format].\nInteroperable versions of LZ4 must also respect the frame format.\n\n[lz4_Block_format]: doc/lz4_Block_format.md\n[lz4_Frame_format]: doc/lz4_Frame_format.md\n\n\nOther source versions\n-------------------------\n\nBeyond the C reference source,\nmany contributors have created versions of lz4 in multiple languages\n(Java, C#, Python, Perl, Ruby, etc.).\nA list of known source ports is maintained on the [LZ4 Homepage].\n\n[LZ4 Homepage]: http://www.lz4.org\n",
+  "versions": [
+    {
+      "ref": "v1.8.3",
+      "manifest": "targets = [ \"//:lz4\" ]",
+      "lockFile": "manifest = \"7c273e1e05fdda020fd832009bb02882e404f46b89801a312daabd71bcb140a1\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'lz4',\n  header_namespace = '',\n  exported_headers = {\n    'lz4.h': 'lib/lz4.h',\n  },\n  headers = subdir_glob([\n    ('lib', '*.h'),\n    ('', 'lib/**/*.c'),\n  ]),\n  srcs = [\n    'lib/lz4hc.c',\n    'lib/lz4.c',\n  ],\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-02-07T11:33:55Z",
+  "updatedUpstream": "2021-01-13T22:30:20Z",
+  "contributors": [
+    {
+      "login": "nemequ",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1151?u=71fed4857219d2d776011cb35158d8744cc0c783&v=4"
+    },
+    {
+      "login": "toddlipcon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/14135?u=4f9d4bdacdb9d688e6e419b0b6994d02bee102f8&v=4"
+    },
+    {
+      "login": "kou",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/27350?v=4"
+    },
+    {
+      "login": "jku",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/31889?u=af88a3982b6671565a22febe0b18021f2c4a07f8&v=4"
+    },
+    {
+      "login": "lpsantil",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/66716?u=d9fda899068902d581c73d4f558c3c8dbd68c059&v=4"
+    },
+    {
+      "login": "flatcap",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/76760?v=4"
+    },
+    {
+      "login": "ido",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/85574?v=4"
+    },
+    {
+      "login": "hmaarrfk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/90008?u=19cf915f2609e5b272a4144d8a2840cc6e51f28a&v=4"
+    },
+    {
+      "login": "mrjoel",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/96100?u=02e64053cbd68f6d0c61bad80d98b36b3826d5c0&v=4"
+    },
+    {
+      "login": "mathstuf",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/97253?v=4"
+    },
+    {
+      "login": "mgorny",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/110765?u=164647f91c473f67ad218b606ae1dbff572197b5&v=4"
+    },
+    {
+      "login": "senior7515",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/175206?u=fe557df3d005d65353fe6bb478bc69698e1b56e7&v=4"
+    },
+    {
+      "login": "vapier",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/176950?u=0e8043e12fbbd7b4a641c60ec2dfba969112cabe&v=4"
+    },
+    {
+      "login": "attilaolah",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/196617?u=834d338ff8c10feca99a10e32ac96d2a3511d4ac&v=4"
+    },
+    {
+      "login": "XVilka",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/203261?u=1f62654dd929e7c04961142f54d270675289da7f&v=4"
+    },
+    {
+      "login": "lembacon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/251435?u=f000084386c62583f44b3bb64982293e813d6291&v=4"
+    },
+    {
+      "login": "dcolascione",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/331322?u=fd5a75452400d6ee567fee58c5661452acd235a4&v=4"
+    },
+    {
+      "login": "keszybz",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/349618?v=4"
+    },
+    {
+      "login": "indragiek",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/353158?u=8e25e70df9177a867cf77a555ce6ccecc4e12cd4&v=4"
+    },
+    {
+      "login": "ThomasWaldmann",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/356103?u=e13d51191257cc5572a856417c7afc5a50250956&v=4"
+    },
+    {
+      "login": "nh2",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/399535?v=4"
+    },
+    {
+      "login": "gsauthof",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/464832?v=4"
+    },
+    {
+      "login": "ferdnyc",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/538020?v=4"
+    },
+    {
+      "login": "Tyilo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/568036?v=4"
+    },
+    {
+      "login": "ephiepark",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/590764?u=70bf38b1875c825f7da80afb4c853e26a5507c70&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 5631,
+  "forks": 898,
+  "topics": [
+    "lz4",
+    "c",
+    "compression"
+  ]
+}

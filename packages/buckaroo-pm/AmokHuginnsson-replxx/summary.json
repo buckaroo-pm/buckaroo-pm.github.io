@@ -1,0 +1,27 @@
+{
+  "packageName": "buckaroo-pm/AmokHuginnsson-replxx",
+  "name": "AmokHuginnsson/replxx",
+  "stars": 422,
+  "topics": [
+    "readline",
+    "syntax-highlighting",
+    "utf-8",
+    "multiplatform",
+    "gnu-readline",
+    "linenoise",
+    "ansi",
+    "libedit"
+  ],
+  "description": "A readline and libedit replacement that supports UTF-8, syntax highlighting, hints and Windows and is BSD licensed.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-11T23:23:11Z",
+  "updatedUpstream": "2021-01-12T22:33:57Z"
+}

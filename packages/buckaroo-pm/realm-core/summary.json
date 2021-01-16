@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/realm-core",
+  "name": "realm/realm-core",
+  "stars": 825,
+  "topics": [
+    "database",
+    "mobile-database",
+    "realm",
+    "c-plus-plus",
+    "cpp",
+    "library",
+    "nosql-database",
+    "mobile",
+    "realtime-database",
+    "reactive"
+  ],
+  "description": "Core database component for the Realm Mobile Database SDKs",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-02-21T21:32:22Z",
+  "updatedUpstream": "2021-01-13T16:19:27Z"
+}

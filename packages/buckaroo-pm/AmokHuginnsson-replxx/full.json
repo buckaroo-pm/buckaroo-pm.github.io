@@ -1,0 +1,138 @@
+{
+  "packageName": "buckaroo-pm/AmokHuginnsson-replxx",
+  "name": "AmokHuginnsson/replxx",
+  "licence": "NOASSERTION",
+  "description": "A readline and libedit replacement that supports UTF-8, syntax highlighting, hints and Windows and is BSD licensed.",
+  "readme": "# Read Evaluate Print Loop ++\n\n![demo](https://drive.google.com/uc?export=download&id=0B53g2Y3z7rWNT2dCRGVVNldaRnc)\n\n[![Build Status](https://travis-ci.org/AmokHuginnsson/replxx.svg?branch=master)](https://travis-ci.org/AmokHuginnsson/replxx)\n\nA small, portable GNU readline replacement for Linux, Windows and\nMacOS which is capable of handling UTF-8 characters. Unlike GNU\nreadline, which is GPL, this library uses a BSD license and can be\nused in any kind of program.\n\n## Origin\n\nThis replxx implementation is based on the work by\n[ArangoDB Team](https://github.com/arangodb/linenoise-ng) and\n[Salvatore Sanfilippo](https://github.com/antirez/linenoise) and\n10gen Inc.  The goal is to create a zero-config, BSD\nlicensed, readline replacement usable in Apache2 or BSD licensed\nprograms.\n\n## Features\n\n* single-line and multi-line editing mode with the usual key bindings implemented\n* history handling\n* completion\n* syntax highlighting\n* hints\n* BSD license source code\n* Only uses a subset of VT100 escapes (ANSI.SYS compatible)\n* UTF8 aware\n* support for Linux, MacOS and Windows\n\nIt deviates from Salvatore's original goal to have a minimal readline\nreplacement for the sake of supporting UTF8 and Windows. It deviates\nfrom 10gen Inc.'s goal to create a C++ interface to linenoise. This\nlibrary uses C++ internally, but to the user it provides a pure C\ninterface that is compatible with the original linenoise API.\nC interface.\n\n## Requirements\n\nTo build this library, you will need a C++11-enabled compiler and\nsome recent version of CMake.\n\n## Build instructions\n\n### *nix\n\n1. Create a build directory\n\n```bash\nmkdir -p build && cd build\n```\n\n2. Build the library\n\n```bash\ncmake -DCMAKE_BUILD_TYPE=Release .. && make\n```\n\n3. Install the library at the default target location\n\n```bash\nsudo make install\n```\n\nThe default installation location can be adjusted by setting the `DESTDIR`\nvariable when invoking `make install`:\n\n```bash\nmake DESTDIR=/tmp install\n```\n\n### Windows\n\n1. Create a build directory in MS-DOS command prompt\n\n```\nmd build\ncd build\n```\n\n2. Generate Visual Studio solution file with cmake\n\n* 32 bit: \n```bash\ncmake -G \"Visual Studio 12 2013\" -DCMAKE_BUILD_TYPE=Release ..`\n```\n* 64 bit:\n```bash\n`cmake -G \"Visual Studio 12 2013 Win64\" -DCMAKE_BUILD_TYPE=Release ..`\n```\n\n3. Open the generated file `replxx.sln` in the `build` subdirectory with Visual Studio.\n\n## Tested with...\n\n * Linux text only console ($TERM = linux)\n * Linux KDE terminal application ($TERM = xterm)\n * Linux xterm ($TERM = xterm)\n * Linux Buildroot ($TERM = vt100)\n * Mac OS X iTerm ($TERM = xterm)\n * Mac OS X default Terminal.app ($TERM = xterm)\n * OpenBSD 4.5 through an OSX Terminal.app ($TERM = screen)\n * IBM AIX 6.1\n * FreeBSD xterm ($TERM = xterm)\n * ANSI.SYS\n * Emacs comint mode ($TERM = dumb)\n * Windows\n\nPlease test it everywhere you can and report back!\n\n## Let's push this forward!\n\nPatches should be provided in the respect of linenoise sensibility for\nsmall and easy to understand code that and the license\nrestrictions. Extensions must be submitted under a BSD license-style.\nA contributor license is required for contributions.\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:replxx\" ]\n",
+      "lockFile": "",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'replxx',\n  header_namespace = '', \n  exported_headers = subdir_glob([\n    ('include', '**/*.h'), \n    ('include', '**/*.hxx'), \n  ]), \n  headers = subdir_glob([\n    ('src', '**/*.h'), \n    ('src', '**/*.hxx'), \n  ]), \n  srcs = glob([\n    'src/**/*.cpp', \n    'src/**/*.cxx', \n  ]), \n  visibility = [\n    'PUBLIC', \n  ],  \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-11T23:23:11Z",
+  "updatedUpstream": "2021-01-12T22:33:57Z",
+  "contributors": [
+    {
+      "login": "yury",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5250?u=9067842228555deefde24851029618c64eb1344b&v=4"
+    },
+    {
+      "login": "pietern",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/9845?v=4"
+    },
+    {
+      "login": "shvechikov",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12324?v=4"
+    },
+    {
+      "login": "octplane",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22177?v=4"
+    },
+    {
+      "login": "spullara",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/33424?v=4"
+    },
+    {
+      "login": "fperrad",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/46793?u=b3241569948ba2bd65a3690d3d8814c9e4e14244&v=4"
+    },
+    {
+      "login": "slurps-mad-rips",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/63051?u=de7e019322eda075f5bc46b74a2c6fe6d0981257&v=4"
+    },
+    {
+      "login": "antirez",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/65632?v=4"
+    },
+    {
+      "login": "bsutherland",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/169313?v=4"
+    },
+    {
+      "login": "gsserge",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/241037?u=47bf6efbc44b1fdba33b9edcc08dd473c21c4802&v=4"
+    },
+    {
+      "login": "fingolfin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/241512?u=8bed5e87a7efd318898cb9bd33978a69aab878ce&v=4"
+    },
+    {
+      "login": "MartinNowak",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/288976?v=4"
+    },
+    {
+      "login": "nlebedenco",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/354608?v=4"
+    },
+    {
+      "login": "jhanssen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/381040?v=4"
+    },
+    {
+      "login": "fceller",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/392005?v=4"
+    },
+    {
+      "login": "kaechele",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/454490?u=f8f00c94150ef81225293b05159a62fac28e5ba3&v=4"
+    },
+    {
+      "login": "syohex",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/554281?u=334c345f4df78e69ffa301e8588105e87f1f4241&v=4"
+    },
+    {
+      "login": "ajg",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/654094?v=4"
+    },
+    {
+      "login": "polch",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/948377?v=4"
+    },
+    {
+      "login": "ksherlock",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/964904?v=4"
+    },
+    {
+      "login": "Naios",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1146834?u=74f03d6f6b3a1b98c0e5348da9a5613427fa164d&v=4"
+    },
+    {
+      "login": "jsteemann",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1423118?v=4"
+    },
+    {
+      "login": "fnxweb",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1730466?v=4"
+    },
+    {
+      "login": "firodj",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1750918?v=4"
+    },
+    {
+      "login": "JohnCoconut",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3619244?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/AmokHuginnsson"
+  ],
+  "contactLinks": [],
+  "stars": 422,
+  "forks": 70,
+  "topics": [
+    "readline",
+    "syntax-highlighting",
+    "utf-8",
+    "multiplatform",
+    "gnu-readline",
+    "linenoise",
+    "ansi",
+    "libedit"
+  ]
+}

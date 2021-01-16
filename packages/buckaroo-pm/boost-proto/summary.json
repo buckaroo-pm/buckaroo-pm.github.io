@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-proto",
+  "name": "boostorg/proto",
+  "stars": 17,
+  "topics": [],
+  "description": "Boost.org proto module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-15T23:56:13Z",
+  "updatedUpstream": "2020-12-24T20:25:03Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-webkit2gtk-4.0",
+  "name": "buckaroo-pm/pkg-config-webkit2gtk-4.0",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for webkit2gtk-4.0 managed by pkg-config.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-21T14:35:38Z",
+  "updatedUpstream": "2019-01-21T14:35:38Z"
+}

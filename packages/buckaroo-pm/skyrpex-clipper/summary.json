@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/skyrpex-clipper",
+  "name": "skyrpex/clipper",
+  "stars": 73,
+  "topics": [
+    "clipping",
+    "polygon",
+    "offsetting"
+  ],
+  "description": "[mirror] An open source freeware polygon clipping library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T16:11:27Z",
+  "updatedUpstream": "2021-01-07T23:03:22Z"
+}

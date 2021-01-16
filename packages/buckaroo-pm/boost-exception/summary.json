@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-exception",
+  "name": "boostorg/exception",
+  "stars": 9,
+  "topics": [],
+  "description": "Boost.org exception module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2018-11-14T13:13:45Z",
+  "updatedUpstream": "2021-01-08T07:36:59Z"
+}

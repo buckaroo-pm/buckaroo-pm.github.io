@@ -1,0 +1,16 @@
+{
+  "packageName": "buckaroo-pm/ompi",
+  "name": "open-mpi/ompi",
+  "stars": 1170,
+  "topics": [
+    "c",
+    "hpc",
+    "mpi",
+    "fortran",
+    "hacktoberfest"
+  ],
+  "description": "Open MPI main development repository",
+  "versions": [],
+  "updated": "2019-01-24T15:23:31Z",
+  "updatedUpstream": "2021-01-13T19:43:22Z"
+}

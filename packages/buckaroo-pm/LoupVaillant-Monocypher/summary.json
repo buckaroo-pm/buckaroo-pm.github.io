@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/LoupVaillant-Monocypher",
+  "name": "LoupVaillant/Monocypher",
+  "stars": 359,
+  "topics": [],
+  "description": "An easy to use, easy to deploy crypto library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T19:20:52Z",
+  "updatedUpstream": "2021-01-11T16:46:41Z"
+}

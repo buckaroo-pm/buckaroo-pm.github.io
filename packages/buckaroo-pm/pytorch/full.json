@@ -1,0 +1,126 @@
+{
+  "packageName": "buckaroo-pm/pytorch",
+  "name": "pytorch/pytorch",
+  "licence": "NOASSERTION",
+  "description": "Tensors and Dynamic neural networks in Python  with strong GPU acceleration",
+  "readme": "![PyTorch Logo](https://github.com/pytorch/pytorch/blob/master/docs/source/_static/img/pytorch-logo-dark.png)\n\n--------------------------------------------------------------------------------\n\nPyTorch is a Python package that provides two high-level features:\n- Tensor computation (like NumPy) with strong GPU acceleration\n- Deep neural networks built on a tape-based autograd system\n\nYou can reuse your favorite Python packages such as NumPy, SciPy and Cython to extend PyTorch when needed.\n\nWe are in an early-release beta. Expect some adventures and rough edges.\n\n- [More about PyTorch](#more-about-pytorch)\n- [Installation](#installation)\n  - [Binaries](#binaries)\n  - [From Source](#from-source)\n  - [Docker Image](#docker-image)\n  - [Building the Documentation](#building-the-documentation)\n  - [Previous Versions](#previous-versions)\n- [Getting Started](#getting-started)\n- [Communication](#communication)\n- [Releases and Contributing](#releases-and-contributing)\n- [The Team](#the-team)\n\n| System | 2.7 | 3.5 | 3.6 |\n| :---: | :---: | :---: | :--: |\n| Linux CPU | [![Build Status](https://ci.pytorch.org/jenkins/job/pytorch-master/badge/icon)](https://ci.pytorch.org/jenkins/job/pytorch-master/) | [![Build Status](https://ci.pytorch.org/jenkins/job/pytorch-master/badge/icon)](https://ci.pytorch.org/jenkins/job/pytorch-master/) | <center>—</center> |\n| Linux GPU | [![Build Status](https://ci.pytorch.org/jenkins/job/pytorch-master/badge/icon)](https://ci.pytorch.org/jenkins/job/pytorch-master/) | [![Build Status](https://ci.pytorch.org/jenkins/job/pytorch-master/badge/icon)](https://ci.pytorch.org/jenkins/job/pytorch-master/) | <center>—</center> |\n| Windows GPU | <center>—</center> | [![Build Status](https://ci.pytorch.org/jenkins/job/pytorch-builds/job/pytorch-win-ws2016-cuda9-cudnn7-py3-trigger/badge/icon)](https://ci.pytorch.org/jenkins/job/pytorch-builds/job/pytorch-win-ws2016-cuda9-cudnn7-py3-trigger/) |  <center>—</center> |\n| Linux (ppc64le) CPU | [![Build Status](https://powerci.osuosl.org/job/pytorch-master-nightly-py2-linux-ppc64le/badge/icon)](https://powerci.osuosl.org/job/pytorch-master-nightly-py2-linux-ppc64le/) | — | [![Build Status](https://powerci.osuosl.org/job/pytorch-master-nightly-py3-linux-ppc64le/badge/icon)](https://powerci.osuosl.org/job/pytorch-master-nightly-py3-linux-ppc64le/) |\n| Linux (ppc64le) GPU | [![Build Status](https://powerci.osuosl.org/job/pytorch-linux-cuda9-cudnn7-py2-mpi-build-test-gpu/badge/icon)](https://powerci.osuosl.org/job/pytorch-linux-cuda9-cudnn7-py2-mpi-build-test-gpu/) | — | [![Build Status](https://powerci.osuosl.org/job/pytorch-linux-cuda92-cudnn7-py3-mpi-build-test-gpu/badge/icon)](https://powerci.osuosl.org/job/pytorch-linux-cuda92-cudnn7-py3-mpi-build-test-gpu/) |\n\nSee also the [ci.pytorch.org HUD](https://ezyang.github.io/pytorch-ci-hud/build/pytorch-master).\n\n\n## More about PyTorch\n\nAt a granular level, PyTorch is a library that consists of the following components:\n\n| Component | Description |\n| ---- | --- |\n| **torch** | a Tensor library like NumPy, with strong GPU support |\n| **torch.autograd** | a tape-based automatic differentiation library that supports all differentiable Tensor operations in torch |\n| **torch.nn** | a neural networks library deeply integrated with autograd designed for maximum flexibility |\n| **torch.multiprocessing** | Python multiprocessing, but with magical memory sharing of torch Tensors across processes. Useful for data loading and Hogwild training |\n| **torch.utils** | DataLoader, Trainer and other utility functions for convenience |\n| **torch.legacy(.nn/.optim)** | legacy code that has been ported over from torch for backward compatibility reasons |\n\nUsually one uses PyTorch either as:\n\n- a replacement for NumPy to use the power of GPUs.\n- a deep learning research platform that provides maximum flexibility and speed\n\nElaborating further:\n\n### A GPU-Ready Tensor Library\n\nIf you use NumPy, then you have used Tensors (a.k.a ndarray).\n\n![Tensor illustration](https://github.com/pytorch/pytorch/blob/master/docs/source/_static/img/tensor_illustration.png)\n\nPyTorch provides Tensors that can live either on the CPU or the GPU, and accelerates the\ncomputation by a huge amount.\n\nWe provide a wide variety of tensor routines to accelerate and fit your scientific computation needs\nsuch as slicing, indexing, math operations, linear algebra, reductions.\nAnd they are fast!\n\n### Dynamic Neural Networks: Tape-Based Autograd\n\nPyTorch has a unique way of building neural networks: using and replaying a tape recorder.\n\nMost frameworks such as TensorFlow, Theano, Caffe and CNTK have a static view of the world.\nOne has to build a neural network, and reuse the same structure again and again.\nChanging the way the network behaves means that one has to start from scratch.\n\nWith PyTorch, we use a technique called reverse-mode auto-differentiation, which allows you to\nchange the way your network behaves arbitrarily with zero lag or overhead. Our inspiration comes\nfrom several research papers on this topic, as well as current and past work such as\n[torch-autograd](https://github.com/twitter/torch-autograd),\n[autograd](https://github.com/HIPS/autograd),\n[Chainer](https://chainer.org), etc.\n\nWhile this technique is not unique to PyTorch, it's one of the fastest implementations of it to date.\nYou get the best of speed and flexibility for your crazy research.\n\n![Dynamic graph](https://github.com/pytorch/pytorch/blob/master/docs/source/_static/img/dynamic_graph.gif)\n\n### Python First\n\nPyTorch is not a Python binding into a monolithic C++ framework.\nIt is built to be deeply integrated into Python.\nYou can use it naturally like you would use [NumPy](http://www.numpy.org/) / [SciPy](https://www.scipy.org/) / [scikit-learn](http://scikit-learn.org) etc.\nYou can write your new neural network layers in Python itself, using your favorite libraries\nand use packages such as Cython and Numba.\nOur goal is to not reinvent the wheel where appropriate.\n\n### Imperative Experiences\n\nPyTorch is designed to be intuitive, linear in thought and easy to use.\nWhen you execute a line of code, it gets executed. There isn't an asynchronous view of the world.\nWhen you drop into a debugger, or receive error messages and stack traces, understanding them is straightforward.\nThe stack trace points to exactly where your code was defined.\nWe hope you never spend hours debugging your code because of bad stack traces or asynchronous and opaque execution engines.\n\n### Fast and Lean\n\nPyTorch has minimal framework overhead. We integrate acceleration libraries\nsuch as [Intel MKL](https://software.intel.com/mkl) and NVIDIA (cuDNN, NCCL) to maximize speed.\nAt the core, its CPU and GPU Tensor and neural network backends\n(TH, THC, THNN, THCUNN) are mature and have been tested for years.\n\nHence, PyTorch is quite fast – whether you run small or large neural networks.\n\nThe memory usage in PyTorch is extremely efficient compared to Torch or some of the alternatives.\nWe've written custom memory allocators for the GPU to make sure that\nyour deep learning models are maximally memory efficient.\nThis enables you to train bigger deep learning models than before.\n\n### Extensions without Pain\n\nWriting new neural network modules, or interfacing with PyTorch's Tensor API was designed to be straightforward\nand with minimal abstractions.\n\nYou can write new neural network layers in Python using the torch API\n[or your favorite NumPy-based libraries such as SciPy](https://pytorch.org/tutorials/advanced/numpy_extensions_tutorial.html).\n\nIf you want to write your layers in C/C++, we provide a convenient extension API that is efficient and with minimal boilerplate.\nThere is no wrapper code that needs to be written. You can see [a tutorial here](https://pytorch.org/tutorials/advanced/cpp_extension.html) and [an example here](https://github.com/pytorch/extension-cpp).\n\n\n## Installation\n\n### Binaries\nCommands to install from binaries via Conda or pip wheels are on our website:\n\n[https://pytorch.org](https://pytorch.org)\n\n### From Source\n\nIf you are installing from source, we highly recommend installing an [Anaconda](https://www.continuum.io/downloads) environment.\nYou will get a high-quality BLAS library (MKL) and you get a controlled compiler version regardless of your Linux distro.\n\nOnce you have [Anaconda](https://www.continuum.io/downloads) installed, here are the instructions.\n\nIf you want to compile with CUDA support, install\n- [NVIDIA CUDA](https://developer.nvidia.com/cuda-downloads) 7.5 or above\n- [NVIDIA cuDNN](https://developer.nvidia.com/cudnn) v6.x or above\n\nIf you want to disable CUDA support, export environment variable `NO_CUDA=1`.\nOther potentially useful environment variables may be found in `setup.py`.\n\nIf you want to build on Windows, Visual Studio 2017 14.11 toolset and NVTX are also needed.\nEspecially, for CUDA 8 build on Windows, there will be an additional requirement for VS 2015 Update 3 and a patch for it.\nThe details of the patch can be found out [here](https://support.microsoft.com/en-gb/help/4020481/fix-link-exe-crashes-with-a-fatal-lnk1000-error-when-you-use-wholearch).\n\n#### Install optional dependencies\n\nOn Linux\n```bash\nexport CMAKE_PREFIX_PATH=\"$(dirname $(which conda))/../\" # [anaconda root directory]\n\n# Install basic dependencies\nconda install numpy pyyaml mkl mkl-include setuptools cmake cffi typing\nconda install -c mingfeima mkldnn\n\n# Add LAPACK support for the GPU\nconda install -c pytorch magma-cuda92 # or [magma-cuda80 | magma-cuda91] depending on your cuda version\n```\n\nOn macOS\n```bash\nexport CMAKE_PREFIX_PATH=[anaconda root directory]\nconda install numpy pyyaml mkl mkl-include setuptools cmake cffi typing\n```\n\nOn Windows\n```cmd\nconda install numpy pyyaml mkl mkl-include setuptools cmake cffi typing\n```\n#### Get the PyTorch source\n```bash\ngit clone --recursive https://github.com/pytorch/pytorch\ncd pytorch\n```\n\n#### Install PyTorch\nOn Linux\n```bash\npython setup.py install\n```\n\nOn macOS\n```bash\nMACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py install\n```\n\nOn Windows\n```cmd\nset \"VS150COMNTOOLS=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build\"\nset CMAKE_GENERATOR=Visual Studio 15 2017 Win64\nset DISTUTILS_USE_SDK=1\nREM The following two lines are needed for Python 2.7, but the support for it is very experimental.\nset MSSdk=1\nset FORCE_PY27_BUILD=1\nREM As for CUDA 8, VS2015 Update 3 is also required to build PyTorch. Use the following line.\nset \"CUDAHOSTCXX=%VS140COMNTOOLS%\\..\\..\\VC\\bin\\amd64\\cl.exe\"\n\ncall \"%VS150COMNTOOLS%\\vcvarsall.bat\" x64 -vcvars_ver=14.11\npython setup.py install\n```\n\n### Docker image\n\nDockerfile is supplied to build images with cuda support and cudnn v7. You can pass `-e PYTHON_VERSION=x.y` flag to specificy which python to be used by Miniconda, or leave it unset to use the default. Build as usual\n```\ndocker build -t pytorch -f docker/pytorch/Dockerfile .\n```\n\nYou can also pull a pre-built docker image from Docker Hub and run with nvidia-docker,\nbut this is not currently maintained and will pull PyTorch 0.2.\n```\nnvidia-docker run --rm -ti --ipc=host pytorch/pytorch:latest\n```\nPlease note that PyTorch uses shared memory to share data between processes, so if torch multiprocessing is used (e.g.\nfor multithreaded data loaders) the default shared memory segment size that container runs with is not enough, and you\nshould increase shared memory size either with `--ipc=host` or `--shm-size` command line options to `nvidia-docker run`.\n\n### Building the Documentation\n\nTo build documentation in various formats, you will need [Sphinx](http://www.sphinx-doc.org) and the\nreadthedocs theme.\n\n```\ncd docs/\npip install -r requirements.txt\n```\nYou can then build the documentation by running ``make <format>`` from the\n``docs/`` folder. Run ``make`` to get a list of all available output formats.\n\n### Previous Versions\n\nInstallation instructions and binaries for previous PyTorch versions may be found\non [our website](https://pytorch.org/previous-versions).\n\n\n## Getting Started\n\nThree pointers to get you started:\n- [Tutorials: get you started with understanding and using PyTorch](https://pytorch.org/tutorials/)\n- [Examples: easy to understand pytorch code across all domains](https://github.com/pytorch/examples)\n- [The API Reference](https://pytorch.org/docs/)\n\n## Communication\n* forums: discuss implementations, research, etc. https://discuss.pytorch.org\n* GitHub issues: bug reports, feature requests, install issues, RFCs, thoughts, etc.\n* Slack: general chat, online discussions, collaboration etc. https://pytorch.slack.com/ . Our slack channel is invite-only to promote a healthy balance between power-users and beginners. If you need a slack invite, ping us at slack@pytorch.org\n* newsletter: no-noise, one-way email newsletter with important announcements about pytorch. You can sign-up here: https://eepurl.com/cbG0rv\n\n## Releases and Contributing\n\nPyTorch has a 90 day release cycle (major releases).\nIts current state is Beta, we expect no obvious bugs. Please let us know if you encounter a bug by [filing an issue](https://github.com/pytorch/pytorch/issues).\n\nWe appreciate all contributions. If you are planning to contribute back bug-fixes, please do so without any further discussion.\n\nIf you plan to contribute new features, utility functions or extensions to the core, please first open an issue and discuss the feature with us.\nSending a PR without discussion might end up resulting in a rejected PR, because we might be taking the core in a different direction than you might be aware of.\n\n## The Team\n\nPyTorch is a community driven project with several skillful engineers and researchers contributing to it.\n\nPyTorch is currently maintained by [Adam Paszke](https://apaszke.github.io/), [Sam Gross](https://github.com/colesbury), [Soumith Chintala](http://soumith.ch) and [Gregory Chanan](https://github.com/gchanan) with major contributions coming from 10s of talented individuals in various forms and means.\nA non-exhaustive but growing list needs to mention: Trevor Killeen, Sasank Chilamkurthy, Sergey Zagoruyko, Adam Lerer, Francisco Massa, Alykhan Tejani, Luca Antiga, Alban Desmaison, Andreas Kopf, James Bradbury, Zeming Lin, Yuandong Tian, Guillaume Lample, Marat Dukhan, Natalia Gimelshein, Christian Sarofeen, Martin Raison, Edward Yang, Zachary Devito.\n\nNote: this project is unrelated to [hughperkins/pytorch](https://github.com/hughperkins/pytorch) with the same name. Hugh is a valuable contributor in the Torch community and has helped with many things Torch and PyTorch.\n\n## License\n\nPyTorch is BSD-style licensed, as found in the LICENSE file.\n",
+  "versions": [],
+  "updated": "2018-11-09T11:20:39Z",
+  "updatedUpstream": "2021-01-13T23:01:58Z",
+  "contributors": [
+    {
+      "login": "svenstaro",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1664?u=79d054c26a2b487173c52d342cd822884251bea7&v=4"
+    },
+    {
+      "login": "eklitzke",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2734?v=4"
+    },
+    {
+      "login": "dreiss",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4121?v=4"
+    },
+    {
+      "login": "huitseeker",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4142?v=4"
+    },
+    {
+      "login": "jfsantos",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5733?u=46a26db649d70f16ae24d9145d7eae16d643354c&v=4"
+    },
+    {
+      "login": "kashif",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8100?v=4"
+    },
+    {
+      "login": "zpao",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8445?v=4"
+    },
+    {
+      "login": "resistor",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/9796?v=4"
+    },
+    {
+      "login": "pietern",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/9845?v=4"
+    },
+    {
+      "login": "rdp",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/12496?v=4"
+    },
+    {
+      "login": "ezyang",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/13564?v=4"
+    },
+    {
+      "login": "ot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/17024?v=4"
+    },
+    {
+      "login": "syoyo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/18676?v=4"
+    },
+    {
+      "login": "ashwinb",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/19390?v=4"
+    },
+    {
+      "login": "sublee",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/19982?v=4"
+    },
+    {
+      "login": "werkt",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/21398?u=6caee7293b30dbe9bf6dc83d1a9b0894b3934f74&v=4"
+    },
+    {
+      "login": "shivak",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/22960?v=4"
+    },
+    {
+      "login": "yaroslavvb",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/23068?u=0f893e24658b4ee52a3537a6d04c618c73433101&v=4"
+    },
+    {
+      "login": "ericnakagawa",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/23874?u=7f8c310abde1bef3761559732219b031a7188161&v=4"
+    },
+    {
+      "login": "temporaer",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/27792?v=4"
+    },
+    {
+      "login": "shinh",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/29770?v=4"
+    },
+    {
+      "login": "goodlux",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/31841?v=4"
+    },
+    {
+      "login": "stephenroller",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/31896?u=341788b04ef1f576dcc3b1a9c3f4b61ad187c7ae&v=4"
+    },
+    {
+      "login": "Smerity",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/32325?u=e3ba9368360b4c2fefdd0f568fa043428276103d&v=4"
+    },
+    {
+      "login": "swolchok",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/34168?u=6b4ce36afc309cff8e5a11f64e88a500b44263d3&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 45442,
+  "forks": 12072,
+  "topics": [
+    "neural-network",
+    "autograd",
+    "gpu",
+    "numpy",
+    "deep-learning",
+    "tensor",
+    "python",
+    "machine-learning"
+  ]
+}

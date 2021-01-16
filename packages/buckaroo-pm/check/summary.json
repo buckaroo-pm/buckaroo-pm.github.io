@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/check",
+  "name": "libcheck/check",
+  "stars": 695,
+  "topics": [],
+  "description": "A unit testing framework for C",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-10T14:46:03Z",
+  "updatedUpstream": "2021-01-02T07:07:49Z"
+}

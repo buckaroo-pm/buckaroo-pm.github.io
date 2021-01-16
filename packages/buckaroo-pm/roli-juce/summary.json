@@ -1,0 +1,31 @@
+{
+  "packageName": "buckaroo-pm/roli-juce",
+  "name": "juce-framework/JUCE",
+  "stars": 2579,
+  "topics": [
+    "juce",
+    "c-plus-plus",
+    "cpp",
+    "audio",
+    "framework",
+    "plugin",
+    "vst",
+    "vst3",
+    "audiounit",
+    "au",
+    "auv3",
+    "aax"
+  ],
+  "description": "The JUCE cross-platform C++ framework.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 10,
+      "transitive": 4
+    }
+  ],
+  "updated": "2020-04-15T15:07:38Z",
+  "updatedUpstream": "2021-01-13T22:04:04Z"
+}

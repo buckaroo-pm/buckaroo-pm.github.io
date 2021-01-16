@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/ledger-utfcpp",
+  "name": "ledger/utfcpp",
+  "stars": 34,
+  "topics": [],
+  "description": "UTF-8 with C++ in a Portable Way",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T16:37:14Z",
+  "updatedUpstream": "2020-01-07T05:14:11Z"
+}

@@ -1,0 +1,45 @@
+{
+  "packageName": "buckaroo-pm/nlohmann-json",
+  "name": "nlohmann/json",
+  "stars": 22725,
+  "topics": [
+    "json",
+    "json-pointer",
+    "json-patch",
+    "cbor",
+    "msgpack",
+    "header-only",
+    "stl-containers",
+    "json-serialization",
+    "json-parser",
+    "rfc-6901",
+    "rfc-6902",
+    "rfc-7159",
+    "rfc-7049",
+    "json-diff",
+    "messagepack",
+    "rfc-8259",
+    "ubjson",
+    "json-merge-patch",
+    "bson"
+  ],
+  "description": "JSON for Modern C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v3.5.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-18T13:45:10Z",
+  "updatedUpstream": "2021-01-13T18:33:20Z"
+}

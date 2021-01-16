@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-bind",
+  "name": "boostorg/bind",
+  "stars": 19,
+  "topics": [],
+  "description": "Boost.org bind module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 5
+    }
+  ],
+  "updated": "2018-11-14T13:37:48Z",
+  "updatedUpstream": "2020-12-20T00:05:47Z"
+}

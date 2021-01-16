@@ -1,0 +1,45 @@
+{
+  "packageName": "buckaroo-pm/luadist-freeglut",
+  "name": "LuaDist/freeglut",
+  "licence": "NOASSERTION",
+  "description": "FreeGLUT is a free alternative GLUT library.",
+  "readme": "\n    BRIEF OVERVIEW\n    ==============\n\n    This is the freeglut package.\n\n    Freeglut, the Free openGL Utility Toolkit, is meant to be a free alter-\n    native to Mark Kilgard's GLUT library. It is distributed under an X-Consor-\n    tium style license (see COPYING for details), to offer you a chance to use \n    and/or modify the source.\n\n    It makes use of OpenGL, GLU, and pthreads-win32 libraries. The library does\n    not make use of any GLUT code and is not 100% compatible. Code recompilation\n    and/or slight modifications might be required for your applications to work\n    with freeglut.\n\n\n    PORTS\n    =====\n\n    Both X11 and Win32 ports are in an advanced alpha stage, which means that\n    they provide limited functionality of GLUT API 3. There is an investigation\n    en course to check if the BeOS port could be easily done using the current\n    freeglut structure.\n\n\n    INSTALLATION\n    ============\n\n    Use the following commands to build from scratch on a *nix X11 platform:\n\n        ./autogen.sh\n        ./configure\n        make\n\n    The first command is only needed after a fresh checkout, a source distribution\n    already contains all necessary files for the last two steps.\n\n\n    CONTRIBUTING\n    ============\n\n    Bug and missing features patches are certainly welcome. Just as comments \n    and FREEGLUT API 1 propositions are.\n\n    Just please to make the fixes look visually just as the rest of the code \n    does (tabs converted 4 white spaces). Comments are really welcome, as I \n    believe it would be nice for people fresh new to OpenGL see how the things\n    are done... \n\n\n    WEB SITE AND CONTACTING THE AUTHOR\n    ==================================\n\n    Freeglut project has moved to the SourceForge:\n    http://freeglut.sourceforge.net\n\n\n    THE HOPE\n    ========\n\n    Hope you find my work somehow useful.\n    Pawel W. Olszta, <olszta@sourceforge.net>\n\n\n    PASSING THE BATON\n    =================\n\n    In late December 2000, Pawel decided that he no longer\n    wished to maintain freeglut because he has moved out of\n    the graphics field.  I volunteered to take over from him\n    and have been running the project since Jan 13th 2001.\n\n    I'm also the author and maintainer of the PLIB library suite\n    and 'freeglut' really fits in well with that work.\n\n    I just hope I can live up to Pawel's high standards. Pawel\n    remains on the active developers list.\n\n    Steve Baker <sjbaker1@airmail.net>\n                http://plib.sourceforge.net\n\n\n",
+  "versions": [],
+  "updated": "2019-01-24T16:16:30Z",
+  "updatedUpstream": "2020-11-19T18:10:22Z",
+  "contributors": [
+    {
+      "login": "davidm",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22920?v=4"
+    },
+    {
+      "login": "mkottman",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/144990?v=4"
+    },
+    {
+      "login": "stevedonovan",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/218893?v=4"
+    },
+    {
+      "login": "mnicky",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/232572?v=4"
+    },
+    {
+      "login": "hishamhm",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/245621?v=4"
+    },
+    {
+      "login": "drahosp",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/246514?v=4"
+    },
+    {
+      "login": "kapecp",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/254374?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 6,
+  "forks": 9,
+  "topics": []
+}

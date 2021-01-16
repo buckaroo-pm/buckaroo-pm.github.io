@@ -1,0 +1,17 @@
+{
+  "packageName": "buckaroo-pm/openssl",
+  "name": "openssl/openssl",
+  "stars": 14570,
+  "topics": [
+    "cryptography",
+    "openssl",
+    "encryption",
+    "tls",
+    "ssl",
+    "decryption"
+  ],
+  "description": "TLS/SSL and crypto library",
+  "versions": [],
+  "updated": "2018-09-24T14:40:58Z",
+  "updatedUpstream": "2021-01-13T22:41:07Z"
+}

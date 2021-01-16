@@ -1,0 +1,159 @@
+{
+  "packageName": "buckaroo-pm/oktal-pistache",
+  "name": "pistacheio/pistache",
+  "licence": "Apache-2.0",
+  "description": "A high-performance REST Toolkit written in C++",
+  "readme": "# Pistache\n[![N|Solid](http://pistache.io/assets/images/logo.png)](https://www.github.com/oktal/pistache)\n[![Travis Build Status](https://travis-ci.org/oktal/pistache.svg?branch=master)](https://travis-ci.org/oktal/pistache)\n\nPistache is a modern and elegant HTTP and REST framework for C++. It is entirely written in pure-C++11 and provides a clear and pleasant API. \n\n# Documentation\n\nWe are still looking for a volunteer to document fully the API. In the mean time, partial documentation is available at [http://pistache.io](http://pistache.io). If you are interested in helping with this, please open an issue ticket.\n\n# Contributing\n\nPistache is released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Contributors are welcome!\n\nPistache was originally created by Mathieu Stefani, but he is no longer actively maintaining Pistache. A team of volunteers has taken over. To reach the original maintainer, drop a private message to `@octal` in [cpplang Slack channel](https://cpplang.now.sh/).\n\nFor those that prefer IRC over Slack, the rag-tag crew of maintainers idle in `#pistache` on Freenode. Please come and join us!\n\n# Precompiled packages\n\n## Ubuntu PPA (Stable)\nIf you would like to use [stable](https://launchpad.net/%7Ekip/+archive/ubuntu/pistache) packages, run the following:\n\n```console\n$ sudo add-apt-repository ppa:kip/pistache\n$ sudo apt update\n$ sudo apt install libpistache-dev\n```\n\n## Ubuntu PPA (Unstable)\nTo use [unstable](https://launchpad.net/%7Ekip/+archive/ubuntu/pistache-unstable) packages, run the following:\n\n```console\n$ sudo add-apt-repository ppa:kip/pistache-unstable\n$ sudo apt update\n$ sudo apt install libpistache-dev\n```\n\n## Use via pkg-config\n\nIf you would like to automatically have your project's build environment use the appropriate compiler and linker build flags necessary to use Pistache, [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) can greatly simplify things. The `libpistache-dev` package includes a pkg-config manifest.\n\nTo use with the GNU Autotools, as an example, include the following snippet in your project's `configure.ac`:\n\n```\n\n    # Pistache...\n    PKG_CHECK_MODULES(\n        [libpistache], [libpistache >= 0.0], [],\n        [AC_MSG_ERROR([libpistache >= 0.0 missing...])])\n    YOURPROJECT_CXXFLAGS=\"$YOURPROJECT_CXXFLAGS $libpistache_CFLAGS\"\n    YOURPROJECT_LIBS=\"$YOURPROJECT_LIBS $libpistache_LIBS\"\n    \n```\n\n# To Build:\n\nTo download the latest available release, clone the repository over github.\n\n```console\n    git clone https://github.com/oktal/pistache.git\n```\n\nThen, init the submodules:\n\n```console\n    git submodule update --init\n```\n\nNow, compile the sources:\n\n```console\n    cd pistache\n    mkdir -p {build,prefix}\n    cd build\n    cmake -G \"Unix Makefiles\" \\\n        -DCMAKE_BUILD_TYPE=Release \\\n        -DPISTACHE_BUILD_EXAMPLES=true \\\n        -DPISTACHE_BUILD_TESTS=true \\\n        -DPISTACHE_BUILD_DOCS=false \\\n        -DPISTACHE_USE_SSL=true \\\n        -DCMAKE_INSTALL_PREFIX=$PWD/../prefix \\\n        ../\n    make -j\n    make install\n```\n\nIf you chose to build the examples, then perform the following to build the examples.\n```console\n    cd examples\n    make -j\n```\n\nOptionally, you can also build and run the tests (tests require the examples):\n\n```console\n    cmake -G \"Unix Makefiles\" -DPISTACHE_BUILD_EXAMPLES=true -DPISTACHE_BUILD_TESTS=true ..\n    make test test_memcheck\n```\n\nBe patient, async_test can take some time before completing. And that's it, now you can start playing with your newly installed Pistache framework.\n\nSome other CMAKE defines:\n\n| Option                        | Default     | Description                                    |\n|-------------------------------|-------------|------------------------------------------------|\n| PISTACHE_BUILD_EXAMPLES       | False       | Build all of the example apps                  |\n| PISTACHE_BUILD_TESTS          | False       | Build all of the unit tests                    |\n| PISTACHE_ENABLE_NETWORK_TESTS | True        | Run unit tests requiring remote network access |\n| PISTACHE_USE_SSL              | False       | Build server with SSL support                  |\n\n# Example\n\n## Hello World (server)\n\n```cpp\n#include <pistache/endpoint.h>\n\nusing namespace Pistache;\n\nstruct HelloHandler : public Http::Handler {\n  HTTP_PROTOTYPE(HelloHandler)\n  void onRequest(const Http::Request&, Http::ResponseWriter writer) override{\n    writer.send(Http::Code::Ok, \"Hello, World!\");\n  }\n};\n\nint main() {\n  Http::listenAndServe<HelloHandler>(\"*:9080\");\n}\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:pistache\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-curl\"\nversion = \"*\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\nversion = \"*\"\nprivate = true\n",
+      "lockFile": "manifest = \"3d7168a4e6230186a3ee80134871e8c46ffc4e709cb589d9d92595d45c1ddfcb\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/google-googletest\"\ntarget = \"//:googletest\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/pkg-config-curl\"\ntarget = \"//:curl\"\n\n[lock.\"github.com/buckaroo-pm/google-googletest\"]\nversions = [ \"branch=master\" ]\nrevision = \"cb8d2c1a2fcd344953e6c129a1a699a2c230551d\"\n\n[lock.\"github.com/buckaroo-pm/pkg-config-curl\"]\nversions = [ \"branch=master\" ]\nrevision = \"172dabe81beabe3f4dce71d66a5ff9251ef9ef11\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'pistache',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.cc',\n  ]),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-curl",
+          "name": "buckaroo-pm/pkg-config-curl",
+          "version": "*"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "version": "*"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/google-googletest",
+          "name": "buckaroo-pm/google-googletest",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "cb8d2c1a2fcd344953e6c129a1a699a2c230551d"
+          }
+        },
+        {
+          "uri": "github.com/buckaroo-pm/pkg-config-curl",
+          "name": "buckaroo-pm/pkg-config-curl",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "172dabe81beabe3f4dce71d66a5ff9251ef9ef11"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2020-10-18T16:48:59Z",
+  "updatedUpstream": "2021-01-13T22:15:18Z",
+  "contributors": [
+    {
+      "login": "suokko",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/113864?v=4"
+    },
+    {
+      "login": "underdoeg",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/243820?u=cfdb52f5e3788cf4ee72f5a539a18f9d93d34e82&v=4"
+    },
+    {
+      "login": "jpihl",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/583663?u=f34417e83a8e61f7a2e8f20ee31dc92a340f5959&v=4"
+    },
+    {
+      "login": "TafThorne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/586550?v=4"
+    },
+    {
+      "login": "dgreatwood",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/704619?v=4"
+    },
+    {
+      "login": "pantuza",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/759784?u=fb8db492700c8c9014b83b5a851dedb68f93d1d6&v=4"
+    },
+    {
+      "login": "johschmitz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/771979?v=4"
+    },
+    {
+      "login": "FlYnN91",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/774118?v=4"
+    },
+    {
+      "login": "oktal",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/859699?v=4"
+    },
+    {
+      "login": "danielmoraes",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1006963?u=b6ac9ae16c67b9f87bfbc9d56102da7ce0d66ecd&v=4"
+    },
+    {
+      "login": "lnihlen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1123536?v=4"
+    },
+    {
+      "login": "kiplingw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1149225?u=19e38b57397a5c45e534f3e81259b7047b172344&v=4"
+    },
+    {
+      "login": "gocarlos",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1331762?v=4"
+    },
+    {
+      "login": "julianoes",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1419688?u=074946d7a5b3b3b4648a79bf44c9b09a3fd91750&v=4"
+    },
+    {
+      "login": "BenjaminBeichler",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1441492?v=4"
+    },
+    {
+      "login": "ffontaine",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1485263?v=4"
+    },
+    {
+      "login": "nicraMarcin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1545069?u=44b7862a3b9042e13d4a1b340219c97ecb597b98&v=4"
+    },
+    {
+      "login": "santanusinha",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1593063?u=d0489a0409bb3ba50379bc0bdf91510bc3471d29&v=4"
+    },
+    {
+      "login": "dseight",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1594949?u=6efdfbe0d9efe2f4e69693da4b868588e305e74a&v=4"
+    },
+    {
+      "login": "hydratim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1781642?u=9a67bb4073cdab1ef1619f53d0fa74720d3497be&v=4"
+    },
+    {
+      "login": "LouisMT",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1782761?u=00c6009c860c88b7f4e4da63bcb511d6824f1fa8&v=4"
+    },
+    {
+      "login": "rob-h-w",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1832910?v=4"
+    },
+    {
+      "login": "misty-fungus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1877010?v=4"
+    },
+    {
+      "login": "chrisvroberts",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2070390?v=4"
+    },
+    {
+      "login": "mikeburkat",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2280752?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2258,
+  "forks": 548,
+  "topics": []
+}

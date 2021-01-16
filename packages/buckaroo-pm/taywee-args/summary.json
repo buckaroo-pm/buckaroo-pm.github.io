@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/taywee-args",
+  "name": "Taywee/args",
+  "stars": 804,
+  "topics": [],
+  "description": "  A simple header-only C++ argument parser library. Supposed to be flexible and powerful, and attempts to be compatible with the functionality of the Python standard argparse library (though not necessarily the API).",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-21T16:28:03Z",
+  "updatedUpstream": "2021-01-12T08:44:12Z"
+}

@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/mapbox-wagyu",
+  "name": "mapbox/wagyu",
+  "stars": 107,
+  "topics": [
+    "computational-geometry",
+    "union",
+    "intersection",
+    "xor",
+    "geometry",
+    "difference",
+    "clipping"
+  ],
+  "description": "A general library for geometry operations of union, intersections, difference, and xor",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 3
+    }
+  ],
+  "updated": "2018-11-20T21:21:55Z",
+  "updatedUpstream": "2020-12-29T20:15:48Z"
+}

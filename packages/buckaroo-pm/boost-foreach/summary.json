@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-foreach",
+  "name": "boostorg/foreach",
+  "stars": 6,
+  "topics": [],
+  "description": "Boost.org foreach module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 8,
+      "transitive": 12
+    }
+  ],
+  "updated": "2018-11-16T09:51:19Z",
+  "updatedUpstream": "2020-08-25T02:43:02Z"
+}

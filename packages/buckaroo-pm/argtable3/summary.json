@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/argtable3",
+  "name": "argtable/argtable3",
+  "stars": 190,
+  "topics": [],
+  "description": "A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T13:57:25Z",
+  "updatedUpstream": "2021-01-07T20:59:52Z"
+}

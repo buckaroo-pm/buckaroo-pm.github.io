@@ -1,0 +1,13 @@
+{
+  "packageName": "buckaroo-pm/ned14-outcome",
+  "name": "ned14/outcome",
+  "stars": 395,
+  "topics": [
+    "boost",
+    "c-plus-plus"
+  ],
+  "description": "Provides very lightweight outcome<T> and result<T> (non-Boost edition)",
+  "versions": [],
+  "updated": "2019-01-18T14:48:59Z",
+  "updatedUpstream": "2021-01-12T16:13:58Z"
+}

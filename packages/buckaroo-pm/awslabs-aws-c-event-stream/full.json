@@ -1,0 +1,157 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-c-event-stream",
+  "name": "awslabs/aws-c-event-stream",
+  "licence": "Apache-2.0",
+  "description": "C99 implementation of the vnd.amazon.eventstream content-type.",
+  "readme": "## AWS C Event Stream\n\nC99 implementation of the vnd.amazon.event-stream content-type.\n\n## License\n\nThis library is licensed under the Apache 2.0 License. \n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:aws-c-event-stream\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/awslabs-aws-c-common\"\nversion = \"*\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/awslabs-aws-checksums\"\nversion = \"*\"\n",
+      "lockFile": "manifest = \"7fcc5e50d3a34f8b702c53c7037d72cd1678cfcfd946e6285205cce87bf1a1d7\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/awslabs-aws-c-common\"\ntarget = \"//:aws-c-common\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/awslabs-aws-checksums\"\ntarget = \"//:aws-checksums\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/awslabs-aws-c-common\"\nversion = \"branch=master\"\nrevision = \"1d755e3287db2a89d6c7ac52f4b818e5205b3026\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/awslabs-aws-checksums\"\nversion = \"branch=master\"\nrevision = \"7598679075b147468fd83e95d34fddcd541b1efc\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'aws-c-event-stream', \n  header_namespace = '', \n  exported_headers = subdir_glob([\n    ('include', '**/*.h'), \n  ]), \n  srcs = glob([\n    'source/**/*.c', \n  ]), \n  deps = buckaroo_deps(), \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/awslabs-aws-c-common",
+          "name": "buckaroo-pm/awslabs-aws-c-common",
+          "version": "*"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/awslabs-aws-checksums",
+          "name": "buckaroo-pm/awslabs-aws-checksums",
+          "version": "*"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "0",
+          "name": "0",
+          "spec": {
+            "name": "github.com/buckaroo-pm/awslabs-aws-c-common",
+            "version": "branch=master",
+            "revision": "1d755e3287db2a89d6c7ac52f4b818e5205b3026"
+          }
+        },
+        {
+          "uri": "1",
+          "name": "1",
+          "spec": {
+            "name": "github.com/buckaroo-pm/awslabs-aws-checksums",
+            "version": "branch=master",
+            "revision": "7598679075b147468fd83e95d34fddcd541b1efc"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-12-04T15:25:51Z",
+  "updatedUpstream": "2020-12-17T00:26:35Z",
+  "contributors": [
+    {
+      "login": "marcomagdy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/115965?v=4"
+    },
+    {
+      "login": "dagnir",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/261310?u=f97caed4f506318834684359e6e2f00dec4fe9e4&v=4"
+    },
+    {
+      "login": "bretambrose",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/341314?v=4"
+    },
+    {
+      "login": "hyandell",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/477715?u=981ae536caa2d71790a1ce14ef42a0add7c90896&v=4"
+    },
+    {
+      "login": "rcoh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/492903?v=4"
+    },
+    {
+      "login": "tautschnig",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1144736?u=946ba3fd3a17b60dec68081e4d85869a68b6a129&v=4"
+    },
+    {
+      "login": "ashovlin",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1170880?u=4a879abca797c8402808f1c1ed67a6b4053995d3&v=4"
+    },
+    {
+      "login": "ColdenCullen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1354824?v=4"
+    },
+    {
+      "login": "mlabieniec",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1417045?u=9e5a5fd903f6470754ce88caaa3e48eb2217c752&v=4"
+    },
+    {
+      "login": "SaswatPadhi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1577944?u=b83642049d14cf38eeb9f83299e5904868f12d8a&v=4"
+    },
+    {
+      "login": "mswilson",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1986233?u=74c60f4b942281269bc2a0e98bfea05205f0464b&v=4"
+    },
+    {
+      "login": "yoroto",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2706878?v=4"
+    },
+    {
+      "login": "karkhaz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2887605?u=03fd23e87408afeb2b8840a35ad7e9b852611b8d&v=4"
+    },
+    {
+      "login": "xomyakus",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2965351?v=4"
+    },
+    {
+      "login": "justinboswell",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3382222?u=47f93d50147580a3dd303103fde6c6e08535b10f&v=4"
+    },
+    {
+      "login": "singku",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3468296?u=a545974331443816ee27b2acadc8eedb071708da&v=4"
+    },
+    {
+      "login": "alexw91",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3596374?u=7482333a16b1c3056ccb0e8933d5003d9f54f13a&v=4"
+    },
+    {
+      "login": "asbhat",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3885798?u=7966843cb111046e354f2b29d1bb78fc6820db7d&v=4"
+    },
+    {
+      "login": "JonathanHenson",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3926469?u=0df58df774d94224ce63dacfcbe6d6701d656857&v=4"
+    },
+    {
+      "login": "mattparks",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4019937?u=84b6f7a0529dd463540c2086aab7efe54310c98e&v=4"
+    },
+    {
+      "login": "feliperodri",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4294522?u=0f6c692873d60661aa3b20fbea1368925a7aeb77&v=4"
+    },
+    {
+      "login": "danielsn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4389518?u=29c066d2aa393d425bae3dab6854816c90e60e18&v=4"
+    },
+    {
+      "login": "kiiadi",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4661536?u=068eba8efc633670eee1ecb3596b854949dade45&v=4"
+    },
+    {
+      "login": "aajtodd",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5158304?u=aa21d7c0da401eb81547cf42aae675d7eb13fc8d&v=4"
+    },
+    {
+      "login": "nateprewitt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5271761?u=1ef6aa21d55fa14a7b435d16509013bd1267f602&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 21,
+  "forks": 30,
+  "topics": []
+}

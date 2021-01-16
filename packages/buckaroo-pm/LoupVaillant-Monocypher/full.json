@@ -1,0 +1,75 @@
+{
+  "packageName": "buckaroo-pm/LoupVaillant-Monocypher",
+  "name": "LoupVaillant/Monocypher",
+  "licence": "NOASSERTION",
+  "description": "An easy to use, easy to deploy crypto library",
+  "readme": "Monocypher\n----------\n\nMonocypher is an easy to use, easy to deploy, auditable crypto library\nwritten in portable C.  It approaches the size of [TweetNaCl][] and the\nspeed of [Libsodium][].\n\n[Official site.](https://monocypher.org/)  \n[Official releases.](https://monocypher.org/download/)\n\n[Libsodium]: https://libsodium.org\n[TweetNaCl]: https://tweetnacl.cr.yp.to/\n\nManual\n------\n\nThe manual can be found at https://monocypher.org/manual/, and in the\n`doc/` folder.\n\nThe `doc/man/` folder contains the man pages.  You can install them in\nyour system by running `make install-doc`.\n\nUnless you cloned the git repository, there is a html version in\n`doc/html/`, that you can regenerate by executing the `doc/man2html.sh`\nscript.  This requires mandoc.\n\n\nInstallation\n------------\n\nThe easiest way to use Monocypher is to include `src/monocypher.h` and\n`src/monocypher.c` directly into your project.  They compile as C99,\nC11, C++98, C++11, C++14, and C++17.\n\nAlternatively, you can run `make`, then grab `lib/libmonocypher.a` or\n`lib/libmonocypher.so`.  If you're running a UNIX system, you can even\ninstall Monocypher (you need to be root):\n\n    $ make install\n\nThis will install Monocypher in `/usr/local/` by default. Libraries\nwill go to `/usr/local/lib/`, the header in `/usr/local/include/`, and\nthe man pages in `/usr/local/share/man/man3`.  You can change those\ndefaults with the `PREFIX` and `DESTDIR` variables thus:\n\n    $ make install PREFIX=\"/opt\"\n\nOnce installed, you can use `pkg-config` to compile and link your\nprogram.  For instance, if you have a one file C project that uses\nMonocypher, you can compile it thus:\n\n    $ gcc -o myProgram myProgram.c        \\\n        $(pkg-config monocypher --cflags) \\\n        $(pkg-config monocypher --libs)\n\nThe `cflags` line gives the include path for monocypher.h, and the\n`libs` line provides the link path and option required to find\n`libmonocypher.a` (or `libmonocypher.so`).\n\n\nTest suite\n----------\n\n    $ make test\n\nIt should display a nice printout of all the tests, all starting with\n\"OK\".  If you see \"FAILURE\" anywhere, something has gone very wrong\nsomewhere.\n\n*Do not* use Monocypher without running those tests at least once.\n\nThe same test suite can be run under clang sanitisers and valgrind, and\nbe checked for code coverage:\n\n    $ tests/test.sh\n    $ tests/coverage.sh\n\n\n### Serious auditing\n\nThe code may be analysed more formally with [Frama-c][] and the\n[TIS interpreter][TIS].  To analyse the code with Frama-c, run:\n\n    $ tests/formal-analysis.sh\n    $ tests/frama-c.sh\n\nThis will have Frama-c parse, and analyse the code, then launch a GUI.\nYou must have Frama-c installed.  See `frama-c.sh` for the recommended\nsettings.  To run the code under the TIS interpreter, run\n\n    $ tests/formal-analysis.sh\n    $ tis-interpreter.sh tests/formal-analysis/*.c\n\n(Note: `tis-interpreter.sh` is part of TIS.  If it is not in your\npath, adjust the command accordingly.)\n\n[Frama-c]:http://frama-c.com/\n[TIS]: http://trust-in-soft.com/tis-interpreter/\n\n\nSpeed benchmark\n---------------\n\n    $ make speed\n\nThis will give you an idea how fast Monocypher is on your machine.\nMake sure you run it on the target platform if performance is a\nconcern.  If Monocypher is too slow, try Libsodium or NaCl.  If you're\nnot sure, you can always switch later.\n\nNote: the speed benchmark currently requires the POSIX\n`clock_gettime()` function.\n\nThere are similar benchmarks for Libsodium and TweetNaCl:\n\n    $ make speed-sodium\n    $ make speed-tweetnacl\n\nYou can also adjust the optimisation options for Monocypher and\nTweetNaCl (the default is `-O3 march=native`):\n\n    $ make speed           CFLAGS=\"-O2\"\n    $ make speed-tweetnacl CFLAGS=\"-O2\"\n\n\nCustomisation\n-------------\n\nMonocypher has two preprocessor flags: `ED25519_SHA512` and\n`BLAKE2_NO_UNROLLING`, which are activated by compiling monocypher.c\nwith the options `-DED25519_SHA512` and `-DBLAKE2_NO_UNROLLING`\nrespectively.\n\nThe `-DED25519_SHA512` option is a compatibility feature for public key\nsignatures.  The default is EdDSA with Curve25519 and Blake2b.\nActivating the option replaces it by Ed25519 (EdDSA with Curve25519 and\nSHA-512).  When this option is activated, you will need to link the\nfinal program with a suitable SHA-512 implementation.  You can use the\n`sha512.c` and `sha512.h` files provided in `src/optional`.\n\nThe `-DBLAKE2_NO_UNROLLING` option is a performance tweak.  By default,\nMonocypher unrolls the Blake2b inner loop, because it is over 25% faster\non modern processors.  On some embedded processors however, unrolling\nthe loop makes it _slower_ (the unrolled loop is 5KB bigger, and may\nstrain the instruction cache).  If you're using an embedded platform,\ntry this option.  The binary will be smaller, perhaps even faster.\n\n\nContributor notes\n-----------------\n\nIf you just cloned the GitHub repository, you will miss a couple files\nthat ship with the tarball releases:\n\n- The `test/vectors.h` header.  Generating it requires Libsodium. Go\n  to `test/gen/`, then run `make`.\n- The html version of the manual, generated by the `doc/man2html.sh`\n  script.  You will need mandoc.\n\nTo generate a tarball, simply type `make tarball`. It will make a\ntarball with a name that matches the current version (as written in\nVERSION.md), in the current directory.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:monocypher\" ]",
+      "lockFile": "manifest = \"05e20d1e1258974bca6be4e1f78429869162f5ba9c11313f776de8504e534914\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'monocypher',\n  header_namespace = '',\n  exported_headers = {\n    'sha512.h': 'src/optional/sha512.h',\n    'monocypher.h': 'src/monocypher.h',\n  },\n  srcs = glob([\n    'src/**/*c',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-23T19:20:52Z",
+  "updatedUpstream": "2021-01-11T16:46:41Z",
+  "contributors": [
+    {
+      "login": "michaelforney",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/52851?v=4"
+    },
+    {
+      "login": "mikejsavage",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/579299?v=4"
+    },
+    {
+      "login": "vbmithr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/797581?v=4"
+    },
+    {
+      "login": "njlr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1577531?u=b805a63f8054b62169749f2c9d2e89eb53af57d7&v=4"
+    },
+    {
+      "login": "SgtCoDFish",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1972547?v=4"
+    },
+    {
+      "login": "richwalm",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5136633?v=4"
+    },
+    {
+      "login": "occivink",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/5473453?v=4"
+    },
+    {
+      "login": "MikeA1",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/9297054?v=4"
+    },
+    {
+      "login": "rain-1",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/17393876?u=f03c08e8463f0037720558ee49e637bc952997ac&v=4"
+    },
+    {
+      "login": "LoupVaillant",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/27145845?u=77f3a750382f98a44a064a26a2929e4cfa1612b2&v=4"
+    },
+    {
+      "login": "stevefan1999-personal",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/29133953?v=4"
+    },
+    {
+      "login": "fscoto",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/34964387?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 359,
+  "forks": 50,
+  "topics": []
+}

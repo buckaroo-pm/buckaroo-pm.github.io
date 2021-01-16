@@ -1,0 +1,148 @@
+{
+  "packageName": "buckaroo-pm/google-flatbuffers",
+  "name": "google/flatbuffers",
+  "licence": "Apache-2.0",
+  "description": "Memory Efficient Serialization Library",
+  "readme": "![logo](http://google.github.io/flatbuffers/fpl_logo_small.png) FlatBuffers\n===========\n\n[![Join the chat at https://gitter.im/google/flatbuffers](https://badges.gitter.im/google/flatbuffers.svg)](https://gitter.im/google/flatbuffers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Build Status](https://travis-ci.org/google/flatbuffers.svg?branch=master)](https://travis-ci.org/google/flatbuffers) [![Build status](https://ci.appveyor.com/api/projects/status/yg5idd2fnusv1n10?svg=true)](https://ci.appveyor.com/project/gwvo/flatbuffers)\n\n**FlatBuffers** is a cross platform serialization library architected for\nmaximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.\n\n**Go to our [landing page][] to browse our documentation.**\n\n## Supported operating systems\n* Windows\n* MacOS X\n* Linux\n* Android\n* And any others with a recent C++ compiler.\n\n## Supported programming languages\n* C++\n* C#\n* C\n* Dart\n* Go\n* Java\n* JavaScript\n* Lobster\n* Lua\n* PHP\n* Python\n* Rust\n* TypeScript\n\n*and more in progress...*\n\n## Contribution\n* [FlatBuffers Google Group][] to discuss FlatBuffers with other developers and users.\n* [FlatBuffers Issues Tracker][] to submit an issue.\n* [stackoverflow.com][] with [`flatbuffers` tag][] for any questions regarding FlatBuffers.\n\n*To contribute to this project,* see [CONTRIBUTING][].\n\n## Licensing\n*Flatbuffers* is licensed under the Apache License, Version 2.0. See [LICENSE][] for the full license text.\n\n<br>\n\n   [CONTRIBUTING]: http://github.com/google/flatbuffers/blob/master/CONTRIBUTING.md\n   [`flatbuffers` tag]: https://stackoverflow.com/questions/tagged/flatbuffers\n   [FlatBuffers Google Group]: https://groups.google.com/forum/#!forum/flatbuffers\n   [FlatBuffers Issues Tracker]: http://github.com/google/flatbuffers/issues\n   [stackoverflow.com]: http://stackoverflow.com/search?q=flatbuffers\n   [landing page]: https://google.github.io/flatbuffers\n   [LICENSE]: https://github.com/google/flatbuffers/blob/master/LICENSE.txt\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:flatbuffers\" ]",
+      "lockFile": "manifest = \"0a9c8bc52fcb7bfa55eb7ee9099cd0880ca73858bea5328ec23051e43521e9d5\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'flatbuffers',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  headers = subdir_glob([\n    ('grpc', 'src/**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.cpp',\n  ]),\n  licenses = [\n    'LICENSE.txt',\n  ],\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "licenses([\"notice\"])\n\npackage(\n    default_visibility = [\"//visibility:public\"],\n    features = [\n        \"-layering_check\",\n        \"-parse_headers\",\n    ],\n)\n\nexports_files([\n    \"LICENSE\",\n])\n\nload(\":build_defs.bzl\", \"flatbuffer_cc_library\")\n\n# Public flatc library to compile flatbuffer files at runtime.\ncc_library(\n    name = \"flatbuffers\",\n    srcs = [\n        \"src/code_generators.cpp\",\n        \"src/idl_gen_fbs.cpp\",\n        \"src/idl_gen_general.cpp\",\n        \"src/idl_gen_text.cpp\",\n        \"src/idl_parser.cpp\",\n        \"src/reflection.cpp\",\n        \"src/util.cpp\",\n    ],\n    hdrs = [\":public_headers\"],\n    includes = [\"include/\"],\n    linkstatic = 1,\n)\n\n# Public C++ headers for the Flatbuffers library.\nfilegroup(\n    name = \"public_headers\",\n    srcs = [\n        \"include/flatbuffers/base.h\",\n        \"include/flatbuffers/code_generators.h\",\n        \"include/flatbuffers/flatbuffers.h\",\n        \"include/flatbuffers/flexbuffers.h\",\n        \"include/flatbuffers/hash.h\",\n        \"include/flatbuffers/idl.h\",\n        \"include/flatbuffers/minireflect.h\",\n        \"include/flatbuffers/reflection.h\",\n        \"include/flatbuffers/reflection_generated.h\",\n        \"include/flatbuffers/stl_emulation.h\",\n        \"include/flatbuffers/util.h\",\n    ],\n)\n\n# Public flatc compiler library.\ncc_library(\n    name = \"flatc_library\",\n    srcs = [\n        \"src/code_generators.cpp\",\n        \"src/flatc.cpp\",\n        \"src/idl_gen_fbs.cpp\",\n        \"src/idl_parser.cpp\",\n        \"src/reflection.cpp\",\n        \"src/util.cpp\",\n    ],\n    hdrs = [\n        \"include/flatbuffers/flatc.h\",\n        \":public_headers\",\n    ],\n    includes = [\n        \"grpc/\",\n        \"include/\",\n    ],\n)\n\n# Public flatc compiler.\ncc_binary(\n    name = \"flatc\",\n    srcs = [\n        \"grpc/src/compiler/config.h\",\n        \"grpc/src/compiler/cpp_generator.cc\",\n        \"grpc/src/compiler/cpp_generator.h\",\n        \"grpc/src/compiler/go_generator.cc\",\n        \"grpc/src/compiler/go_generator.h\",\n        \"grpc/src/compiler/java_generator.cc\",\n        \"grpc/src/compiler/java_generator.h\",\n        \"grpc/src/compiler/schema_interface.h\",\n        \"src/flatc_main.cpp\",\n        \"src/idl_gen_cpp.cpp\",\n        \"src/idl_gen_dart.cpp\",\n        \"src/idl_gen_general.cpp\",\n        \"src/idl_gen_go.cpp\",\n        \"src/idl_gen_grpc.cpp\",\n        \"src/idl_gen_js_ts.cpp\",\n        \"src/idl_gen_json_schema.cpp\",\n        \"src/idl_gen_lobster.cpp\",\n        \"src/idl_gen_lua.cpp\",\n        \"src/idl_gen_php.cpp\",\n        \"src/idl_gen_python.cpp\",\n        \"src/idl_gen_rust.cpp\",\n        \"src/idl_gen_text.cpp\",\n    ],\n    includes = [\n        \"grpc/\",\n        \"include/\",\n    ],\n    deps = [\n        \":flatc_library\",\n    ],\n)\n\ncc_library(\n    name = \"runtime_cc\",\n    hdrs = [\n        \"include/flatbuffers/base.h\",\n        \"include/flatbuffers/flatbuffers.h\",\n        \"include/flatbuffers/flexbuffers.h\",\n        \"include/flatbuffers/stl_emulation.h\",\n        \"include/flatbuffers/util.h\",\n    ],\n    includes = [\"include/\"],\n    linkstatic = 1,\n)\n\n# Test binary.\ncc_test(\n    name = \"flatbuffers_test\",\n    testonly = 1,\n    srcs = [\n        \"include/flatbuffers/minireflect.h\",\n        \"include/flatbuffers/registry.h\",\n        \"src/code_generators.cpp\",\n        \"src/idl_gen_fbs.cpp\",\n        \"src/idl_gen_general.cpp\",\n        \"src/idl_gen_text.cpp\",\n        \"src/idl_parser.cpp\",\n        \"src/reflection.cpp\",\n        \"src/util.cpp\",\n        \"monster_test_generated.h\",\n        \"tests/namespace_test/namespace_test1_generated.h\",\n        \"tests/namespace_test/namespace_test2_generated.h\",\n        \"tests/test.cpp\",\n        \"tests/test_assert.cpp\",\n        \"tests/test_assert.h\",\n        \"tests/test_builder.cpp\",\n        \"tests/test_builder.h\",\n        \"tests/union_vector/union_vector_generated.h\",\n        \":public_headers\",\n    ],\n    copts = [\n        \"-DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE\",\n        \"-DBAZEL_TEST_DATA_PATH\",\n    ],\n    data = [\n        \":tests/include_test/include_test1.fbs\",\n        \":tests/include_test/sub/include_test2.fbs\",\n        \":tests/monster_test.bfbs\",\n        \":tests/monster_test.fbs\",\n        \":tests/monsterdata_test.golden\",\n        \":tests/prototest/imported.proto\",\n        \":tests/prototest/test.golden\",\n        \":tests/prototest/test.proto\",\n        \":tests/prototest/test_union.golden\",\n        \":tests/unicode_test.json\",\n        \":tests/union_vector/union_vector.fbs\",\n    ],\n    includes = [\"include/\"],\n)\n\n# Test bzl rules\n\nflatbuffer_cc_library(\n    name = \"monster_test_cc_fbs\",\n    srcs = [\"tests/monster_test.fbs\"],\n    include_paths = [\"tests/include_test\"],\n    includes = [\n        \"tests/include_test/include_test1.fbs\",\n        \"tests/include_test/sub/include_test2.fbs\",\n    ],\n)\n",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-22T18:41:43Z",
+  "updatedUpstream": "2021-01-13T20:01:00Z",
+  "contributors": [
+    {
+      "login": "paulreimer",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2677?u=d4ab9bafa28bc2a0b547a4414f8b32f4fee49245&v=4"
+    },
+    {
+      "login": "felix",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4426?u=a86220577551b692cb0a99ed13d92d6b7069dbb7&v=4"
+    },
+    {
+      "login": "proppy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5268?v=4"
+    },
+    {
+      "login": "mbrubeck",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5920?u=2764d32fe40d1c75bc891bdbe0bc340bf52e7fe7&v=4"
+    },
+    {
+      "login": "armen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/6529?u=69fa795b1fcab63d391be522f20292e9d17a556f&v=4"
+    },
+    {
+      "login": "avsej",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7280?u=9aeea4e1f224e0dee094f0b01f0ed68e592bbf60&v=4"
+    },
+    {
+      "login": "medwards",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/7339?v=4"
+    },
+    {
+      "login": "dlespiau",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/7986?v=4"
+    },
+    {
+      "login": "nopcoder",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8110?v=4"
+    },
+    {
+      "login": "bpot",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/8415?v=4"
+    },
+    {
+      "login": "lux",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/13695?u=2677841e6e7b27fd9c4ebc40dd27dfc997eb2061&v=4"
+    },
+    {
+      "login": "martinus",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/14386?u=da89313ed4793f9594c09c23513f49aa4dc1c141&v=4"
+    },
+    {
+      "login": "artiom",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/15435?u=e8a671eefeb3f5e9d8178e70c2f5cbb37394b0bc&v=4"
+    },
+    {
+      "login": "mcudich",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/16142?u=a8728d2d202ca4ece3fccab3b0f4c88fe4494791&v=4"
+    },
+    {
+      "login": "rw",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/21367?u=02082f13312b178801106a6164999859081500ce&v=4"
+    },
+    {
+      "login": "jschaf",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22385?v=4"
+    },
+    {
+      "login": "robbiemc",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/23013?v=4"
+    },
+    {
+      "login": "bbigras",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/24027?v=4"
+    },
+    {
+      "login": "malthe",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/26405?u=9defcef61b04d9045da165e9012f89f2e010435c&v=4"
+    },
+    {
+      "login": "kant",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/32717?u=ed7080121287cb92405278d33526224c88b24d54&v=4"
+    },
+    {
+      "login": "hyjin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/39717?v=4"
+    },
+    {
+      "login": "cajun-rat",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/41266?v=4"
+    },
+    {
+      "login": "akazakov",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/47600?v=4"
+    },
+    {
+      "login": "jfroy",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/49554?u=88a53b7d5c89c42a1b28529b77d8ad68f550ee3a&v=4"
+    },
+    {
+      "login": "llchan",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/51099?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 15626,
+  "forks": 2407,
+  "topics": [
+    "flatbuffers",
+    "serialization",
+    "serialization-library",
+    "json-parser",
+    "marshalling",
+    "rpc",
+    "zero-copy",
+    "mmap",
+    "cross-platform",
+    "c-plus-plus",
+    "java",
+    "c-sharp",
+    "go",
+    "python",
+    "rust",
+    "javascript",
+    "typescript",
+    "grpc",
+    "c",
+    "protobuf"
+  ]
+}

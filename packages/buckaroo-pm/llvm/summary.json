@@ -1,0 +1,16 @@
+{
+  "packageName": "buckaroo-pm/llvm",
+  "name": "llvm-mirror/llvm",
+  "stars": 4391,
+  "topics": [
+    "llvm",
+    "virtual-machine",
+    "intermediate-representation",
+    "code-generation",
+    "optimization"
+  ],
+  "description": "Mirror of official llvm git repository located at http://llvm.org/git/llvm.  Updated every five minutes.",
+  "versions": [],
+  "updated": "2019-02-04T17:29:12Z",
+  "updatedUpstream": "2021-01-13T10:00:12Z"
+}

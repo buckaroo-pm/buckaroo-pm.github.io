@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/recastnavigation",
+  "name": "recastnavigation/recastnavigation",
+  "stars": 3717,
+  "topics": [],
+  "description": "Navigation-mesh Toolset for Games",
+  "versions": [
+    {
+      "ref": "1.5.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-20T16:37:28Z",
+  "updatedUpstream": "2021-01-13T07:16:34Z"
+}

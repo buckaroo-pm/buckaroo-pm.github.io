@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/martinmoene-lest",
+  "name": "martinmoene/lest",
+  "stars": 312,
+  "topics": [
+    "testing",
+    "cpp11",
+    "cpp98",
+    "header-only",
+    "no-dependencies",
+    "tdd",
+    "bdd",
+    "tiny-framework",
+    "single-file",
+    "cast"
+  ],
+  "description": "A modern, C++11-native, single-file header-only, tiny framework for unit-tests, TDD and BDD (includes C++98 variant)",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2020-05-04T16:56:06Z",
+  "updatedUpstream": "2020-12-25T12:29:08Z"
+}

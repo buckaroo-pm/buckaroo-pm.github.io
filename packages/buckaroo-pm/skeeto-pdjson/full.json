@@ -1,0 +1,51 @@
+{
+  "packageName": "buckaroo-pm/skeeto-pdjson",
+  "name": "skeeto/pdjson",
+  "licence": "Unlicense",
+  "description": "C JSON parser library that doesn't suck",
+  "readme": "# Public Domain JSON Parser for C\n\nA public domain JSON parser focused on correctness, ANSI C99\ncompliance, full Unicode (UTF-8) support, minimal memory footprint,\nand a simple API. As a streaming API, arbitrary large JSON could be\nprocessed with a small amount of memory (the size of the largest\nstring in the JSON). It seems most C JSON libraries suck in some\nsignificant way: broken string support (what if the string contains\n`\\u0000`?), broken/missing Unicode support, or crappy software license\n(GPL or \"do no evil\"). This library intends to avoid these flaws.\n\nThe parser is intended to support *exactly* the JSON standard, no\nmore, no less, so that even slightly non-conforming JSON is rejected.\nThe input is assumed to be UTF-8, and all strings returned by the\nlibrary are UTF-8 with possible nul characters in the middle, which is\nwhy the size output parameter is important. Encoded characters\n(`\\uxxxx`) are decoded and re-encoded into UTF-8. UTF-16 surrogate\npairs expressed as adjacent encoded characters are supported.\n\nOne exception to this rule is made to support a \"streaming\" mode. When\na JSON \"stream\" contains multiple JSON objects (optionally separated\nby JSON whitespace), the default behavior of the parser is to allow\nthe stream to be \"reset,\" and to continue parsing the stream.\n\nThe library is usable and nearly complete, but needs polish.\n\n## API Overview\n\nAll parser state is attached to a `json_stream` struct. Its fields\nshould not be accessed directly. To initialize, it can be \"opened\" on\nan input `FILE *` stream or memory buffer. It's disposed of by being\n\"closed.\"\n\n```c\nvoid json_open_stream(json_stream *json, FILE * stream);\nvoid json_open_string(json_stream *json, const char *string);\nvoid json_open_buffer(json_stream *json, const void *buffer, size_t size);\nvoid json_close(json_stream *json);\n```\n\nAfter opening a stream, custom allocator callbacks can be specified,\nin case allocations should not come from a system-supplied malloc.\n(When no custom allocator is specified, the system allocator is used.)\n\n```c\nstruct json_allocator {\n    void *(*malloc)(size_t);\n    void *(*realloc)(void *, size_t);\n    void (*free)(void *);\n};\n\n\nvoid json_set_allocator(json_stream *json, json_allocator *a);\n```\n\nBy default only one value is read from the stream. The parser can be\nreset to read more objects. The overall line number and position are\npreserved.\n\n```c\nvoid json_reset(json_stream *json);\n```\n\nIf strict conformance to the JSON standard is desired, streaming mode\ncan be disabled by calling `json_set_streaming` and setting the mode to\n`false`. This will cause any non-whitespace trailing data to trigger a\nparse error.\n\n```c\nvoid json_set_streaming(json_stream *json, bool mode);\n```\n\nThe JSON is parsed as a stream of events (`enum json_type`). The\nstream is in the indicated state, during which data can be queried and\nretrieved.\n\n```c\nenum json_type json_next(json_stream *json);\nenum json_type json_peek(json_stream *json);\n\nconst char *json_get_string(json_stream *json, size_t *length);\ndouble json_get_number(json_stream *json);\n```\n\nNumbers can also be retrieved by `json_get_string()`, which will\nreturn the raw text number as it appeared in the JSON. This is useful\nif better precision is required.\n\nIn the case of a parse error, the event will be `JSON_ERROR`. The\nstream cannot be used again until it is reset. In the event of an\nerror, a human-friendly, English error message is available, as well\nas the line number and byte position. (The line number and byte\nposition are always available.)\n\n```c\nconst char *json_get_error(json_stream *json);\nsize_t json_get_lineno(json_stream *json);\nsize_t json_get_position(json_stream *json);\n```\n\nOutside of errors, a `JSON_OBJECT` event will always be followed by\nzero or more pairs of `JSON_STRING` (property name) events and their\nassociated value events. That is, the stream of events will always be\nlogical and consistent.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:pdjson\" ]",
+      "lockFile": "manifest = \"75a975a7692319c33b7a702de0c9d2721061d9d6e08bf25d39499eb878f5cd40\"\n\n",
+      "buck": "cxx_library(\n  name = 'pdjson',\n  header_namespace = '',\n  exported_headers = [\n    'pdjson.h',\n  ],\n  srcs = [\n    'pdjson.c',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-28T21:16:35Z",
+  "updatedUpstream": "2021-01-01T11:19:09Z",
+  "contributors": [
+    {
+      "login": "skeeto",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/29988?u=f9cc1ffc5e961b925f06f8a2b3d8cdb8362d7441&v=4"
+    },
+    {
+      "login": "sw17ch",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/95705?u=d8021322c1fe899eeea5d4a17310fe9306c97a55&v=4"
+    },
+    {
+      "login": "dhobsd",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/168647?u=e900a7c96929274e4f6114c84991daefd773f876&v=4"
+    },
+    {
+      "login": "aleks-f",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2429093?v=4"
+    },
+    {
+      "login": "pavelxdd",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7561226?u=e2c976d5e3ac5f3a86c883abdb72e57c3ac38398&v=4"
+    },
+    {
+      "login": "boris-kolpackov",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/31799599?u=a53de72ba0efe9f3720f4fbb36ea6dbf7d0506c7&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 175,
+  "forks": 22,
+  "topics": []
+}

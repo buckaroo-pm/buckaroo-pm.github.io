@@ -1,0 +1,83 @@
+{
+  "packageName": "buckaroo-pm/antirez-linenoise",
+  "name": "antirez/linenoise",
+  "licence": "BSD-2-Clause",
+  "description": "A small self-contained alternative to readline and libedit",
+  "readme": "# Linenoise\n\nA minimal, zero-config, BSD licensed, readline replacement used in Redis,\nMongoDB, and Android.\n\n* Single and multi line editing mode with the usual key bindings implemented.\n* History handling.\n* Completion.\n* Hints (suggestions at the right of the prompt as you type).\n* About 1,100 lines of BSD license source code.\n* Only uses a subset of VT100 escapes (ANSI.SYS compatible).\n\n## Can a line editing library be 20k lines of code?\n\nLine editing with some support for history is a really important feature for command line utilities. Instead of retyping almost the same stuff again and again it's just much better to hit the up arrow and edit on syntax errors, or in order to try a slightly different command. But apparently code dealing with terminals is some sort of Black Magic: readline is 30k lines of code, libedit 20k. Is it reasonable to link small utilities to huge libraries just to get a minimal support for line editing?\n\nSo what usually happens is either:\n\n * Large programs with configure scripts disabling line editing if readline is not present in the system, or not supporting it at all since readline is GPL licensed and libedit (the BSD clone) is not as known and available as readline is (Real world example of this problem: Tclsh).\n * Smaller programs not using a configure script not supporting line editing at all (A problem we had with Redis-cli for instance).\n \nThe result is a pollution of binaries without line editing support.\n\nSo I spent more or less two hours doing a reality check resulting in this little library: is it *really* needed for a line editing library to be 20k lines of code? Apparently not, it is possibe to get a very small, zero configuration, trivial to embed library, that solves the problem. Smaller programs will just include this, supporting line editing out of the box. Larger programs may use this little library or just checking with configure if readline/libedit is available and resorting to Linenoise if not.\n\n## Terminals, in 2010.\n\nApparently almost every terminal you can happen to use today has some kind of support for basic VT100 escape sequences. So I tried to write a lib using just very basic VT100 features. The resulting library appears to work everywhere I tried to use it, and now can work even on ANSI.SYS compatible terminals, since no\nVT220 specific sequences are used anymore.\n\nThe library is currently about 1100 lines of code. In order to use it in your project just look at the *example.c* file in the source distribution, it is trivial. Linenoise is BSD code, so you can use both in free software and commercial software.\n\n## Tested with...\n\n * Linux text only console ($TERM = linux)\n * Linux KDE terminal application ($TERM = xterm)\n * Linux xterm ($TERM = xterm)\n * Linux Buildroot ($TERM = vt100)\n * Mac OS X iTerm ($TERM = xterm)\n * Mac OS X default Terminal.app ($TERM = xterm)\n * OpenBSD 4.5 through an OSX Terminal.app ($TERM = screen)\n * IBM AIX 6.1\n * FreeBSD xterm ($TERM = xterm)\n * ANSI.SYS\n * Emacs comint mode ($TERM = dumb)\n\nPlease test it everywhere you can and report back!\n\n## Let's push this forward!\n\nPatches should be provided in the respect of Linenoise sensibility for small\neasy to understand code.\n\nSend feedbacks to antirez at gmail\n\n# The API\n\nLinenoise is very easy to use, and reading the example shipped with the\nlibrary should get you up to speed ASAP. Here is a list of API calls\nand how to use them.\n\n    char *linenoise(const char *prompt);\n\nThis is the main Linenoise call: it shows the user a prompt with line editing\nand history capabilities. The prompt you specify is used as a prompt, that is,\nit will be printed to the left of the cursor. The library returns a buffer\nwith the line composed by the user, or NULL on end of file or when there\nis an out of memory condition.\n\nWhen a tty is detected (the user is actually typing into a terminal session)\nthe maximum editable line length is `LINENOISE_MAX_LINE`. When instead the\nstandard input is not a tty, which happens every time you redirect a file\nto a program, or use it in an Unix pipeline, there are no limits to the\nlength of the line that can be returned.\n\nThe returned line should be freed with the `free()` standard system call.\nHowever sometimes it could happen that your program uses a different dynamic\nallocation library, so you may also used `linenoiseFree` to make sure the\nline is freed with the same allocator it was created.\n\nThe canonical loop used by a program using Linenoise will be something like\nthis:\n\n    while((line = linenoise(\"hello> \")) != NULL) {\n        printf(\"You wrote: %s\\n\", line);\n        linenoiseFree(line); /* Or just free(line) if you use libc malloc. */\n    }\n\n## Single line VS multi line editing\n\nBy default, Linenoise uses single line editing, that is, a single row on the\nscreen will be used, and as the user types more, the text will scroll towards\nleft to make room. This works if your program is one where the user is\nunlikely to write a lot of text, otherwise multi line editing, where multiple\nscreens rows are used, can be a lot more comfortable.\n\nIn order to enable multi line editing use the following API call:\n\n    linenoiseSetMultiLine(1);\n\nYou can disable it using `0` as argument.\n\n## History\n\nLinenoise supporst history, so that the user does not have to retype\nagain and again the same things, but can use the down and up arrows in order\nto search and re-edit already inserted lines of text.\n\nThe followings are the history API calls:\n\n    int linenoiseHistoryAdd(const char *line);\n    int linenoiseHistorySetMaxLen(int len);\n    int linenoiseHistorySave(const char *filename);\n    int linenoiseHistoryLoad(const char *filename);\n\nUse `linenoiseHistoryAdd` every time you want to add a new element\nto the top of the history (it will be the first the user will see when\nusing the up arrow).\n\nNote that for history to work, you have to set a length for the history\n(which is zero by default, so history will be disabled if you don't set\na proper one). This is accomplished using the `linenoiseHistorySetMaxLen`\nfunction.\n\nLinenoise has direct support for persisting the history into an history\nfile. The functions `linenoiseHistorySave` and `linenoiseHistoryLoad` do\njust that. Both functions return -1 on error and 0 on success.\n\n## Completion\n\nLinenoise supports completion, which is the ability to complete the user\ninput when she or he presses the `<TAB>` key.\n\nIn order to use completion, you need to register a completion callback, which\nis called every time the user presses `<TAB>`. Your callback will return a\nlist of items that are completions for the current string.\n\nThe following is an example of registering a completion callback:\n\n    linenoiseSetCompletionCallback(completion);\n\nThe completion must be a function returning `void` and getting as input\na `const char` pointer, which is the line the user has typed so far, and\na `linenoiseCompletions` object pointer, which is used as argument of\n`linenoiseAddCompletion` in order to add completions inside the callback.\nAn example will make it more clear:\n\n    void completion(const char *buf, linenoiseCompletions *lc) {\n        if (buf[0] == 'h') {\n            linenoiseAddCompletion(lc,\"hello\");\n            linenoiseAddCompletion(lc,\"hello there\");\n        }\n    }\n\nBasically in your completion callback, you inspect the input, and return\na list of items that are good completions by using `linenoiseAddCompletion`.\n\nIf you want to test the completion feature, compile the example program\nwith `make`, run it, type `h` and press `<TAB>`.\n\n## Hints\n\nLinenoise has a feature called *hints* which is very useful when you\nuse Linenoise in order to implement a REPL (Read Eval Print Loop) for\na program that accepts commands and arguments, but may also be useful in\nother conditions.\n\nThe feature shows, on the right of the cursor, as the user types, hints that\nmay be useful. The hints can be displayed using a different color compared\nto the color the user is typing, and can also be bold.\n\nFor example as the user starts to type `\"git remote add\"`, with hints it's\npossible to show on the right of the prompt a string `<name> <url>`.\n\nThe feature works similarly to the history feature, using a callback.\nTo register the callback we use:\n\n    linenoiseSetHintsCallback(hints);\n\nThe callback itself is implemented like this:\n\n    char *hints(const char *buf, int *color, int *bold) {\n        if (!strcasecmp(buf,\"git remote add\")) {\n            *color = 35;\n            *bold = 0;\n            return \" <name> <url>\";\n        }\n        return NULL;\n    }\n\nThe callback function returns the string that should be displayed or NULL\nif no hint is available for the text the user currently typed. The returned\nstring will be trimmed as needed depending on the number of columns available\non the screen.\n\nIt is possible to return a string allocated in dynamic way, by also registering\na function to deallocate the hint string once used:\n\n    void linenoiseSetFreeHintsCallback(linenoiseFreeHintsCallback *);\n\nThe free hint callback will just receive the pointer and free the string\nas needed (depending on how the hits callback allocated it).\n\nAs you can see in the example above, a `color` (in xterm color terminal codes)\ncan be provided together with a `bold` attribute. If no color is set, the\ncurrent terminal foreground color is used. If no bold attribute is set,\nnon-bold text is printed.\n\nColor codes are:\n\n    red = 31\n    green = 32\n    yellow = 33\n    blue = 34\n    magenta = 35\n    cyan = 36\n    white = 37;\n\n## Screen handling\n\nSometimes you may want to clear the screen as a result of something the\nuser typed. You can do this by calling the following function:\n\n    void linenoiseClearScreen(void);\n\n## Related projects\n\n* [Linenoise NG](https://github.com/arangodb/linenoise-ng) is a fork of Linenoise that aims to add more advanced features like UTF-8 support, Windows support and other features. Uses C++ instead of C as development language.\n* [Linenoise-swift](https://github.com/andybest/linenoise-swift) is a reimplementation of Linenoise written in Swift.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ '//:linenoise' ]\n",
+      "lockFile": "manifest = \"a4e8cacb3ded16f7391c4481c9f1fccddd58e0f70ac979b635298fd76dcfa233\"\n\n",
+      "buck": "cxx_library(\n  name = 'linenoise', \n  header_namespace = '', \n  exported_headers = [\n    'linenoise.h', \n  ], \n  srcs = [\n    'linenoise.c', \n  ], \n  visibility = [\n    'PUBLIC', \n  ],\n)\n\ncxx_binary(\n  name = 'example', \n  srcs = [\n    'example.c', \n  ], \n  deps = [\n    ':linenoise', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-24T12:56:10Z",
+  "updatedUpstream": "2021-01-13T19:28:27Z",
+  "contributors": [
+    {
+      "login": "pietern",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/9845?v=4"
+    },
+    {
+      "login": "shvechikov",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12324?v=4"
+    },
+    {
+      "login": "spullara",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/33424?v=4"
+    },
+    {
+      "login": "fperrad",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/46793?u=b3241569948ba2bd65a3690d3d8814c9e4e14244&v=4"
+    },
+    {
+      "login": "antirez",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/65632?v=4"
+    },
+    {
+      "login": "hoelzro",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/107804?v=4"
+    },
+    {
+      "login": "gsserge",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/241037?u=47bf6efbc44b1fdba33b9edcc08dd473c21c4802&v=4"
+    },
+    {
+      "login": "MartinNowak",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/288976?v=4"
+    },
+    {
+      "login": "lifubang",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/783424?u=9e83c62998bcde569f7e7dda8dd350eba58f9db2&v=4"
+    },
+    {
+      "login": "polch",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/948377?v=4"
+    },
+    {
+      "login": "fbrusch",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1415376?v=4"
+    },
+    {
+      "login": "yossigo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1481195?u=a1d40b778dc4c8058899c788e4fd169853d8720e&v=4"
+    },
+    {
+      "login": "shengwen-tw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4500588?u=ce0665cbe2b710045732e48c2718f6da6f480463&v=4"
+    },
+    {
+      "login": "gainspeed",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4771377?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2626,
+  "forks": 515,
+  "topics": []
+}

@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-udev",
+  "name": "buckaroo-pm/pkg-config-udev",
+  "licence": "",
+  "description": "Buck wrapper for udev managed by pkg-config",
+  "readme": "# pkg-config-udev\n\nBuck wrapper for udev managed by `pkg-config`.\n\nTo run the demo:\n\n```bash=\nbuck run ./demo\n```\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:udev\" ]\n",
+      "lockFile": "manifest = \"28a27d4e4872b7c6257376a321bc66f69dd1779224b1b7d2c2861bafba66395f\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' libudev --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' libudev --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'udev',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-08T11:38:10Z",
+  "updatedUpstream": "2019-01-08T11:38:10Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

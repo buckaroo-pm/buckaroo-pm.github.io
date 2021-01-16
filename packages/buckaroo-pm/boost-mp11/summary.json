@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-mp11",
+  "name": "boostorg/mp11",
+  "stars": 148,
+  "topics": [],
+  "description": "C++11 metaprogramming library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-12T12:34:09Z",
+  "updatedUpstream": "2020-12-26T19:18:54Z"
+}

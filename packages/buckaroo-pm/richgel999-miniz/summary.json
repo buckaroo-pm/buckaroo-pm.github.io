@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/richgel999-miniz",
+  "name": "richgel999/miniz",
+  "stars": 1075,
+  "topics": [],
+  "description": "miniz: Single C source file zlib-replacement library, originally from code.google.com/p/miniz",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T13:55:05Z",
+  "updatedUpstream": "2021-01-12T19:20:10Z"
+}

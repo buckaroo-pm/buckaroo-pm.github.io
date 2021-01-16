@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-functional",
+  "name": "boostorg/functional",
+  "stars": 14,
+  "topics": [],
+  "description": "Boost.org functional module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 11,
+      "transitive": 23
+    }
+  ],
+  "updated": "2018-11-17T19:43:52Z",
+  "updatedUpstream": "2020-12-11T23:11:50Z"
+}

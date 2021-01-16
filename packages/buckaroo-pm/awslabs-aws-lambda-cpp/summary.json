@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-lambda-cpp",
+  "name": "awslabs/aws-lambda-cpp",
+  "stars": 290,
+  "topics": [
+    "cpp",
+    "aws-lambda",
+    "aws",
+    "lambda",
+    "cpp11",
+    "cpp14",
+    "cpp17"
+  ],
+  "description": "C++ implementation of the AWS Lambda runtime",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 3,
+      "transitive": 7
+    }
+  ],
+  "updated": "2018-12-04T17:22:34Z",
+  "updatedUpstream": "2020-12-16T09:51:41Z"
+}

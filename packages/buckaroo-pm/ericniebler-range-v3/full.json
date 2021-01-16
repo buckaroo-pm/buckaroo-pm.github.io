@@ -1,0 +1,133 @@
+{
+  "packageName": "buckaroo-pm/ericniebler-range-v3",
+  "name": "ericniebler/range-v3",
+  "licence": "NOASSERTION",
+  "description": "Experimental range library for C++11/14/17",
+  "readme": "range-v3\n========\n\nRange library for C++11/14/17. This code is the basis of [a formal proposal](https://ericniebler.github.io/std/wg21/D4128.html) to add range support to the C++ standard library.\n\nAbout:\n------\n\nWhy does C++ need another range library? Simply put, the existing solutions haven't kept up with the rapid evolution of C++. Range v3 is a library for the future C++. Not only does it work well with today's C++ -- move semantics, lambdas, automatically deduced types and all -- it also anticipates tomorrow's C++ with Concepts.\n\nRange v3 forms the basis of a proposal to add range support to the standard library ([N4128: Ranges for the Standard Library](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4128.html)). It also will be the reference implementation for an upcoming Technical Specification. These are the first steps toward turning ranges into an international standard.\n\nDocumentation:\n--------------\n\nCheck out the (woefully incomplete) documentation [here](https://ericniebler.github.io/range-v3/).\n\nOther resources (mind the dates, the library probably has changed since then):\n\n- Usage:\n  - Talk: [CppCon 2015: Eric Niebler \"Ranges for the Standard Library\"](https://www.youtube.com/watch?v=mFUXNMfaciE), 2015.\n  - [A slice of Python in C++](http://ericniebler.com/2014/12/07/a-slice-of-python-in-c/), 07.12.2014.\n  - Actions (back then called [Container Algorithms](http://ericniebler.com/2014/11/23/container-algorithms/)), 23.11.2014.\n  - [Range comprehensions](http://ericniebler.com/2014/04/27/range-comprehensions/), 27.04.2014.\n  - [Input iterators vs input ranges](http://ericniebler.com/2013/11/07/input-iterators-vs-input-ranges/), 07.11.2013.\n\n- Design / Implementation:\n  - Rationale behind range-v3: [N4128: Ranges for the standard library Revision 1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4128.html), 2014.\n  - Ranges TS: [N4560: C++ Extensions for Ranges](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4560.pdf), 2015.\n  - Implementation of customization points in range-v3:\n    - [N4381: Suggested Design for Customization Points](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4381.html), 2015.\n    - [P0386: Inline variables](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0386r0.pdf), 2016.\n    - [Customization Point Design in C++11 and Beyond](http://ericniebler.com/2014/10/21/customization-point-design-in-c11-and-beyond/), 2014.\n  - Proxy iterators in range-v3:\n    - [D0022: Proxy Iterators for the Ranges Extensions](https://ericniebler.github.io/std/wg21/D0022.html).\n    - [To Be or Not to Be (an Iterator)](http://ericniebler.com/2015/01/28/to-be-or-not-to-be-an-iterator/), 2015.\n    - [Iterators++: Part1](http://ericniebler.com/2015/02/03/iterators-plus-plus-part-1/), 2015.\n    - [Iterators++: Part2](http://ericniebler.com/2015/02/13/iterators-plus-plus-part-2/), 2015.\n    - [Iterators++: Part3](http://ericniebler.com/2015/03/03/iterators-plus-plus-part-3/), 2015.\n  - Metaprogramming utilities:\n    - See the [meta documentation](https://ericniebler.github.io/meta/index.html), the library has changed significantly since the [2014 blog post](http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/).\n  - Concept emulation layer: [Concept checking in C++11](http://ericniebler.com/2013/11/23/concept-checking-in-c11/), 2013.\n  - [C++Now 2014: Eric Niebler \"C++11 Library Design\"](https://www.youtube.com/watch?v=zgOF4NrQllo), 2014.\n\nLicense:\n--------\n\nMost of the source code in this project are mine, and those are under the Boost Software License. Parts are taken from Alex Stepanov's Elements of Programming, Howard Hinnant's libc++, and from the SGI STL. Please see the attached LICENSE file and the CREDITS file for the licensing and acknowledgments.\n\nSupported Compilers\n-------------------\n\nThe code is known to work on the following compilers:\n\n- clang 3.6.2 (or later)\n- GCC 4.9.1 (or later) (C++14 support requires GCC 5.2; C++14 \"extended constexpr\" support is poor before 6.1.)\n- Clang/LLVM 6 (or later) on Windows (older versions may work - we haven't tested.)\n\n[ Note: We've \"retired\" support for Clang/C2 with the VS2015 toolset (i.e., the `v140_clang_c2` toolset) which Microsoft no longer supports for C++ use. We no longer have CI runs, but haven't gone out of our way to break anything, so it will likely continue to work. ]\n\n**Development Status:** This code is fairly stable, well-tested, and suitable for casual use, although currently lacking documentation. No promise is made about support or long-term stability. This code *will* evolve without regard to backwards compatibility.\n\n**Build status**\n- on Travis-CI: [![Travis Build Status](https://travis-ci.org/ericniebler/range-v3.svg?branch=master)](https://travis-ci.org/ericniebler/range-v3)\n- on AppVeyor: [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/fwl9ymc2t6ukn9qj/branch/master?svg=true)](https://ci.appveyor.com/project/ericniebler/range-v3)\n\nRelease Notes:\n--------------\n* **0.4.0** Oct 18, 2018\n  - Minor interface-breaking changes:\n    * `single_view` returns by `const &` (see [#817](https://github.com/ericniebler/range-v3/issues/817)).\n    * `reverse_view` of a non-Sized, non-Bounded RandomAccess range (eg., a null-terminated string) no longer satisfies SizedRange.\n    * The `generate` and `generate_n` views now return the generated values by xvalue reference (`T &&`) to the value cached within the view (see [#905](https://github.com/ericniebler/range-v3/issues/905)).\n    * Views no longer prefer returning constant iterators when they can; some views have different constant and mutable iterators.\n  - Enhancements:\n    * Views can successfully adapt other views that have different constant and mutable iterators.\n    * The `single` and `empty` views are much closer to the versions as specified in [P0896](http://wg21.link/P0896).\n  - Bug fixes:\n    * \"single_view should not copy the value\" [#817](https://github.com/ericniebler/range-v3/issues/817).\n    * \"Calling back() on strided range does not return the correct last value in range\" [#901](https://github.com/ericniebler/range-v3/issues/901).\n    * \"generate(foo) | take(n) calls foo n+1 times\" [#819](https://github.com/ericniebler/range-v3/issues/819).\n    * \"generate seems broken with move-only return types\" [#905](https://github.com/ericniebler/range-v3/issues/905).\n    * \"Unexpected behavior in generate with return by reference\" [#807](https://github.com/ericniebler/range-v3/issues/807).\n    * \"Inconsistent behaviour of ranges::distance with ranges::view::zip using infinite views.\" [#783](https://github.com/ericniebler/range-v3/issues/783).\n    * \"Infinite loop when using ranges::view::cycle with an infinite range\" [#780](https://github.com/ericniebler/range-v3/issues/780).\n    * \"Composing ranges::view::cycle with ranges::view::slice\" [#778](https://github.com/ericniebler/range-v3/issues/778).\n    * \"cartesian_product view, now with moar bugs.\" [#919](https://github.com/ericniebler/range-v3/issues/919).\n* **0.3.7** Sept 19, 2018\n  - Improved support for clang-cl (thanks to @CaseyCarter).\n  - Fix for `any_view<T, category::sized | category::input>` (see #869).\n  - Fix `iter_move` of a `ranges::reverse_iterator` (see #888).\n  - Fix `move_sentinel` comparisons (see #889).\n  - Avoid ambiguity created by `boost::advance` and `std::advance` (see #893).\n* **0.3.6** May 15, 2018\n  - NEW: `view::exclusive_scan` (thanks to GitHub user @mitsutaka-takeda).\n  - All views get non-`const` overloads of `.empty()` and `.size()` (see [ericniebler/stl2\\#793](https://github.com/ericniebler/stl2/issues/793)).\n  - Upgrade Conan support for conan 1.0.\n  - `subspan` interface tweaks.\n  - Fix bug in `view::split` (see [this stackoverflow question](https://stackoverflow.com/questions/49015671)).\n  - Fix bug in `view::stride` (see [ericniebler/stl2\\#805](https://github.com/ericniebler/stl2/issues/805)).\n  - Fix `const`-correctness problem in `view::chunk` (see [this stackoverflow question](https://stackoverflow.com/questions/49210190)).\n  - Replace uses of `ranges::result_of` with `ranges::invoke_result`.\n  - Fix potential buffer overrun of `view::drop` over RandomAccessRanges.\n  - Lots of `view::cartesian_product` fixes (see [ericniebler/stl2\\#820](https://github.com/ericniebler/stl2/issues/820), [ericniebler/stl2\\#823](https://github.com/ericniebler/stl2/issues/823)).\n  - Work around gcc-8 regression regarding `volatile` `std::initializer_list`s (see [ericniebler/stl2\\#826](https://github.com/ericniebler/stl2/issues/826)).\n  - Fix `const`-correctness problem of `view::take`.\n* **0.3.5** February 17, 2018\n  - Rvalues may satisfy `Writable` (see [ericniebler/stl2\\#387](https://github.com/ericniebler/stl2/issues/387)).\n  - `view_interface` gets a bounds-checking `at` method.\n  - `chunk_view` works on Input ranges.\n  - Fix bug in `group_by_view`.\n  - Improved concept checks for `partial_sum` numeric algorithm.\n  - Define `ContiguousIterator` concept and `contiguous_iterator_tag` iterator\n    category tag.\n  - Sundry `span` fixes.\n  - `action::insert` avoids interfering with `vector`'s exponentional growth\n    strategy.\n  - Add an experimental `shared` view for views that need container-like scratch\n    space to do their work.\n  - Faster, simpler `reverse_view`.\n  - Rework `ranges::reference_wrapper` to avoid [LWG\\#2993](https://wg21.link/lwg2993).\n  - Reworked `any_view`, the type-erased view wrapper.\n  - `equal` algorithm is `constexpr` in C++14.\n  - `stride_view` no longer needs an `atomic` data member.\n  - `const`-correct `drop_view`.\n  - `adjacent_filter_view` supports bidirectional iteration.\n  - Massive `view_adaptor` cleanup to remove the need for a `mutable` data\n    member holding the adapted view.\n  - Fix `counting_iterator` post-increment bug.\n  - `tail_view` of an empty range is an empty range, not undefined behavior.\n  - Various portability fixes for gcc and clang trunk.\n* **0.3.0** June 30, 2017\n  - Input views may now be move-only (from @CaseyCarter)\n  - Input `any_view`s are now *much* more efficient (from @CaseyCarter)\n  - Better support for systems lacking a working `<thread>` header (from @CaseyCarter)\n* **0.2.6** June 21, 2017\n  - Experimental coroutines with `ranges::experimental::generator` (from @CaseyCarter)\n  - `ranges::optional` now behaves like `std::optional` (from @CaseyCarter)\n  - Extensive bug fixes with Input ranges (from @CaseyCarter)\n* **0.2.5** May 16, 2017\n  - `view::chunk` works on Input ranges (from @CaseyCarter)\n  - `for_each_n` algorithm (from @khlebnikov)\n  - Portability fixes for MinGW, clang-3.6 and -3.7, and gcc-7; and cmake 3.0\n* **0.2.4** April 12, 2017\n  Fix the following bug:\n  - `action::stable_sort` of `vector` broken on Clang 3.8.1 since ~last Xmas (ericniebler/range-v3#632).\n* **0.2.3** April 4, 2017\n  Fix the following bug:\n  - iterators that return move-only types by value do not satisfy Readable (ericniebler/stl2#399).\n* **0.2.2** March 30, 2017\n  New in this release:\n  - `view::linear_distribute(from,to,n)` - A view of `n` elements between `from` and `to`, distributed evenly.\n  - `view::indices(n)` - A view of the indices `[0,1,2...n-1]`.\n  - `view::closed_indices(n)` - A view of the indices `[0,1,2...n]`.\n\n  This release deprecates `view::ints(n)` as confusing to new users.\n* **0.2.1** March 22, 2017\n  New in this release:\n  - `view::cartesian_product`\n  - `action::reverse`\n* **0.2.0** March 13, 2017\n  Bring many interfaces into sync with the Ranges TS.\n  - Many interfaces are simply renamed. The following table shows the old names\n    and the new. (All names are in the `ranges::v3` namespace.)\n\n    | Old Name                      | New Name                  |\n    |-------------------------------|---------------------------|\n    | `indirect_swap`               | `iter_swap`               |\n    | `indirect_move`               | `iter_move`               |\n    | `iterator_value_t`            | `value_type_t`            |\n    | `iterator_reference_t`        | `reference_t`             |\n    | `iterator_difference_t`       | `difference_type_t`       |\n    | `iterator_size_t`             | `size_type_t`             |\n    | `iterator_rvalue_reference_t` | `rvalue_reference_t`      |\n    | `iterator_common_reference_t` | `iter_common_reference_t` |\n    | `range_value_t`               | `range_value_type_t`      |\n    | `range_difference_t`          | `range_difference_type_t` |\n    | `range_size_t`                | `range_size_type_t`       |\n    | `range_iterator_t`            | `iterator_t`              |\n    | `range_sentinel_t`            | `sentinel_t`              |\n  - `common_iterator` now requires that its two types (`Iterator` and `Sentinel`)\n    are different. Use `common_iterator_t<I, S>` to get the old behavior (i.e., if the two types are the same, it is an alias for `I`; otherwise, it is\n    `common_iterator<I, S>`).\n  - The following iterator adaptors now work with iterators that return proxies\n    from their postfix increment operator (i.e., `operator++(int)`):\n    * `common_iterator`\n    * `counted_iterator`\n  - The following customization points are now implemented per the Ranges TS\n    spec and will no longer find the associated unconstrained overload in\n    namespace `std::`:\n    * `ranges::begin`\n    * `ranges::end`\n    * `ranges::size`\n    * `ranges::swap`\n    * `ranges::iter_swap`\n\n    (In practice, this has very little effect but it may effect overloading in\n    rare situations.)\n  - `ranges::is_swappable` now only takes one template parameter. The new\n    `ranges::is_swappable_with<T, U>` tests whether `T` and `U` are swappable.\n    `ranges::is_swappable<T>` is equivalent to `ranges::is_swappable_with<T &, T &>`.\n  - The following object concepts have changed to conform with the Ranges TS\n    specification, and approved changes (see [P0547](http://wg21.link/p0547)):\n    * `Destructible`\n    * `Constructible`\n    * `DefaultConstructible`\n    * `MoveConstructible`\n    * `MoveConstructible`\n    * `Movable`\n    * `Assignable`\n  - The `View` concept is no longer satisfied by reference types.\n  - The syntax for defining a concept has changed slightly. See [utility/iterator_concepts.hpp](https://github.com/ericniebler/range-v3/blob/master/include/range/v3/utility/iterator_concepts.hpp) for examples.\n* **0.1.1**\n  Small tweak to `Writable` concept to fix #537.\n* **0.1.0**\n  March 8, 2017, Begin semantic versioning\n\nSay Thanks!\n-----------\n\nI do this work because I love it and because I love C++ and want it to be as excellent as I know it can be. If you like my work and are looking for a way to say thank you, you can leave a supportive comment on [my blog](http://ericniebler.com). Or you could leave me some kudos on my Open Hub range-v3 contribution page. Just click the **Give Kudos** button [here](https://www.openhub.net/p/range-v3/contributors/3053743222308608).\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:range-v3\" ]\n",
+      "lockFile": "manifest = \"20b448907eb1e13a659a6a14f1539cef5ac01682cdc7ca25999216f167db0d47\"\n\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'meta',\n  header_namespace = 'meta',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('include/meta', '**/*.hpp'),\n  ]),\n  licenses = [\n    'LICENSE.txt',\n  ],\n)\n\nprebuilt_cxx_library(\n  name = 'range-v3',\n  header_namespace = 'range/v3',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('include/range/v3', '**/*.hpp'),\n  ]),\n  licenses = [\n    'LICENSE.txt',\n  ],\n  visibility = [\n    'PUBLIC'\n  ],\n  deps = [\n    ':meta',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-12-04T10:02:15Z",
+  "updatedUpstream": "2021-01-13T20:50:52Z",
+  "contributors": [
+    {
+      "login": "wilhelmtell",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1458?u=cc95eb27944115e2a4370ac950fbfd5ec5fbd4e9&v=4"
+    },
+    {
+      "login": "socantre",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/8063?v=4"
+    },
+    {
+      "login": "mikezackles",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/77851?u=b4a6d82f7154253f9d2fc5eb39d102d3ed140574&v=4"
+    },
+    {
+      "login": "marehr",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/103778?u=84cce0f37c7a6fd153857713fe301457b9a9e54c&v=4"
+    },
+    {
+      "login": "maikel",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/138201?u=483e42f8f1fab449abcd1831cd3a7209022e34b4&v=4"
+    },
+    {
+      "login": "Klaim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/142265?v=4"
+    },
+    {
+      "login": "raedwulf",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/143964?v=4"
+    },
+    {
+      "login": "lewissbaker",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/211814?v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "unwiredben",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/230363?v=4"
+    },
+    {
+      "login": "alkino",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/286080?u=2fd222dc558e7d144adb709f1a438f517c1f1d24&v=4"
+    },
+    {
+      "login": "Talkless",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/292191?v=4"
+    },
+    {
+      "login": "mrpi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/379332?u=e65eae7ab58a744c1ea4ecfa6711c67ad9318731&v=4"
+    },
+    {
+      "login": "lichray",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/433009?v=4"
+    },
+    {
+      "login": "CaseyCarter",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/456873?v=4"
+    },
+    {
+      "login": "Mizuchi",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/493322?v=4"
+    },
+    {
+      "login": "mpusz",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/506260?v=4"
+    },
+    {
+      "login": "asutton",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/570796?v=4"
+    },
+    {
+      "login": "tivek",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/680792?u=ca0342df63b8e65960b9844e31eedd8c2a17bbc5&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "chandlerc",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/711534?u=690d6ea96ea53414562e6c98ef7842282db12e84&v=4"
+    },
+    {
+      "login": "Bekenn",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/821383?v=4"
+    },
+    {
+      "login": "mitsutaka-takeda",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/830260?u=4237ff3b0f1e246aa89d50f3a7b12d27fc5ee9b7&v=4"
+    },
+    {
+      "login": "SSE4",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/870236?v=4"
+    },
+    {
+      "login": "gnzlbg",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/904614?u=90a745b05f56d270002a0e1354bd76b5a410733b&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2897,
+  "forks": 315,
+  "topics": [
+    "range",
+    "range-library",
+    "proposal",
+    "iterator",
+    "c-plus-plus"
+  ]
+}

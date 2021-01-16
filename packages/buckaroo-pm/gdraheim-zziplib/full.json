@@ -1,0 +1,104 @@
+{
+  "packageName": "buckaroo-pm/gdraheim-zziplib",
+  "name": "gdraheim/zziplib",
+  "licence": "NOASSERTION",
+  "description": "The ZZIPlib provides read access on ZIP-archives and unpacked data. It features an additional simplified API following the standard Posix API for file access",
+  "readme": "PROJECT\n  The zziplib provides read access to zipped files in a zip-archive,\n  using compression based solely on free algorithms provided by zlib.\n  It also provides a functionality to overlay the archive filesystem\n  with the filesystem of the operating system environment.\n\nAUTHOR\n  The project was originally written by Tomi Ollila, later largely\n  rewritten by Guido Draheim, and extended with contributions in\n  the years to follow. Guido Draheim <guidod@gmx.de> holds the full\n  copyright to the zziplib sources.\n\nCOPYING\n  The zziplib may be used freely under the restrictions of the\n  GNU Lesser General Public License version 2 or later. Alternatively\n  the Mozilla Public license can be chosen. The sources are under\n  a dual license, as long as the MPL hint is not removed, the modified\n  files will be again under a dual license for the final recipient.\n\nLICENSING\n  If you can not use a dynalinked library according to LGPL rules,\n  then look at docs/copying.htm for a few hints. Generally the LGPL \n  has a way for staticlinking as well as the MPL has a way. Anyway,\n  special (paid) licenses can be negotiated with the copyright holder.\n\nHOMEPAGE\n  The zziplib project has moved to GitHub where you can find the \n  last release tags now => https://github.com/gdraheim/zziplib\n  The zziplib project was originally hosted at SourceForge with\n  the documentation at http://zziplib.sf.net - this is a bit\n  outdated but the API has not changed much since then. To get\n  the latest release announcements, watch the GitHub project.\n\nINSTALLATION\n  The zziplib sources are built with gnu autotools and they should\n  be easy to install on unixish systems via the usual sequence of\n  `configure && make && make check && make install`. Many distributors\n  ship prebuilt packages e.g. in rpm format. Additionally there are\n  MSVC project files shipped along for usage with the Microsoft\n  VisualC series of compilers. There should be no problem either\n  when crosscompiling the zziplib for a third host platform.\n\nMAINTENANCE\n  The zziplib library is intentionally a lightweight interface to\n  zip files. The author take patches but please consider to put \n  complex extensions into separate modules rather than implanting them\n  right into the core of the library engine. All Patches and Bug Reports\n  should be sent to Guido Draheim <guidod@gmx.de>.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:zzip\" ]\n\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"13d4ae4a75c8e143536a8ae662559235753d93ec618ecd82afe440ca983fd748\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/madler-zlib\"\ntarget = \"//:zlib\"\n\n[lock.\"github.com/buckaroo-pm/madler-zlib\"]\nversions = [ \"branch=master\" ]\nrevision = \"906f727175ca6a7f8943e375467d6e461a55b68d\"\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\nload('//:extract.bzl', 'extract')\n\nconfigure_options = read_config('configure', 'options', '')\n\ngenrule(\n  name = 'configure',\n  out = 'out',\n  srcs = glob([\n    'configure',\n    '*.ac',\n    '*.m4',\n    '*.in',\n    '*.sed',\n    '*.spec',\n    'bins/*.in',\n    'docs/*.in',\n    'uses/*',\n    'zzip/*.in',\n    'zzip/*.sed',\n    'SDL/*.in',\n  ]),\n  cmd = ' && '.join([\n    'cp -r $SRCDIR/. $TMP',\n    'cp -r $(location //test:config)/. $TMP/test',\n    'cp -r $(location //zzipwrap:config)/. $TMP/zzipwrap',\n    'mkdir -p $OUT',\n    'cd $OUT && $TMP/configure --silent --srcdir=$TMP ' + configure_options,\n  ]),\n)\n\ncxx_library(\n  name = 'zzip',\n  header_namespace = '',\n  exported_headers = dict(\n    subdir_glob([\n      ('', 'zzip/**/*.h'),\n    ]).items() + [\n      ('zzip/_config.h', extract(':configure', 'zzip/_config.h')),\n    ]\n  ),\n  srcs = glob([\n    'zzip/*.c',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/madler-zlib",
+          "name": "buckaroo-pm/madler-zlib",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "906f727175ca6a7f8943e375467d6e461a55b68d"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2019-01-24T09:44:42Z",
+  "updatedUpstream": "2021-01-08T22:17:58Z",
+  "contributors": [
+    {
+      "login": "mojca",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/15606?u=4a5dcd09c12e9495b9f1c7bc08d7a431c0d2a3ee&v=4"
+    },
+    {
+      "login": "jelly",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/67428?u=cc677701e49dca0be4cdc6ea10bc60b52a181e4e&v=4"
+    },
+    {
+      "login": "jwilk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/141546?v=4"
+    },
+    {
+      "login": "veprbl",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/245573?v=4"
+    },
+    {
+      "login": "tgurr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/414984?v=4"
+    },
+    {
+      "login": "jtojnar",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/705123?u=e5951458a5a0613e6511fef73a5b602954dc3580&v=4"
+    },
+    {
+      "login": "gdraheim",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/959453?v=4"
+    },
+    {
+      "login": "keneanung",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1056269?v=4"
+    },
+    {
+      "login": "MaxKellermann",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1443144?u=1d6969837a68763ce7993da38acdf1f5bfe007b4&v=4"
+    },
+    {
+      "login": "pks-t",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4056630?u=3aaddffd8b9b2f1351c40e1a1963dd1a48fe4c84&v=4"
+    },
+    {
+      "login": "paroj",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4941802?v=4"
+    },
+    {
+      "login": "stweil",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6734573?v=4"
+    },
+    {
+      "login": "longnguyen2004",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/15729831?v=4"
+    },
+    {
+      "login": "imartisko",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/15909505?v=4"
+    },
+    {
+      "login": "jmoellers",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/20593010?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 37,
+  "forks": 27,
+  "topics": []
+}

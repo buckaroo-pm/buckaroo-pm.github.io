@@ -1,0 +1,39 @@
+{
+  "packageName": "buckaroo-pm/seladb-PcapPlusPlus",
+  "name": "seladb/PcapPlusPlus",
+  "stars": 1271,
+  "topics": [
+    "c-plus-plus",
+    "pf-ring",
+    "dpdk",
+    "packet-parsing",
+    "winpcap",
+    "pcap-files",
+    "pcap",
+    "packet-processing",
+    "cpp",
+    "libpcap",
+    "multiplatform",
+    "linux",
+    "mac-osx",
+    "windows",
+    "networking",
+    "network-forensics",
+    "network-tools",
+    "tcp-reassembly",
+    "packet-crafting",
+    "pcapplusplus"
+  ],
+  "description": "PcapPlusPlus is a multiplatform C++ network sniffing and packet parsing and crafting framework. PcapPlusPlus is meant to be lightweight, efficient and easy to use. It's a C++ wrapper for popular engines like libpcap, WinPcap, DPDK and PF_RING",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": false,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-01-22T17:48:11Z",
+  "updatedUpstream": "2021-01-13T19:35:23Z"
+}

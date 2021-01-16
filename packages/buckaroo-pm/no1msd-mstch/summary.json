@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/no1msd-mstch",
+  "name": "no1msd/mstch",
+  "stars": 442,
+  "topics": [],
+  "description": "mstch is a complete implementation of {{mustache}} templates using modern C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 16
+    }
+  ],
+  "updated": "2019-01-09T12:15:19Z",
+  "updatedUpstream": "2021-01-12T19:19:33Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-gl",
+  "name": "buckaroo-pm/pkg-config-gl",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for gl managed by pkg-config ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T11:05:12Z",
+  "updatedUpstream": "2019-01-24T11:05:12Z"
+}

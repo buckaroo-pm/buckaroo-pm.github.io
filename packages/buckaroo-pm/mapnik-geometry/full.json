@@ -1,0 +1,49 @@
+{
+  "packageName": "buckaroo-pm/mapnik-geometry",
+  "name": "mapnik/mapnik-geometry",
+  "licence": "",
+  "description": "Alternative geometry implementation for Mapnik",
+  "readme": "mapnik-geometry\n===============\n",
+  "versions": [],
+  "updated": "2018-11-13T12:47:26Z",
+  "updatedUpstream": "2015-02-17T12:11:54Z",
+  "contributors": [
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "GretaCB",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1209162?u=a31b1d56faaa744e702dea1b42bbc734f2bca323&v=4"
+    },
+    {
+      "login": "flippmoke",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1794907?u=4094ed1a08f648f9197d518c1ec8ef2e1d308c87&v=4"
+    },
+    {
+      "login": "mapsam",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1943001?u=14543ff89b12fd24a57fb1fffaeb7552496ccfb3&v=4"
+    },
+    {
+      "login": "ericfischer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1951835?v=4"
+    },
+    {
+      "login": "BergWerkGIS",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4549888?v=4"
+    },
+    {
+      "login": "jakepruitt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5084263?u=87746eae9e42f5ce4166d2b65e9b3e586764fc9b&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 1,
+  "forks": 2,
+  "topics": []
+}

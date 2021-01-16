@@ -1,0 +1,175 @@
+{
+  "packageName": "buckaroo-pm/mapbox-polylabel",
+  "name": "mapbox/polylabel",
+  "licence": "NOASSERTION",
+  "description": "A fast algorithm for finding the pole of inaccessibility of a polygon (in JavaScript and C++)",
+  "readme": "## polylabel [![Build Status](https://travis-ci.org/mapbox/polylabel.svg?branch=master)](https://travis-ci.org/mapbox/polylabel)\n\nA fast algorithm for finding polygon _pole of inaccessibility_,\nthe most distant internal point from the polygon outline (not to be confused with centroid),\nimplemented as a JavaScript library.\nUseful for optimal placement of a text label on a polygon.\n\nIt's an iterative grid algorithm,\ninspired by [paper by Garcia-Castellanos & Lombardo, 2007](https://sites.google.com/site/polesofinaccessibility/).\nUnlike the one in the paper, this algorithm:\n\n- guarantees finding **global optimum** within the given precision\n- is many times faster (10-40x)\n\n![](https://cloud.githubusercontent.com/assets/25395/16745865/864a0a30-47c0-11e6-87bc-58acac41a520.png)\n\n### How the algorithm works\n\nThis is an iterative grid-based algorithm, which starts by covering the polygon with big square cells and then iteratively splitting them in the order of the most promising ones, while aggressively pruning uninteresting cells.\n\n1. Generate initial square cells that fully cover the polygon (with cell size equal to either width or height, whichever is lower). Calculate distance from the center of each cell to the outer polygon, using negative value if the point is outside the polygon (detected by ray-casting).\n2. Put the cells into a priority queue sorted by the maximum potential distance from a point inside a cell, defined as a sum of the distance from the center and the cell radius (equal to `cell_size * sqrt(2) / 2`).\n3. Calculate the distance from the centroid of the polygon and pick it as the first \"best so far\".\n4. Pull out cells from the priority queue one by one. If a cell's distance is better than the current best, save it as such.\nThen, if the cell potentially contains a better solution that the current best (`cell_max - best_dist > precision`),\nsplit it into 4 children cells and put them in the queue.\n5. Stop the algorithm when we have exhausted the queue and return the best cell's center as the pole of inaccessibility.\nIt will be guaranteed to be a global optimum within the given precision.\n\n![image](https://cloud.githubusercontent.com/assets/25395/16748630/e6b3336c-47cd-11e6-8059-0eeccf22cf6b.png)\n\n### JavaScript Usage\n\nGiven polygon coordinates in\n[GeoJSON-like format](http://geojson.org/geojson-spec.html#polygon)\nand precision (`1.0` by default),\nPolylabel returns the pole of inaccessibility coordinate in `[x, y]` format.\n\n```js\nvar p = polylabel(polygon, 1.0);\n```\n\n### TypeScript\n\n[TypeScript type definitions](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/concaveman)\nare available via `npm install --save @types/polylabel`.\n\n### C++ Usage\n\nIt is recommended to install polylabel via [mason](https://github.com/mapbox/mason). You will also need to install its dependencies: [geometry.hpp](https://github.com/mapbox/geometry.hpp) and [variant](https://github.com/mapbox/variant).\n\n```C++\n#include <mapbox/polylabel.hpp>\n\nint main() {\n    mapbox::geometry::polygon<double> polygon = readPolygon(); // Get polygon data from somewhere.\n    mapbox::geometry::point<double> p = mapbox::polylabel(polygon, 1.0);\n    return 0;\n}\n```\n\n#### Ports to other languages\n\n- [andrewharvey/geojson-polygon-labels](https://github.com/andrewharvey/geojson-polygon-labels) (CLI) \n- [Twista/python-polylabel](https://github.com/Twista/python-polylabel) (Python)\n- [Shapely](https://github.com/Toblerity/Shapely/blob/master/shapely/algorithms/polylabel.py) (Python)\n- [polylabelr](https://CRAN.R-project.org/package=polylabelr) (R)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:polylabel\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\nversion = \"branch=master\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-rapidjson\"\nversion = \"*\"\n",
+      "lockFile": "manifest = \"90163c326abd8c438a0f996ec3ba9f9e1b82d5691a45f1ddcba89645df932215\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\ntarget = \"//:geometry\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/mapbox-rapidjson\"\ntarget = \"//:rapidjson\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/Catch2\"\nversion = \"1.12.1\"\nrevision = \"3974bb1cc2d5a5b800b38b09907911213153b468\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-geometry.hpp\"\nversion = \"branch=master\"\nrevision = \"dc886c9705ebec3b4c8ddf3b305537a450267944\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-rapidjson\"\nversion = \"branch=master\"\nrevision = \"44ccecfb229c4862ef4fa924a4841749196abfc7\"\n\n[[lock]]\nname = \"github.com/buckaroo-pm/mapbox-variant\"\nversion = \"branch=master\"\nrevision = \"e735b7c1be9fe58e364685e6093628644776baf3\"\n",
+      "buck": "prebuilt_cxx_library(\n  name = 'polylabel', \n  header_namespace = 'mapbox', \n  header_only = True, \n  exported_headers = subdir_glob([\n    ('include/mapbox', '**/*.hpp'), \n  ]), \n  deps = [\n    'buckaroo.github.buckaroo-pm.mapbox-geometry.hpp//:geometry', \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-geometry.hpp",
+          "name": "buckaroo-pm/mapbox-geometry.hpp",
+          "version": "branch=master"
+        },
+        {
+          "uri": "github.com/buckaroo-pm/mapbox-rapidjson",
+          "name": "buckaroo-pm/mapbox-rapidjson",
+          "version": "*"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "0",
+          "name": "0",
+          "spec": {
+            "name": "github.com/buckaroo-pm/Catch2",
+            "version": "1.12.1",
+            "revision": "3974bb1cc2d5a5b800b38b09907911213153b468"
+          }
+        },
+        {
+          "uri": "1",
+          "name": "1",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-geometry.hpp",
+            "version": "branch=master",
+            "revision": "dc886c9705ebec3b4c8ddf3b305537a450267944"
+          }
+        },
+        {
+          "uri": "2",
+          "name": "2",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-rapidjson",
+            "version": "branch=master",
+            "revision": "44ccecfb229c4862ef4fa924a4841749196abfc7"
+          }
+        },
+        {
+          "uri": "3",
+          "name": "3",
+          "spec": {
+            "name": "github.com/buckaroo-pm/mapbox-variant",
+            "version": "branch=master",
+            "revision": "e735b7c1be9fe58e364685e6093628644776baf3"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-11-23T17:16:19Z",
+  "updatedUpstream": "2021-01-12T04:33:59Z",
+  "contributors": [
+    {
+      "login": "zugaldia",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6964?u=e17bd7e9c8e0d4ca1df6956596cffc4ef10176de&v=4"
+    },
+    {
+      "login": "bookest",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14640?u=75e815f366d32a63b0d223fe47182a1570a96bb3&v=4"
+    },
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "mikelmaron",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22896?u=f22126445e688b260ca316709407189f669c2083&v=4"
+    },
+    {
+      "login": "mourner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25395?u=6f04fa0e30ee06ee7ef8d13dd6c166d0ca70aeea&v=4"
+    },
+    {
+      "login": "sbma44",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31717?v=4"
+    },
+    {
+      "login": "tmcw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/32314?u=f6cb43dcfd33ae3df8cd1c6679922b08a24ef509&v=4"
+    },
+    {
+      "login": "sgillies",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33697?u=518c359114c548926c56fef4b51a123e9a4a5d47&v=4"
+    },
+    {
+      "login": "kkaefer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/52399?u=7b3a53dfef51246b5c1342108a664842b4ea3571&v=4"
+    },
+    {
+      "login": "alfwatt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/53469?u=ff9e35352887e919bfd74b6ad0bee578af80e165&v=4"
+    },
+    {
+      "login": "anderco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55106?v=4"
+    },
+    {
+      "login": "yuletide",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58695?u=6322adc3fcbff377e32f0e6299d7aaddd841dc6e&v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "tristen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61150?u=40b52d083ac2c6f414ef35c79271c776787e7bd0&v=4"
+    },
+    {
+      "login": "ivovandongen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/64527?u=e284cc763f7ca8765196fc0f6279e7538742cdfd&v=4"
+    },
+    {
+      "login": "curran",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/68416?u=31d283c06af36e3cc7f6da3aac1e302064d68f81&v=4"
+    },
+    {
+      "login": "brunoabinader",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76133?v=4"
+    },
+    {
+      "login": "apendleton",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/78930?u=911348d600e91c721685538a958ee4252a854589&v=4"
+    },
+    {
+      "login": "yhahn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/83384?u=b2c1ca34e763ba420f510b5a1d62201c1d9624eb&v=4"
+    },
+    {
+      "login": "PureW",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/85910?v=4"
+    },
+    {
+      "login": "jwkvam",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/86304?u=0aa583ff6636a9aa5882d59eace17f1ac2d9e0f9&v=4"
+    },
+    {
+      "login": "AlekseiCherkes",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/87640?u=f75d2bf7fd442db59db853feab57a208761fddef&v=4"
+    },
+    {
+      "login": "ianshward",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/91258?u=5e631aa4328b540f955d9c2e9e2588fcc1bd0d0d&v=4"
+    },
+    {
+      "login": "gundersen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/93353?v=4"
+    },
+    {
+      "login": "willwhite",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/93564?u=3e17a4a45e3ce686ca811d9ed79257db04ff345f&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 873,
+  "forks": 111,
+  "topics": []
+}

@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/google-leveldb",
+  "name": "njlr/leveldb",
+  "stars": 0,
+  "topics": [],
+  "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
+  "versions": [],
+  "updated": "2018-10-28T13:56:32Z",
+  "updatedUpstream": "2017-01-23T22:29:37Z"
+}

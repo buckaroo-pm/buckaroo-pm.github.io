@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/vlc-libudfread",
+  "name": "vlc-mirror/libudfread",
+  "stars": 0,
+  "topics": [],
+  "description": "Fork of git://git.videolan.org/libudfread.git",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T15:19:06Z",
+  "updatedUpstream": "2015-08-19T22:32:06Z"
+}

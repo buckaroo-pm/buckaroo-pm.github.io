@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-vector-tile",
+  "name": "mapbox/vector-tile",
+  "stars": 33,
+  "topics": [],
+  "description": "C++14 library for decoding Mapbox Vector Tiles",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 4
+    }
+  ],
+  "updated": "2018-11-21T11:24:19Z",
+  "updatedUpstream": "2021-01-11T11:09:38Z"
+}

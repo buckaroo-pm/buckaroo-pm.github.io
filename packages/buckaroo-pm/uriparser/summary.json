@@ -1,0 +1,33 @@
+{
+  "packageName": "buckaroo-pm/uriparser",
+  "name": "uriparser/uriparser",
+  "stars": 160,
+  "topics": [
+    "uriparser",
+    "c",
+    "rfc-3986",
+    "rfc-3513",
+    "cross-platform",
+    "bsd-3-clause",
+    "library",
+    "c89",
+    "c90",
+    "ansic",
+    "ansi-c",
+    "uri-parser",
+    "uri",
+    "parser-library"
+  ],
+  "description": " :hocho: Strictly RFC 3986 compliant URI parsing and handling library written in C89; moved from SourceForge to GitHub",
+  "versions": [
+    {
+      "ref": "v0.9.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-03-20T17:16:42Z",
+  "updatedUpstream": "2021-01-12T15:54:34Z"
+}

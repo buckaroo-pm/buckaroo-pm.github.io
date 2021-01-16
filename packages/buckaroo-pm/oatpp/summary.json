@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/oatpp",
+  "name": "oatpp/oatpp",
+  "stars": 3389,
+  "topics": [
+    "c-plus-plus",
+    "webframework",
+    "webserver",
+    "zero-dependency",
+    "oatpp",
+    "cpp",
+    "microservices",
+    "cross-platform",
+    "iot"
+  ],
+  "description": "Light, zero-dependency framework. Create bleedingly-fast web-services.  Organic. Pure C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2018-12-08T10:26:38Z",
+  "updatedUpstream": "2021-01-13T22:29:37Z"
+}

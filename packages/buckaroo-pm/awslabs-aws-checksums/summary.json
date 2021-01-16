@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/awslabs-aws-checksums",
+  "name": "awslabs/aws-checksums",
+  "stars": 24,
+  "topics": [],
+  "description": "Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations. C interface with language bindings for each of our SDKs ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-12-04T15:13:23Z",
+  "updatedUpstream": "2020-11-27T09:13:22Z"
+}

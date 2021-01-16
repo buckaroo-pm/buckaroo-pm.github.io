@@ -1,0 +1,130 @@
+{
+  "packageName": "buckaroo-pm/arximboldi-immer",
+  "name": "arximboldi/immer",
+  "licence": "BSL-1.0",
+  "description": "Postmodern immutable and persistent data structures for C++",
+  "readme": "\n.. image:: https://travis-ci.org/arximboldi/immer.svg?branch=master\n   :target: https://travis-ci.org/arximboldi/immer\n   :alt: Travis Badge\n\n.. image:: https://codecov.io/gh/arximboldi/immer/branch/master/graph/badge.svg\n   :target: https://codecov.io/gh/arximboldi/immer\n   :alt: CodeCov Badge\n\n.. image:: https://cdn.rawgit.com/arximboldi/immer/355a113782aedc2ea22463444014809269c2376d/doc/_static/sinusoidal-badge.svg\n   :target: https://sinusoid.al\n   :alt: Sinusoidal Engineering badge\n   :align: right\n\n.. raw:: html\n\n   <img width=\"100%\" src=\"https://cdn.rawgit.com/arximboldi/immer/3888170d247359cc0905eed548cd46897caef0f4/doc/_static/logo-front.svg\" alt=\"Logotype\"/>\n\n.. include:introduction/start\n\n**immer** is a library of persistent_ and immutable_ data structures\nwritten in C++.  These enable whole new kinds of architectures for\ninteractive and concurrent programs of striking simplicity,\ncorrectness, and performance.\n\n.. _persistent: https://en.wikipedia.org/wiki/Persistent_data_structure\n.. _immutable:  https://en.wikipedia.org/wiki/Immutable_object\n\n* **Documentation** (Contents_)\n* **Code** (GitHub_)\n* **CppCon'17 Talk**: *Postmodern Immutable Data Structures* (YouTube_, Slides_)\n* **ICFP'17 Paper**: *Persistence for the masses* (Preprint_)\n\n.. _contents: https://sinusoid.es/immer/#contents\n.. _github: https://github.com/arximboldi/immer\n.. _youtube: https://www.youtube.com/watch?v=sPhpelUfu8Q\n.. _slides: https://sinusoid.es/talks/immer-cppcon17\n.. _preprint: https://public.sinusoid.es/misc/immer/immer-icfp17.pdf\n\n\n  .. raw:: html\n\n     <a href=\"https://www.patreon.com/sinusoidal\">\n         <img align=\"right\" src=\"https://cdn.rawgit.com/arximboldi/immer/master/doc/_static/patreon.svg\">\n     </a>\n\n  This library has full months of *pro bono* research and development\n  invested in it.  This is just the first step in a long-term vision\n  of making interactive and concurrent C++ programs easier to\n  write. **Put your logo here and help this project's long term\n  sustainability by buying a sponsorship package:** immer@sinusoid.al\n\n.. include:index/end\n\nExample\n-------\n\n.. github does not support the ``literalinclude`` directive.  This\n   example is copy pasted from ``example/vector/intro.cpp``\n\n.. code-block:: c++\n\n   #include <immer/vector.hpp>\n   int main()\n   {\n       const auto v0 = immer::vector<int>{};\n       const auto v1 = v0.push_back(13);\n       assert(v0.size() == 0 && v1.size() == 1 && v1[0] == 13);\n\n       const auto v2 = v1.set(0, 42);\n       assert(v1[0] == 13 && v2[0] == 42);\n   }\n..\n\n  For a **complete example** check `Ewig, a simple didactic\n  text-editor <https://github.com/arximboldi/ewig>`_ built with this\n  library.\n\n\nWhy?\n----\n\nIn the last few years, there has been a growing interest in immutable\ndata structures, motivated by the horizontal scaling of our processing\npower and the ubiquity of highly interactive systems.  Languages like\nClojure_ and Scala_ provide them by default, and implementations\nfor JavaScript like Mori_ and Immutable.js_ are widely used,\nspecially in combination with modern UI frameworks like React_.\n\nInteractivity\n    Thanks to *persistence* and *structural sharing*, new values can\n    be efficiently compared with old ones.  This enables simpler ways of\n    *reasoning about change* that sit at the core of modern\n    interactive systems programming paradigms like `reactive\n    programming`_.\n\nConcurrency\n    Passing immutable data structures by value does not need to copy\n    any data. In the absence of mutation, data can be safely read\n    from multiple concurrent processes, and enable concurrency\n    patterns like `share by communicating`_ efficiently.\n\nParallelism\n   Some recent immutable data structures have interesting properties\n   like :math:`O(log(n))` concatenation, which enable new kinds of\n   `parallelization algorithms`_.\n\n.. _clojure: http://clojure.org/reference/data_structures\n.. _scala: http://docs.scala-lang.org/overviews/collections/overview.html\n\n.. _mori: https://swannodette.github.io/mori/\n.. _immutable.js: https://github.com/facebook/immutable-js\n.. _react: https://facebook.github.io/react/\n\n.. _reactive programming: https://en.wikipedia.org/wiki/Reactive_programming\n.. _share by communicating: https://blog.golang.org/share-memory-by-communicating\n.. _parallelization algorithms: http://docs.scala-lang.org/overviews/parallel-collections/overview.html\n\nFeatures\n--------\n\nIdiomatic\n    This library doesn't pretend that it is written in Haskell.  It\n    leverages features from recent standards to provide an API that is\n    both efficient and natural for a C++ developer.\n\nPerformant\n    You use C++ because you need this.  *Immer* implements state of\n    the art data structures with efficient cache utilization and have\n    been proven production ready in other languages.  It also includes\n    our own improvements over that are only possible because of the\n    C++'s ability to abstract over memory layout.  We monitor the\n    performance impact of every change by collecting `benchmark\n    results`_ directly from CI.\n\n.. _benchmark results: https://public.sinusoid.es/misc/immer/reports/\n\nCustomizable\n    We leverage templates and `policy-based design`_ to build\n    data-structures that can be adapted to work efficiently for\n    various purposes and architectures, for example, by choosing among\n    various `memory management strategies`.  This turns\n    *immer* into a good foundation to provide immutable data\n    structures to higher level languages with a C runtime, like\n    Python_ or Guile_.\n\n.. _python: https://www.python.org/\n.. _guile: https://www.gnu.org/software/guile/\n.. _policy-based design: https://en.wikipedia.org/wiki/Policy-based_design\n.. _memory management strategies: https://sinusoid.es/immer/memory.html\n\nDependencies\n------------\n\nThis library is written in **C++14** and a compliant compiler is\nnecessary.  It is `continuously tested`_ with Clang 3.8 and GCC 6, but\nit might work with other compilers and versions.\n\nNo external library is necessary and there are no other requirements.\n\n.. _continuously tested: https://travis-ci.org/arximboldi/immer\n\nUsage\n-----\n\nThis is a **header only** library.  You can just copy the ``immer``\nsubfolder somewhere in your *include path*.\n\nIf you are using the `Nix package manager`_ (we strongly recommend it)\nyou can just::\n\n    nix-env -if https://github.com/arximboldi/immer/archive/master.tar.gz\n\nAlternatively, you can use `CMake`_ to install the library in your\nsystem once you have manually cloned the repository::\n\n    mkdir -p build && cd build\n    cmake .. && sudo make install\n\n.. _nix package manager: https://nixos.org/nix\n.. _cmake: https://cmake.org/\n\nDevelopment\n-----------\n\nIn order to develop the library, you will need to compile and run the\nexamples, tests and benchmarks.  These require some additional tools.\nThe easiest way to install them is by using the `Nix package\nmanager`_.  At the root of the repository just type::\n\n    nix-shell\n\nThis will download all required dependencies and create an isolated\nenvironment in which you can use these dependencies, without polluting\nyour system.\n\nThen you can proceed to generate a development project using `CMake`_::\n\n    mkdir build && cd build\n    cmake ..\n\nFrom then on, one may build and run all tests by doing::\n\n    make check\n\nIn order to build and run all benchmarks when running ``make check``,\nrun ``cmake`` again with the option ``-DCHECK_BENCHMARKS=1``.  The\nresults of running the benchmarks will be saved to a folder\n``reports/`` in the project root.\n\nLicense\n-------\n\n**This software is licensed under the Boost Software License 1.0**.\n\n.. image:: https://upload.wikimedia.org/wikipedia/commons/c/cd/Boost.png\n   :alt: Boost logo\n   :target: http://boost.org/LICENSE_1_0.txt\n   :align: right\n\nThe full text of the license is can be accessed `via this link\n<http://boost.org/LICENSE_1_0.txt>`_ and is also included\nin the ``LICENSE`` file of this software package.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:immer\" ]",
+      "lockFile": "manifest = \"e2db1c171ed429f8b186274401978f0bc3e5b92a913e546683f67842a27644ce\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'immer',\n  header_only = True,\n  header_namespace = 'immer',\n  exported_headers = subdir_glob([\n    ('immer', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-24T12:09:27Z",
+  "updatedUpstream": "2021-01-13T16:33:30Z",
+  "contributors": [
+    {
+      "login": "arBmind",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/44107?v=4"
+    },
+    {
+      "login": "jrheard",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/108659?u=f3c6577e90babe264de185e3993d63cbe284cc14&v=4"
+    },
+    {
+      "login": "bheesham",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/171007?u=59cbd3445f3d881636312c005088274cf529d251&v=4"
+    },
+    {
+      "login": "chuim",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/235138?v=4"
+    },
+    {
+      "login": "mrpi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/379332?u=e65eae7ab58a744c1ea4ecfa6711c67ad9318731&v=4"
+    },
+    {
+      "login": "ikrima",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/505737?v=4"
+    },
+    {
+      "login": "fweik",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/893663?u=e6fbe780658416b33f79b210d33b3c24ef9e168f&v=4"
+    },
+    {
+      "login": "jzrake",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1354659?v=4"
+    },
+    {
+      "login": "margnus1",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1678250?u=b3570f594225ad934121de4a1a72b01107c06b78&v=4"
+    },
+    {
+      "login": "codablock",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1884269?u=df721911d7cca6bdc0ac4ec0fa5215047a2e4a34&v=4"
+    },
+    {
+      "login": "kostspielig",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3260147?u=c5508d2838dfe0d5855ac07aad8ba1c393abfd84&v=4"
+    },
+    {
+      "login": "apmccartney",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/3707548?v=4"
+    },
+    {
+      "login": "arximboldi",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4521138?u=69e908057adb38e7366ff916270f2b63646b6929&v=4"
+    },
+    {
+      "login": "dwightguth",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5104541?v=4"
+    },
+    {
+      "login": "myd7349",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5435649?v=4"
+    },
+    {
+      "login": "ehoeks",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10461844?v=4"
+    },
+    {
+      "login": "dawikur",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/11866902?u=9e6a0152bd9279a9c092b8be36d1faea91881414&v=4"
+    },
+    {
+      "login": "luismerino",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/13561578?u=c23049a9468548b83508cd0878bc37b5458985ea&v=4"
+    },
+    {
+      "login": "prouschal",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/16081148?v=4"
+    },
+    {
+      "login": "craigscott-crascit",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/16160067?u=fe9da44b4e63562009d3bc9c04e81ed774d4ac9f&v=4"
+    },
+    {
+      "login": "fedormatantsev",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/36549098?u=c87db4393b5c30dc089d9e84b8ce1070de117a12&v=4"
+    },
+    {
+      "login": "gin-ahirsch",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/38940744?v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/arximboldi",
+    "https://patreon.com/sinusoidal",
+    "paypal.me/sinusoidal",
+    "sinusoid.al"
+  ],
+  "contactLinks": [],
+  "stars": 1752,
+  "forks": 96,
+  "topics": [
+    "immutable",
+    "data-structures",
+    "modern-cpp",
+    "cpp14",
+    "rrb-tree",
+    "persistent",
+    "postmodernism",
+    "value-semantics",
+    "hamt"
+  ]
+}

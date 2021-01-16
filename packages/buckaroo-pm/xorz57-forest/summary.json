@@ -1,0 +1,29 @@
+{
+  "packageName": "buckaroo-pm/xorz57-forest",
+  "name": "xorz57/forest",
+  "stars": 146,
+  "topics": [
+    "template-library",
+    "header-only",
+    "avl-tree",
+    "data-structures",
+    "library",
+    "binary-search-tree",
+    "cmake",
+    "cpp",
+    "cpp17",
+    "trie"
+  ],
+  "description": "Template Library of Tree Data Structures",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-16T17:30:32Z",
+  "updatedUpstream": "2021-01-11T09:29:44Z"
+}

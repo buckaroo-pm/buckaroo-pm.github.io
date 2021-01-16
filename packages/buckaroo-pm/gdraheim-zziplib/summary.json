@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/gdraheim-zziplib",
+  "name": "gdraheim/zziplib",
+  "stars": 37,
+  "topics": [],
+  "description": "The ZZIPlib provides read access on ZIP-archives and unpacked data. It features an additional simplified API following the standard Posix API for file access",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-24T09:44:42Z",
+  "updatedUpstream": "2021-01-08T22:17:58Z"
+}

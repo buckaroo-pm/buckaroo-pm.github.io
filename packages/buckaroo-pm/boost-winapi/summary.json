@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-winapi",
+  "name": "boostorg/winapi",
+  "stars": 47,
+  "topics": [],
+  "description": "Windows API declarations without <windows.h>, for internal Boost use.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-17T23:23:50Z",
+  "updatedUpstream": "2020-11-12T14:16:05Z"
+}

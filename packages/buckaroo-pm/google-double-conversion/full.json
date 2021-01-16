@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/google-double-conversion",
+  "name": "google/double-conversion",
+  "licence": "BSD-3-Clause",
+  "description": "Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.",
+  "readme": "https://github.com/google/double-conversion\n\nThis project (double-conversion) provides binary-decimal and decimal-binary\nroutines for IEEE doubles.\n\nThe library consists of efficient conversion routines that have been extracted\nfrom the V8 JavaScript engine. The code has been refactored and improved so that\nit can be used more easily in other projects.\n\nThere is extensive documentation in `double-conversion/double-conversion.h`. Other \nexamples can be found in `test/cctest/test-conversions.cc`.\n\n\nBuilding\n========\n\nThis library can be built with [scons][0] or [cmake][1].\nThe checked-in Makefile simply forwards to scons, and provides a\nshortcut to run all tests:\n\n    make\n    make test\n\nScons\n-----\n\nThe easiest way to install this library is to use `scons`. It builds\nthe static and shared library, and is set up to install those at the\ncorrect locations:\n\n    scons install\n\nUse the `DESTDIR` option to change the target directory:\n\n    scons DESTDIR=alternative_directory install\n\nCmake\n-----\n\nTo use cmake run `cmake .` in the root directory. This overwrites the\nexisting Makefile.\n\nUse `-DBUILD_SHARED_LIBS=ON` to enable the compilation of shared libraries.\nNote that this disables static libraries. There is currently no way to\nbuild both libraries at the same time with cmake.\n\nUse `-DBUILD_TESTING=ON` to build the test executable.\n\n    cmake . -DBUILD_TESTING=ON\n    make\n    test/cctest/cctest --list | tr -d '<' | xargs test/cctest/cctest\n\n[0]: http://www.scons.org/\n[1]: https://cmake.org/\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:double-conversion\" ]",
+      "lockFile": "manifest = \"e2ae3de24bca3c5f92cbb6c14e6ae869c4161bd52983ef16a04a4b01cda6878c\"\n\n",
+      "buck": "cxx_library(\n  name = 'double-conversion', \n  header_namespace = '', \n  exported_headers = [\n    'double-conversion/bignum.h',\n    'double-conversion/bignum-dtoa.h',\n    'double-conversion/cached-powers.h',\n    'double-conversion/diy-fp.h',\n    'double-conversion/double-conversion.h',\n    'double-conversion/fast-dtoa.h',\n    'double-conversion/fixed-dtoa.h',\n    'double-conversion/ieee.h',\n    'double-conversion/strtod.h',\n    'double-conversion/utils.h',\n  ], \n  srcs = [\n    'double-conversion/bignum.cc',\n    'double-conversion/bignum-dtoa.cc',\n    'double-conversion/cached-powers.cc',\n    'double-conversion/diy-fp.cc',\n    'double-conversion/double-conversion.cc',\n    'double-conversion/fast-dtoa.cc',\n    'double-conversion/fixed-dtoa.cc',\n    'double-conversion/strtod.cc',\n  ],\n  visibility = [\n    'PUBLIC', \n  ],\n)\n",
+      "bazel": "# Bazel(http://bazel.io) BUILD file\n\nlicenses([\"notice\"])\n\nexports_files([\"LICENSE\"])\n\ncc_library(\n    name = \"double-conversion\",\n    srcs = [\n        \"double-conversion/bignum.cc\",\n        \"double-conversion/bignum-dtoa.cc\",\n        \"double-conversion/cached-powers.cc\",\n        \"double-conversion/diy-fp.cc\",\n        \"double-conversion/double-conversion.cc\",\n        \"double-conversion/fast-dtoa.cc\",\n        \"double-conversion/fixed-dtoa.cc\",\n        \"double-conversion/strtod.cc\",\n        \"double-conversion/utils.h\",\n    ],\n    hdrs = [\n        \"double-conversion/bignum.h\",\n        \"double-conversion/bignum-dtoa.h\",\n        \"double-conversion/cached-powers.h\",\n        \"double-conversion/diy-fp.h\",\n        \"double-conversion/double-conversion.h\",\n        \"double-conversion/fast-dtoa.h\",\n        \"double-conversion/fixed-dtoa.h\",\n        \"double-conversion/ieee.h\",\n        \"double-conversion/strtod.h\",\n    ],\n    linkopts = [\n        \"-lm\",\n    ],\n    visibility = [\"//visibility:public\"],\n)\n\ncc_test(\n    name = \"cctest\",\n    srcs = [\n        \"test/cctest/cctest.cc\",\n        \"test/cctest/cctest.h\",\n        \"test/cctest/checks.h\",\n        \"test/cctest/gay-fixed.cc\",\n        \"test/cctest/gay-fixed.h\",\n        \"test/cctest/gay-precision.cc\",\n        \"test/cctest/gay-precision.h\",\n        \"test/cctest/gay-shortest.cc\",\n        \"test/cctest/gay-shortest.h\",\n        \"test/cctest/gay-shortest-single.cc\",\n        \"test/cctest/gay-shortest-single.h\",\n        \"test/cctest/test-bignum.cc\",\n        \"test/cctest/test-bignum-dtoa.cc\",\n        \"test/cctest/test-conversions.cc\",\n        \"test/cctest/test-diy-fp.cc\",\n        \"test/cctest/test-dtoa.cc\",\n        \"test/cctest/test-fast-dtoa.cc\",\n        \"test/cctest/test-fixed-dtoa.cc\",\n        \"test/cctest/test-ieee.cc\",\n        \"test/cctest/test-strtod.cc\",\n    ],\n    args = [\n        \"test-bignum\",\n        \"test-bignum-dtoa\",\n        \"test-conversions\",\n        \"test-diy-fp\",\n        \"test-dtoa\",\n        \"test-fast-dtoa\",\n        \"test-fixed-dtoa\",\n        \"test-ieee\",\n        \"test-strtod\",\n    ],\n    visibility = [\"//visibility:public\"],\n    deps = [\":double-conversion\"],\n)\n",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-14T13:05:27Z",
+  "updatedUpstream": "2020-12-30T21:33:55Z",
+  "contributors": [
+    {
+      "login": "yesudeep",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3874?u=500ff8aa3e1218a5cc29873a03e35efe1e5d3bdb&v=4"
+    },
+    {
+      "login": "davisp",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/19929?u=9df8dfcb0e204ae7a0e999b6338150656c6355ad&v=4"
+    },
+    {
+      "login": "sorear",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/92735?v=4"
+    },
+    {
+      "login": "mathstuf",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/97253?v=4"
+    },
+    {
+      "login": "ColinH",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/113184?u=913c79858b6ac3285df1c37ca6224e9f0a5f4efe&v=4"
+    },
+    {
+      "login": "cdibona",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/165353?v=4"
+    },
+    {
+      "login": "KindDragon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/224272?v=4"
+    },
+    {
+      "login": "mihaipopescu",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/272470?u=8f5764bbdbf88c6be5422ed0148206e25732998e&v=4"
+    },
+    {
+      "login": "zonr",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/287446?v=4"
+    },
+    {
+      "login": "sheeeng",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/305414?u=a589c8a3933aeb545aee43538d4545700f745e96&v=4"
+    },
+    {
+      "login": "dberlin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/324715?v=4"
+    },
+    {
+      "login": "perfinion",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/363227?u=9394c762cda637c6067c28bcf47874aac17862ad&v=4"
+    },
+    {
+      "login": "gorakhargosh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/364101?v=4"
+    },
+    {
+      "login": "ddrcoder",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/366526?v=4"
+    },
+    {
+      "login": "Chaircrusher",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/482621?v=4"
+    },
+    {
+      "login": "aiq",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/569366?v=4"
+    },
+    {
+      "login": "ilelann",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/580426?u=c5f6720690d3d1c04524f8eb60b7cfcd7275357b&v=4"
+    },
+    {
+      "login": "heirecka",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/649320?v=4"
+    },
+    {
+      "login": "opoplawski",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/814662?u=ddfb4502ae38b94f310402215bb8991f176f0cde&v=4"
+    },
+    {
+      "login": "Nafanya",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/832924?u=29b11f28f52f9def4e2727c014d6f1ce9f4952ba&v=4"
+    },
+    {
+      "login": "brettw",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/911346?u=ae6fd614ab77bfb2be6e2e8d8c81dcdedd4dd3c4&v=4"
+    },
+    {
+      "login": "guykogus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/924764?v=4"
+    },
+    {
+      "login": "tfarina",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/970071?v=4"
+    },
+    {
+      "login": "avasylev",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1022612?v=4"
+    },
+    {
+      "login": "emmenlau",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1098087?u=395c03e6379b326128c268c3bd3a12c3da17ea60&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 791,
+  "forks": 206,
+  "topics": []
+}

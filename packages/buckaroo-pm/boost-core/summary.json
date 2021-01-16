@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-core",
+  "name": "boostorg/core",
+  "stars": 64,
+  "topics": [],
+  "description": "Boost Core Utilities",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2018-07-03T12:04:22Z",
+  "updatedUpstream": "2021-01-12T05:22:23Z"
+}

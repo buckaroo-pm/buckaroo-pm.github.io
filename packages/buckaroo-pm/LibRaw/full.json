@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/LibRaw",
+  "name": "LibRaw/LibRaw",
+  "licence": "NOASSERTION",
+  "description": "LibRaw is a library for reading RAW files from digital cameras",
+  "readme": "### LibRaw-201812 snapshot note:\nThis branch diverged from old master. To update your copy use\n~~~\ngit fetch\ngit reset origin/master\n~~~\n\n# LibRaw\n### Library for reading and processing of RAW digicam images\n\nLibRaw is a library for reading RAW files from digital photo cameras \n(CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are \nsupported). \n\nIt pays special attention to correct retrieval of data required for subsequent \nRAW conversion.\n    \nThe library is intended for embedding in RAW converters, data analyzers, and \nother programs using RAW files as the initial data.\n\nLibRaw library, Copyright &copy; 2008-2018 LibRaw LLC (info@libraw.org)\nThe library includes source code from\n      \n     dcraw.c, Dave Coffin's raw photo decoder\n     Copyright 1997-2016 by Dave Coffin, dcoffin a cybercom o net\n      \nLibRaw is distributed for free under two different licenses:\n *  GNU Lesser General Public License, version 2.1\n *  COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0\n    \nYou may use one of these licensing modes and switch between them.\n\nIf you modify LibRaw source and made your changes public, you should accept\nboth two licensing modes for your changes/additions.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "\ntargets = [ \"//:raw\" ]",
+      "lockFile": "manifest = \"01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'raw',\n  header_namespace = '',\n  exported_headers = glob([\n    'libraw/**/*.h',\n  ]),\n  headers = glob([\n    'internal/**/*.h',\n  ]),\n  srcs = glob([\n    'src/**/*.cpp',\n    'src/**/*.c',\n    'internal/**/*.cpp',\n  ], exclude = [\n    'src/libraw_fuji_compressed.cpp',\n    'internal/aahd_demosaic.cpp',\n    'internal/wf_filtering.cpp',\n    'internal/dht_demosaic.cpp',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-22T11:02:31Z",
+  "updatedUpstream": "2021-01-13T05:56:13Z",
+  "contributors": [
+    {
+      "login": "alex",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/772?u=7c00c7c8ac3691da556d7686e16ff08b797d4a38&v=4"
+    },
+    {
+      "login": "corec",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/65280?v=4"
+    },
+    {
+      "login": "radhermit",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/69519?v=4"
+    },
+    {
+      "login": "joankaradimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/221979?v=4"
+    },
+    {
+      "login": "KindDragon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/224272?v=4"
+    },
+    {
+      "login": "toaarnio",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/229523?v=4"
+    },
+    {
+      "login": "kainjow",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/271035?v=4"
+    },
+    {
+      "login": "LibRaw",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/435672?u=251cfce65048ed9a6283ea0ebfe262af9b6859fc&v=4"
+    },
+    {
+      "login": "alextutubalin",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/443031?u=2b525b8e645439b395ffd5171f5e04d8ed1d9cf4&v=4"
+    },
+    {
+      "login": "SamWhited",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/512573?u=6f00812827495785986fe087bbb533e7065cb230&v=4"
+    },
+    {
+      "login": "cryptomilk",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/545480?v=4"
+    },
+    {
+      "login": "heirecka",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/649320?v=4"
+    },
+    {
+      "login": "jhgit",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/772518?v=4"
+    },
+    {
+      "login": "akhuettel",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/813214?v=4"
+    },
+    {
+      "login": "danoli3",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/830748?u=d60032fa1bbe44c2548b50a42c6bfd38d35ef439&v=4"
+    },
+    {
+      "login": "sizeofvoid",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1006814?u=395685f7cb2289cc6755aa6fb3d35e8ba55de0f1&v=4"
+    },
+    {
+      "login": "tpetazzoni",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1089203?v=4"
+    },
+    {
+      "login": "vladimirovich",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1104942?v=4"
+    },
+    {
+      "login": "dktrkranz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1399577?u=524bc725cfac3a8a2395a53cfb14d6ecbc3ca795&v=4"
+    },
+    {
+      "login": "vtorri",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1422401?v=4"
+    },
+    {
+      "login": "maslbl4",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1502824?v=4"
+    },
+    {
+      "login": "phries",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2507381?u=c10526e09e17533d18f7924d85ace38fb7d7a67c&v=4"
+    },
+    {
+      "login": "cgilles",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2588024?u=88897af23399827fb3b16bfc07dfb0d2bf591c1f&v=4"
+    },
+    {
+      "login": "R-Tur",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2874699?u=a97653a8756b7569ca5fde057fea7b98cb4ba8f6&v=4"
+    },
+    {
+      "login": "luzpaz",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4140247?u=e202295667791fd8bd081f8edb4399b37861aaf5&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 652,
+  "forks": 174,
+  "topics": []
+}

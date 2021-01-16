@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/mapbox-earcut.hpp",
+  "name": "mapbox/earcut.hpp",
+  "stars": 429,
+  "topics": [
+    "earcut",
+    "triangulation",
+    "tessellation",
+    "geometry",
+    "algorithm",
+    "rendering",
+    "cpp",
+    "header-only",
+    "polygon"
+  ],
+  "description": "Fast, header-only polygon triangulation",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-20T19:45:29Z",
+  "updatedUpstream": "2021-01-04T03:45:19Z"
+}

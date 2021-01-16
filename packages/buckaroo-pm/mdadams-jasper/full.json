@@ -1,0 +1,120 @@
+{
+  "packageName": "buckaroo-pm/mdadams-jasper",
+  "name": "jasper-software/jasper",
+  "licence": "NOASSERTION",
+  "description": "Official Repository for the JasPer Image Coding Toolkit",
+  "readme": "JasPer Image Processing/Coding Tool Kit\n\nThis is the source distribution for JasPer.  JasPer is a collection\nof software (i.e., a library and application programs) for the\ncoding and manipulation of images.  This software can handle image\ndata in a variety of formats.  One such format supported by JasPer\nis the JPEG-2000 format defined in ISO/IEC 15444-1.\n\nThe complete licensing terms for the JasPer software can be found\nin the file named \"LICENSE\" in the top level directory of this\nsoftware distribution.  Any use of this software contrary to the\nterms of the license is strictly prohibited.  Recent changes made\nto the software can be found in the file \"ChangeLog\".  Detailed\ndocumentation on the JasPer software can be found in the JasPer\nSoftware Reference Manual.  This manual is located in the \"doc\"\ndirectory, and includes useful information such as: 1) how to build,\ninstall, and use the software, 2) how to submit report bugs, and 3)\nwhere to find additional information about the software.\n\nThe official web site for the JasPer software has the following URL:\n\n    http://www.ece.uvic.ca/~mdadams/jasper\n\nThe official Git repository for the JasPer software is hosted\nby GitHub.  The URL for the GitHub site is as follows:\n\n    https://github.com/mdadams/jasper\n\nThe Git repository can be accessed via the URL:\n\n    https://github.com/mdadams/jasper.git\n\nInformation on how to install this software can be found in the\nfile INSTALL.\n\nThe reference manual for this software can be found in the directory\ndoc.  The manual is provided in two formats:\n    1) HTML format in the directory doc/html\n       Open the file doc/html/index.html in your web browser.\n    2) PDF format in doc/manual.pdf\nThe old reference manual (which is still useful) can be found in:\n    doc/jasper.pdf\n\nAll bug reports should be submitted via the issue-tracking system\nprovided by GitHub.  To submit a bug report, go the the following\nURL and click on the \"New issue\" button:\n\n    https://github.com/mdadams/jasper/issues\n\nPlease do not submit bug reports directly to the author via email,\nas bug reports that are not submitted via the above issue-tracking\nsystem on GitHub are easy to be lost.\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:jasper\" ]\n\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libjpeg\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"ae61c5426fd62b0f3cb90db4d7fc9388040a227f87bb13c64199fecc546bbc6d\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/luadist-libjpeg\"\ntarget = \"//:jpeg\"\n\n[lock.\"github.com/buckaroo-pm/luadist-libjpeg\"]\nversions = [ \"branch=master\" ]\nrevision = \"5e6a7dc7789af950e90b00b13ce36c099dc57bb5\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\ncxx_library(\n  name = 'jasper',\n  header_namespace = '',\n  srcs = glob([\n    'src/libjasper/**/*.c'\n  ], exclude=['src/libjasper/jpg/jpg_dummy.c']),\n  headers = subdir_glob([\n    ('src/libjasper', '*/*.h')\n  ]),\n  exported_headers = dict(\n    subdir_glob([\n      ('src/libjasper/include', '**/*.h')\n    ]).items() + \n      [('jasper/jas_config.h', 'jas_config.h')]),\n  visibility = ['PUBLIC'],\n  deps = buckaroo_deps()\n  )\n\n\ncxx_binary(\n  name = 'imgcmp',\n  srcs = ['src/appl/imgcmp.c'],\n  deps = [':jasper'],\n  visibility = ['PUBLIC']\n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/luadist-libjpeg",
+          "name": "buckaroo-pm/luadist-libjpeg",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/luadist-libjpeg",
+          "name": "buckaroo-pm/luadist-libjpeg",
+          "spec": {
+            "versions": [
+              "branch=master"
+            ],
+            "revision": "5e6a7dc7789af950e90b00b13ce36c099dc57bb5"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2020-07-18T20:05:53Z",
+  "updatedUpstream": "2021-01-10T15:42:27Z",
+  "contributors": [
+    {
+      "login": "hughsie",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/151380?v=4"
+    },
+    {
+      "login": "fornwall",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/277251?v=4"
+    },
+    {
+      "login": "tonytheodore",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/537773?v=4"
+    },
+    {
+      "login": "Mixaill",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/704382?v=4"
+    },
+    {
+      "login": "jhgit",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/772518?v=4"
+    },
+    {
+      "login": "MaxKellermann",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1443144?u=1d6969837a68763ce7993da38acdf1f5bfe007b4&v=4"
+    },
+    {
+      "login": "theta682",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1522049?v=4"
+    },
+    {
+      "login": "jubalh",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1658215?v=4"
+    },
+    {
+      "login": "xantares",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/3265815?v=4"
+    },
+    {
+      "login": "thoger",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/4051912?v=4"
+    },
+    {
+      "login": "vincent-olivert-riera",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6151586?u=14f53173692966e0cde2ea182d1a4900c1848432&v=4"
+    },
+    {
+      "login": "dlemstra",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10426229?u=f64f58f4530fb50610d9849a58d7d18834e8f480&v=4"
+    },
+    {
+      "login": "pkl97",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/12798694?v=4"
+    },
+    {
+      "login": "SoapGentoo",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/16636962?v=4"
+    },
+    {
+      "login": "Jamaika1",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/19725750?v=4"
+    },
+    {
+      "login": "mdadams",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/19838285?u=987ed891ec78efb5d0a2afa3fa15fc254e300f29&v=4"
+    },
+    {
+      "login": "zodf0055980",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25863161?u=fe6ac8eae5f32e33804aebdc7cc0ac53a3a8d35a&v=4"
+    },
+    {
+      "login": "SpaceIm",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/30052553?u=b3eb54dd839ff56e1841edace5af866399c1ca15&v=4"
+    },
+    {
+      "login": "osamu620",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/65328111?u=5784c4f5e4338e2ef69238e761912fb1d9520935&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 115,
+  "forks": 65,
+  "topics": []
+}

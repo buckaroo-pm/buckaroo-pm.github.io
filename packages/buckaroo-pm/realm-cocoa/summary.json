@@ -1,0 +1,20 @@
+{
+  "packageName": "buckaroo-pm/realm-cocoa",
+  "name": "realm/realm-cocoa",
+  "stars": 14255,
+  "topics": [
+    "ios",
+    "database",
+    "swift",
+    "objective-c",
+    "sync",
+    "mobile-database",
+    "threadsafe",
+    "realtime",
+    "mobile"
+  ],
+  "description": "Realm is a mobile database: a replacement for Core Data & SQLite",
+  "versions": [],
+  "updated": "2019-02-21T11:57:47Z",
+  "updatedUpstream": "2021-01-13T06:13:30Z"
+}

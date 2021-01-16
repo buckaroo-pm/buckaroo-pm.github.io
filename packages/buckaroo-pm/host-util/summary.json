@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/host-util",
+  "name": "buckaroo-pm/host-util",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for the host's util implementation",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-15T10:30:41Z",
+  "updatedUpstream": "2019-01-15T10:30:41Z"
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-xext",
+  "name": "buckaroo-pm/pkg-config-xext",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for Xext managed by pkg-config ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-02-28T17:45:46Z",
+  "updatedUpstream": "2019-02-28T17:45:46Z"
+}

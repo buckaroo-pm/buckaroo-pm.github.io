@@ -1,0 +1,49 @@
+{
+  "packageName": "buckaroo-pm/gmp",
+  "name": "ryepdx/gmp",
+  "licence": "LGPL-3.0",
+  "description": "Mirror of the GNU Multiple Precision Arithmetic Library, which uses Mercurial",
+  "readme": "Copyright 1991, 1996, 1999, 2000, 2007 Free Software Foundation, Inc.\n\nThis file is part of the GNU MP Library.\n\nThe GNU MP Library is free software; you can redistribute it and/or modify\nit under the terms of either:\n\n  * the GNU Lesser General Public License as published by the Free\n    Software Foundation; either version 3 of the License, or (at your\n    option) any later version.\n\nor\n\n  * the GNU General Public License as published by the Free Software\n    Foundation; either version 2 of the License, or (at your option) any\n    later version.\n\nor both in parallel, as here.\n\nThe GNU MP Library is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License\nfor more details.\n\nYou should have received copies of the GNU General Public License and the\nGNU Lesser General Public License along with the GNU MP Library.  If not,\nsee https://www.gnu.org/licenses/.\n\n\n\n\n\n\n\t\t\tTHE GNU MP LIBRARY\n\n\nGNU MP is a library for arbitrary precision arithmetic, operating on signed\nintegers, rational numbers, and floating point numbers.  It has a rich set of\nfunctions, and the functions have a regular interface.\n\nGNU MP is designed to be as fast as possible, both for small operands and huge\noperands.  The speed is achieved by using fullwords as the basic arithmetic\ntype, by using fast algorithms, with carefully optimized assembly code for the\nmost common inner loops for lots of CPUs, and by a general emphasis on speed\n(instead of simplicity or elegance).\n\nGNU MP is believed to be faster than any other similar library.  Its advantage\nincreases with operand sizes for certain operations, since GNU MP in many\ncases has asymptotically faster algorithms.\n\nGNU MP is free software and may be freely copied on the terms contained in the\nfiles COPYING* (see the manual for information on which license(s) applies to\nwhich components of GNU MP).\n\n\n\n\t\t\tOVERVIEW OF GNU MP\n\nThere are four classes of functions in GNU MP.\n\n 1. Signed integer arithmetic functions (mpz).  These functions are intended\n    to be easy to use, with their regular interface.  The associated type is\n    `mpz_t'.\n\n 2. Rational arithmetic functions (mpq).  For now, just a small set of\n    functions necessary for basic rational arithmetics.  The associated type\n    is `mpq_t'.\n\n 3. Floating-point arithmetic functions (mpf).  If the C type `double'\n    doesn't give enough precision for your application, declare your\n    variables as `mpf_t' instead, set the precision to any number desired,\n    and call the functions in the mpf class for the arithmetic operations.\n\n 4. Positive-integer, hard-to-use, very low overhead functions are in the\n    mpn class.  No memory management is performed.  The caller must ensure\n    enough space is available for the results.  The set of functions is not\n    regular, nor is the calling interface.  These functions accept input\n    arguments in the form of pairs consisting of a pointer to the least\n    significant word, and an integral size telling how many limbs (= words)\n    the pointer points to.\n\n    Almost all calculations, in the entire package, are made by calling these\n    low-level functions.\n\nFor more information on how to use GNU MP, please refer to the documentation.\nIt is composed from the file doc/gmp.texi, and can be displayed on the screen\nor printed.  How to do that, as well how to build the library, is described in\nthe INSTALL file in this directory.\n\n\n\n\t\t\tREPORTING BUGS\n\nIf you find a bug in the library, please make sure to tell us about it!\n\nYou should first check the GNU MP web pages at https://gmplib.org/, under\n\"Status of the current release\".  There will be patches for all known serious\nbugs there.\n\nReport bugs to gmp-bugs@gmplib.org.  What information is needed in a useful bug\nreport is described in the manual.  The same address can be used for suggesting\nmodifications and enhancements.\n\n\n\n\n----------------\nLocal variables:\nmode: text\nfill-column: 78\nEnd:\n",
+  "versions": [],
+  "updated": "2018-10-17T15:36:36Z",
+  "updatedUpstream": "2019-03-21T15:17:08Z",
+  "contributors": [
+    {
+      "login": "ln5",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/41551?v=4"
+    },
+    {
+      "login": "astiob",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/515193?v=4"
+    },
+    {
+      "login": "ryepdx",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/691597?u=0d6444237dbaaef844a21eee7f066475396d8272&v=4"
+    },
+    {
+      "login": "doughdemon",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1036802?v=4"
+    },
+    {
+      "login": "davem330",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1053866?u=e7a17fe2fd2d92c6e18e50b0bc6296546267dafb&v=4"
+    },
+    {
+      "login": "kryde",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1286980?v=4"
+    },
+    {
+      "login": "peterbrei",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/8874919?v=4"
+    },
+    {
+      "login": "mglisse",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/10097863?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 2,
+  "forks": 4,
+  "topics": []
+}

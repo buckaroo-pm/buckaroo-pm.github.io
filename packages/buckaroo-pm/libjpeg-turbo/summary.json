@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/libjpeg-turbo",
+  "name": "libjpeg-turbo/libjpeg-turbo",
+  "stars": 2314,
+  "topics": [],
+  "description": "Main libjpeg-turbo repository",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-14T13:36:23Z",
+  "updatedUpstream": "2021-01-13T22:15:55Z"
+}

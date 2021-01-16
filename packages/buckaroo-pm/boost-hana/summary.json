@@ -1,0 +1,89 @@
+{
+  "packageName": "buckaroo-pm/boost-hana",
+  "name": "boostorg/hana",
+  "stars": 1181,
+  "topics": [
+    "hana",
+    "boost",
+    "cpp",
+    "metaprogramming",
+    "cpp14",
+    "cpp11",
+    "header-only"
+  ],
+  "description": "Your standard library for metaprogramming",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 3
+    },
+    {
+      "ref": "v1.0.2",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v1.0.1",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v1.0.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.7.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.6.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.5.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.4.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.3.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    },
+    {
+      "ref": "v0.2.0",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-29T10:10:21Z",
+  "updatedUpstream": "2021-01-13T08:40:16Z"
+}

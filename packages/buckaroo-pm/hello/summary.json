@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/hello",
+  "name": "buckaroo-pm/hello",
+  "stars": 0,
+  "topics": [],
+  "description": "Demo package for Buckaroo 🏜️",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-02-25T16:42:36Z",
+  "updatedUpstream": "2019-02-25T16:42:36Z"
+}

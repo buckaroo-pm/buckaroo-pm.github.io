@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/electronicarts-EASTL",
+  "name": "electronicarts/EASTL",
+  "stars": 5210,
+  "topics": [
+    "eastl",
+    "stl",
+    "games",
+    "c-plus-plus",
+    "c-plus-plus-11",
+    "c-plus-plus-14",
+    "c-plus-plus-17",
+    "modern-cpp",
+    "c-plus-plus-20"
+  ],
+  "description": "EASTL stands for Electronic Arts Standard Template Library.  It is an extensive and robust implementation that has an emphasis on high performance.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-27T19:48:05Z",
+  "updatedUpstream": "2021-01-13T02:41:44Z"
+}

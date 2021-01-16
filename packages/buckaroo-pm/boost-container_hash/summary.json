@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-container_hash",
+  "name": "boostorg/container_hash",
+  "stars": 7,
+  "topics": [],
+  "description": "Generic hash function for STL style unordered containers",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-15T15:56:31Z",
+  "updatedUpstream": "2020-10-25T18:06:13Z"
+}

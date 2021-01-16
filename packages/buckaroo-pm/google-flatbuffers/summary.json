@@ -1,0 +1,39 @@
+{
+  "packageName": "buckaroo-pm/google-flatbuffers",
+  "name": "google/flatbuffers",
+  "stars": 15626,
+  "topics": [
+    "flatbuffers",
+    "serialization",
+    "serialization-library",
+    "json-parser",
+    "marshalling",
+    "rpc",
+    "zero-copy",
+    "mmap",
+    "cross-platform",
+    "c-plus-plus",
+    "java",
+    "c-sharp",
+    "go",
+    "python",
+    "rust",
+    "javascript",
+    "typescript",
+    "grpc",
+    "c",
+    "protobuf"
+  ],
+  "description": "Memory Efficient Serialization Library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-22T18:41:43Z",
+  "updatedUpstream": "2021-01-13T20:01:00Z"
+}

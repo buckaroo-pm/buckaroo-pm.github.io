@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/xiph-ogg",
+  "name": "xiph/ogg",
+  "stars": 190,
+  "topics": [
+    "ogg-bitstream",
+    "libogg",
+    "codecs",
+    "ogg"
+  ],
+  "description": "Reference implementation of the Ogg media container",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": true,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-09-16T16:06:50Z",
+  "updatedUpstream": "2021-01-13T13:22:01Z"
+}

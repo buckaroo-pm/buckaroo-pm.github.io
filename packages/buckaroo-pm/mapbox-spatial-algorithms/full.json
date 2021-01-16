@@ -1,0 +1,120 @@
+{
+  "packageName": "buckaroo-pm/mapbox-spatial-algorithms",
+  "name": "mapbox/spatial-algorithms",
+  "licence": "",
+  "description": "Spatial algorithms library for geometry.hpp",
+  "readme": "## Spatial algorithms library for geometry.hpp\n\n[![Build Status](https://travis-ci.org/mapbox/spatial-algorithms.svg?branch=master)](https://travis-ci.org/mapbox/spatial-algorithms)\n[![codecov](https://codecov.io/gh/mapbox/spatial-algorithms/branch/master/graph/badge.svg)](https://codecov.io/gh/mapbox/spatial-algorithms)\n[![hpp-skel](https://mapbox.s3.amazonaws.com/cpp-assets/hpp-skel-badge_blue.svg)](https://github.com/mapbox/hpp-skel)\n\n### Building\n\nSpatial algorithms can be built using cmake. Please make sure you have a cmake version >= 3.3.\n\nExample build and test\n\n```\nmkdir build\ncd build\ncmake ..\nmake -j\n./test_sa\n```\n\nThe `-Werror` flag is enabled by default, which turns compiler warnings into errors. You can disable like: `cmake -DWERROR=OFF ..`.\n\n### Example Useage\n\n```c++\n\n#include <mapbox/geometry/geometry.hpp>\n#include <mapbox/geometry/algorithms/predicates.hpp>\n#include <iostream>\n\nint main ()\n{\n    using namespace mapbox::geometry;\n    line_string<double> line{ {70,50},{50,70}};\n    polygon<double> poly {{{{0,0}, {100,0}, {100,100}, {0, 100}, {0,0}}},\n        {{{25,25}, {25,75}, {75,75}, {75, 25}, {25,25} }}};\n\n    std::cerr <<  \"Intersects? \" << algorithms::intersects(line, poly) << std::endl;\n    std::cerr <<  \"Disjoint? \" << algorithms::disjoint(line, poly) << std::endl;\n\n    // It should work with variant based `mapbox::geometry::geometry<T>` and all permutations also.\n\n    geometry<double> g = line;\n\n    std::cerr <<  \"Intersects? \" << algorithms::intersects(g, poly) << std::endl;\n    std::cerr <<  \"Disjoint? \" << algorithms::disjoint(poly, g) << std::endl;\n    return 0;\n}\n\n```\n",
+  "versions": [],
+  "updated": "2018-11-11T12:35:57Z",
+  "updatedUpstream": "2020-12-04T22:16:40Z",
+  "contributors": [
+    {
+      "login": "zugaldia",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/6964?u=e17bd7e9c8e0d4ca1df6956596cffc4ef10176de&v=4"
+    },
+    {
+      "login": "bookest",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/14640?u=75e815f366d32a63b0d223fe47182a1570a96bb3&v=4"
+    },
+    {
+      "login": "springmeyer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20300?v=4"
+    },
+    {
+      "login": "mikelmaron",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/22896?u=f22126445e688b260ca316709407189f669c2083&v=4"
+    },
+    {
+      "login": "mourner",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/25395?u=6f04fa0e30ee06ee7ef8d13dd6c166d0ca70aeea&v=4"
+    },
+    {
+      "login": "sbma44",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/31717?v=4"
+    },
+    {
+      "login": "sgillies",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/33697?u=518c359114c548926c56fef4b51a123e9a4a5d47&v=4"
+    },
+    {
+      "login": "kkaefer",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/52399?u=7b3a53dfef51246b5c1342108a664842b4ea3571&v=4"
+    },
+    {
+      "login": "alfwatt",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/53469?u=ff9e35352887e919bfd74b6ad0bee578af80e165&v=4"
+    },
+    {
+      "login": "anderco",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55106?v=4"
+    },
+    {
+      "login": "yuletide",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/58695?u=6322adc3fcbff377e32f0e6299d7aaddd841dc6e&v=4"
+    },
+    {
+      "login": "artemp",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/59056?u=84b41abea2ca9e9c6e5a6af9277ee06e8376c68f&v=4"
+    },
+    {
+      "login": "tristen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/61150?u=40b52d083ac2c6f414ef35c79271c776787e7bd0&v=4"
+    },
+    {
+      "login": "ivovandongen",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/64527?u=e284cc763f7ca8765196fc0f6279e7538742cdfd&v=4"
+    },
+    {
+      "login": "brunoabinader",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/76133?v=4"
+    },
+    {
+      "login": "apendleton",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/78930?u=911348d600e91c721685538a958ee4252a854589&v=4"
+    },
+    {
+      "login": "yhahn",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/83384?u=b2c1ca34e763ba420f510b5a1d62201c1d9624eb&v=4"
+    },
+    {
+      "login": "PureW",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/85910?v=4"
+    },
+    {
+      "login": "AlekseiCherkes",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/87640?u=f75d2bf7fd442db59db853feab57a208761fddef&v=4"
+    },
+    {
+      "login": "ianshward",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/91258?u=5e631aa4328b540f955d9c2e9e2588fcc1bd0d0d&v=4"
+    },
+    {
+      "login": "gundersen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/93353?v=4"
+    },
+    {
+      "login": "willwhite",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/93564?u=3e17a4a45e3ce686ca811d9ed79257db04ff345f&v=4"
+    },
+    {
+      "login": "lxbarth",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/98233?u=3ca609d2f417501e961958c5bef2f99327b3f84e&v=4"
+    },
+    {
+      "login": "kshehadeh",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/107061?u=d5e994f10868eb85c21bc5b8793da960f3044ed6&v=4"
+    },
+    {
+      "login": "samanpwbb",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/108094?u=f38ea53150b7855f77de960bde5d8f2cb09aa6ed&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 22,
+  "forks": 6,
+  "topics": [
+    "geometry",
+    "algorithms"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-array",
+  "name": "boostorg/array",
+  "stars": 13,
+  "topics": [],
+  "description": "Boost.org array module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 10
+    }
+  ],
+  "updated": "2018-11-14T22:45:12Z",
+  "updatedUpstream": "2021-01-08T04:47:15Z"
+}

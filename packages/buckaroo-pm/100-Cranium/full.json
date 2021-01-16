@@ -1,0 +1,54 @@
+{
+  "packageName": "buckaroo-pm/100-Cranium",
+  "name": "100/Cranium",
+  "licence": "MIT",
+  "description": "🤖   A portable, header-only, artificial neural network library written in C99",
+  "readme": "<div align=\"center\">\n    <img src=\"docs/image.png\"></img>\n</div>\n\n<br>\n\n[![Build Status](https://travis-ci.org/100/Cranium.svg?branch=master)](https://travis-ci.org/100/Cranium)\n[![MIT License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/100/Cranium/blob/master/LICENSE)\n\n## *Cranium* is a portable, header-only, feedforward artificial neural network library written in vanilla C99. \n\n#### It supports fully-connected networks of arbitrary depth and structure, and should be reasonably fast as it uses a matrix-based approach to calculations. It is particularly suitable for low-resource machines or environments in which additional dependencies cannot be installed.\n\n#### Cranium supports CBLAS integration. Simply uncomment line 7 in ```matrix.h``` to enable the BLAS ```sgemm``` function for fast matrix multiplication.\n\n#### Check out the detailed documentation [here](https://100.github.io/Cranium/) for information on individual structures and functions.\n\n<hr>\n\n## Features\n* **Activation functions**\n    * sigmoid\n    * ReLU\n    * tanh\n    * softmax (*classification*)\n    * linear (*regression*)\n* **Loss functions**\n    * Cross-entropy loss (*classification*)\n    * Mean squared error (*regression*)\n* **Optimization algorithms** \n    * Batch Gradient Descent\n    * Stochastic Gradient Descent\n    * Mini-Batch Stochastic Gradient Descent\n* **L2 Regularization**\n* **Learning rate annealing**\n* **Simple momentum**\n* **Fan-in weight initialization**\n* **CBLAS support for fast matrix multiplication**\n* **Serializable networks**\n\n<hr>\n\n## Usage\nSince Cranium is header-only, simply copy the ```src``` directory into your project, and ```#include \"src/cranium.h\"``` to begin using it. \n\nIts only required compiler dependency is from the ```<math.h>``` header, so compile with ```-lm```.\n\nIf you are using CBLAS, you will also need to compile with ```-lcblas``` and include, via ```-I```, the path to wherever your particular machine's BLAS implementation is. Common ones include [OpenBLAS](http://www.openblas.net/) and [ATLAS](http://math-atlas.sourceforge.net/).\n\nIt has been tested to work perfectly fine with any level of gcc optimization, so feel free to use them. \n\n<hr>\n\n## Example\n\n```c\n#include \"cranium.h\"\n\n/*\nThis basic example program is the skeleton of a classification problem.\nThe training data should be in matrix form, where each row is a data point, and\n    each column is a feature. \nThe training classes should be in matrix form, where the ith row corresponds to\n    the ith training example, and each column is a 1 if it is of that class, and\n    0 otherwise. Each example may only be of 1 class.\n*/\n\n// create training data and target values (data collection not shown)\nint rows, features, classes;\nfloat** training;\nfloat** classes;\n\n// create datasets to hold the data\nDataSet* trainingData = createDataSet(rows, features, training);\nDataSet* trainingClasses = createDataSet(rows, classes, classes);\n\n// create network with 2 input neurons, 1 hidden layer with sigmoid\n// activation function and 5 neurons, and 2 output neurons with softmax \n// activation function\nsrand(time(NULL));\nsize_t hiddenSize[] = {5};\nActivation hiddenActivation[] = {sigmoid};\nNetwork* net = createNetwork(2, 1, hiddenSize, hiddenActivation, 2, softmax);\n\n// train network with cross-entropy loss using Mini-Batch SGD\nParameterSet params;\nparams.network = net;\nparams.data = trainingData;\nparams.classes = trainingClasses;\nparams.lossFunction = CROSS_ENTROPY_LOSS;\nparams.batchSize = 20;\nparams.learningRate = .01;\nparams.searchTime = 5000;\nparams.regularizationStrength = .001;\nparams.momentumFactor = .9;\nparams.maxIters = 10000;\nparams.shuffle = 1;\nparams.verbose = 1;\noptimize(params);\n\n// test accuracy of network after training\nprintf(\"Accuracy is %f\\n\", accuracy(net, trainingData, trainingClasses));\n\n// get network's predictions on input data after training\nforwardPass(net, trainingData);\nint* predictions = predict(net);\nfree(predictions);\n\n// save network to a file\nsaveNetwork(net, \"network\");\n\n// free network and data\ndestroyNetwork(net);\ndestroyDataSet(trainingData);\ndestroyDataSet(trainingClasses);\n\n// load previous network from file\nNetwork* previousNet = readNetwork(\"network\");\ndestroyNetwork(previousNet);\n```\n\n<hr>\n\n## Building and Testing\n\nTo run tests, look in the ```tests``` folder. \n\nThe ```Makefile``` has commands to run each batch of unit tests, or all of them at once.\n\n<hr>\n\n## Contributing\n\nFeel free to send a pull request if you want to add any features or if you find a bug.\n\nCheck the issues tab for some potential things to do.",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:cranium\" ]\n",
+      "lockFile": "manifest = \"97cf56707702f0284811426cedc22fe3543ab9162889709500bb0bace692b15c\"\n\n",
+      "buck": "cxx_library(\n  name = \"cranium\",\n  header_namespace = '',\n  exported_headers = glob([\"src/*.h\"]),\n  srcs = [],\n  visibility = [\"PUBLIC\"]\n)\n\ncxx_binary(\n  name = \"optimizer_test\",\n  srcs = [\"tests/optimizer_tests.c\"],\n  deps = [\":cranium\"]\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-23T15:23:00Z",
+  "updatedUpstream": "2021-01-06T02:38:43Z",
+  "contributors": [
+    {
+      "login": "bedder",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7773923?u=f29242b04e208247b8c5fc07f59eaede4540bf74&v=4"
+    },
+    {
+      "login": "100",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/12990578?u=7527ec423a8af9896770da11e72608790e2aba0a&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 497,
+  "forks": 57,
+  "topics": [
+    "neural-network",
+    "machine-learning",
+    "c",
+    "embedded",
+    "blas",
+    "portable",
+    "cblas",
+    "c99",
+    "continuous-integration",
+    "travis-ci",
+    "classification",
+    "regression",
+    "header-only",
+    "artificial-neural-networks",
+    "feedforward-neural-network",
+    "matrix",
+    "vectorization",
+    "efficient"
+  ]
+}

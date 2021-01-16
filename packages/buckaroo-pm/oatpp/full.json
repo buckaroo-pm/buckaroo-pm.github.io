@@ -1,0 +1,144 @@
+{
+  "packageName": "buckaroo-pm/oatpp",
+  "name": "oatpp/oatpp",
+  "licence": "Apache-2.0",
+  "description": "Light, zero-dependency framework. Create bleedingly-fast web-services.  Organic. Pure C++",
+  "readme": "# oat++ [![oatpp build status](https://dev.azure.com/lganzzzo/lganzzzo/_apis/build/status/oatpp.oatpp)](https://dev.azure.com/lganzzzo/lganzzzo/_build?definitionId=1) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/oatpp/oatpp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/oatpp/oatpp/context:cpp) [![Join the chat at https://gitter.im/oatpp-framework/Lobby](https://badges.gitter.im/oatpp-framework/Lobby.svg)](https://gitter.im/oatpp-framework/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\nZero-Dependency. Performance oriented web-service-development framework.\nOrganic. Pure C++.\n\n- Website: [https://oatpp.io](https://oatpp.io)\n- Docs: [https://oatpp.io/docs/start](https://oatpp.io/docs/start)\n- Benchmarks: [https://oatpp.io/benchmark/digital-ocean](https://oatpp.io/benchmark/digital-ocean)\n\n**Contributors wanted!**  \nPull requests and issues are welcome.\n\n## Features\n\n- Blazingly fast\n- Zero Dependency, no installations\n- **Asynchronous server (High performance. Handle 30K+ simultaneous connections)**\n- Multithreaded server (Simple API)\n- Connection agnostic. (Use whatever transport. Whatever SSL backend. Whatever sockets, pipes, files. etc. It cares about HTTP stream only)\n- REST framework (with ability to autodocument endpoints see [oatpp-swagger](https://github.com/oatpp/oatpp-swagger))\n- Retrofit-like client wrapper (Use whatever request executor for example cURL, or minimalistic one provided out of the box)\n- Object mapping (Fast object serialization-deserialization. Currently JSON, more formats comes shortly)\n- Simple dependency injection framework\n- Simple Test framework\n- HTTP_1.1 (2.0 comes shortly)\n\n## Simple API overview\n\"Simple API\" refers to as API used together with ```oatpp::web::server::HttpConnectionHandler``` utilizing multithreading plus blocking-IO approach. \n\n### Create Endpoint\n\n```c++\nENDPOINT(\"GET\", \"demo/api/hello\", hello) {\n  return createResponse(Status::CODE_200, \"Hello World!\");\n}\n```\n\n### Pass parameters to endpoint\n\n```c++\nENDPOINT(\"GET\", \"demo/api/param/{param}\", getWithParams,\n         PATH(String, param)) {\n  return createResponse(Status::CODE_200, \"param=\" + param);\n}\n```\n\n### Return JSON\n\n```c++\nENDPOINT(\"GET\", \"demo/api/json\", getJson) {\n  auto dto = MyDto::createShared();\n  dto->statusCode = 200;\n  dto->message = \"Hello json\";\n  return createDtoResponse(Status::CODE_200, dto);\n}\n```\n**Output:**\n```\n{\"message\": \"Hello json\", \"statusCode\": 200}\n```\n\n### Post JSON body\n\n```c++\nENDPOINT(\"POST\", \"demo/api/json\", postJson,\n         BODY_DTO(MyDto::ObjectWrapper, dto)) {\n  auto dtoMessage = dto->message;\n  return createResponse(Status::CODE_200, \"dtoMessage: \" + dtoMessage);\n}\n```\n\n**Terminal:**\n\n```\n$ curl -X POST \"localhost:8001/demo/api/json\" -d '{\"message\": \"hello json post\"}'\ndtoMessage: hello json post\n```\n\n## Async API overview\n\"Async API\" refers to as API used together with ```oatpp::web::server::AsyncHttpConnectionHandler``` utilizing oatpp-coroutines plus non-blocking-IO approach. \n\n### Create Endpoint Async\n```c++\nENDPOINT_ASYNC(\"GET\", \"demo/api_async/hello\", HelloAsync) {\n\n  ENDPOINT_ASYNC_INIT(HelloAsync)\n\n  Action act() override {\n    return _return(controller->createResponse(Status::CODE_200, \"Hello World Async API!\"));\n  }\n\n};\n```\n\n### Pass parameters to endpoint Async\n```c++\nENDPOINT_ASYNC(\"GET\", \"demo/api_async/param/{param}\", GetWithParamsAsync) {\n\n  ENDPOINT_ASYNC_INIT(GetWithParamsAsync)\n\n  Action act() override {\n    auto param = request->getPathVariable(\"param\");\n    return _return(controller->createResponse(Status::CODE_200, \"param=\" + param));\n  }\n\n};\n```\n\n### Return JSON Async\n```c++\nENDPOINT_ASYNC(\"GET\", \"demo/api_async/json\", GetJSONAsync) {\n\n  ENDPOINT_ASYNC_INIT(GetJSONAsync)\n\n  Action act() override {\n    auto dto = MyDto::createShared();\n    dto->statusCode = 200;\n    dto->message = \"Hello json\";\n    return _return(controller->createDtoResponse(Status::CODE_200, dto));\n  }\n\n};\n```\n\n**Output:**\n```\n{\"message\": \"Hello json\", \"statusCode\": 200}\n```\n\n### Post JSON body Async\n```c++\nENDPOINT_ASYNC(\"POST\", \"demo/api_async/json\", PostJSONAsync) {\n\n  ENDPOINT_ASYNC_INIT(PostJSONAsync)\n\n  Action act() override {\n    return request->readBodyToDtoAsync<MyDto>(this,\n                                              &PostJSONAsync::onBodyObtained,\n                                              controller->getDefaultObjectMapper());\n  }\n\n  Action onBodyObtained(const MyDto::ObjectWrapper& dto) {\n    return _return(controller->createResponse(Status::CODE_200, \"dtoMessage: \" + dto->message));\n  }\n\n};\n```\n\n**Terminal:**\n```\n$ curl -X POST \"localhost:8001/demo/api_async/json\" -d '{\"message\": \"hello json post\"}'\ndtoMessage: hello json post\n```\n\n### Swagger documentation\n\n```c++\nENDPOINT_INFO(createUser) {\n  info->summary = \"Create new User\";\n  info->addConsumes<UserDto::ObjectWrapper>(\"application/json\");\n  info->addResponse<UserDto::ObjectWrapper>(Status::CODE_200, \"application/json\");\n}\nENDPOINT(\"POST\", \"demo/api/users\", createUser,\n         BODY_DTO(UserDto::ObjectWrapper, userDto)) {\n  return createDtoResponse(Status::CODE_200, m_database->createUser(userDto));\n}\n```\n\n## How to start\n\nGrab any project from [examples](https://github.com/oatpp/oatpp-examples), and follow README\n\n### Examples:\n\n- [Media-Stream (Http-Live-Streaming)](https://github.com/oatpp/oatpp-examples/tree/master/Media-Stream) - Example project of how-to build HLS-streaming server using oat++ Async-API.\n- [CRUD](https://github.com/oatpp/oatpp-examples/tree/master/crud) - Example project of how-to create basic CRUD endpoints.\n- [AsyncApi](https://github.com/oatpp/oatpp-examples/tree/master/AsyncApi) - Example project of how-to use asynchronous API for handling large number of simultaneous connections.\n- [ApiClient-Demo](https://github.com/oatpp/oatpp-examples/tree/master/ApiClient-Demo) - Example project of how-to use Retrofit-like client wrapper (ApiClient) and how it works.\n- [TLS-Libressl](https://github.com/oatpp/oatpp-examples/tree/master/tls-libressl) - Example project of how-to setup secure connection and serve via HTTPS.\n- [Consul](https://github.com/oatpp/oatpp-examples/tree/master/consul) - Example project of how-to use oatpp::consul::Client. Integration with Consul.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:oatpp\" ]\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/host-pthread\"\nversion = \"branch=master\"\nprivate = true\n",
+      "lockFile": "manifest = \"e1a40a8a15ec24e2addc9d2273b9a94859182b2b95f175db467e97c778a2f6f9\"\n\n[[dependency]]\npackage = \"github.com/buckaroo-pm/host-pthread\"\ntarget = \"//:pthread\"\n\n[lock.\"github.com/buckaroo-pm/host-pthread\"]\nversion = \"branch=master\"\nrevision = \"a62519aa69c8e3243d6065fbf4c1d2de072f86f6\"\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')\n\ncxx_library(\n  name = 'oatpp', \n  header_namespace = 'oatpp', \n  exported_headers = glob([\n    'algorithm/**/*.hpp', \n    'codegen/**/*.hpp', \n    'core/**/*.hpp', \n    'encoding/**/*.hpp', \n    'network/**/*.hpp', \n    'parser/**/*.hpp', \n    'web/**/*.hpp', \n  ]), \n  headers = glob([\n    'test/**/*.hpp', \n  ]), \n  srcs = glob([\n    'algorithm/**/*.cpp', \n    'core/**/*.cpp', \n    'encoding/**/*.cpp', \n    'network/**/*.cpp', \n    'parser/**/*.cpp', \n    'web/**/*.cpp', \n  ]), \n  platform_deps = [\n    ('linux.*', buckaroo_deps_from_package('github.com/buckaroo-pm/host-pthread')), \n  ], \n  visibility = [\n    'PUBLIC', \n  ], \n)\n",
+      "bazel": "",
+      "deps": [
+        {
+          "uri": "github.com/buckaroo-pm/host-pthread",
+          "name": "buckaroo-pm/host-pthread",
+          "version": "branch=master"
+        }
+      ],
+      "lock": [
+        {
+          "uri": "github.com/buckaroo-pm/host-pthread",
+          "name": "buckaroo-pm/host-pthread",
+          "spec": {
+            "version": "branch=master",
+            "revision": "a62519aa69c8e3243d6065fbf4c1d2de072f86f6"
+          }
+        }
+      ]
+    }
+  ],
+  "updated": "2018-12-08T10:26:38Z",
+  "updatedUpstream": "2021-01-13T22:29:37Z",
+  "contributors": [
+    {
+      "login": "sileht",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/200878?u=b989f93e1658cc34eccbf0b4d38c9eb660368768&v=4"
+    },
+    {
+      "login": "rwtolbert",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/283685?v=4"
+    },
+    {
+      "login": "ThmX",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/866909?v=4"
+    },
+    {
+      "login": "gooichi",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1201994?v=4"
+    },
+    {
+      "login": "mheyman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1261479?u=dffb09740cf3e770829cfe574a0a3df4ede3dec0&v=4"
+    },
+    {
+      "login": "sauntor",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2825145?u=716ac2f7b760095a4f3c9c8ff19d849ab586dfde&v=4"
+    },
+    {
+      "login": "bamkrs",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4124784?u=45a3f055e0344a594250e283d2164c0caa27e86b&v=4"
+    },
+    {
+      "login": "FlorianRhiem",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/4411847?v=4"
+    },
+    {
+      "login": "srogatch",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5251612?u=5ff661ec009a532e5d1c4df3a69c55c5dfcd77d0&v=4"
+    },
+    {
+      "login": "apple-ihack-geek",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5590553?u=3762c3932e4e583fa51455a90396efe4a2dacbfc&v=4"
+    },
+    {
+      "login": "lganzzzo",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5940640?u=fc944208de7aec5de6150e11a7e98095961ae7db&v=4"
+    },
+    {
+      "login": "gergul",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6715336?u=ab8e866b75ee29fef98fb69b40648d27c81bf6af&v=4"
+    },
+    {
+      "login": "hermanzdosilovic",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7927278?u=347a172d68fe35be01fe7b34a14cbe885e59deca&v=4"
+    },
+    {
+      "login": "cdigruttola",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/9153905?v=4"
+    },
+    {
+      "login": "NickPak",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/13172485?u=cf82dc3be52ececba3430d8a29f6399968e07180&v=4"
+    },
+    {
+      "login": "abenedic",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/20505631?u=72946e3cac6b80022427964a3dacbc03a45cb553&v=4"
+    },
+    {
+      "login": "dmcamens-legrand",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/27786202?u=14e1e6ba46a3e21abae34afe8842052758607677&v=4"
+    },
+    {
+      "login": "ZengXiangkuo",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/33561685?v=4"
+    },
+    {
+      "login": "healeycodes",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/34559231?u=6219adfd2c117396731a73f5b6be18a2ba4cea02&v=4"
+    },
+    {
+      "login": "david-novak-legrand",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/39091713?v=4"
+    },
+    {
+      "login": "BossZou",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/40255591?u=600ea8ce614d223621ffd37a8ed5979aac3ff45d&v=4"
+    },
+    {
+      "login": "hyperxor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/56217938?u=c6fccedf5fc5aecd047d478e1525e9ae1014e16b&v=4"
+    },
+    {
+      "login": "pcapdump",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/58819729?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 3389,
+  "forks": 718,
+  "topics": [
+    "c-plus-plus",
+    "webframework",
+    "webserver",
+    "zero-dependency",
+    "oatpp",
+    "cpp",
+    "microservices",
+    "cross-platform",
+    "iot"
+  ]
+}

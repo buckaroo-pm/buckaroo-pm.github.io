@@ -1,1 +1,0 @@
-{"title":"Comparing the Compilation Times of C++ Templates and Macros","created":"2017-06-02T11:00:00.000Z","author":"Team Buckaroo","summary":"For our example, templates compile faster than generated code. With a few tricks, they are also faster for incremental builds.","banner":"/posts/templates-vs-macros.jpeg","__resourcePath":"blog/templates-vs-macros.md"}

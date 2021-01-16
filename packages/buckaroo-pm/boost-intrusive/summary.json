@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-intrusive",
+  "name": "boostorg/intrusive",
+  "stars": 27,
+  "topics": [],
+  "description": "Boost.org intrusive module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2018-11-16T12:25:10Z",
+  "updatedUpstream": "2021-01-05T09:09:55Z"
+}

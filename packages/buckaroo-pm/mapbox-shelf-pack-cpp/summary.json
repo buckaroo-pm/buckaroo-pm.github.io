@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-shelf-pack-cpp",
+  "name": "mapbox/shelf-pack-cpp",
+  "stars": 7,
+  "topics": [],
+  "description": "C++ port of https://github.com/mapbox/shelf-pack",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2018-11-20T21:05:06Z",
+  "updatedUpstream": "2020-02-24T12:43:27Z"
+}

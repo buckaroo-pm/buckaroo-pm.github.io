@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/realm-object-store",
+  "name": "realm/realm-object-store",
+  "stars": 114,
+  "topics": [],
+  "description": "Cross-platform abstractions used within Realm products",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 6
+    }
+  ],
+  "updated": "2019-02-22T00:18:53Z",
+  "updatedUpstream": "2020-12-17T18:39:40Z"
+}

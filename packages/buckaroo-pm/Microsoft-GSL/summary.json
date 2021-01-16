@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/Microsoft-GSL",
+  "name": "microsoft/GSL",
+  "stars": 4286,
+  "topics": [],
+  "description": "Guidelines Support Library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-14T11:15:19Z",
+  "updatedUpstream": "2021-01-13T15:42:24Z"
+}

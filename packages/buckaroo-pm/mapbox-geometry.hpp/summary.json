@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mapbox-geometry.hpp",
+  "name": "mapbox/geometry.hpp",
+  "stars": 66,
+  "topics": [],
+  "description": "C++ geometry types",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2018-11-15T11:23:25Z",
+  "updatedUpstream": "2020-12-22T14:35:49Z"
+}

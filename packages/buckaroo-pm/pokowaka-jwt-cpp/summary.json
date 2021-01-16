@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pokowaka-jwt-cpp",
+  "name": "pokowaka/jwt-cpp",
+  "stars": 86,
+  "topics": [],
+  "description": "A C++ library for handling JWT tokens",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2019-02-01T16:05:01Z",
+  "updatedUpstream": "2021-01-05T15:30:29Z"
+}

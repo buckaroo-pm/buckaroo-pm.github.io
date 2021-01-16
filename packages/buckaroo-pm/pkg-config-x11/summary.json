@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/pkg-config-x11",
+  "name": "buckaroo-pm/pkg-config-x11",
+  "stars": 0,
+  "topics": [],
+  "description": "Buck wrapper for X11 managed by pkg-config ",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-08T11:05:59Z",
+  "updatedUpstream": "2019-01-08T11:05:59Z"
+}

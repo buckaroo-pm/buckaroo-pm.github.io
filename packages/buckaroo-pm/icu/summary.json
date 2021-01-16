@@ -1,0 +1,20 @@
+{
+  "packageName": "buckaroo-pm/icu",
+  "name": "unicode-org/icu",
+  "stars": 941,
+  "topics": [
+    "icu",
+    "icu4c",
+    "icu4j",
+    "unicode",
+    "java",
+    "cpp",
+    "c-plus-plus",
+    "i18n",
+    "unicode-consortium"
+  ],
+  "description": "The new home of the ICU project source code.",
+  "versions": [],
+  "updated": "2018-11-14T16:11:02Z",
+  "updatedUpstream": "2021-01-13T21:31:10Z"
+}

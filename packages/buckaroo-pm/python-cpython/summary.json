@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/python-cpython",
+  "name": "python/cpython",
+  "stars": 35582,
+  "topics": [],
+  "description": "The Python programming language",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 6
+    }
+  ],
+  "updated": "2019-01-30T18:20:20Z",
+  "updatedUpstream": "2021-01-13T21:44:58Z"
+}

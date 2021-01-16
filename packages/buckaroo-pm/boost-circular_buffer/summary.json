@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-circular_buffer",
+  "name": "boostorg/circular_buffer",
+  "stars": 38,
+  "topics": [],
+  "description": "Boost.org circular_buffer module",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 13
+    }
+  ],
+  "updated": "2018-11-14T23:07:38Z",
+  "updatedUpstream": "2020-12-08T09:41:56Z"
+}

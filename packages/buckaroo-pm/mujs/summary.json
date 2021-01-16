@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/mujs",
+  "name": "ccxvii/mujs",
+  "stars": 518,
+  "topics": [],
+  "description": "An embeddable Javascript interpreter in C.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-23T15:04:28Z",
+  "updatedUpstream": "2021-01-12T13:56:46Z"
+}

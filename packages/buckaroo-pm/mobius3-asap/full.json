@@ -1,0 +1,35 @@
+{
+  "packageName": "buckaroo-pm/mobius3-asap",
+  "name": "mobius3/asap",
+  "licence": "MIT",
+  "description": "A C++ header-only library for creating, displaying, iterating and manipulating dates",
+  "readme": "# The ASAP date/time library for beautiful C++ code\n\nASAP is a small, header-only date-time library for C++11 and beyond. It is heavily inspired by my great time using [momentjs](momentjs.com) to parse and display dates. ASAP has a lot of syntatic sugar to make your code look pretty both on the inside and outside :)\n\nAll ASAP examples available [online at _repl.it_](https://repl.it/@mobius3/asapexamples). (`main()` starts at line `533`)\n\n## Features\n\n- A date/time class to handle dates and time (duh)\n- A duration class to handle unbounded periods (e.g, `asap::day(1)` specifies a day)\n- A period class to handle bounded periods (e.g, `asap::period(asap::now(), asap::tomorrow())`)\n- Lots of syntatic sugar (e.g, `auto then = asap::now() + asap::week(1)`)\n- Literals (e.g, `auto then = asap::now() + 1_year`) for seconds, minutes, hours, days, weeks, months and years\n- Broken down duration printing (e.g, `asap::days(10)` prints `\"1 week, 3 days\"`)\n- Range-based iteration for periods:\n```\n   for (auto x: asap::now().until(asap::tomorrow()).every(1_hour)) {\n        std::cout << x << std::endl;\n   }\n```\n\n## Index\n\n- asap::datetime [class docs](http://mobius3.github.io/asap/api/classasap_1_1datetime.html) to learn about date/time\n- asap::duration [class docs](http://mobius3.github.io/asap/api/classasap_1_1duration.html) will teach you about durations and their literals\n- asap::period [class docs](http://mobius3.github.io/asap/api/classasap_1_1period.html) to learn about periods and date/time iterations\n- literals.h [docs](http://mobius3.github.io/asap/api/literals_8h_source.html) has the asap::literals namespace with all ASAP literals\n\n## Using\n\nYou can either:\n\n- Drop the `include/asap` folder in your project and use it\n- Make your compiler aware of the `include/asap` folder and include `\"asap.h\"` in your code\n- If using CMake you can add the project subdirectory and link against it using `target_link_libraries`\n- Use `find_package` if you installed ASAP using `make install` or any other method\n- Download the latest release which is a single `asap.h` file bundled with all the classes.\n\n## License\n\nASAP is MIT licensed.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:asap\" ]\r\n",
+      "lockFile": "manifest = \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\n\nprebuilt_cxx_library(\n  name = 'asap',\n  header_namespace = '',\n  header_only = True,\n  exported_headers = subdir_glob([\n    ('include/asap', '**/*.h'),\n    ('include/asap', '**/*.tcc'),\n  ]),\n  licenses = [\n    'COPYING',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-09T12:26:14Z",
+  "updatedUpstream": "2021-01-09T17:26:07Z",
+  "contributors": [
+    {
+      "login": "mobius3",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/945210?v=4"
+    },
+    {
+      "login": "igorrafael",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1268297?u=a92ba2f3fe211d354fc2777d8965a47e57d9eae4&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 40,
+  "forks": 11,
+  "topics": []
+}

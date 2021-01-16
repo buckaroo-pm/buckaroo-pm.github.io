@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/boost-qvm",
+  "name": "boostorg/qvm",
+  "stars": 49,
+  "topics": [],
+  "description": "Boost Quaternions, Vectors, Matrices library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 5,
+      "transitive": 10
+    }
+  ],
+  "updated": "2019-02-01T17:22:51Z",
+  "updatedUpstream": "2020-12-24T06:15:47Z"
+}

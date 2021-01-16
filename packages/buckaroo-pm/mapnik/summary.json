@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/mapnik",
+  "name": "mapnik/mapnik",
+  "stars": 2838,
+  "topics": [
+    "mapnik",
+    "c-plus-plus",
+    "mapping",
+    "cartography",
+    "gis",
+    "wiki",
+    "python",
+    "rendering",
+    "beautiful-maps"
+  ],
+  "description": "Mapnik is an open source toolkit for developing mapping applications",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 29,
+      "transitive": 83
+    }
+  ],
+  "updated": "2018-11-19T16:33:56Z",
+  "updatedUpstream": "2021-01-13T19:32:42Z"
+}

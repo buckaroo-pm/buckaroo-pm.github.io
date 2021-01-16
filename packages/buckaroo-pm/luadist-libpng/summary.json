@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/luadist-libpng",
+  "name": "LuaDist/libpng",
+  "stars": 24,
+  "topics": [],
+  "description": "Official PNG reference library",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-01-16T18:23:59Z",
+  "updatedUpstream": "2021-01-02T20:57:09Z"
+}

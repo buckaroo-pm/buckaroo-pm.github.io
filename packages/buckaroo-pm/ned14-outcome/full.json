@@ -1,0 +1,82 @@
+{
+  "packageName": "buckaroo-pm/ned14-outcome",
+  "name": "ned14/outcome",
+  "licence": "Apache-2.0",
+  "description": "Provides very lightweight outcome<T> and result<T> (non-Boost edition)",
+  "readme": "master branch unit test status: Linux & MacOS: [![Build Status](https://travis-ci.org/ned14/outcome.svg?branch=master)](https://travis-ci.org/ned14/outcome) Windows: [![Build status](https://ci.appveyor.com/api/projects/status/q8s29koot2v3nity/branch/master?svg=true)](https://ci.appveyor.com/project/ned14/outcome/branch/master)\n\ndevelop branch unit test status: Linux & MacOS: [![Build Status](https://travis-ci.org/ned14/outcome.svg?branch=develop)](https://travis-ci.org/ned14/outcome) Windows: [![Build status](https://ci.appveyor.com/api/projects/status/q8s29koot2v3nity/branch/develop?svg=true)](https://ci.appveyor.com/project/ned14/outcome/branch/develop)\n\nCTest dashboard: http://my.cdash.org/index.php?project=Boost.Outcome\n\nDocumentation: https://ned14.github.io/outcome/\n\n\n## Purpose of this library\n\nOutcome is a C++14 library for reporting and handling function failures. It can be used as a substitute for, or a complement to, the exception handling mechanism.\n\nOne use case is for contexts where using C++ exception handling is unsuitable for different reasons:\n\n * The high relative cost of throwing and catching a C++ exception.\n * Making some or all control paths explicitly detailed to aid code correctness auditing, as opposed to having hidden control paths caused by exceptions potentially thrown from any place.\n * Company policy to compile with exceptions disabled.\n * Maintaining a code base that was never designed with exception-safety in mind.\n * Parts of the programs/frameworks that themselves implement exception handling and cannot afford to use exceptions, like propagating failure reports across threads, tasks, fibers…\n\n\n## Usage as a single header file\n\nOutcome v2 comes in single header file form. This is regenerated per commit. To fetch\non Linux:\n\n```\nwget https://github.com/ned14/outcome/raw/develop/single-header/outcome.hpp\n```\n\nOn BSD:\n\n```\nfetch https://github.com/ned14/outcome/raw/develop/single-header/outcome.hpp\n```\n\nIf you have `curl` installed:\n\n```\ncurl -O -J -L https://github.com/ned14/outcome/raw/develop/single-header/outcome.hpp\n```\n\nOtherwise, simply download the raw file from above and place it wherever it suits you.\n\n## Pre Boost entry todo:\n\n - [x] Raise ABI compliance checker on CI.\n - [ ] Fix up the .natvis file, and permanently solve the permuting SHA issue.\n - [ ] Fix up the C interface to use `status_code`.\n\n## Commits and tags in this git repository can be verified using:\n<pre>\n-----BEGIN PGP PUBLIC KEY BLOCK-----\nVersion: GnuPG v2\n\nmDMEVvMacRYJKwYBBAHaRw8BAQdAp+Qn6djfxWQYtAEvDmv4feVmGALEQH/pYpBC\nllaXNQe0WE5pYWxsIERvdWdsYXMgKHMgW3VuZGVyc2NvcmVdIHNvdXJjZWZvcmdl\nIHthdH0gbmVkcHJvZCBbZG90XSBjb20pIDxzcGFtdHJhcEBuZWRwcm9kLmNvbT6I\neQQTFggAIQUCVvMacQIbAwULCQgHAgYVCAkKCwIEFgIDAQIeAQIXgAAKCRCELDV4\nZvkgx4vwAP9gxeQUsp7ARMFGxfbR0xPf6fRbH+miMUg2e7rYNuHtLQD9EUoR32We\nV8SjvX4r/deKniWctvCi5JccgfUwXkVzFAk=\n=puFk\n-----END PGP PUBLIC KEY BLOCK-----\n</pre>\n\n</center>\n",
+  "versions": [],
+  "updated": "2019-01-18T14:48:59Z",
+  "updatedUpstream": "2021-01-12T16:13:58Z",
+  "contributors": [
+    {
+      "login": "andoks",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5228?v=4"
+    },
+    {
+      "login": "hazelnusse",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/63265?u=e31e3901e077f4ac60d12154b42414e1ed14d14c&v=4"
+    },
+    {
+      "login": "ned14",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/230408?v=4"
+    },
+    {
+      "login": "catskul",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/375302?v=4"
+    },
+    {
+      "login": "ecatmur",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/801922?v=4"
+    },
+    {
+      "login": "vinipsmaker",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/865914?u=9473f2bc2f6d731f00ef6285fcff8c6c78710dec&v=4"
+    },
+    {
+      "login": "sdarwin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1257803?v=4"
+    },
+    {
+      "login": "akrzemi1",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2912717?u=62f6c6ea2c056fe66afc8c7273d65b40ff0cd6c1&v=4"
+    },
+    {
+      "login": "jenkins-nedprod",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/5522782?u=9d8c851cf31d2230c21f31cbda32c8d708f32f72&v=4"
+    },
+    {
+      "login": "norbertwenzel",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/6080778?u=ed3bf69b1a5094cad1309ae807f2d2184b0ad083&v=4"
+    },
+    {
+      "login": "johnthagen",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/10340167?u=47147fc4e4db1f573bee3fe428deeacb3197bc5f&v=4"
+    },
+    {
+      "login": "cstratopoulos",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/10555060?u=363d372cde492eb06978576d34d4c7c2add30188&v=4"
+    },
+    {
+      "login": "gusrb406",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/11360975?u=2ed1324408946e253a3dd98bed2ad36d1fb9dd64&v=4"
+    },
+    {
+      "login": "menuet",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/12157332?v=4"
+    },
+    {
+      "login": "libboze",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/47703951?u=07b985dff89f25497f9a771fbf1faa30b19a12c6&v=4"
+    }
+  ],
+  "fundingLinks": [
+    "https://github.com/ned14"
+  ],
+  "contactLinks": [],
+  "stars": 395,
+  "forks": 47,
+  "topics": [
+    "boost",
+    "c-plus-plus"
+  ]
+}

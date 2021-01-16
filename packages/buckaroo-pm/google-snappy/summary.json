@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-snappy",
+  "name": "google/snappy",
+  "stars": 4482,
+  "topics": [],
+  "description": "A fast compressor/decompressor",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 2,
+      "transitive": 2
+    }
+  ],
+  "updated": "2020-09-09T02:30:14Z",
+  "updatedUpstream": "2021-01-13T05:52:53Z"
+}

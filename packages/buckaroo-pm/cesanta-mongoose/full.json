@@ -1,0 +1,136 @@
+{
+  "packageName": "buckaroo-pm/cesanta-mongoose",
+  "name": "cesanta/mongoose",
+  "licence": "NOASSERTION",
+  "description": "Mongoose Embedded Web Server Library - Mongoose is more than an embedded webserver. It is a multi-protocol embedded networking library with functions including TCP, HTTP client and server, WebSocket client and server,  MQTT client and broker and much more.  ",
+  "readme": "# Mongoose - Embedded Web Server / Embedded Networking Library\n\n![](https://img.shields.io/badge/license-GPL_2-green.svg \"License\")\n\nMongoose is ideal for embedded environments. It has been designed\nfor connecting devices and bringing them online. On the market since 2004,\nused by vast number of open source and\ncommercial products - it even runs on the International Space station!\nMongoose makes embedded network programming fast, robust, and easy.\n\n- [Download Mongoose Source Code here](https://www.cesanta.com/download.html)\n\nLooking for a complete IoT firmware solution?\n\nCheck out [Mongoose OS](https://mongoose-os.com) - open source embedded operating system for low-power connected microcontrollers. Secure, designed for Internet of Things, complete environment for prototyping, development and managing.\n\n# Support\n- [Study mongoose example code](https://github.com/cesanta/mongoose/tree/master/examples)\n- [Read User Guide and API reference](https://cesanta.com/docs/overview/intro.html)\n- [Support Forum - ask your technical questions here](https://forum.mongoose-os.com/categories/mongoose)\n- [Commercial licensing and support available](https://www.cesanta.com/licensing.html)\n- [Check our latest releases](https://github.com/cesanta/mongoose/releases)\n\n# Features\n\n* Cross-platform: works on Linux/UNIX, MacOS, QNX, eCos, Windows, Android,\n  iPhone, FreeRTOS (TI CC3200, ESP8266), etc\n* Supported hardware platforms: TI CC3200, TI MSP432, NRF52, STM32, PIC32, ESP8266, ESP32 and more\n* Builtin protocols:\n   - plain TCP, plain UDP, SSL/TLS (over TCP, one-way or two-way)\n   - HTTP client, HTTP server\n   - WebSocket client, WebSocket server\n   - MQTT client, MQTT broker\n   - CoAP client, CoAP server\n   - DNS client, DNS server, async DNS resolver\n* Single-threaded, asynchronous, non-blocking core with simple event-based API\n* Native support for [PicoTCP embedded TCP/IP stack](http://www.picotcp.com),\n  [LWIP embedded TCP/IP stack](https://en.wikipedia.org/wiki/LwIP)\n* Tiny static and run-time footprint\n* Source code is both ISO C and ISO C++ compliant\n* Very easy to integrate: just copy\n  [mongoose.c](https://raw.githubusercontent.com/cesanta/mongoose/master/mongoose.c) and\n  [mongoose.h](https://raw.githubusercontent.com/cesanta/mongoose/master/mongoose.h)\n  files to your build tree\n\n# Licensing\n\nMongoose is released under Commercial and [GNU GPL v.2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) open source licenses.\n\nCommercial Projects: [Contact us for commercial license.](https://www.cesanta.com/contact.html)\n\n# Dashboard Example\n\nMongoose is often used to implement device dashboards and real-time\ndata exchange over Websocket. Here is a dashboard example that illustrates\nthe functionality:\n\n![](http://www.cesanta.com/images/dashboard.png)\n\n[Developing a new product? Contact us today to discuss how Mongoose can help.](https://www.cesanta.com/contact.html)\n\n# Contributions\n\nTo submit contributions, sign [Cesanta CLA](https://cesanta.com/cla.html)\nand send GitHub pull request.\n\n# Looking for a pre-compiled Mongoose web server Windows or Mac binary?\n- [Download pre-compiled Mongoose web server binary.](https://www.cesanta.com/binary.html)\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:mongoose\" ]\n",
+      "lockFile": "manifest = \"f2ba0dbfb07dfb010fa181bd6f54b32fc3d567eefd1859905c5354724b4cc3f7\"\n\n",
+      "buck": "cxx_library(\n  name = 'mongoose',\n  header_namespace = '',\n  exported_headers = [\n    'mongoose.h',\n  ],\n  srcs = [\n    'mongoose.c',\n  ],\n  licenses = [\n    'LICENSE',\n  ],\n  visibility = [\n    'PUBLIC'\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-09T14:46:35Z",
+  "updatedUpstream": "2021-01-13T11:48:15Z",
+  "contributors": [
+    {
+      "login": "schmurfy",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2983?v=4"
+    },
+    {
+      "login": "tbfly",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/27765?v=4"
+    },
+    {
+      "login": "csaftoiu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/43113?v=4"
+    },
+    {
+      "login": "rogerz",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/43471?v=4"
+    },
+    {
+      "login": "mkmik",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/52673?v=4"
+    },
+    {
+      "login": "solomonhuang",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/67495?u=3e34659ec9a32b630fd0090572a8d9562fab0df0&v=4"
+    },
+    {
+      "login": "To1ne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/121621?v=4"
+    },
+    {
+      "login": "henrique",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/128897?v=4"
+    },
+    {
+      "login": "hendrikp",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/130550?v=4"
+    },
+    {
+      "login": "xant",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/150933?v=4"
+    },
+    {
+      "login": "NickCis",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/174561?v=4"
+    },
+    {
+      "login": "eichin",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/208492?u=3a87d1cb727d310801fe079fa298489e3353a581&v=4"
+    },
+    {
+      "login": "thekvs",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/217860?v=4"
+    },
+    {
+      "login": "dnaeon",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/242827?v=4"
+    },
+    {
+      "login": "DanielOaks",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/251281?u=8dd1c8444cc391a309bf8a14f274103f319a2569&v=4"
+    },
+    {
+      "login": "arnout",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/282697?v=4"
+    },
+    {
+      "login": "oli-obk",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/332036?v=4"
+    },
+    {
+      "login": "sebbert",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/375907?u=ba214fb270b429ff9a54962eb1f195c9db7df3bf&v=4"
+    },
+    {
+      "login": "GerHobbelt",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/402462?v=4"
+    },
+    {
+      "login": "tehnick",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/441190?v=4"
+    },
+    {
+      "login": "okigan",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/478302?u=3c3175eeccbdbf852f87218d1011c6ab8a602354&v=4"
+    },
+    {
+      "login": "dpsk",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/481810?v=4"
+    },
+    {
+      "login": "rojer",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/531307?u=1d0ae8615bddea56075707d6daf110ecf0bf3fbf&v=4"
+    },
+    {
+      "login": "davidmurray",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/545502?v=4"
+    },
+    {
+      "login": "nigels-com",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/545677?u=aacb08b00d14a8168fbe831dd80639355a3db138&v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 6799,
+  "forks": 2000,
+  "topics": [
+    "mongoose",
+    "http",
+    "websocket",
+    "ssl",
+    "tls",
+    "mqtt",
+    "embedded",
+    "resolver"
+  ]
+}

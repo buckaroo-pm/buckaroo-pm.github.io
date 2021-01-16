@@ -1,0 +1,91 @@
+{
+  "packageName": "buckaroo-pm/freedesktop-libICE",
+  "name": "freedesktop/libICE",
+  "licence": "NOASSERTION",
+  "description": "Inter-Client Exchange library",
+  "readme": "libICE - Inter-Client Exchange Library\n\nDocumentation for this API can be found in the doc directory of the source\ncode, or online at:\n\n\thttp://xorg.freedesktop.org/releases/X11R7.0/doc/PDF/ICElib.pdf\n\nAll questions regarding this software should be directed at the\nXorg mailing list:\n\n        http://lists.freedesktop.org/mailman/listinfo/xorg\n\nPlease submit bug reports to the Xorg bugzilla:\n\n        https://bugs.freedesktop.org/enter_bug.cgi?product=xorg\n\nThe master development code repository can be found at:\n\n        git://anongit.freedesktop.org/git/xorg/lib/libICE\n\n        http://cgit.freedesktop.org/xorg/lib/libICE\n\nFor patch submission instructions, see:\n\n\thttp://www.x.org/wiki/Development/Documentation/SubmittingPatches\n\nFor more information on the git code manager, see:\n\n        http://wiki.x.org/wiki/GitPage\n\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:ice\" ]\n",
+      "lockFile": "manifest = \"f1450f25cd9caf8c721cccadcc99fa5405ddfaedd1c0223334c2c00da0e7fb5d\"\n\n",
+      "buck": "load('//:buckaroo_macros.bzl', 'buckaroo_deps')\nload('//:subdir_glob.bzl', 'subdir_glob')\n\ncxx_library(\n  name = 'ice',\n  header_namespace = '',\n  exported_headers = subdir_glob([\n    ('include', '**/*.h'),\n  ]),\n  srcs = glob([\n    'src/**/*.c',\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-24T12:53:42Z",
+  "updatedUpstream": "2016-12-03T16:51:15Z",
+  "contributors": [
+    {
+      "login": "alanc",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/111997?u=35225cd6afb7ba0b5fa992fd97e05901c706e2c1&v=4"
+    },
+    {
+      "login": "cgwalters",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/244096?v=4"
+    },
+    {
+      "login": "mherrb",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/515301?u=69894cccc0a27a2bbcde95ccfcc4c889100e44d6&v=4"
+    },
+    {
+      "login": "marcoz001",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/614703?v=4"
+    },
+    {
+      "login": "pzanoni",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/621176?v=4"
+    },
+    {
+      "login": "jhcloos",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/841039?v=4"
+    },
+    {
+      "login": "keith-packard",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/897096?u=95f6829d369f03a7bbf086964cc3ed438770b2e6&v=4"
+    },
+    {
+      "login": "nwnk",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1039566?u=d093872c2483ab195612cd39b76b101e1736ea86&v=4"
+    },
+    {
+      "login": "jeremyhu",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/1258676?u=4c002b47250cbcd23721e233f89ff0fb7fd3198f&v=4"
+    },
+    {
+      "login": "whot",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1487352?v=4"
+    },
+    {
+      "login": "fooishbar",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2331303?u=3a86966316518b9e682e3d1bef3d526991bd998b&v=4"
+    },
+    {
+      "login": "sorensp",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2695226?v=4"
+    },
+    {
+      "login": "jon-turney",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/3497232?v=4"
+    },
+    {
+      "login": "FascinatedBox",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7182625?u=ff93fe827cb2e9cfff6b3325548852139b3d197f&v=4"
+    },
+    {
+      "login": "e4t",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8416824?v=4"
+    },
+    {
+      "login": "peterbrei",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/8874919?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 2,
+  "topics": []
+}

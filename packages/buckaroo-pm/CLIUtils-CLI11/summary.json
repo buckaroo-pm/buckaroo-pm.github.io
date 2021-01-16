@@ -1,0 +1,23 @@
+{
+  "packageName": "buckaroo-pm/CLIUtils-CLI11",
+  "name": "CLIUtils/CLI11",
+  "stars": 1430,
+  "topics": [
+    "cli-parser",
+    "cpp11",
+    "no-dependencies",
+    "cli"
+  ],
+  "description": "CLI11 is a command line parser for C++11 and beyond that provides a rich feature set with a simple and intuitive interface.",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-30T22:39:43Z",
+  "updatedUpstream": "2021-01-12T08:31:14Z"
+}

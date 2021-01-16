@@ -1,0 +1,28 @@
+{
+  "packageName": "buckaroo-pm/arximboldi-immer",
+  "name": "arximboldi/immer",
+  "stars": 1752,
+  "topics": [
+    "immutable",
+    "data-structures",
+    "modern-cpp",
+    "cpp14",
+    "rrb-tree",
+    "persistent",
+    "postmodernism",
+    "value-semantics",
+    "hamt"
+  ],
+  "description": "Postmodern immutable and persistent data structures for C++",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T12:09:27Z",
+  "updatedUpstream": "2021-01-13T16:33:30Z"
+}

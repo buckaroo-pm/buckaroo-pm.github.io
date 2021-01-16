@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-poly2tri",
+  "name": "greenm01/poly2tri",
+  "stars": 227,
+  "topics": [],
+  "description": "Automatically exported from code.google.com/p/poly2tri",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-25T13:44:19Z",
+  "updatedUpstream": "2021-01-03T03:34:07Z"
+}

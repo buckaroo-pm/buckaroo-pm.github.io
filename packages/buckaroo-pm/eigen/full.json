@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/eigen",
+  "name": "PX4/eigen",
+  "licence": "NOASSERTION",
+  "description": "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
+  "readme": "**Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.**\n\nFor more information go to http://eigen.tuxfamily.org/.\n",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:eigen\" ]\n",
+      "lockFile": "",
+      "buck": "prebuilt_cxx_library(\n  name = 'eigen',\n  header_only = True,\n  header_namespace = 'Eigen', \n  exported_headers = subdir_glob([\n    ('Eigen', '*'),\n    ('Eigen', 'src/**/*.h'),\n  ]), \n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-19T17:08:49Z",
+  "updatedUpstream": "2020-12-28T03:26:05Z",
+  "contributors": [
+    {
+      "login": "uwolfer",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/2202?u=85169000377e94823a2a1c46d3e66c7b73055f53&v=4"
+    },
+    {
+      "login": "trevor",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/5945?v=4"
+    },
+    {
+      "login": "ingmarv",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/19112?v=4"
+    },
+    {
+      "login": "moritz",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/23773?v=4"
+    },
+    {
+      "login": "rryan",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/26527?v=4"
+    },
+    {
+      "login": "cbecker",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/26833?u=b1db6023439bc76b15d1a202e77b05c6c6bbe7aa&v=4"
+    },
+    {
+      "login": "cryos",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/42214?u=1e307f475ff531fbdd5cd27ebd1ca8603a23ab7e&v=4"
+    },
+    {
+      "login": "hdevalence",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/44879?v=4"
+    },
+    {
+      "login": "JLP",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/53071?v=4"
+    },
+    {
+      "login": "radford",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/55631?v=4"
+    },
+    {
+      "login": "nikolas",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/59292?u=071e7bee0dbb14a0d8c0d03d7579c1cac3e9acc0&v=4"
+    },
+    {
+      "login": "devurandom",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/63082?v=4"
+    },
+    {
+      "login": "osaut",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/68390?v=4"
+    },
+    {
+      "login": "bjacob",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/79535?v=4"
+    },
+    {
+      "login": "dagar",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/84712?v=4"
+    },
+    {
+      "login": "RhysU",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/85419?v=4"
+    },
+    {
+      "login": "sbarthelemy",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/98104?v=4"
+    },
+    {
+      "login": "ville-k",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/101231?u=cda90627b16ab9bb05517b269994d9ecba3fd1d8&v=4"
+    },
+    {
+      "login": "jeremybarnes",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/112556?v=4"
+    },
+    {
+      "login": "hughperkins",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/123560?u=4c9caeb73ee493e5880af21b0f3a9bfd2b90bad6&v=4"
+    },
+    {
+      "login": "MattPD",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/130135?u=6a6e11d3465c18379c56bd288594abe27e87138d&v=4"
+    },
+    {
+      "login": "jlebar",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/150663?v=4"
+    },
+    {
+      "login": "jakobs",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/160834?u=7a644ba71d45d20a72d9599486b9333dd1a3ab08&v=4"
+    },
+    {
+      "login": "petewarden",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/161459?v=4"
+    },
+    {
+      "login": "ptroja",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/161602?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 220,
+  "forks": 81,
+  "topics": []
+}

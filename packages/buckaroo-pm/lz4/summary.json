@@ -1,0 +1,22 @@
+{
+  "packageName": "buckaroo-pm/lz4",
+  "name": "lz4/lz4",
+  "stars": 5631,
+  "topics": [
+    "lz4",
+    "c",
+    "compression"
+  ],
+  "description": "Extremely Fast Compression algorithm",
+  "versions": [
+    {
+      "ref": "v1.8.3",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-02-07T11:33:55Z",
+  "updatedUpstream": "2021-01-13T22:30:20Z"
+}

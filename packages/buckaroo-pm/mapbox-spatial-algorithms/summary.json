@@ -1,0 +1,13 @@
+{
+  "packageName": "buckaroo-pm/mapbox-spatial-algorithms",
+  "name": "mapbox/spatial-algorithms",
+  "stars": 22,
+  "topics": [
+    "geometry",
+    "algorithms"
+  ],
+  "description": "Spatial algorithms library for geometry.hpp",
+  "versions": [],
+  "updated": "2018-11-11T12:35:57Z",
+  "updatedUpstream": "2020-12-04T22:16:40Z"
+}

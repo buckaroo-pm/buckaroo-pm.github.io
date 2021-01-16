@@ -1,0 +1,10 @@
+{
+  "packageName": "buckaroo-pm/luadist-freeglut",
+  "name": "LuaDist/freeglut",
+  "stars": 6,
+  "topics": [],
+  "description": "FreeGLUT is a free alternative GLUT library.",
+  "versions": [],
+  "updated": "2019-01-24T16:16:30Z",
+  "updatedUpstream": "2020-11-19T18:10:22Z"
+}

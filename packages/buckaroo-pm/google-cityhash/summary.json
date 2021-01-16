@@ -1,0 +1,18 @@
+{
+  "packageName": "buckaroo-pm/google-cityhash",
+  "name": "google/cityhash",
+  "stars": 708,
+  "topics": [],
+  "description": "Automatically exported from code.google.com/p/cityhash",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 0,
+      "transitive": 0
+    }
+  ],
+  "updated": "2019-01-24T11:33:31Z",
+  "updatedUpstream": "2021-01-13T17:50:23Z"
+}

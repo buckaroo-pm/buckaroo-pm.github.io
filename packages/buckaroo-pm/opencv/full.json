@@ -1,0 +1,26 @@
+{
+  "packageName": "buckaroo-pm/opencv",
+  "name": "buckaroo-pm/opencv",
+  "licence": "",
+  "description": "pkg-config-port; WIP",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:opencv\" ]\n",
+      "lockFile": "manifest = \"e74df33211d7de11076f1d70a3f31af83694e89ce8cb754c9f6ac3185a0dfcba\"\n\n",
+      "buck": "pkg_config = read_config('pkg_config', 'path', 'pkg-config')\n\ngenrule(\n  name = 'preprocessor-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' opencv --cflags > $OUT',\n)\n\ngenrule(\n  name = 'linker-flags',\n  out = 'out.txt',\n  cmd = pkg_config + ' opencv --libs > $OUT',\n)\n\nprebuilt_cxx_library(\n  name = 'opencv',\n  header_namespace = '',\n  header_only = True,\n  exported_preprocessor_flags = [\n    '@$(location :preprocessor-flags)',\n  ],\n  exported_linker_flags = [\n    '@$(location :linker-flags)',\n  ],\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2019-01-31T11:29:13Z",
+  "updatedUpstream": "2019-01-31T11:29:13Z",
+  "contributors": [],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 0,
+  "forks": 1,
+  "topics": []
+}

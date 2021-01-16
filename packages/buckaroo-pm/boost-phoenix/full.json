@@ -1,0 +1,127 @@
+{
+  "packageName": "buckaroo-pm/boost-phoenix",
+  "name": "boostorg/phoenix",
+  "licence": "",
+  "description": "Boost.org phoenix module ",
+  "readme": "",
+  "versions": [
+    {
+      "ref": "master",
+      "manifest": "targets = [ \"//:phoenix\" ]\n\n[[dependencies]]\npackage = \"github.com/buckaroo-pm/boost-proto\"\nversion = \"branch=master\"\n",
+      "lockFile": "manifest = \"2ed69a9779c7468b824e7edcd9dd0143fd8b76099086839e9b8003368d3f4489\"\n\n",
+      "buck": "load('//:subdir_glob.bzl', 'subdir_glob')\nload('//:buckaroo_macros.bzl', 'buckaroo_deps')\n\nprebuilt_cxx_library(\n  name = 'phoenix',\n  header_only = True,\n  header_namespace = 'boost',\n  exported_headers = subdir_glob([\n    ('include/boost', '**/*.hpp'),\n  ]),\n  deps = buckaroo_deps(),\n  visibility = [\n    'PUBLIC',\n  ],\n)\n",
+      "bazel": "",
+      "deps": [],
+      "lock": []
+    }
+  ],
+  "updated": "2018-11-15T16:31:38Z",
+  "updatedUpstream": "2021-01-08T01:23:05Z",
+  "contributors": [
+    {
+      "login": "danieljames",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/7543?v=4"
+    },
+    {
+      "login": "steveire",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/37486?v=4"
+    },
+    {
+      "login": "sithhell",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/53655?v=4"
+    },
+    {
+      "login": "giomasce",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/101675?v=4"
+    },
+    {
+      "login": "mclow",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/167192?u=2aa259cac18f2121fec31e4e0e982ae454891b0c&v=4"
+    },
+    {
+      "login": "purpleKarrot",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/185240?u=1e460c214ce0f4d75441a7456e69f474942c75d7&v=4"
+    },
+    {
+      "login": "ericniebler",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/225757?v=4"
+    },
+    {
+      "login": "vprus",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/225915?v=4"
+    },
+    {
+      "login": "Beman",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/226112?v=4"
+    },
+    {
+      "login": "mjcaisse",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/230295?u=03f8b6d6c0a2fe63b6d14f5c42e80c8c58ba56cc&v=4"
+    },
+    {
+      "login": "Flast",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/322915?v=4"
+    },
+    {
+      "login": "mgaunard",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/464375?v=4"
+    },
+    {
+      "login": "ndevenish",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/529963?v=4"
+    },
+    {
+      "login": "hkaiser",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/568063?v=4"
+    },
+    {
+      "login": "djowel",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/568094?u=be150dbf9b671deb42971d4da4ceb599a3a7b2cc&v=4"
+    },
+    {
+      "login": "ldionne",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/700834?u=3d2dd80d43f96e6fd22219498790622944a25f19&v=4"
+    },
+    {
+      "login": "glenfe",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/712180?u=f15319dfd6ca8062678725e9510d916b821db766&v=4"
+    },
+    {
+      "login": "jefftrull",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/762705?v=4"
+    },
+    {
+      "login": "DougGregor",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/989428?v=4"
+    },
+    {
+      "login": "sdarwin",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1257803?v=4"
+    },
+    {
+      "login": "DanielaE",
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/1381823?v=4"
+    },
+    {
+      "login": "Kojoley",
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/2743474?v=4"
+    },
+    {
+      "login": "grafikrobot",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2998253?u=698bf9a307f7645a7e6fb669a56003778acc5380&v=4"
+    },
+    {
+      "login": "eldiener",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3112415?v=4"
+    },
+    {
+      "login": "pdimov",
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/3116174?v=4"
+    }
+  ],
+  "fundingLinks": [],
+  "contactLinks": [],
+  "stars": 24,
+  "forks": 35,
+  "topics": []
+}

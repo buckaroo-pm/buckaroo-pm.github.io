@@ -1,0 +1,25 @@
+{
+  "packageName": "buckaroo-pm/xiph-flac",
+  "name": "xiph/flac",
+  "stars": 569,
+  "topics": [
+    "audio",
+    "decoding",
+    "encoding",
+    "lossless",
+    "lossless-compression-algorithm",
+    "c"
+  ],
+  "description": "Free Lossless Audio Codec",
+  "versions": [
+    {
+      "ref": "master",
+      "bazel": false,
+      "buck": true,
+      "deps": 1,
+      "transitive": 1
+    }
+  ],
+  "updated": "2019-09-16T17:21:05Z",
+  "updatedUpstream": "2021-01-12T21:56:32Z"
+}
