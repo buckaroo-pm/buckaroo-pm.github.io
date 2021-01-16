@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "yarn build && next export && touch out/.nojekyll && cp CNAME out",
+    "deploy": "yarn gh-pages -t -d out",
     "start": "next start"
   },
   "dependencies": {
