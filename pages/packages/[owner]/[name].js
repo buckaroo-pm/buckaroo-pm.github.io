@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { get } from 'superagent';
 import Footer from '../../../components/Footer';
 import Navigation from '../../../components/Navigation';
 import ReactMarkdown from 'react-markdown/with-html';
@@ -43,8 +42,11 @@ function Code({content, lang}) {
   return <SyntaxHighlighter language={lang} style={docco}>{content}</SyntaxHighlighter>
 }
 
-function Content({tab:[name, content]}) {
+function Content(props) {
+  const [name, content] = props.tab || ['', ''];
+
   switch (name) {
+    case '': return null;
     case "ReadMe":
       return (
         <>
@@ -100,10 +102,10 @@ export default function Packages({data}) {
   const {owner, name:pname, tab} = router.query;
 
   const {
-    packageName,
-    readme,
-    licence,
-    versions,
+    packageName = '',
+    readme = '',
+    licence = '',
+    versions = [],
   } = data;
 
 
@@ -161,13 +163,20 @@ export default function Packages({data}) {
   );
 }
 
-export function getServerSideProps(context) {
-  console.log(context);
+export function getStaticProps(context) {
   const data = require(`../../../public/packages/buckaroo-pm/${context.params.name}/full.json`);
-  //console.log("data");
   return {props: {
     data
   }}
+}
+
+export function getStaticPaths() {
+  return {
+    fallback: false,
+    paths: 
+      require('../../../public/packages/names.json')
+        .map(params=>({params}))
+  };
 }
 
 //Object.assign(Packages, {getInitialProps});

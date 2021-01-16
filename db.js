@@ -441,6 +441,12 @@ async function main() {
 
   await writeFile(`public/packages/search.index`, index.export());
 
+  const names = db.map(x=>{
+    const [owner, name] = x.packageName.split('/');
+    return {owner, name};
+  });
+  await writeFile(`public/packages/names.json`, JSON.stringify(names, null, 2));
+
 }
 
 

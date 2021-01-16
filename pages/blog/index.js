@@ -59,7 +59,7 @@ export default function Blog({posts}) {
 }
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const fs = require('fs/promises');
   const glob = require('glob-promise');
   const fm = require('frontmatter');
